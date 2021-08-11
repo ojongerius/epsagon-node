@@ -1,1 +1,20155 @@
-"use strict";function _interopDefault(e){return e&&"object"==typeof e&&"default"in e?e.default:e}Object.defineProperty(exports,"__esModule",{value:!0});var e=_interopDefault(require("google-protobuf-minified")),t=_interopDefault(require("uuid4")),r=_interopDefault(require("axios-minified")),a=_interopDefault(require("os")),n=_interopDefault(require("fs")),s=_interopDefault(require("require-in-the-middle")),o=_interopDefault(require("events")),i=_interopDefault(require("https")),p=_interopDefault(require("http")),c=_interopDefault(require("buffer")),u=_interopDefault(require("json-stringify-safe")),d=_interopDefault(require("md5")),l=_interopDefault(require("json.sortify")),g=_interopDefault(require("util")),f=_interopDefault(require("shimmer")),h=_interopDefault(require("zlib")),m=_interopDefault(require("uuid-parse")),_=_interopDefault(require("path")),E=_interopDefault(require("url")),b=_interopDefault(require("dns"));function createCommonjsModule(e,t){return e(t={exports:{}},t.exports),t.exports}var y=createCommonjsModule((function(t,r){var a=e,n=Function("return this")();a.exportSymbol("proto.Exception",null,n),proto.Exception=function(t){e.Message.initialize(this,t,0,-1,null,null)},a.inherits(proto.Exception,e.Message),a.DEBUG&&!COMPILED&&(proto.Exception.displayName="proto.Exception"),e.Message.GENERATE_TO_OBJECT&&(proto.Exception.prototype.toObject=function(e){return proto.Exception.toObject(e,this)},proto.Exception.toObject=function(t,r){var a,n={type:e.Message.getFieldWithDefault(r,1,""),message:e.Message.getFieldWithDefault(r,2,""),traceback:e.Message.getFieldWithDefault(r,3,""),time:+e.Message.getFieldWithDefault(r,4,0),additionalDataMap:(a=r.getAdditionalDataMap())?a.toObject(t,void 0):[]};return t&&(n.$jspbMessageInstance=r),n}),proto.Exception.deserializeBinary=function(t){var r=new e.BinaryReader(t),a=new proto.Exception;return proto.Exception.deserializeBinaryFromReader(a,r)},proto.Exception.deserializeBinaryFromReader=function(t,r){for(;r.nextField()&&!r.isEndGroup();){switch(r.getFieldNumber()){case 1:var a=r.readString();t.setType(a);break;case 2:a=r.readString();t.setMessage(a);break;case 3:a=r.readString();t.setTraceback(a);break;case 4:a=r.readDouble();t.setTime(a);break;case 5:a=t.getAdditionalDataMap();r.readMessage(a,(function(t,r){e.Map.deserializeBinary(t,r,e.BinaryReader.prototype.readString,e.BinaryReader.prototype.readString)}));break;default:r.skipField()}}return t},proto.Exception.prototype.serializeBinary=function(){var t=new e.BinaryWriter;return proto.Exception.serializeBinaryToWriter(this,t),t.getResultBuffer()},proto.Exception.serializeBinaryToWriter=function(t,r){var a=void 0;(a=t.getType()).length>0&&r.writeString(1,a),(a=t.getMessage()).length>0&&r.writeString(2,a),(a=t.getTraceback()).length>0&&r.writeString(3,a),0!==(a=t.getTime())&&r.writeDouble(4,a),(a=t.getAdditionalDataMap(!0))&&a.getLength()>0&&a.serializeBinary(5,r,e.BinaryWriter.prototype.writeString,e.BinaryWriter.prototype.writeString)},proto.Exception.prototype.getType=function(){return e.Message.getFieldWithDefault(this,1,"")},proto.Exception.prototype.setType=function(t){e.Message.setProto3StringField(this,1,t)},proto.Exception.prototype.getMessage=function(){return e.Message.getFieldWithDefault(this,2,"")},proto.Exception.prototype.setMessage=function(t){e.Message.setProto3StringField(this,2,t)},proto.Exception.prototype.getTraceback=function(){return e.Message.getFieldWithDefault(this,3,"")},proto.Exception.prototype.setTraceback=function(t){e.Message.setProto3StringField(this,3,t)},proto.Exception.prototype.getTime=function(){return+e.Message.getFieldWithDefault(this,4,0)},proto.Exception.prototype.setTime=function(t){e.Message.setProto3FloatField(this,4,t)},proto.Exception.prototype.getAdditionalDataMap=function(t){return e.Message.getMapField(this,5,t,null)},proto.Exception.prototype.clearAdditionalDataMap=function(){this.getAdditionalDataMap().clear()},a.object.extend(r,proto)})),v=createCommonjsModule((function(t,r){var a=e,n=Function("return this")();a.exportSymbol("proto.ErrorCode",null,n),proto.ErrorCode={OK:0,ERROR:1,EXCEPTION:2,TIMEOUT:3},a.object.extend(r,proto)})),T=createCommonjsModule((function(t,r){var a=e,n=Function("return this")();a.exportSymbol("proto.Event",null,n),a.exportSymbol("proto.Resource",null,n),proto.Resource=function(t){e.Message.initialize(this,t,0,-1,null,null)},a.inherits(proto.Resource,e.Message),a.DEBUG&&!COMPILED&&(proto.Resource.displayName="proto.Resource"),e.Message.GENERATE_TO_OBJECT&&(proto.Resource.prototype.toObject=function(e){return proto.Resource.toObject(e,this)},proto.Resource.toObject=function(t,r){var a,n={name:e.Message.getFieldWithDefault(r,1,""),type:e.Message.getFieldWithDefault(r,2,""),operation:e.Message.getFieldWithDefault(r,3,""),metadataMap:(a=r.getMetadataMap())?a.toObject(t,void 0):[]};return t&&(n.$jspbMessageInstance=r),n}),proto.Resource.deserializeBinary=function(t){var r=new e.BinaryReader(t),a=new proto.Resource;return proto.Resource.deserializeBinaryFromReader(a,r)},proto.Resource.deserializeBinaryFromReader=function(t,r){for(;r.nextField()&&!r.isEndGroup();){switch(r.getFieldNumber()){case 1:var a=r.readString();t.setName(a);break;case 2:a=r.readString();t.setType(a);break;case 3:a=r.readString();t.setOperation(a);break;case 4:a=t.getMetadataMap();r.readMessage(a,(function(t,r){e.Map.deserializeBinary(t,r,e.BinaryReader.prototype.readString,e.BinaryReader.prototype.readString)}));break;default:r.skipField()}}return t},proto.Resource.prototype.serializeBinary=function(){var t=new e.BinaryWriter;return proto.Resource.serializeBinaryToWriter(this,t),t.getResultBuffer()},proto.Resource.serializeBinaryToWriter=function(t,r){var a=void 0;(a=t.getName()).length>0&&r.writeString(1,a),(a=t.getType()).length>0&&r.writeString(2,a),(a=t.getOperation()).length>0&&r.writeString(3,a),(a=t.getMetadataMap(!0))&&a.getLength()>0&&a.serializeBinary(4,r,e.BinaryWriter.prototype.writeString,e.BinaryWriter.prototype.writeString)},proto.Resource.prototype.getName=function(){return e.Message.getFieldWithDefault(this,1,"")},proto.Resource.prototype.setName=function(t){e.Message.setProto3StringField(this,1,t)},proto.Resource.prototype.getType=function(){return e.Message.getFieldWithDefault(this,2,"")},proto.Resource.prototype.setType=function(t){e.Message.setProto3StringField(this,2,t)},proto.Resource.prototype.getOperation=function(){return e.Message.getFieldWithDefault(this,3,"")},proto.Resource.prototype.setOperation=function(t){e.Message.setProto3StringField(this,3,t)},proto.Resource.prototype.getMetadataMap=function(t){return e.Message.getMapField(this,4,t,null)},proto.Resource.prototype.clearMetadataMap=function(){this.getMetadataMap().clear()},proto.Event=function(t){e.Message.initialize(this,t,0,-1,null,null)},a.inherits(proto.Event,e.Message),a.DEBUG&&!COMPILED&&(proto.Event.displayName="proto.Event"),e.Message.GENERATE_TO_OBJECT&&(proto.Event.prototype.toObject=function(e){return proto.Event.toObject(e,this)},proto.Event.toObject=function(t,r){var a,n={id:e.Message.getFieldWithDefault(r,1,""),startTime:+e.Message.getFieldWithDefault(r,2,0),resource:(a=r.getResource())&&proto.Resource.toObject(t,a),origin:e.Message.getFieldWithDefault(r,4,""),duration:+e.Message.getFieldWithDefault(r,5,0),errorCode:e.Message.getFieldWithDefault(r,6,0),exception:(a=r.getException())&&y.Exception.toObject(t,a)};return t&&(n.$jspbMessageInstance=r),n}),proto.Event.deserializeBinary=function(t){var r=new e.BinaryReader(t),a=new proto.Event;return proto.Event.deserializeBinaryFromReader(a,r)},proto.Event.deserializeBinaryFromReader=function(e,t){for(;t.nextField()&&!t.isEndGroup();){switch(t.getFieldNumber()){case 1:var r=t.readString();e.setId(r);break;case 2:r=t.readDouble();e.setStartTime(r);break;case 3:r=new proto.Resource;t.readMessage(r,proto.Resource.deserializeBinaryFromReader),e.setResource(r);break;case 4:r=t.readString();e.setOrigin(r);break;case 5:r=t.readDouble();e.setDuration(r);break;case 6:r=t.readEnum();e.setErrorCode(r);break;case 7:r=new y.Exception;t.readMessage(r,y.Exception.deserializeBinaryFromReader),e.setException(r);break;default:t.skipField()}}return e},proto.Event.prototype.serializeBinary=function(){var t=new e.BinaryWriter;return proto.Event.serializeBinaryToWriter(this,t),t.getResultBuffer()},proto.Event.serializeBinaryToWriter=function(e,t){var r=void 0;(r=e.getId()).length>0&&t.writeString(1,r),0!==(r=e.getStartTime())&&t.writeDouble(2,r),null!=(r=e.getResource())&&t.writeMessage(3,r,proto.Resource.serializeBinaryToWriter),(r=e.getOrigin()).length>0&&t.writeString(4,r),0!==(r=e.getDuration())&&t.writeDouble(5,r),0!==(r=e.getErrorCode())&&t.writeEnum(6,r),null!=(r=e.getException())&&t.writeMessage(7,r,y.Exception.serializeBinaryToWriter)},proto.Event.prototype.getId=function(){return e.Message.getFieldWithDefault(this,1,"")},proto.Event.prototype.setId=function(t){e.Message.setProto3StringField(this,1,t)},proto.Event.prototype.getStartTime=function(){return+e.Message.getFieldWithDefault(this,2,0)},proto.Event.prototype.setStartTime=function(t){e.Message.setProto3FloatField(this,2,t)},proto.Event.prototype.getResource=function(){return e.Message.getWrapperField(this,proto.Resource,3)},proto.Event.prototype.setResource=function(t){e.Message.setWrapperField(this,3,t)},proto.Event.prototype.clearResource=function(){this.setResource(void 0)},proto.Event.prototype.hasResource=function(){return null!=e.Message.getField(this,3)},proto.Event.prototype.getOrigin=function(){return e.Message.getFieldWithDefault(this,4,"")},proto.Event.prototype.setOrigin=function(t){e.Message.setProto3StringField(this,4,t)},proto.Event.prototype.getDuration=function(){return+e.Message.getFieldWithDefault(this,5,0)},proto.Event.prototype.setDuration=function(t){e.Message.setProto3FloatField(this,5,t)},proto.Event.prototype.getErrorCode=function(){return e.Message.getFieldWithDefault(this,6,0)},proto.Event.prototype.setErrorCode=function(t){e.Message.setProto3EnumField(this,6,t)},proto.Event.prototype.getException=function(){return e.Message.getWrapperField(this,y.Exception,7)},proto.Event.prototype.setException=function(t){e.Message.setWrapperField(this,7,t)},proto.Event.prototype.clearException=function(){this.setException(void 0)},proto.Event.prototype.hasException=function(){return null!=e.Message.getField(this,7)},a.object.extend(r,proto)})),$=createCommonjsModule((function(t,r){var a=e,n=Function("return this")();a.exportSymbol("proto.Trace",null,n),proto.Trace=function(t){e.Message.initialize(this,t,0,-1,proto.Trace.repeatedFields_,null)},a.inherits(proto.Trace,e.Message),a.DEBUG&&!COMPILED&&(proto.Trace.displayName="proto.Trace"),proto.Trace.repeatedFields_=[3,4],e.Message.GENERATE_TO_OBJECT&&(proto.Trace.prototype.toObject=function(e){return proto.Trace.toObject(e,this)},proto.Trace.toObject=function(t,r){var a={appName:e.Message.getFieldWithDefault(r,1,""),token:e.Message.getFieldWithDefault(r,2,""),eventList:e.Message.toObjectList(r.getEventList(),T.Event.toObject,t),exceptionList:e.Message.toObjectList(r.getExceptionList(),y.Exception.toObject,t),version:e.Message.getFieldWithDefault(r,5,""),platform:e.Message.getFieldWithDefault(r,6,"")};return t&&(a.$jspbMessageInstance=r),a}),proto.Trace.deserializeBinary=function(t){var r=new e.BinaryReader(t),a=new proto.Trace;return proto.Trace.deserializeBinaryFromReader(a,r)},proto.Trace.deserializeBinaryFromReader=function(e,t){for(;t.nextField()&&!t.isEndGroup();){switch(t.getFieldNumber()){case 1:var r=t.readString();e.setAppName(r);break;case 2:r=t.readString();e.setToken(r);break;case 3:r=new T.Event;t.readMessage(r,T.Event.deserializeBinaryFromReader),e.addEvent(r);break;case 4:r=new y.Exception;t.readMessage(r,y.Exception.deserializeBinaryFromReader),e.addException(r);break;case 5:r=t.readString();e.setVersion(r);break;case 6:r=t.readString();e.setPlatform(r);break;default:t.skipField()}}return e},proto.Trace.prototype.serializeBinary=function(){var t=new e.BinaryWriter;return proto.Trace.serializeBinaryToWriter(this,t),t.getResultBuffer()},proto.Trace.serializeBinaryToWriter=function(e,t){var r=void 0;(r=e.getAppName()).length>0&&t.writeString(1,r),(r=e.getToken()).length>0&&t.writeString(2,r),(r=e.getEventList()).length>0&&t.writeRepeatedMessage(3,r,T.Event.serializeBinaryToWriter),(r=e.getExceptionList()).length>0&&t.writeRepeatedMessage(4,r,y.Exception.serializeBinaryToWriter),(r=e.getVersion()).length>0&&t.writeString(5,r),(r=e.getPlatform()).length>0&&t.writeString(6,r)},proto.Trace.prototype.getAppName=function(){return e.Message.getFieldWithDefault(this,1,"")},proto.Trace.prototype.setAppName=function(t){e.Message.setProto3StringField(this,1,t)},proto.Trace.prototype.getToken=function(){return e.Message.getFieldWithDefault(this,2,"")},proto.Trace.prototype.setToken=function(t){e.Message.setProto3StringField(this,2,t)},proto.Trace.prototype.getEventList=function(){return e.Message.getRepeatedWrapperField(this,T.Event,3)},proto.Trace.prototype.setEventList=function(t){e.Message.setRepeatedWrapperField(this,3,t)},proto.Trace.prototype.addEvent=function(t,r){return e.Message.addToRepeatedWrapperField(this,3,t,proto.Event,r)},proto.Trace.prototype.clearEventList=function(){this.setEventList([])},proto.Trace.prototype.getExceptionList=function(){return e.Message.getRepeatedWrapperField(this,y.Exception,4)},proto.Trace.prototype.setExceptionList=function(t){e.Message.setRepeatedWrapperField(this,4,t)},proto.Trace.prototype.addException=function(t,r){return e.Message.addToRepeatedWrapperField(this,4,t,proto.Exception,r)},proto.Trace.prototype.clearExceptionList=function(){this.setExceptionList([])},proto.Trace.prototype.getVersion=function(){return e.Message.getFieldWithDefault(this,5,"")},proto.Trace.prototype.setVersion=function(t){e.Message.setProto3StringField(this,5,t)},proto.Trace.prototype.getPlatform=function(){return e.Message.getFieldWithDefault(this,6,"")},proto.Trace.prototype.setPlatform=function(t){e.Message.setProto3StringField(this,6,t)},a.object.extend(r,proto)}));function createTimestampFromTime(e){return e/1e3}var x,S={createTimestampFromTime:createTimestampFromTime,createTimestamp:function(){return createTimestampFromTime(Date.now())},createDurationTimestamp:function(e){return createTimestampFromTime(Date.now()-e)},reflectPromise:function(e){return e.then(e=>({value:e,status:"resolved"})).catch(e=>({error:e,status:"rejected"}))},debugLog:function(...e){"TRUE"===(process.env.EPSAGON_DEBUG||"").toUpperCase()&&console.log("[EPSAGON]",...e)},printWarning:function(...e){console.warn(...e)},printError:function(...e){console.error(...e)},makeQueryablePromise:function(e){if(e.isResolved)return e;let t=!0,r=!1,a=!1;const n=e.then(e=>(a=!0,t=!1,e),e=>{throw r=!0,t=!1,e});return n.isFulfilled=()=>a,n.isPending=()=>t,n.isRejected=()=>r,n},flatten:function(e){const t={};return function step(e,r,a){const n=a||1;Object.keys(e).forEach(a=>{const s=e[a];if(null==s)return null;const o=Array.isArray(s),i=Object.prototype.toString.call(s),p="[object Object]"===i||"[object Array]"===i,c=r?r+"."+a:a;return!o&&!Buffer.isBuffer(s)&&p&&Object.keys(s).length?step(s,c,n+1):(null!=s&&["string","number","boolean"].includes(typeof s)&&(t[c]=s),null)})}(e),t},getLastSplittedItem:(e,t)=>{const r=e&&e.split(t)||[];return r[r.length-1]},isPromise:function(e){return!!e&&"function"==typeof e.then},isLambdaEnv:!!process.env.AWS_LAMBDA_FUNCTION_NAME,getValueIfExist:function(e,t){return t in e?e[t]:void 0},truncateMessage:function(e,t){return e.length<=t?e:e.slice(0,t)},distinct:function(e){return[...new Set(e)]}},R="Epsagon Instrumentation for Node.js",A=["serverless","epsagon","tracing","distributed-tracing","lambda","aws-lambda","debugging","monitoring"],M="Epsagon Team <support@epsagon.com>",C={pretest:"./scripts/build_peg.sh",test:"nyc --reporter=text ./scripts/run_tests.sh","lint:js":"eslint --max-warnings=0 ./src/ ./examples/ ./test/unit_tests ./index.js -f table --ext .js --ext .jsx","lint:js:fix":"eslint --max-warnings=0 ./src/ ./examples/ ./test/unit_tests ./index.js -f table --ext .js --ext .jsx --fix",lint:"npm run lint:js","build:dev":"./scripts/build_peg.sh && rollup -c",build:"./scripts/build_peg.sh && NODE_ENV=production rollup -c",clean:"rm -r dist/",prepublishOnly:"npm run build","semantic-release":"semantic-release"},O={url:"https://github.com/epsagon/epsagon-node/issues"},w="https://github.com/epsagon/epsagon-node#readme",N={type:"git",url:"https://github.com/epsagon/epsagon-node.git"},L="dist/bundle.js",I=["dist"],D={hooks:{"commit-msg":"commitlint -E HUSKY_GIT_PARAMS"}},P={"@babel/runtime":"^7.4.5","@commitlint/cli":"^9.1.2","@commitlint/config-angular":"^7.1.2","@commitlint/config-conventional":"^7.1.2","aws-sdk":"^2.197.0","body-parser":"^1.19.0",chai:"^4.1.2","chai-as-promised":"^7.1.1",dotenv:"^8.2.0",eslint:"^4.18.0","eslint-config-airbnb":"^17.1.0","eslint-plugin-chai-friendly":"^0.4.1","eslint-plugin-import":"^2.14.0","eslint-plugin-json":"^1.2.1","eslint-plugin-jsx-a11y":"^6.1.1","eslint-plugin-mocha":"^4.11.0","eslint-plugin-react":"^7.11.0",express:"^4.17.1","express-session":"^1.17.1",husky:"^1.1.0","ldap-server-mock":"^3.0.0",ldapjs:"^2.1.0",lolex:"^3.0.0",mocha:"^9.0.1",mongodb:"^3.1.13",mysql:"^2.16.0",mysql2:"^1.6.4",nyc:"^15.1.0",pegjs:"^0.10.0",pg:"^7.6.0","pg-pool":"^2.0.3",proxyquire:"^2.0.1",randomstring:"^1.1.5",redis:"^3.1.2",request:"^2.88.2","request-promise-native":"^1.0.7",rollup:"^0.66.6","rollup-plugin-commonjs":"^9.1.8","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^5.0.0","rollup-plugin-json":"^3.1.0","rollup-plugin-terser":"^7.0.1","semantic-release":"^17.4.4",semver:"^7.3.4","simple-oauth2":"^4.2.0",sinon:"^4.3.0","uglify-es":"^3.3.9",underscore:"^1.12.0"},k={"axios-minified":"^1.0.2","google-protobuf-minified":"^1.0.8","json-stringify-safe":"^5.0.1","json.sortify":"^2.2.2",md5:"^2.2.1","require-in-the-middle":"^5.0.3",shimmer:"^1.2.1","uuid-parse":"^1.1.0",uuid4:"^1.0.0"},W={name:"epsagon",version:"0.0.0-development",description:R,keywords:A,author:M,license:"MIT",scripts:C,bugs:O,homepage:w,repository:N,main:L,files:I,husky:D,devDependencies:P,dependencies:k},q=((x=Object.freeze({name:"epsagon",version:"0.0.0-development",description:R,keywords:A,author:M,license:"MIT",scripts:C,bugs:O,homepage:w,repository:N,main:L,files:I,husky:D,devDependencies:P,dependencies:k,default:W}))&&x.default||x).version;let B=process.env.AWS_REGION;void 0===B&&(B="us-east-1");var j={VERSION:q,REGION:B,LOCAL_URL:"http://localhost:3000",TRACE_COLLECTOR_URL:`https://${B}.tc.epsagon.com`,COLD_START:!0,STEP_ID_NAME:"Epsagon",EPSAGON_EVENT_ID_KEY:"_epsagon_event_id",MAX_VALUE_CHARS:3072,MAX_LABEL_SIZE:10240,MAX_HTTP_VALUE_SIZE:10240,MAX_TRACE_SIZE_BYTES:process.env.EPSAGON_MAX_TRACE_SIZE?parseInt(process.env.EPSAGON_MAX_TRACE_SIZE,10):65536,DEFAULT_SAMPLE_RATE:1,DEFAULT_BATCH_SIZE:5,MAX_TRACE_WAIT:5e3,BATCH_SIZE_BYTES_HARD_LIMIT:655360,QUEUE_SIZE_BYTES_HARD_LIMIT:10485760,EPSAGON_HEADER:"epsagon-trace-id",LAMBDA_DEFAULT_NODE_MODULES_PATH:"/var/task/node_modules",STRONG_ID_KEYS:["key","request_id","requestid","request-id","steps_dict","message_id","etag","item_hash","sequence_number","trace_id","job_id","activation_id","http_trace_id","id","aws.sqs.message_id","x-amz-request-id","object_key","object_etag","aws.requestId","aws.s3.key","aws.s3.etag","aws.kinesis.sequence_number","request_trace_id","logging_tracing_enabled","CLOUDWATCH_LOG_GROUP_NAME","CLOUDWATCH_LOG_STREAM_NAME","log_stream_name","log_group_name","function_version","memory","aws_account","cold_start","region","status_code"],traceUrl:(e,t)=>`https://app.epsagon.com/trace/${e}?timestamp=${t}`,lambdaTraceUrl:(e,t,r,a,n)=>`https://app.epsagon.com/functions/${e}/${t}/${r}?requestId=${a}&requestTime=${n}`},F=createCommonjsModule((function(e){e.exports.HTTP_ERR_CODE=parseInt(process.env.EPSAGON_HTTP_ERR_CODE,10)||400,e.exports.processIgnoredKey=function(e){return e.toLowerCase().replace("-","").replace("_","").replace(/\s/g,"")};const processIgnoredKeys=t=>t.map(t=>"string"==typeof t?e.exports.processIgnoredKey(t):t),matchKeysToIgnore=e=>{const t=e.filter(e=>e&&("string"==typeof e||e instanceof RegExp));return t.length!==e.length&&S.printWarning("Epsagon Deprecaion Warning: matched keys supports only strings and RegExp, other values will be ignored. Recieved Keys:",e),processIgnoredKeys(t)},t={token:process.env.EPSAGON_TOKEN||"",appName:process.env.EPSAGON_APP_NAME||"Application",metadataOnly:"TRUE"===(process.env.EPSAGON_METADATA||"").toUpperCase(),useSSL:"TRUE"===(process.env.EPSAGON_SSL||"TRUE").toUpperCase(),traceCollectorURL:process.env.EPSAGON_COLLECTOR_URL||j.TRACE_COLLECTOR_URL,isEpsagonDisabled:"TRUE"===(process.env.DISABLE_EPSAGON||"").toUpperCase(),urlPatternsToIgnore:[],ignoredDBTables:[],internalSampleRate:j.DEFAULT_SAMPLE_RATE,labels:{},sendOnlyErrors:"TRUE"===(process.env.EPSAGON_SEND_TRACE_ON_ERROR||"").toUpperCase(),removeIgnoredKeys:"TRUE"===(process.env.EPSAGON_REMOVE_IGNORED_KEYS||"").toUpperCase(),sendTimeout:1e3*(Number(process.env.EPSAGON_SEND_TIMEOUT_SEC)||1),decodeHTTP:"TRUE"===(process.env.EPSAGON_DECODE_HTTP||"TRUE").toUpperCase(),disableHttpResponseBodyCapture:"TRUE"===(process.env.EPSAGON_DISABLE_HTTP_RESPONSE||"").toUpperCase(),loggingTracingEnabled:"TRUE"===(process.env.EPSAGON_LOGGING_TRACING_ENABLED||(!S.isLambdaEnv).toString()).toUpperCase(),sendBatch:"TRUE"===(process.env.EPSAGON_SEND_BATCH||(!S.isLambdaEnv).toString()).toUpperCase(),batchSize:Number(process.env.EPSAGON_BATCH_SIZE)||j.DEFAULT_BATCH_SIZE,maxTraceWait:Number(process.env.EPSAGON_MAX_TRACE_WAIT)||j.MAX_TRACE_WAIT,maxBatchSizeBytes:j.BATCH_SIZE_BYTES_HARD_LIMIT,maxQueueSizeBytes:j.QUEUE_SIZE_BYTES_HARD_LIMIT,logTransportEnabled:"TRUE"===(process.env.EPSAGON_LOG_TRANSPORT||"FALSE").toUpperCase(),get isEpsagonPatchDisabled(){return this.isEpsagonDisabled||"TRUE"===(process.env.DISABLE_EPSAGON_PATCH||"").toUpperCase()},get sampleRate(){return this.internalSampleRate},set sampleRate(e){const t=parseFloat(e);Number.isNaN(t)||(this.internalSampleRate=t)}};process.env.EPSAGON_SAMPLE_RATE&&(t.sampleRate=process.env.EPSAGON_SAMPLE_RATE),process.env.EPSAGON_URLS_TO_IGNORE&&(t.urlPatternsToIgnore=process.env.EPSAGON_URLS_TO_IGNORE.split(",")),process.env.EPSAGON_IGNORED_DB_TABLES&&(t.ignoredDBTables=process.env.EPSAGON_IGNORED_DB_TABLES.split(",")),process.env.EPSAGON_IGNORED_KEYS&&(t.ignoredKeys=processIgnoredKeys(process.env.EPSAGON_IGNORED_KEYS.split(","))),"FALSE"===(process.env.EPSAGON_SSL||"TRUE").toUpperCase()&&(t.traceCollectorURL=t.traceCollectorURL.replace("https:","http:")),"TRUE"===(process.env.EPSAGON_SSL||"TRUE").toUpperCase()&&(t.traceCollectorURL=t.traceCollectorURL.replace("http:","https:")),process.env.EPSAGON_PATCH_WHITELIST&&(t.patchWhitelist=process.env.EPSAGON_PATCH_WHITELIST.split(",")),process.env.EPSAGON_PAYLOADS_TO_IGNORE&&(t.ignoredPayloads=JSON.parse(process.env.EPSAGON_PAYLOADS_TO_IGNORE)),e.exports.getConfig=function(){return t},e.exports.setConfig=function(r){void 0!==r&&(r.token&&(t.token=r.token),r.isEpsagonDisabled&&(t.isEpsagonDisabled=r.isEpsagonDisabled),r.appName&&(t.appName=r.appName),void 0!==r.metadataOnly&&null!=r.metadataOnly&&(t.metadataOnly=r.metadataOnly),r.traceCollectorURL&&(t.traceCollectorURL=r.traceCollectorURL),!1===r.useSSL&&(t.traceCollectorURL=t.traceCollectorURL.replace("https:","http:"),t.useSSL=r.useSSL),r.useSSL&&(t.traceCollectorURL=t.traceCollectorURL.replace("http:","https:"),t.useSSL=r.useSSL),r.useLocalCollector&&(t.traceCollectorURL=j.LOCAL_URL),r.urlPatternsToIgnore&&(t.urlPatternsToIgnore=r.urlPatternsToIgnore),r.sendOnlyErrors&&(t.sendOnlyErrors=r.sendOnlyErrors),r.httpErrorStatusCode&&(e.exports.HTTP_ERR_CODE=r.httpErrorStatusCode),!1===r.decodeHTTP&&(t.decodeHTTP=r.decodeHTTP),r.disableHttpResponseBodyCapture&&(t.disableHttpResponseBodyCapture=r.disableHttpResponseBodyCapture),r.ignoredDBTables&&Array.isArray(r.ignoredDBTables)&&(t.ignoredDBTables=matchKeysToIgnore(r.ignoredDBTables)),r.ignoredKeys&&Array.isArray(r.ignoredKeys)&&(t.ignoredKeys=matchKeysToIgnore(r.ignoredKeys)),r.removeIgnoredKeys&&(t.removeIgnoredKeys=r.removeIgnoredKeys),null!==r.sampleRate&&void 0!==t.sampleRate&&(t.sampleRate=r.sampleRate),Number(r.sendTimeout)&&(t.sendTimeout=Number(r.sendTimeout)),"boolean"==typeof r.sendBatch&&(t.sendBatch=r.sendBatch),Number(r.batchSize)&&(t.batchSize=Number(r.batchSize)),Number(r.maxTraceWait)&&(t.maxTraceWait=Number(r.maxTraceWait)),Number(r.maxBatchSizeBytes)&&(Number(r.maxBatchSizeBytes)>j.QUEUE_SIZE_BYTES_HARD_LIMIT?S.debugLog(`User configured maxBatchSizeBytes exceeded batch size hard limit of ${j.BATCH_SIZE_BYTES_HARD_LIMIT} Bytes`):t.maxBatchSizeBytes=Number(r.maxBatchSizeBytes)),Number(r.maxQueueSizeBytes)&&(Number(r.maxQueueSizeBytes)>j.QUEUE_SIZE_BYTES_HARD_LIMIT?S.debugLog(`User configured maxQueueSizeBytes exceeded queue size hard limit of ${j.QUEUE_SIZE_BYTES_HARD_LIMIT} Bytes`):t.maxQueueSizeBytes=Number(r.maxQueueSizeBytes)),r.labels&&(t.labels=S.flatten([...r.labels].reduce((e,t)=>{const[r,a]=t;return{...e,[r]:a}},{}))))}})),U=(F.HTTP_ERR_CODE,F.processIgnoredKey,F.getConfig,F.setConfig,createCommonjsModule((function(e){e.exports.setException=function(e,t,r=!0,a=!1){try{e.setErrorCode(a?v.ErrorCode.OK:v.ErrorCode.EXCEPTION);const n=new y.Exception([t.name,t.message,t.stack,S.createTimestamp()]);e.setException(n),n.getAdditionalDataMap().set("handled",r),n.getAdditionalDataMap().set("warning",a)}catch(e){le.addException(e)}},e.exports.markAsTimeout=function(e){e.setErrorCode(v.ErrorCode.TIMEOUT)},e.exports.addToMetadata=function(e,t,r={}){const a=e.getResource(),n=a&&a.getMetadataMap();n&&(Object.keys(t).forEach(e=>{n.set(e,t[e])}),F.getConfig().metadataOnly||Object.keys(r).forEach(e=>{n.set(e,r[e])}))},e.exports.addObjectToMetadata=function(e,t,r,a=[]){let n=r;if(!F.getConfig().metadataOnly&&a.length>0){const s=Object.getOwnPropertyNames(r).filter(e=>!a.includes(e));n=Object.assign(...s.map(e=>({[e]:r[e]}))),e.getResource().getMetadataMap().set(t,JSON.stringify(n))}},e.exports.addLabelToMetadata=function(e,t,r){const a=e.getResource().getMetadataMap().get("labels");let n=null;void 0!==a?(n=JSON.parse(a),n[t]=r):n={[t]:r};const s=JSON.stringify(n);s.length<=j.MAX_LABEL_SIZE&&e.getResource().getMetadataMap().set("labels",s)},e.exports.initializeEvent=function(e,r,a,n){const s=Date.now(),o=new T.Resource([r,e,a]),i=new T.Event([`${e}-${t()}`,S.createTimestampFromTime(s),null,n,0,v.ErrorCode.OK]);return i.setResource(o),{slsEvent:i,startTime:s}},e.exports.finalizeEvent=function(e,t,r,a={},n={}){try{r&&this.setException(e,r),this.addToMetadata(e,a,n),e.setDuration(S.createDurationTimestamp(t))}catch(e){le.addException(e)}},e.exports.createTraceIdMetadata=function(r){e.exports.addToMetadata(r,{trace_id:t()})}})));U.setException,U.markAsTimeout,U.addToMetadata,U.addObjectToMetadata,U.addLabelToMetadata,U.initializeEvent,U.finalizeEvent,U.createTraceIdMetadata;let z=null,H=null;var ecs_hasECSMetadata=function(){return process.env.ECS_CONTAINER_METADATA_URI||!1},ecs_loadECSMetadata=function(e){if(z)return Promise.resolve(z);S.debugLog(`loading ecs meta, url: (${e})`);const t=[],a=r.get(e).then(e=>e.data).then(e=>{S.debugLog("Received metadata: "+JSON.stringify(e)),z=e&&e.Labels;const t=z&&z["com.amazonaws.ecs.cluster"];return t&&(H=t.split(":")[4]),z}).catch(e=>{S.debugLog("error fetching ecs metadata: ",e)});return t.push(a),Promise.all(t)},ecs_addECSMetadata=function(e){e&&z&&(U.addToMetadata(e,{ECS:z}),U.addToMetadata(e,{"aws.account_id":H}))};let G=null,K=null;var k8s_hasK8sMetadata=function(){return!!process.env.KUBERNETES_SERVICE_HOST},k8s_loadK8sMetadata=function(){if(G||(G=a.hostname()),!K)try{const e=n.readFileSync("/proc/self/cgroup").toString("utf-8").split("\n")[0].split("/");K=e[e.length-1]}catch(e){S.debugLog("Error loading k8s container id - cannot read cgroup file",e)}},k8s_addK8sMetadata=function(e){if(!e||!G)return;const t={is_k8s:!0,k8s_pod_name:G};K&&(t.k8s_container_id=K),U.addToMetadata(e,t)};let J=null;const Q=`${process.env.AZURE_HOST||"http://169.254.169.254"}${process.env.AZURE_PATH||"/metadata/instance?api-version=2019-06-01"}`,V=process.env.AZURE_REQUEST_TIMEOUT||3e3,parseAzureTags=e=>e.split(";").reduce((e,t)=>{const[r,a]=t.split(":");return r?{...e,[r]:a}:e},{});var azure_loadAzureMetadata=function(e){if(J)return Promise.resolve(J);S.debugLog(`loading azure metadata, url: (${Q})`);const t=r.CancelToken.source();setTimeout(()=>{t.cancel()},V);const a={headers:{Metadata:"True"},timeout:V,cancelToken:t.token};return r.get(Q,a).then(t=>{if(S.debugLog("Received response: "+t),200===t.status){const{location:r,subscriptionId:a,tags:n,publisher:s}=t.data.compute;J={"azure.location":r,"azure.subscription_id":a,"azure.tags":parseAzureTags(n),"azure.publisher":s},e&&e({traceCollectorURL:`http://${r}.atc.epsagon.com`}),S.debugLog("Received metadata: "+J)}}).catch(()=>{S.debugLog("Could not load azure metadata")})},azure_addAzureMetadata=function(e){e&&J&&U.addToMetadata(e,Object.assign({},J))};let Z=null;const X=["instance-id","instance-type","local-ipv4","public-hostname","public-ipv4"],Y=process.env.EPSAGON_EC2_REQUEST_TIMEOUT||3e3;var ec2_loadEC2Metadata=function(){if(Z)return Promise.resolve(Z);const e=[];return S.debugLog("Loading EC2 metadata"),X.forEach(t=>{const a=r.CancelToken.source();setTimeout(()=>{a.cancel()},Y),e.push(r.get("http://169.254.169.254/latest/meta-data/"+t,{timeout:Y,cancelToken:a.token}).then(e=>{if(S.debugLog("Received response for "+t),200===e.status&&e.data.length<100){const r=t.replace("-","_"),a=e.data;Z||(Z={}),Z["aws.ec2."+r]=a,S.debugLog(`${r} stored with: ${a}`)}return t}).catch(()=>{S.debugLog("Could not load EC2 metadata for "+t)}))}),Promise.all(e)},ec2_addEC2Metadata=function(e){e&&Z&&U.addToMetadata(e,Object.assign({},Z))};let ee=null;const tryRequire=e=>{let t;const r="function"==typeof __webpack_require__?__non_webpack_require__:require;try{t=r.resolve(e),ee=null}catch(e){ee=e}if(t)try{return r(t)}catch(e){ee=e}};tryRequire.lastError=()=>ee;var te=tryRequire;const re=te("aws-sdk/global"),ae=te("aws-sdk/clients/sts"),ne=[];function onWinstonCloudwatchRequire(e){if(S.debugLog("winston-cloudwatch required"),"function"!=typeof e)return S.debugLog("winston-cloudwatch got non-function exports",typeof e,e),e;if(e.__epsagon_wrapped)return S.debugLog("winston-cloudwatch already hooked"),e;function wrapper(...t){const[r]=t;try{S.debugLog("winston-cloudwatch instance created"),function(e){if(!re)return Promise.resolve();const t={};t.log_group_name=e.logGroupName,t.log_stream_name=e.logStreamName;const r=new ae,a=e.cloudWatchLogs&&e.cloudWatchLogs.config||{};return t.region=e.awsRegion||a.region||re.config.region||process.env.AWS_REGION,r.getCallerIdentity().promise().then(e=>(t.account_id=e.Account,t))}(r).then(e=>ne.push(e)).catch(e=>le.addException(e))}catch(e){S.debugLog("failed to set cloudwatch-winston log parameters",e),le.addException(e)}return e.apply(this,t)}return wrapper.prototype=Object.create(e.prototype),e.__epsagon_wrapped=!0,S.debugLog("winston-cloudwatch require patching done"),wrapper}var se={init(){S.debugLog("hooking winston-cloudwatch"),s(["winston-cloudwatch"],onWinstonCloudwatchRequire),S.debugLog("hooked winston-cloudwatch")},additionalMetadata:()=>ne.length?{"aws.cloudwatch.log_destinations":ne}:{}};const oe=r.create({headers:{Authorization:"Bearer "+F.getConfig().token},timeout:F.getConfig().sendTimeout,httpAgent:new p.Agent({keepAlive:!0}),httpsAgent:new i.Agent({keepAlive:!0})});async function postBatch(e){S.debugLog(`[QUEUE] Posting batch to ${F.getConfig().traceCollectorURL}...`);const t=r.CancelToken.source(),a=setTimeout(()=>{t.cancel("Timeout sending batch!")},F.getConfig().sendTimeout);return oe.post(F.getConfig().traceCollectorURL,e,{cancelToken:t.token}).then(e=>(clearTimeout(a),S.debugLog("[QUEUE] Batch posted!"),e)).catch(e=>(clearTimeout(a),e.config&&e.config.data?S.debugLog("[QUEUE] Error sending trace. Batch size: "+e.config.data.length):S.debugLog("[QUEUE] Error sending trace. Error: "+e),S.debugLog("[QUEUE] "+(e?e.stack:e)),e))}class ie extends o.EventEmitter{constructor(){super(),this.batchSender=postBatch,this.initQueue()}updateConfig(){this.maxBatchSizeBytes=F.getConfig().maxBatchSizeBytes,this.batchSize=F.getConfig().batchSize,this.maxQueueSizeBytes=F.getConfig().maxQueueSizeBytes}initQueue(){this.updateConfig(),this.removeAllListeners(),this.flush(),this.on("traceQueued",(function(){return this.byteSizeLimitReached()?(S.debugLog(`[QUEUE] Queue Byte size reached ${this.currentByteSize} Bytes, releasing batch...`),this.emit("releaseRequest",Math.max(this.currentSize-1,1))):this.batchSizeReached()&&(S.debugLog(`[QUEUE] Queue size reached ${this.currentSize}, releasing batch... `),this.emit("releaseRequest")),this})),this.on("releaseRequest",(function(e=this.batchSize){try{const t=this.queue.splice(0,e);S.debugLog("[QUEUE] Releasing batch..."),this.subtractFromCurrentByteSize(t),this.emit("batchReleased",t)}catch(e){S.debugLog("[QUEUE] Failed releasing batch!"),S.debugLog("[QUEUE] "+e)}return this})),this.on("batchReleased",(async function(e){S.debugLog("[QUEUE] Sending batch...");const t=e.map(e=>e.json);this.batchSender(t)})),process.on("exit",(function(){this.emit("releaseRequest"),this.removeAllListeners()}))}push(e){try{if(this.currentByteSize>=this.maxQueueSizeBytes)return S.debugLog(`[QUEUE] Discardig trace, queue size reached max size of ${this.currentByteSize} Bytes`),this;const t=Date.now(),r=e,a=JSON.stringify(r),n=a.length,s={json:r,string:a,byteLength:n,timestamp:t};this.queue.push(s),this.addToCurrentByteSize([s]),S.debugLog(`[QUEUE] Trace size ${n} Bytes pushed to queue`),S.debugLog(`[QUEUE] Queue size: ${this.currentSize} traces, total size of ${this.currentByteSize} Bytes`),this.emit("traceQueued",s)}catch(e){S.debugLog("[QUEUE] Failed pushing trace to queue: "+e)}return this}addToCurrentByteSize(e){e.forEach(e=>{this.currentByteSize+=e.byteLength})}subtractFromCurrentByteSize(e){e.forEach(e=>{this.currentByteSize-=e.byteLength,this.currentByteSize=Math.max(this.currentByteSize,0)})}get currentSize(){return this.queue.length}batchSizeReached(){return this.currentSize>=this.batchSize}byteSizeLimitReached(){return this.currentByteSize>=this.maxBatchSizeBytes}flush(){this.queue=[],this.currentByteSize=0}}const pe=new ie;var trace_queue_getInstance=()=>pe;var ce={isBlacklistURL:(e,t,r)=>Object.keys(t).some(a=>"function"==typeof t[a]?t[a](e,a,r):e[t[a]](a)),isBlacklistHeader:(e,t)=>!!e&&t.includes(e["user-agent"]),isStrongId:e=>j.STRONG_ID_KEYS.includes(e.toLowerCase().replace(" ","_"))};const{Buffer:ue}=c;var logs_sendTrace=function(e){return S.debugLog("posting trace to logs"),S.debugLog("trace: "+JSON.stringify(e,null,2)),new Promise(t=>{try{const r=ue.from(JSON.stringify(e)).toString("base64");process.stdout.write(`EPSAGON_TRACE: ${r}\n`),S.debugLog("Trace posted!")}catch(e){S.debugLog("Error sending trace. Error: "+e)}finally{t()}})};const de=r.create({timeout:F.getConfig().sendTimeout,httpAgent:new p.Agent({keepAlive:!0}),httpsAgent:new i.Agent({keepAlive:!0})});var http_1_sendTrace=function(e){S.debugLog("Posting trace to "+F.getConfig().traceCollectorURL),"TRUE"===(process.env.EPSAGON_DEBUG||"").toUpperCase()&&S.debugLog("trace: "+JSON.stringify(e,null,2));const t=r.CancelToken.source(),a=setTimeout(()=>{t.cancel("timeout sending trace")},F.getConfig().sendTimeout);return de.post(F.getConfig().traceCollectorURL,e,{headers:{Authorization:"Bearer "+F.getConfig().token},timeout:F.getConfig().sendTimeout,cancelToken:t.token}).then(e=>(clearTimeout(a),S.debugLog("Trace posted!"),e)).catch(e=>(clearTimeout(a),e.config&&e.config.data?S.debugLog("Error sending trace. Trace size: "+e.config.data.length):S.debugLog("Error sending trace. Error: "+e),S.debugLog(""+(e?e.stack:e)),e))},le=createCommonjsModule((function(e){const{isStrongId:r}=ce;e.exports.getTrace=()=>{};const a=trace_queue_getInstance();function getTrimmedMetadata(e,t){let a;return Object.keys(e).forEach(n=>{r(n)||t&&"labels"===n||(a||(a=e,a.is_trimmed=!0),delete a[n])}),a}function getTrimmedTrace(e,t){let r=e;const a=Object.assign({},t);let n=0,s=0;if(a.exceptions.length>1){const[e,t,s]=function(e){const t=e[0];return[t,e.length-1,JSON.stringify(e).length-JSON.stringify(t).length]}(a.exceptions);r-=s,n=t,a.exceptions=[e]}if(S.debugLog("Epsagon - Pre metadata trim: current trace size "+r),r>=j.MAX_TRACE_SIZE_BYTES){a.events=t.events.sort(e=>["runner","trigger"].includes(e.origin)?-1:1);for(let e=t.events.length-1;e>=0;e-=1){const t=a.events[e];let n=t.resource.metadata;if(n){const e="runner"===t.origin,a=JSON.stringify(n).length,s=getTrimmedMetadata(n,e);if(s){n=s;if(r-=a-JSON.stringify(s).length,r<j.MAX_TRACE_SIZE_BYTES)break}}}}if(S.debugLog("Epsagon - After metadata trim: current trace size "+r),r>=j.MAX_TRACE_SIZE_BYTES)for(let e=t.events.length-1;e>=0;e-=1){const t=a.events[e];if(!["runner","trigger"].includes(t.origin)&&(s+=1,a.events.splice(e,1),r-=JSON.stringify(t).length,r<j.MAX_TRACE_SIZE_BYTES))break}return S.debugLog("Epsagon - After events trim: current trace size "+r),(s||n)&&S.debugLog(`Epsagon - Trace size is larger than maximum size, ${s} events and ${n} exceptions were trimmed.`),a}function addLabelsToTrace(){const t=e.exports.getTrace();t&&Object.keys(F.getConfig().labels).forEach(e=>{const r=t.currRunner.getResource().getMetadataMap().get("labels");r&&JSON.parse(r)[e]||U.addLabelToMetadata(t.currRunner,e,F.getConfig().labels[e])})}function sendCurrentTrace(t,r){const a=r||e.exports.getTrace(),{sendOnlyErrors:n,ignoredKeys:s,removeIgnoredKeys:o}=F.getConfig();if(!a)return S.debugLog("Trace object not found for sending"),Promise.resolve();if(addLabelsToTrace(),!a.currRunner)return S.debugLog("Epsagon - no trace was sent since runner was not found."),Promise.resolve();if(U.addToMetadata(a.currRunner,se.additionalMetadata()),ecs_addECSMetadata(a.currRunner),k8s_addK8sMetadata(a.currRunner),azure_addAzureMetadata(a.currRunner),ec2_addEC2Metadata(a.currRunner),n){if(0===a.trace.getEventList().filter(e=>e.getErrorCode()).length)return S.debugLog("Epsagon - no trace was sent since no error events found."),a.pendingEvents.clear(),Promise.resolve()}let i,p={app_name:a.trace.getAppName(),token:a.trace.getToken(),events:a.trace.getEventList().map(e=>({id:e.getId(),start_time:e.getStartTime(),resource:e.hasResource()?{name:e.getResource().getName(),type:e.getResource().getType(),operation:e.getResource().getOperation(),metadata:e.getResource().getMetadataMap().toArray().reduce((e,t)=>(e[t[0]]=t[1],e),{})}:{},origin:e.getOrigin(),duration:e.getDuration(),error_code:e.getErrorCode(),exception:e.hasException()?{type:e.getException().getType(),message:e.getException().getMessage(),traceback:e.getException().getTraceback(),time:e.getException().getTime(),additional_data:e.getException().getAdditionalDataMap().toArray().reduce((e,t)=>(e[t[0]]=t[1],e),{})}:{}})),exceptions:a.trace.getExceptionList().map(e=>({type:e.getType(),message:e.getMessage(),traceback:e.getTraceback(),time:e.getTime(),additional_data:e.getAdditionalDataMap().toArray().reduce((e,t)=>(e[t[0]]=t[1],e),{})})),version:a.trace.getVersion(),platform:a.trace.getPlatform()};try{p=s&&Array.isArray(s)&&s.length>0?e.exports.filterTrace(p,s,o):p}catch(e){return S.printWarning("Epsagon - failed to filter trace, cancelling send",e),Promise.resolve({})}try{i=JSON.stringify(p)}catch(e){return S.printWarning("Epsagon - no trace was sent since there was an error serializing the trace. Please contact support.",e),Promise.resolve()}const c=i.length;c>=j.MAX_TRACE_SIZE_BYTES&&(p=getTrimmedTrace(c,p));const u=t(p);return a.pendingEvents.clear(),F.getConfig().sampleRate!==j.DEFAULT_SAMPLE_RATE&&(a.deleted=!0),u}e.exports.createTracer=function(){if(F.getConfig().sampleRate<=Math.random())return null;return{trace:new $.Trace(["","",[],[],j.VERSION,"node "+process.versions.node]),currRunner:null,pendingEvents:new Map,createdAt:Date.now()}},e.exports.addEvent=function(t,r){const a=e.exports.getTrace();a&&(this.addPendingEvent(t,r),a.trace.addEvent(t))},e.exports.addPendingEvent=function(t,r){const a=e.exports.getTrace();a&&S.isPromise(r)&&a.pendingEvents.set(t,S.makeQueryablePromise(r.catch(t=>{e.exports.addException(t)})))},e.exports.addException=function(t,r){const a=t||new Error,n=new y.Exception([a.name,a.message,a.stack,S.createTimestamp()]);"object"==typeof r&&Object.keys(r).forEach(e=>{void 0===r[e]?n.getAdditionalDataMap().set(e,"undefined"):n.getAdditionalDataMap().set(e,r[e])});const s=e.exports.getTrace();s&&s.trace.addException(n)},e.exports.initTrace=function(e){try{if(!S.isLambdaEnv){const t=ecs_hasECSMetadata();t&&ecs_loadECSMetadata(t).catch(e=>S.debugLog(e)),k8s_hasK8sMetadata()&&k8s_loadK8sMetadata(),azure_loadAzureMetadata(t=>{F.setConfig(Object.assign(t,e))}),ec2_loadEC2Metadata().catch(e=>S.debugLog(e))}}catch(e){S.debugLog("Could not extract container env data")}F.setConfig(e),a.updateConfig()},e.exports.addRunner=function(t,r){const a=e.exports.getTrace();a&&(a.trace.addEvent(t,r),a.currRunner=t)},e.exports.restart=function(){const t=e.exports.getTrace();t&&(t.disabled=!1,t.trace.clearExceptionList(),t.trace.clearEventList(),t.trace.setAppName(F.getConfig().appName),t.trace.setToken(F.getConfig().token))},e.exports.doesContainIgnoredKey=function(e,t){return e.some(e=>!("string"!=typeof e||!F.processIgnoredKey(t).includes(e))||!!(e instanceof RegExp&&e.test(t)))},e.exports.filterTrace=function(e,t,r){function replacer(e,a){if(function(e){for(let r=0;r<t.length;r+=1){const a=t[r];if("string"==typeof a&&a===F.processIgnoredKey(e))return!1;if(a instanceof RegExp&&a.test(e))return!1}return!0}(e)){if("string"==typeof(n=a)&&n.length>1&&["[","{"].includes(n[0]))try{const e=JSON.parse(a),t=u(e,replacer,0,()=>{});return JSON.parse(t)}catch(e){return a}return a}var n;return r?void 0:"****"}S.debugLog("Trace was filtered with ignored keys");const a=e.events.map(e=>{if(!(e&&e.resource&&e.resource.metadata))return e;const t=Object.assign({},e),r=JSON.parse(u(e.resource.metadata,replacer,0,()=>{}));return t.resource.metadata=r,t});return Object.assign({},e,{events:a})},e.exports.postTrace=function(e){return F.getConfig().logTransportEnabled?logs_sendTrace(e):http_1_sendTrace(e)},e.exports.sendTrace=function(t,r){const n=r||e.exports.getTrace();return!n||n&&n.disabled?(S.debugLog("Trace object not found or disabled"),Promise.resolve()):F.getConfig().isEpsagonDisabled?(n.pendingEvents.clear(),Promise.resolve()):(addLabelsToTrace(),S.debugLog("Sending trace async..."),Promise.all(n.pendingEvents.values()).then(()=>(t(),F.getConfig().sendBatch?sendCurrentTrace(e=>a.push(e),n):sendCurrentTrace(t=>e.exports.postTrace(t),n))))},e.exports.sendTraceSync=function(){const r=e.exports.getTrace();return!r||r&&r.disabled?Promise.resolve():F.getConfig().isEpsagonDisabled?(r.pendingEvents.clear(),Promise.resolve()):(S.debugLog("Sending trace sync"),r.pendingEvents.forEach((e,r)=>{e.isPending()&&(r.getId()||r.setId(t()),r.getErrorCode()===v.ErrorCode.OK&&U.addToMetadata(r,{premature_exit:!0}),0===r.getDuration()&&r.setDuration(S.createDurationTimestamp(1e3*r.getStartTime())))}),sendCurrentTrace(t=>e.exports.postTrace(t)))},e.exports.label=function(t,r){const a=e.exports.getTrace();if(!a||!a.currRunner)return void S.debugLog("Failed to label without an active tracer");const n={[t]:r},s=S.flatten(n);Object.keys(s).forEach(e=>{U.addLabelToMetadata(a.currRunner,e,s[e])})},e.exports.setError=function(t){const r=e.exports.getTrace();r&&r.currRunner?U.setException(r.currRunner,t):S.debugLog("Failed to setError without an active tracer")},e.exports.setWarning=function(t){const r=e.exports.getTrace();r&&r.currRunner?U.setException(r.currRunner,t,!0,!0):S.debugLog("Failed to setWarning without an active tracer")},e.exports.getTraceUrl=function(){const t=e.exports.getTrace();if(!t||!t.currRunner)return S.debugLog("Failed to get trace URL without an active tracer"),"";const r=t.currRunner.getResource();return"lambda"!==r.getType()?j.traceUrl(e.exports.getTraceId(),parseInt(t.currRunner.getStartTime(),10)):j.lambdaTraceUrl(r.getMetadataMap().get("aws_account"),r.getMetadataMap().get("region"),r.getName(),t.currRunner.getId(),parseInt(t.currRunner.getStartTime(),10))},e.exports.disable=function(){const t=e.exports.getTrace();t?t.disabled=!0:S.debugLog("Failed to disabled without an active tracer")},e.exports.enable=function(){const t=e.exports.getTrace();t?t.disabled=!1:S.debugLog("Failed to enable without an active tracer")},e.exports.getTrimmedTrace=getTrimmedTrace,e.exports.isLoggingTracingEnabled=function(){return F.getConfig().loggingTracingEnabled},e.exports.getTraceId=function(){const t=e.exports.getTrace();return t&&t.currRunner&&t.currRunner.hasResource()?t.currRunner.getResource().getMetadataMap().get("trace_id"):null},e.exports.addLoggingTracingEnabledMetadata=function(){if(F.getConfig().loggingTracingEnabled){const t=e.exports.getTrace();t&&t.currRunner&&(S.debugLog("Setting logging_tracing_enabled"),U.addToMetadata(t.currRunner,{logging_tracing_enabled:!0}))}}}));le.getTrace,le.createTracer,le.addEvent,le.addPendingEvent,le.addException,le.initTrace,le.addRunner,le.restart,le.doesContainIgnoredKey,le.filterTrace,le.postTrace,le.sendTrace,le.sendTraceSync,le.label,le.setError,le.setWarning,le.getTraceUrl,le.disable,le.enable,le.getTrimmedTrace,le.isLoggingTracingEnabled,le.getTraceId,le.addLoggingTracingEnabledMetadata;let ge=null;var trace_object_get=()=>(ge&&!ge.deleted||(ge=le.createTracer()),ge);var fe={getSNSTrigger:function(e){let t=null;return e.some(e=>{try{let r=null;if("Body"in e)r=JSON.parse(e.Body);else{if(!("body"in e))return!0;r=JSON.parse(e.body)}if("Type"in r&&"MessageId"in r&&"TopicArn"in r&&"Message"in r&&"Timestamp"in r)return t=r,!0}catch(e){}return!0}),t}};JSON.sortify=l;const he=te("aws-sdk/clients/dynamodb");const me={s3:function(e,t){const r=t.getResource();t.setId(e.Records[0].responseElements["x-amz-request-id"]),r.setName(e.Records[0].s3.bucket.name),r.setOperation(e.Records[0].eventName),U.addToMetadata(t,{region:""+e.Records[0].awsRegion,request_parameters:JSON.stringify(e.Records[0].requestParameters),user_identity:JSON.stringify(e.Records[0].userIdentity),object_key:""+e.Records[0].s3.object.key,object_size:""+e.Records[0].s3.object.size,object_etag:""+e.Records[0].s3.object.eTag,"x-amz-request-id":""+e.Records[0].responseElements["x-amz-request-id"]})},json:function(e,r,a){const n=r.getResource();r.setId("trigger-"+t()),n.setName("trigger-"+a.functionName),n.setOperation("Event"),U.addToMetadata(r,{},{data:e})},kinesis:function(e,t){const r=t.getResource();t.setId(e.Records[0].eventID),r.setName(e.Records[0].eventSourceARN.split("/").pop()),r.setOperation(e.Records[0].eventName.replace("aws:kinesis:","")),U.addToMetadata(t,{region:e.Records[0].awsRegion,invoke_identity:e.Records[0].invokeIdentityArn,sequence_number:e.Records[0].kinesis.sequenceNumber,partition_key:e.Records[0].kinesis.partitionKey,total_record_count:e.Records.length})},events:function(e,t){const r=t.getResource();t.setId(e.id);let a="CloudWatch Events";"string"==typeof e.resources[0]&&(a=e.resources[0].split("/").pop()),r.setName(a),r.setOperation(e["detail-type"]),U.addToMetadata(t,{region:e.region,detail:JSON.stringify(e.detail),account:e.account})},sns:function(e,t){const r=t.getResource();t.setId(e.Records[0].Sns.MessageId),r.setName(e.Records[0].EventSubscriptionArn.split(":").slice(-2)[0]),r.setOperation(e.Records[0].Sns.Type),U.addToMetadata(t,{"Notification Subject":e.Records[0].Sns.Subject},{"Notification Message":e.Records[0].Sns.Message,"Notification Message Attributes":e.Records[0].Sns.MessageAttributes})},sqs:function(e,t){const r=t.getResource();t.setId(e.Records[0].messageId),r.setName(e.Records[0].eventSourceARN.split(":").slice(-1)[0]),r.setOperation("ReceiveMessage");const a=e.Records[0].body||"{}";U.addToMetadata(t,{record:e.Records.map(e=>{const t={"MD5 Of Message Body":e.md5OfBody,"Message ID":e.messageId};return F.getConfig().metadataOnly||(t["Message Body"]=S.truncateMessage(e.body||"{}",1024),t.Attributes=e.attributes,t["Message Attributes"]=e.messageAttributes),t}),total_record_count:e.Records.length});try{const e=JSON.parse(a);e.input&&e.input.Epsagon&&U.addToMetadata(t,{steps_dict:e.input.Epsagon})}catch(e){S.debugLog("Could not parse SQS message body: "+a)}const n=fe.getSNSTrigger(e.Records);null!=n&&U.addToMetadata(t,{"SNS Trigger":n})},api_gateway:function(e,t){const r=t.getResource();t.setId(e.requestContext.requestId),r.setName(e.headers.Host||e.requestContext.apiId),r.setOperation(e.httpMethod),U.addToMetadata(t,{stage:e.requestContext.stage,query_string_parameters:e.queryStringParameters,path_parameters:e.pathParameters,path:e.resource},{body:e.body,headers:e.headers,requestContext:e.requestContext})},api_gateway_no_proxy:function(e,t){const r=t.getResource();t.setId(e.context["request-id"]),r.setName(e.params.header.Host||e.context["api-id"]),r.setOperation(e.context["http-method"]),U.addToMetadata(t,{stage:e.context.stage,query_string_parameters:e.params.querystring,path_parameters:e.params.path,path:e.context["resource-path"]},{body:e["body-json"],headers:e.params.header})},api_gateway_websocket:function(e,t){const r=t.getResource();t.setId(e.requestContext.requestId),r.setName(e.requestContext.domainName),r.setOperation(e.requestContext.eventType||"CONNECT"),U.addToMetadata(t,{stage:e.requestContext.stage,route_key:e.requestContext.routeKey,message_id:e.requestContext.messageId,connection_id:e.requestContext.connectionId,request_id:e.requestContext.requestId,message_direction:e.requestContext.messageDirection},{body:e.body})},api_gateway_http2:function(e,t){const r=t.getResource();t.setId(e.requestContext.requestId),r.setName(e.headers.Host||e.requestContext.domainName),r.setOperation(e.requestContext.http.method),U.addToMetadata(t,{stage:e.requestContext.stage,query_string_parameters:e.queryStringParameters,path_parameters:e.pathParameters,path:e.requestContext.http.path,"aws.api_gateway.api_id":e.requestContext.apiId},{body:e.body,headers:e.headers,requestContext:e.requestContext})},dynamodb:function(e,t){const r=t.getResource(),a=e.Records[0];let n="";if(he){const e="REMOVE"===a.eventName?he.Converter.unmarshall(a.dynamodb.Keys):he.Converter.unmarshall(a.dynamodb.NewImage);n=d(JSON.sortify(e))}t.setId(a.eventID),r.setName(a.eventSourceARN.split("/")[1]),r.setOperation(a.eventName),U.addToMetadata(t,{region:a.awsRegion,sequence_number:a.dynamodb.SequenceNumber,item_hash:n,total_record_count:e.Records.length},{data:JSON.stringify(e.Records)})},elastic_load_balancer:function(e,r){const a=r.getResource();r.setId("elb-"+t()),a.setName(e.headers.host),a.setOperation(e.httpMethod),U.addToMetadata(r,{query_string_parameters:JSON.stringify(e.queryStringParameters),target_group_arn:e.requestContext.elb.targetGroupArn,path:e.path},{body:JSON.stringify(e.body),headers:JSON.stringify(e.headers)})},cognito:function(e,r){const a=r.getResource();r.setId("cognito-"+t()),a.setName(e.userPoolId),a.setOperation(e.triggerSource),U.addToMetadata(r,{username:e.userName,region:e.region},{caller_context:e.callerContext,request:e.request,response:e.response})}};var aws_lambda_createFromEvent=function(e,t){let r="json";e&&("Records"in e?("EventSource"in e.Records[0]&&(r=e.Records[0].EventSource.split(":").pop()),"eventSource"in e.Records[0]&&(r=e.Records[0].eventSource.split(":").pop())):"source"in e&&"detail-type"in e&&"detail"in e?r="events":"source"in e&&e.source?r=e.source.split(".").pop():"requestContext"in e&&"elb"in e.requestContext?r="elastic_load_balancer":"httpMethod"in e?r="api_gateway":"context"in e&&"http-method"in e.context?r="api_gateway_no_proxy":"dynamodb"in e?r="dynamodb":"userPoolId"in e?r="cognito":"requestContext"in e&&"apiId"in e.requestContext&&"http"in e.requestContext?r="api_gateway_http2":"requestContext"in e&&"apiId"in e.requestContext&&(r="api_gateway_websocket"));const a=new T.Resource,n=new T.Event;return n.setResource(a),me[r](e,n,t),function(e,t){e.setStartTime(S.createTimestamp()),e.setDuration(S.createTimestampFromTime(0)),e.setOrigin("trigger"),e.getResource().setType(t),e.setErrorCode(v.ErrorCode.OK)}(n,r),n};var _e={createRunner:function(e,r="lambda"){const a=new T.Resource([e.functionName,r,"invoke",{}]),n=new T.Event(["id"===e.awsRequestId?"local-"+t():e.awsRequestId,0,null,"runner",0,v.ErrorCode.OK]);n.setResource(a);const s=(e.invokedFunctionArn||"").split(":"),o=s.length>4?s[4]:"";return"provisioned-concurrency"===process.env.AWS_LAMBDA_INITIALIZATION_TYPE&&(j.COLD_START=!1),U.addToMetadata(n,{log_stream_name:""+e.logStreamName,log_group_name:""+e.logGroupName,function_version:""+e.functionVersion,aws_account:o,cold_start:""+j.COLD_START,memory:""+e.memoryLimitInMB,region:j.REGION}),8===s.length&&U.addToMetadata(n,{function_alias:s[7]}),j.COLD_START=!1,n}};const{getConfig:Ee}=F,{STEP_ID_NAME:be,MAX_VALUE_CHARS:ye,EPSAGON_EVENT_ID_KEY:ve}=j,Te=parseInt(process.env.EPSAGON_LAMBDA_TIMEOUT_THRESHOLD_MS||200,10),$e=Symbol("epsagonWrapped");function propagateEpsagonId(e,t){return process.env.EPSAGON_PROPAGATE_LAMBDA_ID&&t&&!Array.isArray(t)&&"object"==typeof t&&(t[ve]=e.getId(),U.addToMetadata(e,{propagation_enabled:!0})),t}function baseLambdaWrapper(e,t="lambda",r=!1,a=null){return(n,s,o)=>{if(Ee().ignoredPayloads||process.env.EPSAGON_PAYLOADS_TO_IGNORE){if((Ee().ignoredPayloads?Ee().ignoredPayloads:JSON.parse(process.env.EPSAGON_PAYLOADS_TO_IGNORE)).filter(e=>JSON.stringify(e)===JSON.stringify(n)).length>0)return e(n,s,o)}let i,p;le.getTrace=trace_object_get,le.restart();let c=!1,u=!1;try{i=_e.createRunner(s,t),le.addRunner(i)}catch(t){return(null===a?e:a)(n,s,o)}try{const e=aws_lambda_createFromEvent(n,s);le.addEvent(e)}catch(e){S.debugLog(`Error parsing trigger: ${e.stack}, Event: ${JSON.stringify(n)}`)}const d=Date.now(),runnerSendUpdateHandler=()=>{i.setDuration(S.createDurationTimestamp(d))},l=process._events.beforeExit;process._events.beforeExit=()=>{le.sendTrace(runnerSendUpdateHandler).then(()=>{process._events.beforeExit=l})};const handleUserExecutionDone=(e,t,r)=>{if(clearTimeout(p),c||u)return Promise.resolve();if(u=!0,e){let t=e;if(!e.name){let r;try{r="string"==typeof e?e:JSON.stringify(e)}catch(e){r=""}t={name:"LambdaExecutionError",message:r}}i.getException()||(S.debugLog("Setting exception from handleUserExecutionDone"),U.setException(i,t,!1))}const{statusCode:a}=t||{};if(a&&U.addToMetadata(i,{status_code:a}),null===e&&!Ee().metadataOnly){let e;try{e=JSON.stringify(void 0===t?null:t)}catch(t){e="Unable to stringify response body as json: "+t.message}U.addToMetadata(i,{return_value:e.substring(0,ye)})}return process._events.beforeExit=l,c=!0,!r&&s.callbackWaitsForEmptyEventLoop?le.sendTrace(runnerSendUpdateHandler):(runnerSendUpdateHandler(),le.sendTraceSync())};!function(e,t){const r=process._events.uncaughtException;process._events.uncaughtException=(a,n)=>{process._events.uncaughtException=r,U.setException(t,a,!1),e(a,null,!0).then(()=>{r&&"function"==typeof r&&r(a,n)})};const a=process._events.unhandledRejection;process._events.unhandledRejection=(r,n)=>{process._events.unhandledRejection=a;const s=Error(r);U.setException(t,s,!1),e(s,null,!0).then(()=>{a&&"function"==typeof a&&a(r,n)})}}(handleUserExecutionDone,i);let g=Promise.resolve();const wrappedCallback=(e,t)=>{S.debugLog("wrapped callback called",e,t),t=propagateEpsagonId(i,t),u?S.debugLog("not calling callback since it was already called"):g=new Promise(r=>{S.debugLog("handling execution done before calling callback"),handleUserExecutionDone(e,t).then(()=>{S.debugLog("calling User's callback"),o(e,t),r()})})};let f=Promise.resolve();const h=Object.assign({},s,{succeed:e=>{S.debugLog("wrapped succeed called"),u?S.debugLog("not calling succeed, callback was already called"):f=new Promise(t=>{handleUserExecutionDone(null,e,!0).then(()=>g).then(()=>s.succeed(e)).then(()=>t())})},fail:e=>{S.debugLog("wrapped fail called"),u?S.debugLog("not calling fail, callback was already called"):f=new Promise(t=>{handleUserExecutionDone(e,null,!0).then(()=>g).then(()=>s.fail(e)).then(()=>t())})},done:(e,t)=>{S.debugLog("wrapped done called"),u?S.debugLog("not calling done, callback was already called"):f=new Promise(r=>{handleUserExecutionDone(e,t,!0).then(()=>g).then(()=>s.done(e,t)).then(()=>r())})}});Object.defineProperty(h,"callbackWaitsForEmptyEventLoop",{set:e=>{s.callbackWaitsForEmptyEventLoop=e},get:()=>s.callbackWaitsForEmptyEventLoop});try{p=setTimeout(()=>{S.debugLog("In timeout handler"),c=!0,U.markAsTimeout(i),runnerSendUpdateHandler(),le.sendTraceSync()},h.getRemainingTimeInMillis()-Te),i.setStartTime(S.createTimestampFromTime(d));let t=r?e(n,h,wrappedCallback,i):e(n,h,wrappedCallback);if(t&&"function"==typeof t.then){let e,r;t=t.then(e=>(S.debugLog("user promise resolved (in then)"),e=propagateEpsagonId(i,e),r=e,handleUserExecutionDone(null,e,!0))).catch(t=>(S.debugLog("user promise rejected (in catch)"),e=t,handleUserExecutionDone(t,null,!0))).then(()=>g).then(()=>f).then(()=>{if(e)throw e;return r})}return t}catch(e){h.fail(e)}}}function extractAndAppendStepData(e,r,a){let n=null;return"object"==typeof a&&(n||(e&&e[be]?(n=Object.assign({},e[be]),n.step_num+=1):n={id:t(),step_num:0}),a[be]=n,U.addToMetadata(r,{steps_dict:n})),S.debugLog("Step function response update attempt"),S.debugLog("Updated response: "+g.inspect(a,{showHidden:!1,depth:null})),a}function createStepIdAddWrapper(e){return(t,r,a,n)=>{let s=e(t,r,(e,r)=>(e||extractAndAppendStepData(t,n,r),a(e,r)));return s&&"function"==typeof s.then&&(S.debugLog("Step function response is async"),s=s.then(e=>extractAndAppendStepData(t,n,e))),s}}var lambda_lambdaWrapper=function(e){if(e[$e])return e;const t=baseLambdaWrapper(e);return Object.defineProperty(t,$e,{value:!0,writable:!1}),t},lambda_stepLambdaWrapper=function(e){if(e[$e])return e;const t=baseLambdaWrapper(createStepIdAddWrapper(e),"step_function_lambda",!0,e);return Object.defineProperty(t,$e,{value:!0,writable:!1}),t};const xe={json:function(e,t,r,a){U.addToMetadata(a,{},{"tencent.scf.trigger_data":e})},timer:function(e,r){const a=r.getResource();r.setId("timer-"+t()),a.setName(e.TriggerName),a.setOperation("Timer"),U.addToMetadata(r,{"tencent.timer.timestamp":e.Time},{"tencent.timer.message":e.Message})},http:function(e,t){const r=t.getResource();t.setId(e.requestContext.requestId||e.headers["x-api-requestid"]),r.setName(e.headers.Host||e.headers.host),r.setOperation(e.httpMethod),U.addToMetadata(t,{"http.route":e.requestContext.path,"http.request.path":e.path,"tencent.api_gateway.request_id":e.headers["x-api-requestid"],"tencent.api_gateway.stage":e.requestContext.stage},{"http.request.headers":e.headers,"http.request.body":e.body,"http.request.path_params":e.pathParameters,"http.request.query":e.queryString})},cos:function(e,t){const r=e.Records[0],a=t.getResource();t.setId(r.cos.cosObject.meta["x-cos-request-id"]),a.setName(`${r.cos.cosBucket.name}-${r.cos.cosBucket.appid}`),a.setOperation(r.event.eventName.replace("cos:","")),U.addToMetadata(t,{"tencent.region":r.cos.cosBucket.cosRegion,"tencent.app_id":r.cos.cosBucket.appid,"tencent.cos.object_key":r.cos.cosObject.key,"tencent.cos.object_size":r.cos.cosObject.size,"tencent.cos.request_id":r.cos.cosObject.meta["x-cos-request-id"]})},cmq:function(e,t){const r=e.Records[0].CMQ,a=t.getResource();t.setId(r.msgId),a.setName(r.topicName),a.setOperation("consume"),U.addToMetadata(t,{"tencent.cmq.message.id":r.msgId,"tencent.cmq.message.tags":r.msgTag,"tencent.cmq.request_id":r.requestId,"tencent.cmq.subscription_name":r.subscriptionName},{"tencent.cmq.message.body":r.msgBody})},kafka:function(e,t){const r=e.Records[0].Ckafka,a=t.getResource();t.setId(r.msgKey),a.setName(r.topic),a.setOperation("consume"),U.addToMetadata(t,{"messaging.message.partition":r.partition,"messaging.message.offset":r.offset,"messaging.message.key":r.msgKey},{"messaging.message.body":r.msgBody})}};var tencent_function_createFromEvent=function(e,t,r){let a="json";e&&("Type"in e&&"Timer"===e.Type?a="timer":"httpMethod"in e?a="http":"Records"in e&&("cos"in e.Records[0]?a="cos":"CMQ"in e.Records[0]?a="cmq":"Ckafka"in e.Records[0]&&(a="kafka")));const n=new T.Resource,s=new T.Event;return s.setResource(n),xe[a](e,s,t,r),function(e,t){e.setStartTime(S.createTimestamp()),e.setDuration(S.createTimestampFromTime(0)),e.setOrigin("trigger"),e.getResource().setType(t),e.setErrorCode(v.ErrorCode.OK)}(s,a),s};var Se={createRunner:function(e){const t=new T.Resource([e.function_name,"tencent_function","invoke",{}]),r=new T.Event([e.request_id,0,null,"runner",0,v.ErrorCode.OK]);return r.setResource(t),U.addToMetadata(r,{"tencent.scf.version":e.function_version,"tencent.scf.memory":e.memory_limit_in_mb,"tencent.scf.cold_start":j.COLD_START,"tencent.namespace":e.namespace,"tencent.uin":e.tencentcloud_uin,"tencent.app_id":e.tencentcloud_appid,"tencent.region":e.tencentcloud_region}),j.COLD_START=!1,r}};const{getConfig:Re}=F,{MAX_VALUE_CHARS:Ae}=j,Me=Symbol("epsagonWrapped");function baseTencentFunctionWrapper(e){return le.getTrace=trace_object_get,(t,r,a)=>{let n,s;le.restart();let o=!1,i=!1;try{n=Se.createRunner(r),le.addRunner(n)}catch(n){return e(t,r,a)}try{const e=tencent_function_createFromEvent(t,r,n);le.addEvent(e)}catch(e){S.debugLog(`Error parsing trigger: ${e.stack}, Event: ${JSON.stringify(t)}`)}const p=Date.now(),runnerSendUpdateHandler=()=>{n.setDuration(S.createDurationTimestamp(p))},c=process._events.beforeExit;process._events.beforeExit=()=>{le.sendTrace(runnerSendUpdateHandler).then(()=>{process._events.beforeExit=c})};const handleUserExecutionDone=(e,t,a)=>{if(clearTimeout(s),o||i)return Promise.resolve();if(i=!0,e){let t=e;if(!e.name){let r;try{r="string"==typeof e?e:JSON.stringify(e)}catch(e){r=""}t={name:"SCFExecutionError",message:r}}n.getException()||(S.debugLog("Setting exception from handleUserExecutionDone"),U.setException(n,t,!1))}const{statusCode:p}=t||{};if(p&&U.addToMetadata(n,{status_code:p}),null===e&&!Re().metadataOnly){let e;try{e=JSON.stringify(void 0===t?null:t)}catch(t){e="Unable to stringify response body as json: "+t.message}U.addToMetadata(n,{"tencent.scf.return_data":e.substring(0,Ae)})}return process._events.beforeExit=c,o=!0,!a&&r.callbackWaitsForEmptyEventLoop?le.sendTrace(runnerSendUpdateHandler):(runnerSendUpdateHandler(),le.sendTraceSync())};!function(e,t){const r=process._events.uncaughtException;process._events.uncaughtException=(a,n)=>{process._events.uncaughtException=r,U.setException(t,a,!1),e(a,null,!0).then(()=>{r&&"function"==typeof r&&r(a,n)})};const a=process._events.unhandledRejection;process._events.unhandledRejection=(r,n)=>{process._events.unhandledRejection=a;const s=Error(r);U.setException(t,s,!1),e(s,null,!0).then(()=>{a&&"function"==typeof a&&a(r,n)})}}(handleUserExecutionDone,n);let u=Promise.resolve();const wrappedCallback=(e,t)=>{S.debugLog("wrapped callback called",e,t),i?S.debugLog("not calling callback since it was already called"):u=new Promise(r=>{S.debugLog("handling execution done before calling callback"),handleUserExecutionDone(e,t).then(()=>{S.debugLog("calling User's callback"),a(e,t),r()})})};try{s=setTimeout(()=>{S.debugLog("In timeout handler"),o=!0,U.markAsTimeout(n),runnerSendUpdateHandler(),le.sendTraceSync()},r.getRemainingTimeInMillis()-500),n.setStartTime(S.createTimestampFromTime(p));let a=e(t,r,wrappedCallback);if(a&&"function"==typeof a.then){let e,t;a=a.then(e=>(S.debugLog("user promise resolved (in then)"),t=e,handleUserExecutionDone(null,e,!0))).catch(t=>(S.debugLog("user promise rejected (in catch)"),e=t,handleUserExecutionDone(t,null,!0))).then(()=>u).then(()=>{if(e)throw e;return t})}return a}catch(e){throw e}}}var tencent_tencentFunctionWrapper=function(e){if(e[Me])return e;const t=baseTencentFunctionWrapper(e);return Object.defineProperty(t,Me,{value:!0,writable:!1}),t};const Ce=function(){const createErrorHandler=e=>(t,r)=>{r.fail(e)},createErrorHandlerWithMessage=(e,t)=>(r,a)=>{console.log(e),a.fail(t)},e=process.env.EPSAGON_HANDLER;if(!e)return createErrorHandler(new Error("invalid EPSAGON_HANDLER "+e));const t=e.split(".");if(2!==t.length)return createErrorHandler(new Error("Bad handler "+e));const r=t[0],a=t[1];try{const e=process.env.LAMBDA_TASK_ROOT,t=te(`${e}/${r}`);if(!t)return createErrorHandler(te.lastError());const n=t[a];return n||createErrorHandler(new Error(`Handler '${a}' missing on module '${r}'`))}catch(e){return"MODULE_NOT_FOUND"===e.code?createErrorHandlerWithMessage(`Unable to import module '${r}'`,e):e instanceof SyntaxError?createErrorHandlerWithMessage(`Syntax error in module '${r}'`,e):createErrorHandlerWithMessage("module initialization error",e)}}();var Oe={wrapper:F.getConfig().isEpsagonDisabled?Ce:lambda_lambdaWrapper(Ce)};const we=Symbol("epsagonWrapped"),Ne=new Map;function getTracer(){const e=process.env.__OW_ACTIVATION_ID;return e?Ne.get(e):null}function unregisterTracer(){const e=process.env.__OW_ACTIVATION_ID;e&&Ne.delete(e)}function baseOpenWhiskWrapper(e,t){return le.getTrace=getTracer,r=>{let a;t&&"object"==typeof t&&(t.token?le.initTrace(t):t.token_param&&r&&le.initTrace(Object.assign({token:r[t.token_param]},t))),function(){const e=process.env.__OW_ACTIVATION_ID;e&&Ne.set(e,le.createTracer())}(),le.restart();try{a=function(e,t){const r=new T.Resource([e,"openwhisk_action","invoke",{}]),a=new T.Event([process.env.__OW_ACTIVATION_ID,0,null,"runner",0,v.ErrorCode.OK]);return a.setResource(r),U.addToMetadata(a,{activation_id:process.env.__OW_ACTIVATION_ID,transaction_id:process.env.__OW_TRANSACTION_ID,api_host:process.env.__OW_API_HOST,namespace:process.env.__OW_NAMESPACE,params:t}),a}(process.env.__OW_ACTION_NAME,r)}catch(t){return e(r)}le.addRunner(a);const n=Date.now(),runnerSendUpdateHandler=()=>{a.setDuration(S.createDurationTimestamp(n))};try{a.setStartTime(S.createTimestampFromTime(n));const t=e(r);return t&&"function"==typeof t.then?t.catch(e=>{throw U.setException(a,e),runnerSendUpdateHandler(),e}).finally(()=>le.sendTrace(runnerSendUpdateHandler).catch(()=>{}).finally(unregisterTracer)):(le.sendTrace(runnerSendUpdateHandler).catch(()=>{}).finally(unregisterTracer),t)}catch(e){throw U.setException(a,e),runnerSendUpdateHandler(),le.sendTraceSync().finally(unregisterTracer),e}}}var openwhisk_openWhiskWrapper=function(e,t){if(e[we])return e;const r=baseOpenWhiskWrapper(e,t);return Object.defineProperty(r,we,{value:!0,writable:!1}),r};const{getConfig:Le}=F;var node_nodeWrapper=function(e){return le.getTrace=trace_object_get,(...r)=>{let a;le.restart();try{a=function(e,r){const a=new T.Resource([e.name||"handler","node_function","invoke",{}]),n=new T.Event([t(),0,null,"runner",0,v.ErrorCode.OK]);return n.setResource(a),U.addToMetadata(n,{args_length:r.length},{arguments:r}),U.createTraceIdMetadata(n),j.COLD_START=!1,n}(e,r)}catch(t){return e(...r)}le.addRunner(a);const n=Date.now(),runnerSendUpdateHandler=()=>{a.setDuration(S.createDurationTimestamp(n))};try{a.setStartTime(S.createTimestampFromTime(n));const t=e(...r);!function(e){process.env.EPSAGON_STEPS_ID&&U.addToMetadata(e,{steps_dict:{id:process.env.EPSAGON_STEPS_ID,step_num:process.env.EPSAGON_STEPS_NUM||0}})}(a);const s=Promise.resolve(t).then(e=>{if(!Le().metadataOnly){let t;try{t=JSON.stringify(void 0===e?null:e)}catch(e){t="Unable to stringify response body as json: "+e.message}U.addToMetadata(a,{return_value:t.substring(0,j.MAX_VALUE_CHARS)})}le.sendTrace(runnerSendUpdateHandler)}).catch(e=>{U.setException(a,e),runnerSendUpdateHandler(),le.sendTraceSync().then(()=>{throw e})});return t&&"function"==typeof t.then?s:t}catch(e){throw U.setException(a,e),runnerSendUpdateHandler(),le.sendTraceSync(),e}}};var google_cloud_function_googleCloudFunctionWrapper=function(e){return le.getTrace=trace_object_get,(t,r)=>{let a,n;le.restart();try{const{slsEvent:e,startTime:r}=function(e){const{slsEvent:t,startTime:r}=U.initializeEvent("google_cloud_function",process.env.K_SERVICE,"execute","runner");return U.addToMetadata(t,{"gcp.function.name":process.env.K_SERVICE,"gcp.function.revision":process.env.K_REVISION,"gcp.function.runtime":process.env.GAE_RUNTIME,"gcp.function.execution_id":e.headers["function-execution-id"],"gcp.function.cold_start":j.COLD_START}),U.createTraceIdMetadata(t),j.COLD_START=!1,{slsEvent:t,startTime:r}}(t);a=e,n=r,le.addRunner(a)}catch(a){return console.log(a),e(t,r)}return r.on("finish",()=>{a.setDuration(S.createDurationTimestamp(n));try{const e=function(e,t){const{slsEvent:r}=U.initializeEvent("http",e.hostname,e.method,"trigger");return U.addToMetadata(r,{"http.status_code":t.statusCode,"http.request.path":e.path},{"http.request.path_params":e.params,"http.request.headers":e.headers,"http.response.headers":t.getHeaders()}),e.body&&U.addToMetadata(r,{},{"http.request.body":e.body}),e.query&&U.addToMetadata(r,{},{"http.request.query_params":e.query}),r}(t,r);e.setDuration(S.createDurationTimestamp(n)),le.addEvent(e)}catch(e){S.debugLog("Error parsing trigger: "+e.stack)}le.sendTrace(()=>{})}),e(t,r)}};var Ie={createRunner:function(){const e=new T.Resource([process.env.AWS_BATCH_JOB_ID,"batch","invoke",{}]),t=new T.Event([process.env.AWS_BATCH_JOB_ID,0,null,"runner",0,v.ErrorCode.OK]);t.setResource(e),U.addToMetadata(t,{"Job ID":process.env.AWS_BATCH_JOB_ID,"Job Queue Name":process.env.AWS_BATCH_JQ_NAME,"Compute Environment Name":process.env.AWS_BATCH_CE_NAME,"Job Attempt":process.env.AWS_BATCH_JOB_ATTEMPT},{Hostname:process.env.HOSTNAME,Home:process.env.HOME,Path:process.env.PATH,Arguments:JSON.stringify(process.argv)}),U.createTraceIdMetadata(t);const a=r.get("http://169.254.169.254/latest/dynamic/instance-identity/document",{timeout:100}).then(e=>{S.debugLog("Got Batch response "+e.data);try{const r=JSON.parse(e.data);U.addToMetadata(t,{Region:r.region})}catch(e){S.debugLog("Could not parse Batch env data "+e.toString())}}).catch(e=>{throw le.addException(e),e});return{runner:t,runnerPromise:a}}},batch_wrapBatchJob=function(){le.getTrace=trace_object_get,le.restart();try{const{runner:e,runnerPromise:t}=Ie.createRunner();le.addRunner(e,t);const r=Date.now(),runnerSendUpdateHandler=()=>{e.setDuration(S.createDurationTimestamp(r))};e.setStartTime(S.createTimestampFromTime(r)),process.on("uncaughtException",t=>{U.setException(e,t)}),process.once("beforeExit",()=>{le.sendTrace(runnerSendUpdateHandler)});const processExitWrapper=e=>function(t){runnerSendUpdateHandler(),le.sendTraceSync(),e.apply(this,[t])};f.wrap(process,"exit",processExitWrapper)}catch(e){S.debugLog("failed to create Batch runner",e),le.addException(e)}};const{MAX_HTTP_VALUE_SIZE:De}=j,Pe={br:h.brotliDecompressSync,brotli:h.brotliDecompressSync,gzip:h.gunzipSync,deflate:h.deflateSync};function UUIDToHex(e){const t=Buffer.alloc(16);return m.parse(e,t),t.toString("hex")}var ke={isURLIgnoredByUser:function(e){return F.getConfig().urlPatternsToIgnore.some(t=>e.includes(t))},resolveHttpPromise:function(e,t,r){e.setDuration(S.createDurationTimestamp(r)),t()},USER_AGENTS_BLACKLIST:["openwhisk-client-js"],URL_BLACKLIST:{"tc.epsagon.com":"endsWith","oauth2.googleapis.com":"endsWith","amazonaws.com":(e,t)=>(e.endsWith(t)||e.endsWith(t+":443"))&&-1===e.indexOf(".execute-api.")&&-1===e.indexOf(".es.")&&-1===e.indexOf(".elb.")&&-1===e.indexOf(".appsync-api."),"blob.core.windows.net":"endsWith","myqcloud.com":"endsWith","documents.azure.com":"endsWith","127.0.0.1":(e,t,r)=>e===t&&r.startsWith("/2018-06-01/runtime/invocation/"),"169.254.169.254":"startsWith"},generateEpsagonTraceId:function(){return`${UUIDToHex(t())}:${UUIDToHex(t()).slice(16)}:${UUIDToHex(t()).slice(16)}:1`},updateAPIGateway:function(e,t){e&&"x-amzn-requestid"in e&&(t.getResource().setType("api_gateway"),U.addToMetadata(t,{request_trace_id:e["x-amzn-requestid"]}))},setJsonPayload:function(e,t,r,a){try{let n=r;if(F.getConfig().decodeHTTP&&Pe[a])try{n=Pe[a](r)}catch(e){S.debugLog(`Could decode ${t} with ${a} in http`)}const s=n;try{JSON.parse(s),U.addToMetadata(e,{},{[t]:s.toString()})}catch(r){S.debugLog(`Could not parse JSON ${t} in http`),U.addToMetadata(e,{},{[t]:n.toString("utf-8")})}}catch(a){S.debugLog(`Could not decode data and parse JSON ${t} in http`),U.addToMetadata(e,{},{[t]:r})}},addChunk:function(e,t){if(e){t.reduce((e,t)=>t.length+e,0)+e.length<=De&&t.push("string"==typeof e?Buffer.from(e):e)}}},We=createCommonjsModule((function(e){const{LAMBDA_DEFAULT_NODE_MODULES_PATH:t}=j;let r;const getAllNodeModulesPaths=(e,t=[])=>{let r=t;return n.readdirSync(e).forEach(t=>{n.statSync(`${e}/${t}`).isDirectory()&&("node_modules"===t?r.push(_.join(e,t)):r=getAllNodeModulesPaths(`${e}/${t}`,r))}),r};e.exports.getModules=function(e){const a=[];if("function"!=typeof require.resolve.paths){S.debugLog("require.resolve.paths is not a function");const t=te(e);return t&&a.push(t),a}const n=require.resolve.paths(e);if(process.env.EPSAGON_ADD_NODE_PATH&&n.push(...process.env.EPSAGON_ADD_NODE_PATH.split(":").map(e=>_.resolve(e.trim()))),process.env.EPSAGON_AUTO_ADD_NODE_PATHS&&"TRUE"===process.env.EPSAGON_AUTO_ADD_NODE_PATHS.toUpperCase()){const e=_.dirname(require.main.filename);r||(r=getAllNodeModulesPaths(e)),S.debugLog("Found the following paths",r),r.forEach(e=>{n.includes(e)||n.push(e)})}return S.isLambdaEnv&&!n.includes(t)&&n.push(t),S.distinct(n).forEach(t=>{const r=_.resolve(`${t}/${e}`),n=te(r);n&&(S.debugLog("Loaded module",e,t),a.push(n))}),a};const a=[];e.exports.patchModule=function(t,r,n,s=(e=>e)){S.debugLog("patching module:",t);const o=e.exports.getModules(t);S.debugLog("found module copies:",o.length),o.forEach(e=>{const o=s(e);a.push({id:t,methodName:r,module:o}),f.wrap(o,r,n)}),S.debugLog("done patching module:",t)},e.exports.patchSingle=function(e,t,r){a.push({id:t,methodName:t,module:e}),f.wrap(e,t,r)},e.exports.unpatchModules=function(){console.log("unpatching all modules"),a.forEach(e=>{console.log(`unpatching ${e.methodName} from ${e.id}`),f.unwrap(e.module,e.methodName)}),console.log("finished unpatching")}}));We.getModules,We.patchModule,We.patchSingle,We.unpatchModules;JSON.sortify=l;const{STEP_ID_NAME:qe}=j,Be=te("aws-sdk/clients/dynamodb"),je={generateItemHash(e){const t=Be.Converter.unmarshall(e);return d(JSON.sortify(t))},requestHandler(e,t){const r=e.params||{},a=t.getResource(),{operation:n}=e;switch(a.setName(r.TableName||"DynamoDBEngine"),n){case"deleteItem":U.addToMetadata(t,{item_hash:this.generateItemHash(r.Key)});case"getItem":U.addToMetadata(t,{},{Key:r.Key});break;case"putItem":U.addToMetadata(t,{item_hash:this.generateItemHash(r.Item)},{Item:JSON.stringify(r.Item)});break;case"updateItem":U.addToMetadata(t,{Key:r.Key},{"Update Expression":JSON.stringify(r.UpdateExpression),"Expression Attribute Names":JSON.stringify(r.ExpressionAttributeNames),"Expression Attribute Values":JSON.stringify(r.ExpressionAttributeValues)});break;case"query":U.addObjectToMetadata(t,"Parameters",r,["KeyConditions","QueryFilter","ExclusiveStartKey","ProjectionExpression","FilterExpression","KeyConditionExpression","ExpressionAttributeValues"]);break;case"scan":U.addObjectToMetadata(t,"Parameters",r,["ScanFilter","ExclusiveStartKey","ProjectionExpression","FilterExpression","ExpressionAttributeValues"]);break;case"batchWriteItem":{const e=Object.keys(r.RequestItems)[0];a.setName(e||r.TableName);const n=[],s=[];r.RequestItems[e].forEach(e=>{e.PutRequest&&n.push(e.PutRequest.Item),e.DeleteRequest&&s.push(e.DeleteRequest.Key)}),0!==n.length&&U.addToMetadata(t,{},{"Added Items":JSON.stringify(n)}),0!==s.length&&U.addToMetadata(t,{},{"Deleted Keys":JSON.stringify(s)});break}}},responseHandler(e,t){switch(e.request.operation){case"getItem":U.addToMetadata(t,{},{Item:JSON.stringify(e.data.Item)});break;case"updateItem":e.data.Attributes&&U.addToMetadata(t,{item_hash:this.generateItemHash(e.data.Attributes)},{});break;case"listTables":U.addToMetadata(t,{"Table Names":e.data.TableNames.join(", ")});break;case"scan":case"query":U.addObjectToMetadata(t,"Response",e.data,["Items","LastEvaluatedKey"])}}},initializeStepsDict=(e,r,a)=>{const n=(e.params||{})[r];let s;try{s=JSON.parse(n)}catch(e){s=null}s&&(s[qe]={id:t(),step_num:-1},e.params[r]=JSON.stringify(s),U.addToMetadata(a,{steps_dict:s[qe]}))},Fe={requestHandler(e,t){const r=(e.params||{}).Entries[0]||{},{operation:a}=e,n=t.getResource();switch(n.setType("events"),a){case"putEvents":n.setName(r.EventBusName||"CloudWatch Events"),U.addToMetadata(t,{"aws.cloudwatch.detail_type":r.DetailType,"aws.cloudwatch.resources":r.Resources,"aws.cloudwatch.source":r.Source},{"aws.cloudwatch.detail":r.Detail})}},responseHandler(e,t){switch(e.request.operation){case"putEvents":U.addToMetadata(t,{"aws.cloudwatch.event_id":""+e.data.Entries[0].EventId})}}},Ue={s3:{requestHandler(e,t){const r=e.params||{},{operation:a}=e,n=t.getResource();switch(n.setName(""+r.Bucket),a){case"headObject":case"getObject":case"putObject":n.getMetadataMap().set("key",""+r.Key)}},responseHandler(e,t){const r=t.getResource();switch(e.request.operation){case"listObjects":r.getMetadataMap().set("files",e.data.Contents.map(e=>[""+e.Key,e.Size,e.Etag]).toString());break;case"putObject":r.getMetadataMap().set("etag",""+e.data.ETag.replace(/"/g,""));break;case"headObject":case"getObject":U.addToMetadata(t,{etag:""+e.data.ETag.replace(/"/g,""),file_size:""+e.data.ContentLength,last_modified:""+e.data.LastModified})}}},kinesis:{requestHandler(e,t){const r=e.params||{},{operation:a}=e;switch(t.getResource().setName(""+r.StreamName||"Kinesis"),a){case"putRecord":U.addToMetadata(t,{partition_key:""+r.PartitionKey},{data:""+r.Data});break;case"putRecords":U.addToMetadata(t,{total_record_count:""+r.Records.length},{data:JSON.stringify(r.Records)})}},responseHandler(e,t){let r="",a=0;switch(e.request.operation){case"putRecord":U.addToMetadata(t,{shard_id:""+e.data.ShardId,sequence_number:""+e.data.SequenceNumber});break;case"putRecords":e.data.FailedRecordCount&&e.data.FailedRecordCount>0&&(r=JSON.stringify(e.data.Records.map(e=>e.ErrorMessage)),a=e.data.FailedRecordCount),U.addToMetadata(t,{total_record_count:""+e.data.Records.length,failed_record_count:""+a,kinesis_error_messages:r}),e.data.Records.length>0&&U.addToMetadata(t,{sequence_number:""+e.data.Records[0].SequenceNumber})}}},sns:{requestHandler(e,t){const r=e.params||{},a=t.getResource(),n=r.TopicArn||r.TargetArn;a.setName(""+n.split(":").pop()||"N/A"),U.addToMetadata(t,{},{"Notification Message":""+r.Message,"Notification Message Attributes":""+JSON.stringify(r.MessageAttributes)})},responseHandler(e,t){switch(e.request.operation){case"publish":U.addToMetadata(t,{"Message ID":""+e.data.MessageId})}}},sqs:{requestHandler(e,t){const r=e.params||{},a=t.getResource();"QueueUrl"in r&&a.setName(""+r.QueueUrl.split("/").pop()),"QueueName"in r&&a.setName(r.QueueName);const n="Entries"in r?r.Entries:r;"MessageBody"in n&&U.addToMetadata(t,{},{"Message Body":n.MessageBody}),"MessageAttributes"in n&&U.addToMetadata(t,{},{"Message Attributes":n.MessageAttributes})},responseHandler(e,t){let r="",a=0;switch(e.request.operation){case"sendMessage":U.addToMetadata(t,{"Message ID":""+e.data.MessageId,"MD5 Of Message Body":""+e.data.MD5OfMessageBody});break;case"sendMessageBatch":e.data.Successful&&e.data.Successful.length>0&&U.addToMetadata(t,{record:JSON.stringify(e.data.Successful.map(e=>e))}),e.data.Failed&&e.data.Failed>0&&(r=JSON.stringify(e.data.Failed.map(e=>e)),a=e.data.FailedRecordCount),U.addToMetadata(t,{successful_record_count:""+e.data.Successful.length,failed_record_count:""+a,sqs_error_messages:r});break;case"deleteMessageBatch":e.data.Failed&&e.data.Failed>0&&(r=JSON.stringify(e.data.Failed.map(e=>e)),a=e.data.FailedRecordCount),U.addToMetadata(t,{successful_record_count:""+e.data.Successful.length,failed_record_count:""+a,sqs_error_messages:r});break;case"receiveMessage":{let r=0;if("Messages"in e.data&&e.data.Messages.length>0){r=e.data.Messages.length,U.addToMetadata(t,{"Message ID":""+e.data.Messages[0].MessageId,"MD5 Of Message Body":""+e.data.Messages[0].MD5OfBody});const a=fe.getSNSTrigger(e.data.Messages);null!=a&&U.addToMetadata(t,{"SNS Trigger":a})}U.addToMetadata(t,{"Number Of Messages":r});break}}}},ses:{requestHandler(e,t){const r=e.params||{};switch(e.operation){case"sendEmail":U.addToMetadata(t,{source:""+r.Source,destination:""+r.Destination.ToAddresses},{subject:""+r.Message.Subject.Data,"Message Text":""+r.Message.Body.Text.Data,"Message Html":""+r.Message.Body.Html.Data})}},responseHandler(e,t){switch(e.request.operation){case"sendEmail":U.addToMetadata(t,{message_id:""+e.data.MessageId})}}},lambda:{requestHandler(e,t){const r=e.params||{},a=t.getResource();S.debugLog("Got lambda event on function: "+r.FunctionName);const n=r.FunctionName.includes(":")?r.FunctionName.split(":").slice(-1)[0]:r.FunctionName;a.setName(n),U.addToMetadata(t,{},{payload:""+r.Payload})},responseHandler(e,t){}},dynamodb:je,athena:{requestHandler(e,t){const r=e.params||{};switch(e.operation){case"startQueryExecution":"QueryExecutionContext"in r&&"Database"in r.QueryExecutionContext&&U.addToMetadata(t,{Database:""+r.QueryExecutionContext.Database}),U.addToMetadata(t,{},{Query:""+r.QueryString});break;case"getQueryExecution":case"getQueryResults":case"stopQueryExecution":U.addToMetadata(t,{"Query ID":""+r.QueryExecutionId})}},responseHandler(e,t){switch(e.request.operation){case"getQueryExecution":"Status"in e.data.QueryExecution&&"State"in e.data.QueryExecution.Status&&U.addToMetadata(t,{State:""+e.data.QueryExecution.Status.State}),"ResultConfiguration"in e.data.QueryExecution&&"OutputLocation"in e.data.QueryExecution.Status&&U.addToMetadata(t,{"Result Location":""+e.data.QueryExecution.ResultConfiguration.OutputLocation}),U.addToMetadata(t,{"Query ID":""+e.data.QueryExecutionId},{Query:""+e.data.Query});break;case"getQueryResults":U.addToMetadata(t,{"Query Row Count":""+e.data.ResultSet.Rows.length});break;case"startQueryExecution":U.addToMetadata(t,{"Query ID":""+e.data.QueryExecutionId})}}},stepfunctions:{patchInput(e,t){switch(e.operation){case"startExecution":case"stopExecution":initializeStepsDict(e,"input",t);break;case"sendTaskSuccess":case"sendTaskFailure":initializeStepsDict(e,"output",t)}},requestHandler(e,t){const r=e.params,a=t.getResource();switch(e.operation){case"startExecution":a.setName(""+r.stateMachineArn.split(":").pop()),U.addToMetadata(t,{"State Machine ARN":""+r.stateMachineArn,"Execution Name":""+r.name},{Input:""+r.input})}},responseHandler(e,t){switch(e.request.operation){case"startExecution":U.addToMetadata(t,{"Execution ARN":""+e.data.executionArn,"Start Date":""+e.data.startDate})}}},batch:{requestHandler(e,t){const r=e.params||{},{operation:a}=e,n=t.getResource();switch(a){case"submitJob":{n.setName(""+r.jobName);const e={};"containerOverrides"in r&&(e["Container Overrides"]=r.containerOverrides),"parameters"in r&&(e.Parameters=r.parameters),U.addToMetadata(t,{"Job Definition":""+r.jobDefinition,"Job Queue":""+r.jobQueue},e);break}}},responseHandler(e,t){switch(e.request.operation){case"submitJob":U.addToMetadata(t,{"Job ID":""+e.data.jobId})}}},cloudwatchevents:Fe,cognitoidentityserviceprovider:{requestHandler(e,t){const r=e.params||{},a=t.getResource();r.UserPoolId&&a.setName(r.UserPoolId),a.setType("cognito-idp"),U.addToMetadata(t,{},{"aws.cognito.request":r})},responseHandler(e,t){U.addToMetadata(t,{},{"aws.cognito.response":e.data})}},eventbridge:Fe,cloudwatchlogs:{requestHandler(e,t){const r=e.params||{},{operation:a}=e,n=t.getResource();switch(n.setType("logs"),a){case"filterLogEvents":n.setName(r.logGroupName),U.addToMetadata(t,{"aws.cloudwatch.log_streams":e.logStreamNames,"aws.cloudwatch.start_time":e.startTime});break;case"getMetricData":n.setName(r.logGroupName),U.addToMetadata(t,{"aws.cloudwatch.start_time":e.startTime,"aws.cloudwatch.end_time":e.endTime})}},responseHandler(e,t){switch(e.request.operation){case"filterLogEvents":U.addToMetadata(t,{"aws.cloudwatch.events_count":e.data.events.length,"aws.cloudwatch.searched_log_streams":e.data.searchedLogStreams.length})}}},ssm:{requestHandler(e,t){const r=e.params||{},a=t.getResource(),{operation:n}=e;switch(a.setName(r.Name||r.Path||"SSM"),n){case"getParameter":case"getParameters":case"getParametersByPath":U.addToMetadata(t,{},{WithDecryption:r.WithDecryption})}},responseHandler(e,t){switch(e.request.operation){case"getParameter":U.addToMetadata(t,{},{parameter:{Name:(e.data.Parameter||{Name:""}).Name||"",Value:(e.data.Parameter||{Value:""}).Value||"",Type:(e.data.Parameter||{Type:""}).Type||""}});break;case"getParameters":case"getParametersByPath":e.data.InvalidParameters&&e.data.InvalidParameters.length>0&&U.addToMetadata(t,{},{invalid_parameters:e.data.InvalidParameters}),e.data.Parameters&&e.data.Parameters.length>0&&U.addToMetadata(t,{},{parameters:e.data.Parameters.map(e=>({Name:e.Name,Value:e.Value,Type:e.Type}))})}}}};function AWSSDKWrapper(e){return function(t){try{const r=this,{serviceIdentifier:a}=r.service.constructor.prototype;if(!(a in Ue))return e.apply(this,[t]);const n=new T.Resource(["",a,""+r.operation]),s=Date.now(),o=new T.Event(["",S.createTimestampFromTime(s),null,"aws-sdk",0,v.ErrorCode.OK]);o.setResource(n),"patchInput"in Ue[a]&&Ue[a].patchInput(this,o);const i=new Promise(e=>{r.on("send",()=>{try{Ue[a].requestHandler(r,o)}catch(e){le.addException(e)}}).on("error",e=>{try{U.setException(o,e)}catch(e){le.addException(e)}}).on("complete",t=>{try{o.setId(""+t.requestId),o.setDuration(S.createDurationTimestamp(s)),null!==t.data&&(o.setErrorCode(v.ErrorCode.OK),U.addToMetadata(o,{request_id:""+t.requestId,retry_attempts:""+t.retryCount,status_code:""+t.httpResponse.statusCode}),Ue[a].responseHandler(t,o)),null!==t.error&&(o.getErrorCode()!==v.ErrorCode.EXCEPTION&&o.setErrorCode(v.ErrorCode.ERROR),U.addToMetadata(o,{request_id:""+t.requestId,error_message:""+t.error.message,error_code:""+t.error.code}))}catch(e){le.addException(e)}finally{e()}})});le.addEvent(o,i)}catch(e){le.addException(e)}return e.apply(this,[t])}}function wrapPromiseOnAdd(e){return function(t){const r=e.apply(this,[t]);try{We.patchModule("aws-sdk/global","promise",AWSSDKWrapper,e=>e.Request.prototype)}catch(e){S.debugLog("Failed to re-instrument aws-sdk's promise method",e)}return r}}var ze={init(){We.patchModule("aws-sdk/global","send",AWSSDKWrapper,e=>e.Request.prototype),We.patchModule("aws-sdk/global","promise",AWSSDKWrapper,e=>e.Request.prototype),We.patchModule("aws-sdk/global","addPromisesToClass",wrapPromiseOnAdd,e=>e.Request)},dynamoDBEventCreator:je};const{dynamoDBEventCreator:He}=ze;function DAXWrapper(e){return function(t,r,a,n){const s=new T.Resource(["","dax",""+t]),o=Date.now(),i=new T.Event(["",S.createTimestampFromTime(o),null,"amazon-dax-client",0,v.ErrorCode.OK]);i.setResource(s);try{He.requestHandler({params:r,operation:t},i)}catch(e){le.addException(e)}const p=e.apply(this,[t,r,a,n]);try{const e=new Promise(e=>{p.once("error",e=>{try{U.setException(i,e)}catch(e){le.addException(e)}if(0===p.listenerCount("error"))throw e}).on("complete",t=>{try{i.setId(""+t.requestId),i.setDuration(S.createDurationTimestamp(o)),null!==t.data&&(i.setErrorCode(v.ErrorCode.OK),U.addToMetadata(i,{request_id:""+t.requestId,retry_attempts:""+t.retryCount,status_code:""+t.httpResponse.statusCode}),He.responseHandler(t,i)),null!==t.error&&(i.getErrorCode()!==v.ErrorCode.EXCEPTION&&i.setErrorCode(v.ErrorCode.ERROR),U.addToMetadata(i,{request_id:""+t.requestId,error_message:""+t.error.message,error_code:""+t.error.code}))}catch(e){le.addException(e)}finally{e()}})});le.addEvent(i,e)}catch(e){le.addException(e)}return p}}var Ge={init(){We.patchModule("amazon-dax-client","_makeWriteRequestWithRetries",DAXWrapper,e=>e.prototype),We.patchModule("amazon-dax-client","_makeReadRequestWithRetries",DAXWrapper,e=>e.prototype)}};const{isBlacklistURL:Ke,isBlacklistHeader:Je}=ce,{isURLIgnoredByUser:Qe,resolveHttpPromise:Ve,USER_AGENTS_BLACKLIST:Ze,URL_BLACKLIST:Xe,generateEpsagonTraceId:Ye,updateAPIGateway:et,setJsonPayload:tt,addChunk:rt}=ke;function requestOnWrapper(e,t){return function(r,a,n){if("response"!==r||"skip"===n||"function"!=typeof a)return e.apply(this,[r,a]);return e.apply(this,[r,(e=>(e&&e.EPSAGON_PATCH||(e.EPSAGON_PATCH=!0,f.wrap(e,"on",e=>function(e,t){return function(r,a){return"data"!==r||"function"!=typeof a?e.apply(this,[r,a]):e.apply(this,[r,(e=>(rt(e,t),a(e))).bind(this)])}}(e,t))),a(e))).bind(this)])}}function httpWrapper(e){return function(r,a,n){const{url:s,options:o,callback:i}=function(e,t,r){let a=e,n=t,s=r;return["string","URL"].includes(typeof a)||s||(s=t,n=e,a=void 0),"function"!=typeof n||s||(s=n,n=null),e.constructor&&"URL"===e.constructor.name&&"object"==typeof t&&!r&&(a=e,a.path=a.pathname,n=t,s=void 0),{url:a,options:n,callback:s}}(r,a,n),p=[];let c=null;try{let u=s;"string"==typeof u&&(u=E.parse(u));let d=u&&u.hostname||u&&u.host||o&&o.hostname||o&&o.host||o&&o.uri&&o.uri.hostname||"localhost";if(S.debugLog("[http] captured call "+d),i&&i.__epsagonCallback)return S.debugLog("[http] filtered patched callback "+d),e.apply(this,[r,a,n]);o.port&&!["80","443",80,443].includes(o.port)&&(d=`${d}:${o.port}`);const l=u&&u.path||o&&o.path||"/",g=u&&u.pathname||o&&o.pathname||"/",h=o&&o.headers||{};if(Ke(d,Xe,l)||Qe(d))return S.debugLog("[http] filtered ignored hostname "+d),e.apply(this,[r,a,n]);if(Je(h,Ze))return S.debugLog("[http] filtered ignored headers"),e.apply(this,[r,a,n]);const m=Ye();"TRUE"!==(process.env.EPSAGON_DISABLE_HTTP_TRACE_ID||"").toUpperCase()&&(h["epsagon-trace-id"]=m,o.headers||(o.headers=h)),o&&o.headers&&o.headers.epsagonSkipResponseData&&o.agent&&(o.agent.epsagonSkipResponseData=!0,delete o.headers.epsagonSkipResponseData);const _=o&&o.agent||o&&o._defaultAgent||void 0,b=u&&u.port||o&&o.port||o&&o.defaultPort||_&&_.defaultPort||80;let y=u&&u.protocol||443===b&&"https:"||o&&o.protocol||_&&_.protocol||"http:";y=y.slice(0,-1);const $=o&&o.body&&(o.body instanceof String||o.body instanceof Buffer)?o.body:"",x=o&&o.method||"GET",R=new T.Resource([d,"http",x]),A=Date.now(),M=new T.Event(["http-"+t(),S.createTimestampFromTime(A),null,"http",0,v.ErrorCode.OK]),C=`${y}://${d}${g}`;M.setResource(R),U.addToMetadata(M,{url:C,http_trace_id:m},{path:l,request_headers:h}),$&&(S.debugLog("Set request body="+$),U.addToMetadata(M,{},{request_body:$}));const patchedCallback=e=>{S.debugLog("[http] patched callback called for "+d);const t={};"x-openwhisk-activation-id"in e.headers&&(t.openwhisk_act_id=e.headers["x-openwhisk-activation-id"]),"x-last-activation-id"in e.headers&&(t.openwhisk_last_act_id=e.headers["x-last-activation-id"]),"x-request-id"in e.headers&&(t.request_id=e.headers["x-request-id"]),U.addToMetadata(M,{status:e.statusCode}),e.statusCode>=F.HTTP_ERR_CODE&&U.setException(M,new Error("Response code: "+e.statusCode)),U.addToMetadata(M,t,{response_headers:e.headers}),e.req&&e.req.getHeaders()&&U.addToMetadata(M,{},{request_headers:e.req.getHeaders()}),et(e.headers,M),i&&"function"==typeof i&&i(e)};patchedCallback.__epsagonCallback=!0,c=e.apply(this,function(e,t,r){return e&&t?[e,t,r]:e&&!t?[e,r]:[t,r]}(s,o,patchedCallback)),S.debugLog("[http] request sent "+d),o&&o.epsagonSkipResponseData&&!F.getConfig().disableHttpResponseBodyCapture&&f.wrap(c,"on",e=>requestOnWrapper(e,p));try{f.wrap(c,"write",(function(e){return function(...t){try{$&&""!==$||!t[0]||!("string"==typeof t[0]||t[0]instanceof Buffer)||tt(M,"request_body",t[0])}catch(e){S.debugLog("Could not parse request body in write wrapper")}return e.apply(this,t)}})),f.wrap(c,"end",(function(e){return function(...t){try{$&&""!==$||!t[0]||!("string"==typeof t[0]||t[0]instanceof Buffer)||tt(M,"request_body",t[0])}catch(e){S.debugLog("Could not parse request body in end wrapper")}return e.apply(this,t)}}))}catch(e){}const O=new Promise(e=>{let t=!1;c.on("timeout",()=>{t=!0}),c.once("error",r=>{const a=new Error;if(a.message=r.message,a.stack=r.stack,a.name=r.name,t&&(a.message+="\nTimeout exceeded"),c.aborted&&(a.message+="\nRequest aborted"),U.setException(M,a),Ve(M,e,A),0===c.listenerCount("error"))throw r});c.on("response",t=>{S.debugLog("[http] response arrived for "+d),(()=>{if(o){if(o.epsagonSkipResponseData)return!0;if(o.agent&&o.agent.epsagonSkipResponseData)return!0}return!!F.getConfig().disableHttpResponseBodyCapture})()||t.on("data",e=>rt(e,p)),t.on("end",()=>{const r=t.headers&&t.headers["content-encoding"];tt(M,"response_body",Buffer.concat(p),r),Ve(M,e,A)})},"skip")}).catch(e=>{le.addException(e)});le.addEvent(M,O),S.debugLog("[http] event added "+d)}catch(e){le.addException(e)}return c||(S.debugLog("[http] not client request set"),c=e.apply(this,[r,a,n])),S.debugLog("[http] done handling call"),c}}function httpGetWrapper(e){return function(t,r,a){const n=e.request(t,r,a);return n.end(),n}}function fetchH2Wrapper(e){return function(t){return e.apply(this,[{...t,epsagonSkipResponseData:!0}])}}function clientRequestWrapper(e){return function(t,r,a){const n=a||{};return n.headers?n.headers={...a.headers,epsagonSkipResponseData:!0}:n.headers={epsagonSkipResponseData:!0},e.apply(this,[t,r,n])}}var at={init(){f.wrap(p,"get",()=>httpGetWrapper(p)),f.wrap(p,"request",httpWrapper),f.wrap(i,"get",()=>httpGetWrapper(i)),f.wrap(i,"request",httpWrapper),We.patchModule("fetch-h2/dist/lib/context-http1","connect",fetchH2Wrapper,e=>e.OriginPool.prototype),We.patchModule("simple-oauth2/lib/client.js","request",clientRequestWrapper,e=>e.prototype),We.patchModule("simple-oauth2/lib/client/client.js","request",clientRequestWrapper,e=>e.prototype)}};const{MAX_HTTP_VALUE_SIZE:nt}=j,{isBlacklistURL:st,isBlacklistHeader:ot}=ce,{isURLIgnoredByUser:it,resolveHttpPromise:pt,USER_AGENTS_BLACKLIST:ct,URL_BLACKLIST:ut,generateEpsagonTraceId:dt,updateAPIGateway:lt,setJsonPayload:gt}=ke,ft=te("http2");function extractHeaders(e){return Object.entries(e).filter(e=>!e[0].startsWith(":")).reduce((e,t)=>{const[r,a]=t;return e[r]=a,e},{})}function wrapHttp2Connect(e){return function(t,r,a){const n=e.apply(this,[t,r,a]);try{f.wrap(n,"request",e=>function(e,t){return function(r,a){let n=null,s=null,o=null;try{const{hostname:n}=E.parse(t);if(st(n,ut,r[":path"])||it(n))return S.debugLog("filtered blacklist hostname "+n),e.apply(this,[r,a]);const i=extractHeaders(r);if(ot(i,ct))return S.debugLog("filtered blacklist headers"),e.apply(this,[r,a]);const p=dt();r["epsagon-trace-id"]=p;const{slsEvent:c,startTime:u}=U.initializeEvent("http",n,r[":method"],"http");s=c,o=u,U.addToMetadata(s,{http_trace_id:p},{path:r[":path"],request_headers:i})}catch(t){return le.addException(t),e.apply(this,[r,a])}try{n=e.apply(this,[r,a])}catch(e){throw U.setException(s,e),le.addEvent(s),e}try{const e=new Promise(e=>{const t=[];let r;F.getConfig().disableHttpResponseBodyCapture||n.on("data",e=>{e&&t.reduce((e,t)=>t.length+e,0)+e.length<=nt&&t.push("string"==typeof e?Buffer.from(e):e)}),n.once("error",t=>{if(U.setException(s,t),pt(s,e,o),0===n.listenerCount("error"))throw t}),n.once("close",()=>{const a=r&&r["content-encoding"];gt(s,"response_body",Buffer.concat(t),a),pt(s,e,o)}),n.once("response",e=>{lt(e,s),r=extractHeaders(e),U.addToMetadata(s,{status:e[":status"]},{response_headers:r})})}).catch(e=>{le.addException(e)});le.addEvent(s,e)}catch(e){le.addException(e)}return n}}(e,t))}catch(e){S.debugLog("Could not instrument http2 session request "+e)}return n}}var ht={init(){ft&&(S.debugLog("Patching http2 module"),f.wrap(ft,"connect",wrapHttp2Connect))}};function peg$SyntaxError(e,t,r,a){this.message=e,this.expected=t,this.found=r,this.location=a,this.name="SyntaxError","function"==typeof Error.captureStackTrace&&Error.captureStackTrace(this,peg$SyntaxError)}!function(e,t){function ctor(){this.constructor=e}ctor.prototype=t.prototype,e.prototype=new ctor}(peg$SyntaxError,Error),peg$SyntaxError.buildMessage=function(e,t){var r={literal:function(e){return'"'+literalEscape(e.text)+'"'},class:function(e){var t,r="";for(t=0;t<e.parts.length;t++)r+=e.parts[t]instanceof Array?classEscape(e.parts[t][0])+"-"+classEscape(e.parts[t][1]):classEscape(e.parts[t]);return"["+(e.inverted?"^":"")+r+"]"},any:function(e){return"any character"},end:function(e){return"end of input"},other:function(e){return e.description}};function hex(e){return e.charCodeAt(0).toString(16).toUpperCase()}function literalEscape(e){return e.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\0/g,"\\0").replace(/\t/g,"\\t").replace(/\n/g,"\\n").replace(/\r/g,"\\r").replace(/[\x00-\x0F]/g,(function(e){return"\\x0"+hex(e)})).replace(/[\x10-\x1F\x7F-\x9F]/g,(function(e){return"\\x"+hex(e)}))}function classEscape(e){return e.replace(/\\/g,"\\\\").replace(/\]/g,"\\]").replace(/\^/g,"\\^").replace(/-/g,"\\-").replace(/\0/g,"\\0").replace(/\t/g,"\\t").replace(/\n/g,"\\n").replace(/\r/g,"\\r").replace(/[\x00-\x0F]/g,(function(e){return"\\x0"+hex(e)})).replace(/[\x10-\x1F\x7F-\x9F]/g,(function(e){return"\\x"+hex(e)}))}return"Expected "+function(e){var t,a,n,s=new Array(e.length);for(t=0;t<e.length;t++)s[t]=(n=e[t],r[n.type](n));if(s.sort(),s.length>0){for(t=1,a=1;t<s.length;t++)s[t-1]!==s[t]&&(s[a]=s[t],a++);s.length=a}switch(s.length){case 1:return s[0];case 2:return s[0]+" or "+s[1];default:return s.slice(0,-1).join(", ")+", or "+s[s.length-1]}}(e)+" but "+function(e){return e?'"'+literalEscape(e)+'"':"end of input"}(t)+" found."};var mt={SyntaxError:peg$SyntaxError,parse:function(e,t){t=void 0!==t?t:{};var r,a={},n={start:peg$parsestart},s=peg$parsestart,o="(",i=peg$literalExpectation("(",!1),p=")",c=peg$literalExpectation(")",!1),u=peg$literalExpectation(";",!1),d="=",l=peg$literalExpectation("=",!1),g=peg$literalExpectation("KEY",!0),f="index",h=peg$literalExpectation("INDEX",!0),m=peg$otherExpectation("column_clause"),peg$c28=function(e,t){return createList(e,t)},_="`",E=peg$literalExpectation("`",!1),peg$c51=function(e,t){var r={type:"expr_list"},a=function(e,t,r){for(var a,n=createList(e,t),s=[],o=0;o<n.length;o++)"param"==(a=n[o]).type?(a.room=r,a.pos=o):s.push(a);return s}(e,t,r);return r.value=a,r},peg$c54=function(e,t){return createBinaryExprChain(e,t)},b=peg$literalExpectation("!",!1),y=peg$literalExpectation(">=",!1),v=peg$literalExpectation(">",!1),T=peg$literalExpectation("<=",!1),$=peg$literalExpectation("<>",!1),x=peg$literalExpectation("<",!1),S=peg$literalExpectation("!=",!1),peg$c72=function(e,t){return{op:e,right:t}},peg$c74=function(e){return e[0]+" "+e[2]},peg$c75=function(e,t){return{op:e,right:t}},peg$c76=function(e,t){return{op:e,right:t}},R=peg$literalExpectation("+",!1),A=peg$literalExpectation("-",!1),M="*",C=peg$literalExpectation("*",!1),O=peg$literalExpectation("/",!1),w=peg$literalExpectation("%",!1),peg$c88=function(e){return e.paren=!0,e},peg$c91=function(e){return!0===Xt[e.toUpperCase()]},N=/^[^`]/,L=peg$classExpectation(["`"],!0,!1),peg$c96=function(e,t){return e+t.join("")},I=/^[A-Za-z_]/,D=peg$classExpectation([["A","Z"],["a","z"],"_"],!1,!1),P=/^[A-Za-z0-9_]/,k=peg$classExpectation([["A","Z"],["a","z"],["0","9"],"_"],!1,!1),W=/^[A-Za-z0-9_:]/,q=peg$classExpectation([["A","Z"],["a","z"],["0","9"],"_",":"],!1,!1),B=peg$otherExpectation("PARAM[:param, ?]"),j=peg$literalExpectation(":",!1),F=peg$literalExpectation("?",!1),U=/^[0-9a-zA-Z_]/,z=peg$classExpectation([["0","9"],["a","z"],["A","Z"],"_"],!1,!1),H='"',G=peg$literalExpectation('"',!1),K="'",J=peg$literalExpectation("'",!1),Q=/^[^'\\\0-\x1F\x7F]/,V=peg$classExpectation(["'","\\",["\0",""],""],!0,!1),Z=/^[^"\\\0-\x1F\x7F]/,X=peg$classExpectation(['"',"\\",["\0",""],""],!0,!1),Y=peg$literalExpectation("\\'",!1),ee=peg$literalExpectation('\\"',!1),te=peg$literalExpectation("\\\\",!1),re=peg$literalExpectation("\\/",!1),ae=peg$literalExpectation("\\b",!1),ne=peg$literalExpectation("\\f",!1),se=peg$literalExpectation("\\n",!1),oe=peg$literalExpectation("\\r",!1),ie=peg$literalExpectation("\\t",!1),pe=peg$literalExpectation("\\u",!1),ce=peg$otherExpectation("LITERAL INT"),ue=".",de=peg$literalExpectation(".",!1),le=peg$otherExpectation("NUMBER"),ge=/^[0-9]/,fe=peg$classExpectation([["0","9"]],!1,!1),he=/^[1-9]/,me=peg$classExpectation([["1","9"]],!1,!1),_e=peg$otherExpectation("HEX"),Ee=/^[0-9a-fA-F]/,be=peg$classExpectation([["0","9"],["a","f"],["A","F"]],!1,!1),ye=/^[eE]/,ve=peg$classExpectation(["e","E"],!1,!1),Te=/^[+\-]/,$e=peg$classExpectation(["+","-"],!1,!1),xe="null",Se=peg$literalExpectation("NULL",!0),Re="true",Ae=peg$literalExpectation("TRUE",!0),Me="false",Ce=peg$literalExpectation("FALSE",!0),Oe="select",we=peg$literalExpectation("SELECT",!0),Ne="update",Le=peg$literalExpectation("UPDATE",!0),Ie="create",De=peg$literalExpectation("CREATE",!0),Pe="delete",ke=peg$literalExpectation("DELETE",!0),We="insert",qe=peg$literalExpectation("INSERT",!0),Be="replace",je=peg$literalExpectation("REPLACE",!0),Fe="into",Ue=peg$literalExpectation("INTO",!0),ze="from",He=peg$literalExpectation("FROM",!0),Ge=peg$literalExpectation("SET",!0),Ke=peg$literalExpectation("AS",!0),Je="table",Qe=peg$literalExpectation("TABLE",!0),Ve=peg$literalExpectation("ON",!0),Ze="left",Xe=peg$literalExpectation("LEFT",!0),Ye="inner",et=peg$literalExpectation("INNER",!0),tt=peg$literalExpectation("JOIN",!0),rt=peg$literalExpectation("UNION",!0),at="values",nt=peg$literalExpectation("VALUES",!0),st=peg$literalExpectation("IF",!0),ot="exists",it=peg$literalExpectation("EXISTS",!0),pt="where",ct=peg$literalExpectation("WHERE",!0),ut="group",dt=peg$literalExpectation("GROUP",!0),lt=peg$literalExpectation("BY",!0),gt="order",ft=peg$literalExpectation("ORDER",!0),ht="limit",mt=peg$literalExpectation("LIMIT",!0),_t=peg$literalExpectation("ASC",!0),Et="desc",bt=peg$literalExpectation("DESC",!0),yt=peg$literalExpectation("ALL",!0),vt=peg$literalExpectation("DISTINCT",!0),Tt="between",$t=peg$literalExpectation("BETWEEN",!0),xt=peg$literalExpectation("IN",!0),St=peg$literalExpectation("IS",!0),Rt=peg$literalExpectation("LIKE",!0),At=peg$literalExpectation("CONTAINS",!0),Mt=peg$literalExpectation("NOT",!0),Ct=peg$literalExpectation("AND",!0),Ot=peg$literalExpectation("OR",!0),wt="count",Nt=peg$literalExpectation("COUNT",!0),Lt=peg$literalExpectation(",",!1),It=peg$literalExpectation("[",!1),Dt=peg$literalExpectation("]",!1),Pt=peg$otherExpectation("WHITE_SPACE"),kt=/^[ \t\n\r]/,Wt=peg$classExpectation([" ","\t","\n","\r"],!1,!1),qt=peg$literalExpectation("$",!1),Bt="return",jt=peg$literalExpectation("return",!0),Ft=":=",Ut=peg$literalExpectation(":=",!1),zt=0,Ht=[{line:1,column:1}],Gt=0,Kt=[],Jt=0;if("startRule"in t){if(!(t.startRule in n))throw new Error("Can't start parsing from rule \""+t.startRule+'".');s=n[t.startRule]}function peg$literalExpectation(e,t){return{type:"literal",text:e,ignoreCase:t}}function peg$classExpectation(e,t,r){return{type:"class",parts:e,inverted:t,ignoreCase:r}}function peg$otherExpectation(e){return{type:"other",description:e}}function peg$computePosDetails(t){var r,a=Ht[t];if(a)return a;for(r=t-1;!Ht[r];)r--;for(a={line:(a=Ht[r]).line,column:a.column};r<t;)10===e.charCodeAt(r)?(a.line++,a.column=1):a.column++,r++;return Ht[t]=a,a}function peg$computeLocation(e,t){var r=peg$computePosDetails(e),a=peg$computePosDetails(t);return{start:{offset:e,line:r.line,column:r.column},end:{offset:t,line:a.line,column:a.column}}}function peg$fail(e){zt<Gt||(zt>Gt&&(Gt=zt,Kt=[]),Kt.push(e))}function peg$parsestart(){var t,r,n,s;return t=zt,(r=peg$parse__())!==a?((n=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseselect_stmt())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseKW_UNION())!==a&&(i=peg$parse__())!==a&&(p=peg$parseselect_stmt())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseKW_UNION())!==a&&(i=peg$parse__())!==a&&(p=peg$parseselect_stmt())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=function(e,t){for(var r=e,a=0;a<t.length;a++)r._next=t[a][3],r=r._next;return e}(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())===a&&(n=function(){var t,r,n,s;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===Ne?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(Le));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=peg$parsetable_name())!==a&&peg$parse__()!==a&&function(){var t,r,n,s;t=zt,"set"===e.substr(zt,3).toLowerCase()?(r=e.substr(zt,3),zt+=3):(r=a,0===Jt&&peg$fail(Ge));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(n=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseset_item())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseset_item())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseset_item())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c28(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())!==a&&peg$parse__()!==a&&(s=peg$parsewhere_clause())!==a?(i=n,p=s,t={type:"update",db:(o=r).db,table:o.table,set:i,where:p}):(zt=t,t=a);var o,i,p;return t}())===a&&(n=function(){var t,r,n;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===Pe?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(ke));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=peg$parsefrom_clause())!==a&&peg$parse__()!==a?((n=peg$parsewhere_clause())===a&&(n=null),n!==a?t={type:"delete",from:r,where:n}:(zt=t,t=a)):(zt=t,t=a);return t}())===a&&(n=function(){var t,r,n,s,o;t=zt,(r=function(){var t,r;t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===We?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(qe));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(r="insert");(t=r)===a&&(t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,7).toLowerCase()===Be?(r=e.substr(zt,7),zt+=7):(r=a,0===Jt&&peg$fail(je));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(r="replace"),t=r);return t}())!==a&&peg$parse__()!==a&&function(){var t,r,n,s;t=zt,e.substr(zt,4).toLowerCase()===Fe?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(Ue));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(n=peg$parsetable_name())!==a&&peg$parse__()!==a&&peg$parseLPAREN()!==a&&peg$parse__()!==a&&(s=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parsecolumn())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsecolumn())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsecolumn())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c28(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a&&peg$parse__()!==a&&(o=function(){var t,r;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===at?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(nt));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parsevalue_item())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsevalue_item())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsevalue_item())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c28(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())!==a?t=r:(zt=t,t=a);return t}())!==a?(p=s,c=o,t=r={type:r,db:(i=n).db,table:i.table,columns:p,values:c}):(zt=t,t=a);var i,p,c;return t}())===a&&(n=function(){var t,r,n,s,d,l,g,f,h,m,_,E,b;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===Ie?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(De));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===Je?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(Qe));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a?(r=zt,(n=function(){var t,r,n,s;t=zt,"if"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(st));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(s=peg$parse__())!==a&&(d=peg$parseKW_NOT())!==a&&(l=peg$parse__())!==a&&(g=function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===ot?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(it));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(f=peg$parse__())!==a?r=n=[n,s,d,l,g,f]:(zt=r,r=a),r===a&&(r=null),r!==a&&(n=peg$parsetable_name())!==a&&(s=peg$parse__())!==a?(40===e.charCodeAt(zt)?(d=o,zt++):(d=a,0===Jt&&peg$fail(i)),d!==a&&(l=peg$parse__())!==a&&(g=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parsecolumn_def())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsecolumn_def())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsecolumn_def())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=createList(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())!==a&&(f=peg$parse__())!==a?(41===e.charCodeAt(zt)?(h=p,zt++):(h=a,0===Jt&&peg$fail(c)),h!==a&&peg$parse__()!==a?((m=function(){var e,t,r,n,s,o;if(e=zt,(t=peg$parsetable_option())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parsetable_option())!==a?n=s=[s,o]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parsetable_option())!==a?n=s=[s,o]:(zt=n,n=a);r!==a?e=t=function(e,t){let r=e;return t.forEach(e=>{let t=e[1];Object.keys(t).forEach(e=>{r[e]=t[e].column})}),r}(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())===a&&(m=null),m!==a&&peg$parse__()!==a?((_=function(){var e,t,r,n,s,o;if(e=zt,(t=peg$parseprimary())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseprimary())!==a?n=s=[s,o]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseprimary())!==a?n=s=[s,o]:(zt=n,n=a);r!==a?e=t=function(e,t){let r=[e];return t.forEach(e=>{r.push(e)}),r}(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())===a&&(_=null),_!==a&&peg$parse__()!==a?(59===e.charCodeAt(zt)?(E=";",zt++):(E=a,0===Jt&&peg$fail(u)),E===a&&(E=null),E!==a?((b=peg$parse__())===a&&(b=null),b!==a?t={type:"create_table",name:n,columns:g,tableOptions:m,partitionOptions:_}:(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a);return t}()),n!==a?((s=n).params=Yt,t=r=s):(zt=t,t=a)):(zt=t,t=a),t===a&&(t=zt,(r=function(){var e,t;e=[],t=peg$parseproc_stmt();for(;t!==a;)e.push(t),t=peg$parseproc_stmt();return e}())!==a&&(r=r),t=r),t}function peg$parsecolumn_def(){var t,r,n,s,u,d,l;if((t=function(){var t,r,n,s,u,d,l,m;t=zt,r=zt,n=zt,s=[],u=peg$parseident_name();for(;u!==a;)s.push(u),u=peg$parseident_name();s!==a&&(u=peg$parse__())!==a?("key"===e.substr(zt,3).toLowerCase()?(d=e.substr(zt,3),zt+=3):(d=a,0===Jt&&peg$fail(g)),d===a&&(e.substr(zt,5).toLowerCase()===f?(d=e.substr(zt,5),zt+=5):(d=a,0===Jt&&peg$fail(h))),d!==a?n=s=[s,u,d]:(zt=n,n=a)):(zt=n,n=a);r=n!==a?e.substring(r,zt):n;r!==a&&(n=peg$parse__())!==a&&(s=peg$parsecolumn())!==a&&(u=peg$parse__())!==a?(40===e.charCodeAt(zt)?(d=o,zt++):(d=a,0===Jt&&peg$fail(i)),d!==a&&(l=peg$parsecolumn_clause())!==a?(41===e.charCodeAt(zt)?(m=p,zt++):(m=a,0===Jt&&peg$fail(c)),m!==a?t=r=function(e,t,r){let a=[];return r.forEach(e=>{a.push(e.expr.column)}),{type:e,name:t,columns:a}}(r,s,l):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a);return t}())===a)if(t=zt,(r=peg$parsecolumn())!==a)if(peg$parse__()!==a)if((n=function(){var e;zt,(e=peg$parsefunc_call())===a&&(e=peg$parseident());e!==a&&(e=function(e){if("function"===e.type){let t=[];return e.args.value.forEach(e=>{t.push(e.value)}),{type:e.name,args:t}}return{type:e}}(e));return e}())!==a){for(s=[],u=zt,(d=peg$parse__())!==a?((l=peg$parseliteral())===a&&(l=peg$parseident_name()),l!==a?u=d=[d,l]:(zt=u,u=a)):(zt=u,u=a);u!==a;)s.push(u),u=zt,(d=peg$parse__())!==a?((l=peg$parseliteral())===a&&(l=peg$parseident_name()),l!==a?u=d=[d,l]:(zt=u,u=a)):(zt=u,u=a);s!==a?t=r=function(e,t,r){let a=[];return r.forEach(e=>{a.push(e[1])}),{name:e,type:t,ext:a}}(r,n,s):(zt=t,t=a)}else zt=t,t=a;else zt=t,t=a;else zt=t,t=a;return t}function peg$parsetable_option(){var t,r,n,s;return t=zt,(r=peg$parseprimary())!==a&&peg$parse__()!==a?(61===e.charCodeAt(zt)?(n=d,zt++):(n=a,0===Jt&&peg$fail(l)),n===a&&(n=null),n!==a&&peg$parse__()!==a&&(s=peg$parseprimary())!==a?t=r=function(e,t){let r={},a="column_ref"===e.type?e.column:e.value,n="column_ref"===t.type?t.column:t.value;return r[a]=n,r}(r,s):(zt=t,t=a)):(zt=t,t=a),t}function peg$parseselect_stmt(){var t,r,n,s,u,d,l;return(t=function(){var t,r,n,s,o,i,p,c;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,6).toLowerCase()===Oe?(r=e.substr(zt,6),zt+=6):(r=a,0===Jt&&peg$fail(we));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a?((r=peg$parseKW_DISTINCT())===a&&(r=null),r!==a&&peg$parse__()!==a&&(n=peg$parsecolumn_clause())!==a&&peg$parse__()!==a?((s=peg$parsefrom_clause())===a&&(s=null),s!==a&&peg$parse__()!==a?((o=peg$parsewhere_clause())===a&&(o=null),o!==a&&peg$parse__()!==a?((i=function(){var t,r;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===ut?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(dt));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&peg$parseKW_BY()!==a&&peg$parse__()!==a&&(r=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parsecolumn_ref())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsecolumn_ref())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parsecolumn_ref())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c28(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())!==a?t=r:(zt=t,t=a);return t}())===a&&(i=null),i!==a&&peg$parse__()!==a?((p=function(){var t,r;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===gt?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(ft));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&peg$parseKW_BY()!==a&&peg$parse__()!==a&&(r=function(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseorder_by_element())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseorder_by_element())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseorder_by_element())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c28(t,r):(zt=e,e=a)}else zt=e,e=a;return e}())!==a?t=r:(zt=t,t=a);return t}())===a&&(p=null),p!==a&&peg$parse__()!==a?((c=function(){var t,r,n,s,o,i;t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===ht?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(mt));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=peg$parseint_or_param())!==a&&peg$parse__()!==a?(n=zt,(s=peg$parseCOMMA())!==a&&(o=peg$parse__())!==a&&(i=peg$parseint_or_param())!==a?n=s=[s,o,i]:(zt=n,n=a),n===a&&(n=null),n!==a?(c=[r],(p=n)?c.push(p[2]):c.unshift({type:"number",value:0}),t=c):(zt=t,t=a)):(zt=t,t=a);var p,c;return t}())===a&&(c=null),c!==a?t={type:"select",distinct:r,columns:n,from:s,where:o,groupby:i,orderby:p,limit:c}:(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a);return t}())===a&&(t=zt,r=zt,40===e.charCodeAt(zt)?(n=o,zt++):(n=a,0===Jt&&peg$fail(i)),n!==a&&(s=peg$parse__())!==a&&(u=peg$parseselect_stmt())!==a&&(d=peg$parse__())!==a?(41===e.charCodeAt(zt)?(l=p,zt++):(l=a,0===Jt&&peg$fail(c)),l!==a?r=n=[n,s,u,d,l]:(zt=r,r=a)):(zt=r,r=a),r!==a&&(r=r[2]),t=r),t}function peg$parsecolumn_clause(){var t,r,n,s,o,i,p,c;if(Jt++,t=zt,(r=function(){var t,r,n,s;t=zt,"all"===e.substr(zt,3).toLowerCase()?(r=e.substr(zt,3),zt+=3):(r=a,0===Jt&&peg$fail(yt));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="ALL":(zt=t,t=a)):(zt=t,t=a);return t}())===a&&(r=zt,(n=function(){var t;42===e.charCodeAt(zt)?(t=M,zt++):(t=a,0===Jt&&peg$fail(C));return t}())!==a?(s=zt,Jt++,o=peg$parseident_start(),Jt--,o===a?s=void 0:(zt=s,s=a),s!==a?r=n=[n,s]:(zt=r,r=a)):(zt=r,r=a)),r!==a&&(r="*"),(t=r)===a)if(t=zt,(r=peg$parsecolumn_list_item())!==a){for(n=[],s=zt,(o=peg$parse__())!==a&&(i=peg$parseCOMMA())!==a&&(p=peg$parse__())!==a&&(c=peg$parsecolumn_list_item())!==a?s=o=[o,i,p,c]:(zt=s,s=a);s!==a;)n.push(s),s=zt,(o=peg$parse__())!==a&&(i=peg$parseCOMMA())!==a&&(p=peg$parse__())!==a&&(c=peg$parsecolumn_list_item())!==a?s=o=[o,i,p,c]:(zt=s,s=a);n!==a?t=r=peg$c28(r,n):(zt=t,t=a)}else zt=t,t=a;return Jt--,t===a&&(r=a,0===Jt&&peg$fail(m)),t}function peg$parsecolumn_list_item(){var e,t,r;return e=zt,(t=peg$parseadditive_expr())!==a&&peg$parse__()!==a?((r=function(){var e,t,r;e=zt,(t=peg$parseKW_AS())===a&&(t=null);t!==a&&peg$parse__()!==a&&(r=peg$parseident())!==a?e=t=r:(zt=e,e=a);return e}())===a&&(r=null),r!==a?e=t={expr:t,as:r}:(zt=e,e=a)):(zt=e,e=a),e}function peg$parsefrom_clause(){var t,r;return t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,4).toLowerCase()===ze?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(He));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=function(){var e,t,r,n;if(e=zt,(t=peg$parsetable_base())!==a){for(r=[],n=peg$parsetable_ref();n!==a;)r.push(n),n=peg$parsetable_ref();r!==a?(s=t,(o=r).unshift(s),e=t=o):(zt=e,e=a)}else zt=e,e=a;var s,o;return e}())!==a?t=r:(zt=t,t=a),t}function peg$parsetable_ref(){var e,t,r;return e=zt,peg$parse__()!==a&&(t=peg$parseCOMMA())!==a&&peg$parse__()!==a&&(r=peg$parsetable_base())!==a?e=r:(zt=e,e=a),e===a&&(e=zt,peg$parse__()!==a&&(t=function(){var e,t,r,n;e=zt,(t=peg$parsejoin_op())!==a&&peg$parse__()!==a&&(r=peg$parsetable_base())!==a&&peg$parse__()!==a?((n=peg$parseon_clause())===a&&(n=null),n!==a?(s=t,i=n,(o=r).join=s,o.on=i,e=t=o):(zt=e,e=a)):(zt=e,e=a);var s,o,i;return e}())!==a?e=t:(zt=e,e=a)),e}function peg$parsetable_base(){var e,t,r,n,s,o;return e=zt,(t=peg$parsetable_name())!==a&&peg$parse__()!==a?((r=peg$parseKW_AS())===a&&(r=null),r!==a&&peg$parse__()!==a?((n=peg$parseident())===a&&(n=null),n!==a?(o=n,e=t="var"==(s=t).type?(s.as=o,s):{db:s.db,table:s.table,as:o}):(zt=e,e=a)):(zt=e,e=a)):(zt=e,e=a),e}function peg$parsejoin_op(){var t,r,n,s;return t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,4).toLowerCase()===Ze?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(Xe));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(n=peg$parse__())!==a&&(s=peg$parseKW_JOIN())!==a?t=r="LEFT JOIN":(zt=t,t=a),t===a&&(t=zt,r=zt,(n=function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===Ye?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(et));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(s=peg$parse__())!==a?r=n=[n,s]:(zt=r,r=a),r===a&&(r=null),r!==a&&(n=peg$parseKW_JOIN())!==a?t=r="INNER JOIN":(zt=t,t=a)),t}function peg$parsetable_name(){var t,r,n,s,o,i,p,c,u,d,l,g;return t=zt,96===e.charCodeAt(zt)?(r=_,zt++):(r=a,0===Jt&&peg$fail(E)),r===a&&(r=null),r!==a&&(n=peg$parseident())!==a?(s=zt,(o=peg$parse__())!==a&&(i=peg$parseDOT())!==a&&(p=peg$parse__())!==a&&(c=peg$parseident_name())!==a?s=o=[o,i,p,c]:(zt=s,s=a),s===a&&(s=null),s!==a?(96===e.charCodeAt(zt)?(o=_,zt++):(o=a,0===Jt&&peg$fail(E)),o===a&&(o=null),o!==a?(l={db:"",table:u=n},(d=s)&&(l.db=u,l.table=d[3]),t=r=l):(zt=t,t=a)):(zt=t,t=a)):(zt=t,t=a),t===a&&(t=zt,(r=peg$parsevar_decl())!==a&&((g=r).db="",g.table=g.name,r=g),t=r),t}function peg$parseon_clause(){var t,r;return t=zt,function(){var t,r,n,s;t=zt,"on"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(Ve));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=peg$parseor_expr())!==a?t=r:(zt=t,t=a),t}function peg$parsewhere_clause(){var t,r;return t=zt,function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===pt?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(ct));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}()!==a&&peg$parse__()!==a&&(r=peg$parseor_expr())!==a?t=r:(zt=t,t=a),t}function peg$parseorder_by_element(){var t,r,n,s;return t=zt,(r=peg$parseor_expr())!==a&&peg$parse__()!==a?((n=function(){var t,r,n,s;t=zt,e.substr(zt,4).toLowerCase()===Et?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(bt));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="DESC":(zt=t,t=a)):(zt=t,t=a);return t}())===a&&(n=function(){var t,r,n,s;t=zt,"asc"===e.substr(zt,3).toLowerCase()?(r=e.substr(zt,3),zt+=3):(r=a,0===Jt&&peg$fail(_t));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="ASC":(zt=t,t=a)):(zt=t,t=a);return t}()),n===a&&(n=null),n!==a?(s={expr:r,type:"ASC"},"DESC"==n&&(s.type="DESC"),t=r=s):(zt=t,t=a)):(zt=t,t=a),t}function peg$parseint_or_param(){var e;return(e=function(){var e,t;Jt++,e=zt,(t=peg$parseint())!==a&&(t=function(e){return{type:"number",value:e}}(t));Jt--,(e=t)===a&&(t=a,0===Jt&&peg$fail(ce));return e}())===a&&(e=peg$parseparam()),e}function peg$parseset_item(){var t,r,n,s;return t=zt,(r=peg$parsecolumn_name())!==a&&peg$parse__()!==a?(61===e.charCodeAt(zt)?(n=d,zt++):(n=a,0===Jt&&peg$fail(l)),n!==a&&peg$parse__()!==a&&(s=peg$parseadditive_expr())!==a?t=r={column:r,value:s}:(zt=t,t=a)):(zt=t,t=a),t}function peg$parsevalue_item(){var e,t;return e=zt,peg$parseLPAREN()!==a&&peg$parse__()!==a&&(t=peg$parseexpr_list())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?e=t:(zt=e,e=a),e}function peg$parseexpr_list(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseor_expr())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseor_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseor_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c51(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseor_expr(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseand_expr())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseKW_OR())!==a&&(i=peg$parse__())!==a&&(p=peg$parseand_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseKW_OR())!==a&&(i=peg$parse__())!==a&&(p=peg$parseand_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c54(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseand_expr(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parsenot_expr())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseKW_AND())!==a&&(i=peg$parse__())!==a&&(p=peg$parsenot_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseKW_AND())!==a&&(i=peg$parse__())!==a&&(p=peg$parsenot_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c54(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parsenot_expr(){var t,r,n,s,o;return t=zt,(r=peg$parseKW_NOT())===a&&(r=zt,33===e.charCodeAt(zt)?(n="!",zt++):(n=a,0===Jt&&peg$fail(b)),n!==a?(s=zt,Jt++,61===e.charCodeAt(zt)?(o=d,zt++):(o=a,0===Jt&&peg$fail(l)),Jt--,o===a?s=void 0:(zt=s,s=a),s!==a?r=n=[n,s]:(zt=r,r=a)):(zt=r,r=a)),r!==a&&(n=peg$parse__())!==a&&(s=peg$parsenot_expr())!==a?t=r={type:"unary_expr",operator:"NOT",expr:s}:(zt=t,t=a),t===a&&(t=peg$parsecomparison_expr()),t}function peg$parsecomparison_expr(){var t,r,n;return t=zt,(r=peg$parseadditive_expr())!==a&&peg$parse__()!==a?((n=function(){var t;(t=function(){var e,t,r,n,s,o;zt,e=[],t=zt,(r=peg$parse__())!==a&&(n=peg$parsearithmetic_comparison_operator())!==a&&(s=peg$parse__())!==a&&(o=peg$parseadditive_expr())!==a?t=r=[r,n,s,o]:(zt=t,t=a);if(t!==a)for(;t!==a;)e.push(t),t=zt,(r=peg$parse__())!==a&&(n=peg$parsearithmetic_comparison_operator())!==a&&(s=peg$parse__())!==a&&(o=peg$parseadditive_expr())!==a?t=r=[r,n,s,o]:(zt=t,t=a);else e=a;e!==a&&(e={type:"arithmetic",tail:e});return e}())===a&&(t=function(){var e,t,r,n;e=zt,(t=peg$parsein_op())!==a&&peg$parse__()!==a&&(r=peg$parseLPAREN())!==a&&peg$parse__()!==a&&(n=peg$parseexpr_list())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?e=t=peg$c75(t,n):(zt=e,e=a);e===a&&(e=zt,(t=peg$parsein_op())!==a&&peg$parse__()!==a&&(r=peg$parsevar_decl())!==a?e=t=peg$c76(t,r):(zt=e,e=a));return e}())===a&&(t=function(){var t,r,n,s;t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,7).toLowerCase()===Tt?(r=e.substr(zt,7),zt+=7):(r=a,0===Jt&&peg$fail($t));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="BETWEEN":(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&peg$parse__()!==a&&(n=peg$parseadditive_expr())!==a&&peg$parse__()!==a&&peg$parseKW_AND()!==a&&peg$parse__()!==a&&(s=peg$parseadditive_expr())!==a?t=r={op:r,right:{type:"expr_list",value:[n,s]}}:(zt=t,t=a);return t}())===a&&(t=function(){var t,r,n;t=zt,(r=function(){var t,r,n,s;t=zt,"is"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(St));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="IS":(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&peg$parse__()!==a&&(n=peg$parseadditive_expr())!==a?t=r=peg$c72(r,n):(zt=t,t=a);return t}())===a&&(t=function(){var e,t,r;e=zt,(t=function(){var e,t,r,n,s;e=zt,t=zt,(r=peg$parseKW_NOT())!==a&&(n=peg$parse__())!==a&&(s=peg$parseKW_LIKE())!==a?t=r=[r,n,s]:(zt=t,t=a);t!==a&&(t=peg$c74(t));(e=t)===a&&(e=peg$parseKW_LIKE());return e}())!==a&&peg$parse__()!==a&&(r=peg$parsecomparison_expr())!==a?e=t=peg$c72(t,r):(zt=e,e=a);return e}())===a&&(t=function(){var e,t,r,n;e=zt,(t=peg$parsecontains_op())!==a&&peg$parse__()!==a&&(r=peg$parseLPAREN())!==a&&peg$parse__()!==a&&(n=peg$parseexpr_list())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?e=t=peg$c75(t,n):(zt=e,e=a);e===a&&(e=zt,(t=peg$parsecontains_op())!==a&&peg$parse__()!==a&&(r=peg$parsevar_decl())!==a?e=t=peg$c76(t,r):(zt=e,e=a));return e}());return t}())===a&&(n=null),n!==a?t=r=function(e,t){if(t)return"arithmetic"==t.type?createBinaryExprChain(e,t.tail):createBinaryExpr(t.op,e,t.right);return e}(r,n):(zt=t,t=a)):(zt=t,t=a),t}function peg$parsearithmetic_comparison_operator(){var t;return">="===e.substr(zt,2)?(t=">=",zt+=2):(t=a,0===Jt&&peg$fail(y)),t===a&&(62===e.charCodeAt(zt)?(t=">",zt++):(t=a,0===Jt&&peg$fail(v)),t===a&&("<="===e.substr(zt,2)?(t="<=",zt+=2):(t=a,0===Jt&&peg$fail(T)),t===a&&("<>"===e.substr(zt,2)?(t="<>",zt+=2):(t=a,0===Jt&&peg$fail($)),t===a&&(60===e.charCodeAt(zt)?(t="<",zt++):(t=a,0===Jt&&peg$fail(x)),t===a&&(61===e.charCodeAt(zt)?(t=d,zt++):(t=a,0===Jt&&peg$fail(l)),t===a&&("!="===e.substr(zt,2)?(t="!=",zt+=2):(t=a,0===Jt&&peg$fail(S)))))))),t}function peg$parsein_op(){var e,t,r,n,s;return e=zt,t=zt,(r=peg$parseKW_NOT())!==a&&(n=peg$parse__())!==a&&(s=peg$parseKW_IN())!==a?t=r=[r,n,s]:(zt=t,t=a),t!==a&&(t=peg$c74(t)),(e=t)===a&&(e=peg$parseKW_IN()),e}function peg$parsecontains_op(){var e,t,r,n,s;return e=zt,t=zt,(r=peg$parseKW_NOT())!==a&&(n=peg$parse__())!==a&&(s=peg$parseKW_CONTAINS())!==a?t=r=[r,n,s]:(zt=t,t=a),t!==a&&(t=peg$c74(t)),(e=t)===a&&(e=peg$parseKW_CONTAINS()),e}function peg$parseadditive_expr(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parsemultiplicative_expr())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseadditive_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parsemultiplicative_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseadditive_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parsemultiplicative_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c54(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseadditive_operator(){var t;return 43===e.charCodeAt(zt)?(t="+",zt++):(t=a,0===Jt&&peg$fail(R)),t===a&&(45===e.charCodeAt(zt)?(t="-",zt++):(t=a,0===Jt&&peg$fail(A))),t}function peg$parsemultiplicative_expr(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseprimary())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parsemultiplicative_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parseprimary())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parsemultiplicative_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parseprimary())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=createBinaryExprChain(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parsemultiplicative_operator(){var t;return 42===e.charCodeAt(zt)?(t=M,zt++):(t=a,0===Jt&&peg$fail(C)),t===a&&(47===e.charCodeAt(zt)?(t="/",zt++):(t=a,0===Jt&&peg$fail(O)),t===a&&(37===e.charCodeAt(zt)?(t="%",zt++):(t=a,0===Jt&&peg$fail(w)))),t}function peg$parseprimary(){var t,r;return(t=peg$parseliteral())===a&&(t=function(){var t;(t=function(){var t,r,n;t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===wt?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(Nt));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="COUNT":(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&peg$parse__()!==a&&peg$parseLPAREN()!==a&&peg$parse__()!==a&&(n=function(){var t,r,n;t=zt,(r=function(){var t;zt,42===e.charCodeAt(zt)?(t=M,zt++):(t=a,0===Jt&&peg$fail(C));t!==a&&(t={type:"star",value:"*"});return t}())!==a&&(r={expr:r});(t=r)===a&&(t=zt,(r=peg$parseKW_DISTINCT())===a&&(r=null),r!==a&&peg$parse__()!==a&&(n=peg$parsecolumn_ref())!==a?t=r={distinct:r,expr:n}:(zt=t,t=a));return t}())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?t=r=function(e,t){return{type:"aggr_func",name:e,args:t}}(r,n):(zt=t,t=a);return t}())===a&&(t=function(){var t,r,n;t=zt,(r=function(){var t,r;zt,t=[],U.test(e.charAt(zt))?(r=e.charAt(zt),zt++):(r=a,0===Jt&&peg$fail(z));if(r!==a)for(;r!==a;)t.push(r),U.test(e.charAt(zt))?(r=e.charAt(zt),zt++):(r=a,0===Jt&&peg$fail(z));else t=a;t!==a&&(t=t.join(""));return t}())!==a&&peg$parse__()!==a&&peg$parseLPAREN()!==a&&peg$parse__()!==a&&(n=peg$parseadditive_expr())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?t=r=function(e,t){return{type:"aggr_func",name:e,args:{expr:t}}}(r,n):(zt=t,t=a);return t}());return t}())===a&&(t=peg$parsefunc_call())===a&&(t=peg$parsecolumn_ref())===a&&(t=peg$parseparam())===a&&(t=zt,peg$parseLPAREN()!==a&&peg$parse__()!==a&&(r=peg$parseor_expr())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?t=peg$c88(r):(zt=t,t=a),t===a&&(t=peg$parsevar_decl())),t}function peg$parsecolumn_ref(){var e,t,r;return e=zt,(t=peg$parseident())!==a&&peg$parse__()!==a&&peg$parseDOT()!==a&&peg$parse__()!==a&&(r=peg$parsecolumn())!==a?e=t={type:"column_ref",table:t,column:r}:(zt=e,e=a),e===a&&(e=zt,(t=peg$parsecolumn())!==a&&(t=function(e){return{type:"column_ref",table:"",column:e}}(t)),e=t),e}function peg$parseident(){var e,t;return e=zt,(t=peg$parseident_name())!==a&&(peg$c91(t)?a:void 0)!==a?e=t=t:(zt=e,e=a),e}function peg$parsecolumn(){var t,r,n,s;if(t=zt,(r=peg$parsecolumn_name())!==a&&(n=(n=peg$c91(r))?a:void 0)!==a?t=r=r:(zt=t,t=a),t===a)if(t=zt,96===e.charCodeAt(zt)?(r=_,zt++):(r=a,0===Jt&&peg$fail(E)),r!==a){if(n=[],N.test(e.charAt(zt))?(s=e.charAt(zt),zt++):(s=a,0===Jt&&peg$fail(L)),s!==a)for(;s!==a;)n.push(s),N.test(e.charAt(zt))?(s=e.charAt(zt),zt++):(s=a,0===Jt&&peg$fail(L));else n=a;n!==a?(96===e.charCodeAt(zt)?(s=_,zt++):(s=a,0===Jt&&peg$fail(E)),s!==a?t=r=n.join(""):(zt=t,t=a)):(zt=t,t=a)}else zt=t,t=a;return t}function peg$parsecolumn_name(){var e,t,r,n;if(e=zt,(t=peg$parseident_start())!==a){for(r=[],n=peg$parsecolumn_part();n!==a;)r.push(n),n=peg$parsecolumn_part();r!==a?e=t=peg$c96(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseident_name(){var e,t,r,n;if(e=zt,(t=peg$parseident_start())!==a){for(r=[],n=peg$parseident_part();n!==a;)r.push(n),n=peg$parseident_part();r!==a?e=t=peg$c96(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseident_start(){var t;return I.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(D)),t}function peg$parseident_part(){var t;return P.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(k)),t}function peg$parsecolumn_part(){var t;return W.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(q)),t}function peg$parseparam(){var t,r,n,s,o;return Jt++,t=zt,58===e.charCodeAt(zt)?(r=":",zt++):(r=a,0===Jt&&peg$fail(j)),r!==a&&(n=peg$parseident_name())!==a?t=r=[r,n]:(zt=t,t=a),t===a&&(t=zt,63===e.charCodeAt(zt)?(r="?",zt++):(r=a,0===Jt&&peg$fail(F)),r!==a&&(o={type:"param",value:(s=r).length>1?s[1]:s[0]},Yt.push(o),r=o),t=r),Jt--,t===a&&(r=a,0===Jt&&peg$fail(B)),t}function peg$parsefunc_call(){var e,t,r;return e=zt,(t=peg$parseident())!==a&&peg$parse__()!==a&&peg$parseLPAREN()!==a&&peg$parse__()!==a&&(r=function(){var e,t;return(e=peg$parseexpr_list())===a&&(e=zt,(t="")!==a&&(t={type:"expr_list",value:[]}),e=t),e}())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?e=t=function(e,t){return{type:"function",name:e,args:t}}(t,r):(zt=e,e=a),e}function peg$parseliteral(){var t;return(t=function(){var t,r,n,s;zt,t=zt,34===e.charCodeAt(zt)?(r=H,zt++):(r=a,0===Jt&&peg$fail(G));if(r!==a){for(n=[],s=peg$parsedouble_char();s!==a;)n.push(s),s=peg$parsedouble_char();n!==a?(34===e.charCodeAt(zt)?(s=H,zt++):(s=a,0===Jt&&peg$fail(G)),s!==a?t=r=[r,n,s]:(zt=t,t=a)):(zt=t,t=a)}else zt=t,t=a;if(t===a)if(t=zt,39===e.charCodeAt(zt)?(r=K,zt++):(r=a,0===Jt&&peg$fail(J)),r!==a){for(n=[],s=peg$parsesingle_char();s!==a;)n.push(s),s=peg$parsesingle_char();n!==a?(39===e.charCodeAt(zt)?(s=K,zt++):(s=a,0===Jt&&peg$fail(J)),s!==a?t=r=[r,n,s]:(zt=t,t=a)):(zt=t,t=a)}else zt=t,t=a;t!==a&&(t={type:"string",value:t[1].join("")});return t}())===a&&(t=function(){var e;zt,(e=function(){var e,t,r,n;e=zt,(t=peg$parseint())!==a&&(r=peg$parsefrac())!==a&&(n=peg$parseexp())!==a&&peg$parse__()!==a?e=t=(s=parseFloat(t+r+n))%1!=0?s.toString():s.toString()+".0":(zt=e,e=a);var s;e===a&&(e=zt,(t=peg$parseint())!==a&&(r=peg$parsefrac())!==a&&(n=peg$parse__())!==a?e=t=function(e,t){var r=parseFloat(e+t);return r%1!=0?r.toString():r.toString()+".0"}(t,r):(zt=e,e=a),e===a&&(e=zt,(t=peg$parseint())!==a&&(r=peg$parseexp())!==a&&(n=peg$parse__())!==a?e=t=function(e,t){return parseFloat(e+t).toString()}(t,r):(zt=e,e=a),e===a&&(e=zt,(t=peg$parseint())!==a&&(r=peg$parse__())!==a?e=t=function(e){return parseFloat(e).toString()}(t):(zt=e,e=a))));return e}())!==a&&(e=function(e){return{type:"number",value:e}}(e));return e}())===a&&(t=function(){var t,r;t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,4).toLowerCase()===Re?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(Ae));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(r={type:"bool",value:!0});(t=r)===a&&(t=zt,(r=function(){var t,r,n,s;t=zt,e.substr(zt,5).toLowerCase()===Me?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(Ce));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(r={type:"bool",value:!1}),t=r);return t}())===a&&(t=function(){var t;zt,(t=function(){var t,r,n,s;t=zt,e.substr(zt,4).toLowerCase()===xe?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(Se));r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(t={type:"null",value:null});return t}()),t}function peg$parsesingle_char(){var t;return Q.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(V)),t===a&&(t=peg$parseescape_char()),t}function peg$parsedouble_char(){var t;return Z.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(X)),t===a&&(t=peg$parseescape_char()),t}function peg$parseescape_char(){var t,r,n,s,o,i,p,c,u,d;return t=zt,"\\'"===e.substr(zt,2)?(r="\\'",zt+=2):(r=a,0===Jt&&peg$fail(Y)),r!==a&&(r="'"),(t=r)===a&&(t=zt,'\\"'===e.substr(zt,2)?(r='\\"',zt+=2):(r=a,0===Jt&&peg$fail(ee)),r!==a&&(r='"'),(t=r)===a&&(t=zt,"\\\\"===e.substr(zt,2)?(r="\\\\",zt+=2):(r=a,0===Jt&&peg$fail(te)),r!==a&&(r="\\"),(t=r)===a&&(t=zt,"\\/"===e.substr(zt,2)?(r="\\/",zt+=2):(r=a,0===Jt&&peg$fail(re)),r!==a&&(r="/"),(t=r)===a&&(t=zt,"\\b"===e.substr(zt,2)?(r="\\b",zt+=2):(r=a,0===Jt&&peg$fail(ae)),r!==a&&(r="\b"),(t=r)===a&&(t=zt,"\\f"===e.substr(zt,2)?(r="\\f",zt+=2):(r=a,0===Jt&&peg$fail(ne)),r!==a&&(r="\f"),(t=r)===a&&(t=zt,"\\n"===e.substr(zt,2)?(r="\\n",zt+=2):(r=a,0===Jt&&peg$fail(se)),r!==a&&(r="\n"),(t=r)===a&&(t=zt,"\\r"===e.substr(zt,2)?(r="\\r",zt+=2):(r=a,0===Jt&&peg$fail(oe)),r!==a&&(r="\r"),(t=r)===a&&(t=zt,"\\t"===e.substr(zt,2)?(r="\\t",zt+=2):(r=a,0===Jt&&peg$fail(ie)),r!==a&&(r="\t"),(t=r)===a&&(t=zt,"\\u"===e.substr(zt,2)?(r="\\u",zt+=2):(r=a,0===Jt&&peg$fail(pe)),r!==a&&(n=peg$parsehexDigit())!==a&&(s=peg$parsehexDigit())!==a&&(o=peg$parsehexDigit())!==a&&(i=peg$parsehexDigit())!==a?(p=n,c=s,u=o,d=i,t=r=String.fromCharCode(parseInt("0x"+p+c+u+d))):(zt=t,t=a)))))))))),t}function peg$parseint(){var t,r,n,s;return t=zt,(r=peg$parsedigit19())!==a&&(n=peg$parsedigits())!==a?t=r=r+n:(zt=t,t=a),t===a&&(t=peg$parsedigit())===a&&(t=zt,45===e.charCodeAt(zt)?(r="-",zt++):(r=a,0===Jt&&peg$fail(A)),r===a&&(43===e.charCodeAt(zt)?(r="+",zt++):(r=a,0===Jt&&peg$fail(R))),r!==a&&(n=peg$parsedigit19())!==a&&(s=peg$parsedigits())!==a?t=r=function(e,t,r){return"-"+t+r}(0,n,s):(zt=t,t=a),t===a&&(t=zt,45===e.charCodeAt(zt)?(r="-",zt++):(r=a,0===Jt&&peg$fail(A)),r===a&&(43===e.charCodeAt(zt)?(r="+",zt++):(r=a,0===Jt&&peg$fail(R))),r!==a&&(n=peg$parsedigit())!==a?t=r="-"+n:(zt=t,t=a))),t}function peg$parsefrac(){var t,r,n;return t=zt,46===e.charCodeAt(zt)?(r=ue,zt++):(r=a,0===Jt&&peg$fail(de)),r!==a&&(n=peg$parsedigits())!==a?t=r="."+n:(zt=t,t=a),t}function peg$parseexp(){var t,r,n;return t=zt,(r=function(){var t,r,n;t=zt,ye.test(e.charAt(zt))?(r=e.charAt(zt),zt++):(r=a,0===Jt&&peg$fail(ve));r!==a?(Te.test(e.charAt(zt))?(n=e.charAt(zt),zt++):(n=a,0===Jt&&peg$fail($e)),n===a&&(n=null),n!==a?t=r=r+n:(zt=t,t=a)):(zt=t,t=a);return t}())!==a&&(n=peg$parsedigits())!==a?t=r=r+n:(zt=t,t=a),t}function peg$parsedigits(){var e,t;if(zt,e=[],(t=peg$parsedigit())!==a)for(;t!==a;)e.push(t),t=peg$parsedigit();else e=a;return e!==a&&(e=e.join("")),e}function peg$parsedigit(){var t;return Jt++,ge.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(fe)),Jt--,t===a&&0===Jt&&peg$fail(le),t}function peg$parsedigit19(){var t;return Jt++,he.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(me)),Jt--,t===a&&0===Jt&&peg$fail(le),t}function peg$parsehexDigit(){var t;return Jt++,Ee.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(be)),Jt--,t===a&&0===Jt&&peg$fail(_e),t}function peg$parseKW_AS(){var t,r,n,s;return t=zt,"as"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(Ke)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_JOIN(){var t,r,n,s;return t=zt,"join"===e.substr(zt,4).toLowerCase()?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(tt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_UNION(){var t,r,n,s;return t=zt,"union"===e.substr(zt,5).toLowerCase()?(r=e.substr(zt,5),zt+=5):(r=a,0===Jt&&peg$fail(rt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_BY(){var t,r,n,s;return t=zt,"by"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(lt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r=[r,n]:(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_DISTINCT(){var t,r,n,s;return t=zt,"distinct"===e.substr(zt,8).toLowerCase()?(r=e.substr(zt,8),zt+=8):(r=a,0===Jt&&peg$fail(vt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="DISTINCT":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_IN(){var t,r,n,s;return t=zt,"in"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(xt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="IN":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_LIKE(){var t,r,n,s;return t=zt,"like"===e.substr(zt,4).toLowerCase()?(r=e.substr(zt,4),zt+=4):(r=a,0===Jt&&peg$fail(Rt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="LIKE":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_CONTAINS(){var t,r,n,s;return t=zt,"contains"===e.substr(zt,8).toLowerCase()?(r=e.substr(zt,8),zt+=8):(r=a,0===Jt&&peg$fail(At)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="CONTAINS":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_NOT(){var t,r,n,s;return t=zt,"not"===e.substr(zt,3).toLowerCase()?(r=e.substr(zt,3),zt+=3):(r=a,0===Jt&&peg$fail(Mt)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="NOT":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_AND(){var t,r,n,s;return t=zt,"and"===e.substr(zt,3).toLowerCase()?(r=e.substr(zt,3),zt+=3):(r=a,0===Jt&&peg$fail(Ct)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="AND":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseKW_OR(){var t,r,n,s;return t=zt,"or"===e.substr(zt,2).toLowerCase()?(r=e.substr(zt,2),zt+=2):(r=a,0===Jt&&peg$fail(Ot)),r!==a?(n=zt,Jt++,s=peg$parseident_start(),Jt--,s===a?n=void 0:(zt=n,n=a),n!==a?t=r="OR":(zt=t,t=a)):(zt=t,t=a),t}function peg$parseDOT(){var t;return 46===e.charCodeAt(zt)?(t=ue,zt++):(t=a,0===Jt&&peg$fail(de)),t}function peg$parseCOMMA(){var t;return 44===e.charCodeAt(zt)?(t=",",zt++):(t=a,0===Jt&&peg$fail(Lt)),t}function peg$parseLPAREN(){var t;return 40===e.charCodeAt(zt)?(t=o,zt++):(t=a,0===Jt&&peg$fail(i)),t}function peg$parseRPAREN(){var t;return 41===e.charCodeAt(zt)?(t=p,zt++):(t=a,0===Jt&&peg$fail(c)),t}function peg$parse__(){var e,t;for(e=[],t=peg$parsewhitespace();t!==a;)e.push(t),t=peg$parsewhitespace();return e}function peg$parsewhitespace(){var t;return Jt++,kt.test(e.charAt(zt))?(t=e.charAt(zt),zt++):(t=a,0===Jt&&peg$fail(Wt)),Jt--,t===a&&0===Jt&&peg$fail(Pt),t}function peg$parseproc_stmt(){var t,r,n,s;return t=zt,r=zt,Jt++,n=function(){var e;zt,(e="")!==a&&(er=[],e=!0);return e}(),Jt--,n!==a?(zt=r,r=void 0):r=a,r!==a&&(n=peg$parse__())!==a?((s=function(){var t,r,n;t=zt,(r=peg$parsevar_decl())!==a&&peg$parse__()!==a&&function(){var t;e.substr(zt,2)===Ft?(t=Ft,zt+=2):(t=a,0===Jt&&peg$fail(Ut));return t}()!==a&&peg$parse__()!==a&&(n=peg$parseproc_expr())!==a?t=r={type:"assign",left:r,right:n}:(zt=t,t=a);return t}())===a&&(s=function(){var t,r;t=zt,function(){var t;e.substr(zt,6).toLowerCase()===Bt?(t=e.substr(zt,6),zt+=6):(t=a,0===Jt&&peg$fail(jt));return t}()!==a&&peg$parse__()!==a&&(r=peg$parseproc_expr())!==a?t={type:"return",expr:r}:(zt=t,t=a);return t}()),s!==a?t=r={stmt:s,vars:er}:(zt=t,t=a)):(zt=t,t=a),t}function peg$parseproc_expr(){var t;return(t=peg$parseselect_stmt())===a&&(t=function(){var e,t,r,n,s;e=zt,(t=peg$parsevar_decl())!==a&&peg$parse__()!==a&&(r=peg$parsejoin_op())!==a&&peg$parse__()!==a&&(n=peg$parsevar_decl())!==a&&peg$parse__()!==a&&(s=peg$parseon_clause())!==a?e=t={type:"join",ltable:t,rtable:n,op:r,on:s}:(zt=e,e=a);return e}())===a&&(t=peg$parseproc_additive_expr())===a&&(t=function(){var t,r;t=zt,function(){var t;return 91===e.charCodeAt(zt)?(t="[",zt++):(t=a,0===Jt&&peg$fail(It)),t}()!==a&&peg$parse__()!==a&&(r=peg$parseproc_primary_list())!==a&&peg$parse__()!==a&&function(){var t;return 93===e.charCodeAt(zt)?(t="]",zt++):(t=a,0===Jt&&peg$fail(Dt)),t}()!==a?t={type:"array",value:r}:(zt=t,t=a);return t}()),t}function peg$parseproc_additive_expr(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseproc_multiplicative_expr())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseadditive_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parseproc_multiplicative_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseadditive_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parseproc_multiplicative_expr())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c54(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseproc_multiplicative_expr(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseproc_primary())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parsemultiplicative_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parseproc_primary())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parsemultiplicative_operator())!==a&&(i=peg$parse__())!==a&&(p=peg$parseproc_primary())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c54(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parseproc_primary(){var e,t;return(e=peg$parseliteral())===a&&(e=peg$parsevar_decl())===a&&(e=function(){var e,t,r;e=zt,(t=peg$parseident())!==a&&peg$parse__()!==a&&peg$parseLPAREN()!==a&&peg$parse__()!==a&&(r=peg$parseproc_primary_list())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?e=t=function(e,t){return{type:"function",name:e,args:{type:"expr_list",value:t}}}(t,r):(zt=e,e=a);return e}())===a&&(e=peg$parseparam())===a&&(e=zt,peg$parseLPAREN()!==a&&peg$parse__()!==a&&(t=peg$parseproc_additive_expr())!==a&&peg$parse__()!==a&&peg$parseRPAREN()!==a?e=peg$c88(t):(zt=e,e=a)),e}function peg$parseproc_primary_list(){var e,t,r,n,s,o,i,p;if(e=zt,(t=peg$parseproc_primary())!==a){for(r=[],n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseproc_primary())!==a?n=s=[s,o,i,p]:(zt=n,n=a);n!==a;)r.push(n),n=zt,(s=peg$parse__())!==a&&(o=peg$parseCOMMA())!==a&&(i=peg$parse__())!==a&&(p=peg$parseproc_primary())!==a?n=s=[s,o,i,p]:(zt=n,n=a);r!==a?e=t=peg$c28(t,r):(zt=e,e=a)}else zt=e,e=a;return e}function peg$parsevar_decl(){var t,r,n;return t=zt,function(){var t;36===e.charCodeAt(zt)?(t="$",zt++):(t=a,0===Jt&&peg$fail(qt));return t}()!==a&&(r=peg$parseident_name())!==a&&(n=function(){var t,r,n,s;zt,t=[],r=zt,46===e.charCodeAt(zt)?(n=ue,zt++):(n=a,0===Jt&&peg$fail(de));n!==a&&(s=peg$parseident_name())!==a?r=n=[n,s]:(zt=r,r=a);for(;r!==a;)t.push(r),r=zt,46===e.charCodeAt(zt)?(n=ue,zt++):(n=a,0===Jt&&peg$fail(de)),n!==a&&(s=peg$parseident_name())!==a?r=n=[n,s]:(zt=r,r=a);t!==a&&(t=function(e){for(var t=[],r=0;r<e.length;r++)t.push(e[r][1]);return t}(t));return t}())!==a?t=function(e,t){return er.push(e),{type:"var",name:e,members:t}}(r,n):(zt=t,t=a),t}function createBinaryExpr(e,t,r){return{type:"binary_expr",operator:e,left:t,right:r}}function createList(e,t){for(var r=[e],a=0;a<t.length;a++)r.push(t[a][3]);return r}function createBinaryExprChain(e,t){for(var r=e,a=0;a<t.length;a++)r=createBinaryExpr(t[a][1],r,t[a][3]);return r}var Qt,Vt,Zt,Xt={SHOW:!0,DROP:!0,SELECT:!0,UPDATE:!0,CREATE:!0,DELETE:!0,INSERT:!0,REPLACE:!0,EXPLAIN:!0,ALL:!0,DISTINCT:!0,AS:!0,TABLE:!0,INTO:!0,FROM:!0,SET:!0,LEFT:!0,ON:!0,INNER:!0,JOIN:!0,UNION:!0,VALUES:!0,EXISTS:!0,WHERE:!0,GROUP:!0,BY:!0,HAVING:!0,ORDER:!0,ASC:!0,DESC:!0,LIMIT:!0,BETWEEN:!0,IN:!0,IS:!0,LIKE:!0,CONTAINS:!0,NOT:!0,AND:!0,OR:!0,TRUE:!0,FALSE:!0,NULL:!0},Yt=[],er=[];if((r=s())!==a&&zt===e.length)return r;throw r!==a&&zt<e.length&&peg$fail({type:"end"}),Qt=Kt,Vt=Gt<e.length?e.charAt(Gt):null,Zt=Gt<e.length?peg$computeLocation(Gt,Gt+1):peg$computeLocation(Gt,Gt),new peg$SyntaxError(peg$SyntaxError.buildMessage(Qt,Vt),Qt,Vt,Zt)}};const{parse:_t}=mt;var sql_parseQueryArgs=function(e,t){const r=void 0===t&&e instanceof Function;return{params:r?[]:e,callback:r?e:t}},sql_wrapSqlQuery=function(e,r,a,n,s){let o;try{let i={};try{let t=e.split("`").join("");t.endsWith(";")&&(t=t.substr(0,t.length-1)),i=_t(t)}catch(e){i.type="SQL-Command"}const{type:p}=i;let{tables:c}=i;c||(c=i.from.map(e=>e.table));const{database:u,host:d}=n;let l="sql";d.match(".rds.")&&(l="rds"),d.match(".redshift.")&&(l="redshift");const g=new T.Resource([u,l,p]),f=Date.now(),h=new T.Event(["dbapi-"+t(),S.createTimestampFromTime(f),null,s,0,v.ErrorCode.OK]);h.setResource(g),U.addToMetadata(h,{Host:d,Driver:s,Type:p,"Table Name":1===c.length?c[0]:c},{Query:e.substring(0,2048)}),r&&r.length&&U.addToMetadata(h,{},{Params:r.slice(0,5)});const m=new Promise(e=>{o=(t,r,n)=>{if(S.debugLog("SQL Patched callback was called"),h.setDuration(S.createDurationTimestamp(f)),t)U.setException(h,t);else{let{rowCount:e,rows:t}=r;!e&&r instanceof Array&&(e=r.length,t=r),U.addToMetadata(h,{rowCount:e});const a=F.getConfig().ignoredDBTables;e&&t instanceof Array&&t.length&&!c.some(e=>le.doesContainIgnoredKey(a,e))&&(t.length>100&&U.addToMetadata(h,{is_trimmed:!0}),U.addToMetadata(h,{"sql.rows":t.slice(0,100)}))}e(),a&&a(t,r,n)}});le.addEvent(h,m)}catch(e){le.addException(e)}return o||a};const Et=process.env.EPSAGON_PG_PATH?`${process.cwd()}${process.env.EPSAGON_PG_PATH}`:"pg";function pgClientWrapper(e){return function(t,r,a){if(t&&t.submit)return e.apply(this,[t,r,a]);const n=sql_parseQueryArgs(r,a);let{params:s}=n;const{callback:o}=n;let i=t,p=s;t&&t.text&&(i=t.text,t.values&&s&&!s.length&&(s=void 0,p=t.values));let c=sql_wrapSqlQuery(i,p,o,this.connectionParameters||this._clients[0],"pg");if(o)return e.apply(this,[t,s,c]);c=c||(()=>{});const u=e.apply(this,[t,s]);return u&&"function"==typeof u.then||c(null,null,null),u.then(e=>(c(null,e,null),e),e=>{throw c(e,null,null),e})}}var bt={init(){process.env.EPSAGON_PG_PATH&&(S.debugLog("EPSAGON_PG_PATH="+process.env.EPSAGON_PG_PATH),S.debugLog("cwd="+process.cwd())),We.patchModule(Et,"query",pgClientWrapper,e=>e.Client.prototype),We.patchModule("pg-pool","query",pgClientWrapper,e=>e.prototype)}};function mysqlQueryWrapper(e){return function(t,r,a){let n,s,o,i=!1;n="string"!=typeof t?t.sql:t,t.onResult?(o=t.values,s=t.onResult):({params:o,callback:s}=sql_parseQueryArgs(r,a)),void 0===s&&t._callback&&(s=t._callback,i=!0);const p=sql_wrapSqlQuery(n,o,s,this.config,"mysql");return t.onResult?t.onResult=p:s=p,i&&(t._callback=p),e.apply(this,[t,o,s])}}var yt={init(){We.patchModule("mysql2","query",mysqlQueryWrapper,e=>e.Connection.prototype),We.patchModule("mysql2","execute",mysqlQueryWrapper,e=>e.Connection.prototype),We.patchModule("mysql/lib/Connection.js","query",mysqlQueryWrapper,e=>e.prototype)}};function openWhiskWrapper$1(e){return function(r,a){const{name:n}=r,s=`/${process.env.__OW_NAMESPACE}/${n||r}`,o=new T.Resource([s,"openwhisk_action","invoke"]),i=Date.now(),p=new T.Event(["openwhisk-"+t(),S.createTimestampFromTime(i),null,"openwhisk",0,v.ErrorCode.OK]);let c,u;if(p.setResource(o),U.addToMetadata(p,{api_host:r.apihost||process.env.__OW_API_HOST,namespace:r.namespace||process.env.__OW_NAMESPACE},{params:r.params}),r.result){const t={...r,result:!1};c=e.apply(this,[t,a]),u=c.then(e=>e.response.result)}else c=e.apply(this,[r,a]),u=c;const d=new Promise(e=>{c.then(e=>{let t=e.response;t&&t.result&&t.result.body&&t.result.body.length>100&&(t=Object.assign({},t),t.result=Object.assign({},t.result),t.result.body=t.result.body.substring(0,100)+"...(truncated)");const r={activation_id:t.result&&t.result.headers&&t.result.headers["x-last-activation-id"]||e.activationId,status:t.status,result_statusCode:t.result&&t.result.statusCode};U.addToMetadata(p,r,{response:t}),p.setDuration(S.createDurationTimestamp(i))}).catch(e=>{U.setException(p,e)}).finally(()=>{e()})});return le.addEvent(p,d),u}}var vt={init(){We.patchModule("openwhisk/lib/actions.js","invoke",openWhiskWrapper$1,e=>e.prototype)}};const Tt="{{projectId}}",$t={type:"pubsub",origin:"google_cloud/pubsub"};function bigQueryWrapper(e){return function(r,a,n){if(-1===r.uri.indexOf("bigquery"))return e.apply(this,[r,a,n]);const s=r.uri.split("googleapis.com/")[1]||"",o=s.split("/"),i=o[0]||"google-cloud",p=o[3]||"Unknown",c=s.split(p+"/")[1].split("/")[0]||"Unknown",u=new T.Resource([p,i,c]),d=Date.now();let l=`${i}-${t()}`,g={};void 0!==r.json?(r.json.jobReference&&(l=r.json.jobReference.jobId),g=r.json):void 0!==r.uri&&(l=r.uri.split("/")[8]);const f=new T.Event([l,S.createTimestampFromTime(d),null,i,0,v.ErrorCode.OK]);let h;f.setResource(u),U.addToMetadata(f,{},g);const m=new Promise(e=>{h=(t,r,a)=>{f.setDuration(S.createDurationTimestamp(d)),U.addToMetadata(f,{},a.body),e(),n(t,r,a)}}).catch(e=>{le.addException(e)});return le.addEvent(f,m),e.apply(this,[r,a,h])}}const getMessageData=(e,t)=>{if(Array.isArray(e)&&e.length>t&&e[t].data)try{const r=JSON.parse(""+e[t].data);if("object"==typeof r)return r}catch(e){return null}return null},handlePublishMethod=(e,t)=>{const r=(e=>{const t=e&&e.messageIds?e.messageIds:e;return Array.isArray(t)?t:null})(e);if(r){const e=t.reqOpts&&t.reqOpts.messages;return{messages:r.reduce((t,r,a)=>{let n={id:r};const s=getMessageData(e,a);return s&&(n=Object.assign(n,s)),t.push(n),t},[]),messageIdsArray:r}}return{}},getMessagesFromResponse=e=>{if(e&&e.receivedMessages){const t=[];return{messages:e.receivedMessages.reduce((e,r)=>{const{messageId:a}=r.message;t.push(a);let n={messageId:a};const s=r.message.data&&JSON.parse(""+r.message.data);return s&&"object"==typeof s&&(n=Object.assign(n,s)),e.push(n),e},[]),messageIdsArray:t}}return{}};function wrapPubSubRequestFunction(e){return function(t,r){let a=r;try{const e=this.projectId,{slsEvent:n,startTime:s}=U.initializeEvent($t.type,e,t.method,$t.origin),o=this,i=new Promise(i=>{a=(a,p,...c)=>{e&&e!==Tt||!o.projectId||n.getResource().setName(o.projectId);const u={},d={};switch(p&&t.method){case"publish":{const{messages:e,messageIdsArray:r}=handlePublishMethod(p,t);r&&(u.messageIds=r,r.length&&n.setId(r[0])),e&&(d.messages=e);break}case"createSubscription":u.subscription=p;break;case"deleteSubscription":t.reqOpts&&t.reqOpts.subscription&&(u.subscription=S.getLastSplittedItem(t.reqOpts.subscription,"/"));break;case"createTopic":u.topic=p;break;case"deleteTopic":t.reqOpts&&t.reqOpts.topic&&(u.topic=S.getLastSplittedItem(t.reqOpts.topic,"/"))}U.finalizeEvent(n,s,a,u,d),i(),r&&r(a,p,...c)}});le.addEvent(n,i)}catch(e){le.addException(e)}return e.apply(this,[t,a])}}function wrapPubSubPullFunction(e){return function(t,r,a){let n;try{let s;if(t&&t.subscription){const e=t.subscription.split("/");e.length>1&&([,s]=e)}const{slsEvent:o,startTime:i}=U.initializeEvent($t.type,s,"Pull",$t.origin),patchedCallback=(e,t,r)=>{const n={},s={},{messages:p,messageIdsArray:c}=getMessagesFromResponse(t);c&&(n.messageIds=c,c.length&&o.setId(c[0])),p&&(s.receivedMessages=p),U.finalizeEvent(o,i,e,n,s),r&&r(),a&&a(e,t)};if(a){let n=a;const s=new Promise(e=>{n=(t,r)=>{patchedCallback(t,r,e)}});return le.addEvent(o,s),e.apply(this,[t,r,n])}n=e.apply(this,[t,r,a]).then(e=>{const[t]=e;return patchedCallback(null,t),e},e=>{throw patchedCallback(e,null),e}),le.addEvent(o,n)}catch(s){le.addException(s),n||(n=e.apply(this,[t,r,a]))}return n}}var xt={init(){We.patchModule("@google-cloud/common/","makeRequest",bigQueryWrapper,e=>e.util),We.patchModule("@google-cloud/pubsub/","request",wrapPubSubRequestFunction,e=>e.PubSub.prototype),We.patchModule("@google-cloud/pubsub/","pull",wrapPubSubPullFunction,e=>e.v1.SubscriberClient.prototype)}},St=getMessageData,Rt=handlePublishMethod,At=getMessagesFromResponse;function redisClientWrapper(e){return function(r){try{if(!1===this.ready||!1===this.stream.writable)return e.apply(this,[r]);const{callback:a}=r,n=this.connection_options.host||"local",s=new T.Resource([this.connection_options.host||"local","redis",r.command]),o=Date.now(),i=new T.Event(["redis-"+t(),S.createTimestampFromTime(o),null,"redis",0,v.ErrorCode.OK]);i.setResource(s),U.addToMetadata(i,{"Redis Host":n,"Redis Port":this.connection_options.port,"Redis DB Index":this.connection_options.db||"0"},{"Command Arguments":r.args});const p=new Promise(e=>{r.callback=(t,r)=>{i.setDuration(S.createDurationTimestamp(o)),t&&U.setException(i,t),e(),a&&a(t,r)}});le.addEvent(i,p)}catch(e){le.addException(e)}return e.apply(this,[r])}}xt.getMessageData=St,xt.handlePublishMethod=Rt,xt.getMessagesFromResponse=At;var Mt={init(){We.patchModule("redis","internal_send_command",redisClientWrapper,e=>e.RedisClient.prototype)}};function redisClientWrapper$1(e){return function(r,a){try{if("ready"!==this.status)return e.apply(this,[r,a]);const n=this.options.host||"local",s=new T.Resource([n,"redis",r.name]),o=Date.now(),i=new T.Event(["ioredis-"+t(),S.createTimestampFromTime(o),null,"redis",0,v.ErrorCode.OK]);i.setResource(s);const p=Array.isArray(r.args)?r.args:[];U.addToMetadata(i,{"Redis Host":n,"Redis Port":this.options.port,"Redis DB Index":this.options.db||"0"},{"Command Arguments":p.map(e=>e.toString())});const c=new Promise(e=>{r.promise.then(e=>{e&&U.addToMetadata(i,{"redis.response":e.toString()})}).catch(e=>{U.setException(i,e)}).finally(()=>{i.setDuration(S.createDurationTimestamp(o)),e()})});le.addEvent(i,c)}catch(e){le.addException(e)}return e.apply(this,[r,a])}}var Ct={init(){We.patchModule("ioredis","sendCommand",redisClientWrapper$1,e=>e.prototype),We.patchModule("ioredis-move","sendCommand",redisClientWrapper$1,e=>e.prototype),We.patchModule("dy-ioredis/lib/redis.js","sendCommand",redisClientWrapper$1,e=>e.prototype)}};function getCommandMetadata(e){const t={};if(!e||"object"!=typeof e&&!Array.isArray(e))return t;let r="",a="";return"object"==typeof e&&(r=JSON.stringify(e.filter),a=JSON.stringify(e.query)),r&&(t.filter=r),a&&(t.query=a),0===Object.keys(t).length&&(t.criteria=JSON.stringify(e)),t}function getHostAndPort(e){let t="27017",r="mongodb";if(e&&e.s&&e.s.options){const{options:a}=e.s;t=a.port?a.port:t,r=a.host?a.host:r}return{port:t,host:r}}function getItemsCount(e,t){let r;switch(e){case"find":r=t.result.cursor.firstBatch.length;break;case"insert":case"update":case"delete":r=t.result.n;break;case"getMore":r=t.cursor.nextBatch.length}return r}function getArgsFromFunction(...e){return{server:e[0],namespace:e[1],cmd:"getMore"===e[e.length-2]?{}:e[2],callback:e[e.length-3],operationName:e[e.length-2],wrappedFunction:e[e.length-1]}}function internalMongodbOperationWrapper(...e){const r=getArgsFromFunction(...e),{server:a,namespace:n,cmd:s,callback:o,operationName:i,wrappedFunction:p}=r;let c=o;try{const e=Date.now(),r=getCommandMetadata(s),{host:p,port:u}=getHostAndPort(a),d=new T.Resource([p,"mongodb",i]),l=new T.Event(["mongodb-"+t(),S.createTimestampFromTime(e),null,"mongodb",0,v.ErrorCode.OK]);l.setResource(d),U.addToMetadata(l,{namespace:n},{...r,port:u});const g=new Promise(t=>{c=(r,a)=>{S.debugLog("MongoDb Patched callback was called."),l.setDuration(S.createDurationTimestamp(e)),r?U.setException(l,r):U.addToMetadata(l,{items_count:getItemsCount(i,a)}),t(),o&&o(r,a)}});le.addEvent(l,g)}catch(e){le.addException(e)}return arguments[e.length-3]=c,p.apply(this,arguments)}function mongodbInsertWrapper(e){return function(...t){return internalMongodbOperationWrapper(...t,"insert",e)}}function mongodbUpdateWrapper(e){return function(...t){return internalMongodbOperationWrapper(...t,"update",e)}}function mongodbRemoveWrapper(e){return function(...t){return internalMongodbOperationWrapper(...t,"delete",e)}}function mongodbGetMoreWrapper(e){return function(...t){return internalMongodbOperationWrapper(...t,"getMore",e)}}function mongodbQueryWrapper(e){return function(...t){return internalMongodbOperationWrapper(...t,"find",e)}}function mongodbCommandWrapper(e){return function(...t){const r=t[2];return r&&r.ismaster?e.apply(this,t):internalMongodbOperationWrapper(...t,r&&"object"==typeof r?Object.keys(r)[0]:"",e)}}var Ot={init(){We.patchModule("mongodb/lib/core/wireprotocol/index.js","insert",mongodbInsertWrapper,e=>e),We.patchModule("mongodb/lib/core/wireprotocol/index.js","update",mongodbUpdateWrapper,e=>e),We.patchModule("mongodb/lib/core/wireprotocol/index.js","remove",mongodbRemoveWrapper,e=>e),We.patchModule("mongodb/lib/core/wireprotocol/index.js","query",mongodbQueryWrapper,e=>e),We.patchModule("mongodb/lib/core/wireprotocol/index.js","getMore",mongodbGetMoreWrapper,e=>e),We.patchModule("mongodb/lib/core/wireprotocol/index.js","command",mongodbCommandWrapper,e=>e)}};const{isBlacklistURL:wt}=ce,Nt={"tc.epsagon.com":"endsWith"},Lt={resolveAny:"ANY",resolve6:"AAAA",resolve4:"A",resolveCname:"CNAME",resolveMx:"MX",resolveNaptr:"NAPTR",resolveNs:"NS",resolvePtr:"PTR",resolveSoa:"SOA",resolveSrv:"SRV",resolveTxt:"TXT"};function handleFunctionWithoutCallback(e,t,r,a){try{return e.apply(this,a)}catch(e){throw r.setDuration(S.createDurationTimestamp(t)),U.setException(r,e),le.addEvent(r),e}}function wrapDnsResolveFunction(e){return function(t,r,a){let n,s,o;const{hostname:i,rrtype:p,callback:c}=((e,t,r,a)=>{const n=e;let s=Lt.resolve4,o=r;return r&&"object"!=typeof t||(a&&(s=Object.values(Lt).find(e=>a.toLocaleLowerCase().includes(("query"+e).toLocaleLowerCase()))),r||(o=t)),{hostname:n,rrtype:s,callback:o}})(t,r,a,e.name);"object"==typeof r&&(o=r);const{slsEvent:u,startTime:d}=U.initializeEvent("dns",e.name,"dns","dns");if(!c)return handleFunctionWithoutCallback(e,d,u,[t,r,a]);try{const t={};o&&(t.options=o),p&&(t.rrtype=p),U.addToMetadata(u,{hostname:i,...t});const r=new Promise(e=>{n=(t,r)=>{const a=((e,t)=>{if(!e)return;let r;return r=t&&t!==Lt.resolveTxt?t===Lt.resolveAny?{ret:e}:t===Lt.resolveSoa?{address:e}:{addresses:e}:{records:e},r})(r,p);U.finalizeEvent(u,d,t,{...a}),e(),c&&c(t,r)}});s=e.apply(this,[i,p,n]),le.addEvent(u,r)}catch(e){le.addException(e)}return s||(s=e.apply(this,[t,r,a])),s}}var It={init(){if("TRUE"===(process.env.EPSAGON_DNS_INSTRUMENTATION||"").toUpperCase()){const e=Object.keys(b);Object.keys(Lt).forEach(t=>{e.includes(t)&&We.patchSingle(b,t,wrapDnsResolveFunction)}),We.patchSingle(b,"resolve",()=>wrapDnsResolveFunction(b.resolve)),We.patchSingle(b,"reverse",()=>{return e=b.reverse,function(t,r){let a,n;const{slsEvent:s,startTime:o}=U.initializeEvent("dns",e.name,"dns","dns");if(!r)return handleFunctionWithoutCallback(e,o,s,[t,r]);try{U.addToMetadata(s,{ip:t});const i=new Promise(e=>{a=(t,a)=>{U.finalizeEvent(s,o,t,{hostnames:a}),e(),r&&r(t,a)}});n=e.apply(this,[t,a]),le.addEvent(s,i)}catch(e){le.addException(e)}return n||(n=e.apply(this,[t,r])),n};var e}),We.patchSingle(b,"lookup",()=>{return e=b.lookup,function(t,r,a){let n,s;const{hostname:o,options:i,callback:p}=((e,t,r)=>{let a=t,n=r;return r||(a=void 0,n=t),{hostname:e,options:a,callback:n}})(t,r,a);if(wt(o,Nt))return S.debugLog("filtered blacklist hostname "+o),e.apply(this,[t,r,a]);const{slsEvent:c,startTime:u}=U.initializeEvent("dns",e.name,"dns","dns");if(!p)return handleFunctionWithoutCallback(e,u,c,[t,r,a]);try{U.addToMetadata(c,{hostname:o}),i&&U.addToMetadata(c,{options:i});const t=new Promise(e=>{n=(t,r,a)=>{U.finalizeEvent(c,u,t,{address:r,family:a}),e(),p&&p(t,r,a)}}),r=[o,n];i&&r.splice(1,0,i),s=e.apply(this,r),le.addEvent(c,t)}catch(e){le.addException(e)}return s||(s=e.apply(this,[t,r,a])),s};var e}),We.patchSingle(b,"lookupService",()=>{return e=b.lookupService,function(t,r,a){let n,s;const{slsEvent:o,startTime:i}=U.initializeEvent("dns",e.name,"dns","dns");if(!a)return handleFunctionWithoutCallback(e,i,o,[t,r,a]);try{U.addToMetadata(o,{address:t,port:r});const p=new Promise(e=>{n=(t,r,n)=>{U.finalizeEvent(o,i,t,{hostname:r,service:n}),e(),a&&a(t,r,n)}});s=e.apply(this,[t,r,n]),le.addEvent(o,p)}catch(e){le.addException(e)}return s||(s=e.apply(this,[t,r,a])),s};var e})}}};const Dt="nats",Pt="Client",kt="unknown",Wt="NATS_BAD_JSON_MSG";function wrapNatsPublishFunction(e,r,a){return function(n,s,o,i){const{subject_internal:p,msg_internal:c,msgJsonStringify:u,opt_reply_internal:d,opt_callback_internal:l,epsagon_id:g}=((e,r,a,n,s)=>{let o,i,p=e,c=r,u=a,d=n;if("function"==typeof p&&(d=p,p=void 0),c=s?void 0===c?null:c:c||"","function"==typeof c&&(d=r,c="",u=void 0),"function"==typeof u&&(d=a,u=void 0),s&&c&&"object"==typeof c&&"TRUE"===(process.env.EPSAGON_PROPAGATE_NATS_ID||"").toUpperCase()&&(i=t(),c.epsagon_id=i),!Buffer.isBuffer(c)&&s)try{o=JSON.stringify(c)}catch(e){o=Wt}return{subject_internal:p,msg_internal:c,msgJsonStringify:o,opt_reply_internal:u,opt_callback_internal:d,epsagon_id:i}})(n,s,o,i,a);let f=l;if(d)return e.apply(this,[n,s,o,i]);try{const{slsEvent:e,startTime:t}=U.initializeEvent(Dt,n,"publish",Dt),s={subject:p},o={};a?u&&u!==Wt&&(o.msg=u):o.msg=c,r&&(s.server_host_name=r),g&&(s.epsagon_id=g);const i=new Promise(r=>{f=()=>{U.finalizeEvent(e,t,null,s,o),r(),l&&l()}});le.addEvent(e,i)}catch(e){le.addException(e)}return e.apply(this,[p,c,d,f])}}function wrapNatsConnectFunction(e){return function(t,r){const a=e.apply(this,[t,r]);try{if(a&&a.constructor&&a.constructor.name===Pt){const e=(n=a.currentServer).url&&n.url.hostname?n.url.hostname:kt,t=a.options?a.options.json:null;f.wrap(a,"publish",()=>wrapNatsPublishFunction(a.publish,e,t))}}catch(e){le.addException(e)}var n;return a}}var qt={init(){We.patchModule("nats","connect",wrapNatsConnectFunction)}};function getPubSubParams(e,t){let r=t,a=e;return"function"==typeof a&&(r=e,a={}),{internalCallback:r,internalOptions:a}}function publishWrapper(e){return function(r,a,n,s){const{internalCallback:o,internalOptions:i}=getPubSubParams(n,s),p=t(),c=function(e,t){if("object"==typeof t)return{...t,epsagonId:e};if("string"==typeof t)try{const r=JSON.parse(t);if(r)return r.epsagonId=e,JSON.stringify(r)}catch(e){}return t}(p,a);let u=o;try{const{slsEvent:e,startTime:t}=U.initializeEvent("mqtt",r,"publish","mqtt"),a={region:this.options.region,protocol:this.options.protocol,host:this.options.host,epsagon_id:p},n={clientId:this.options.clientId,protocolId:this.options.protocolId,protocolVersion:this.options.protocolVersion,message:c},s=new Promise(r=>{u=(s,...i)=>{U.finalizeEvent(e,t,s||null,a,n),o&&o(s,...i),r()}});le.addEvent(e,s)}catch(e){le.addException(e)}return e.apply(this,[r,c,i,u])}}function onWrapper(e){return function(t,r){let a=r;try{if("message"===t){const e={region:this.options.region,protocol:this.options.protocol,host:this.options.host},t={clientId:this.options.clientId,protocolId:this.options.protocolId,protocolVersion:this.options.protocolVersion};a=(a,n,...s)=>{const{slsEvent:o,startTime:i}=U.initializeEvent("mqtt",a,"onMessage","mqtt");t.message=n?n.toString():n;const p=function(e){let t=e;if("object"==typeof t&&Buffer.isBuffer(t)&&(t=t.toString()),"string"==typeof t)try{t=JSON.parse(t)}catch(e){}return t.epsagonId}(n);p&&(e.epsagon_id=p),U.finalizeEvent(o,i,null,e,t),r&&r(a,n,...s),le.addEvent(o)}}}catch(e){le.addException(e)}return e.apply(this,[t,a])}}function mqttClientWrapper(e){return function(t,r){const a=e.apply(this,[t,r]);try{f.wrap(a,"publish",e=>publishWrapper(e)),f.wrap(a,"subscribe",e=>{return t=e,function(e,r,a){const{internalCallback:n,internalOptions:s}=getPubSubParams(r,a);let o=n;try{const{slsEvent:t,startTime:r}=U.initializeEvent("mqtt",e,"subscribe","mqtt"),a={region:this.options.region,protocol:this.options.protocol,host:this.options.host},s={clientId:this.options.clientId,protocolId:this.options.protocolId,protocolVersion:this.options.protocolVersion},i=new Promise(e=>{o=(o,...i)=>{U.finalizeEvent(t,r,o||null,a,s),n&&n(o,...i),e()}});le.addEvent(t,i)}catch(e){le.addException(e)}return t.apply(this,[e,s,o])};var t}),f.wrap(a,"on",e=>onWrapper(e))}catch(e){le.addException(e)}return a}}var Bt={init(){We.patchModule("mqtt","MqttClient",mqttClientWrapper,e=>e)}};const{EPSAGON_HEADER:jt}=j,{generateEpsagonTraceId:Ft}=ke;function kafkaConnectWrapper(e){return function(...t){let r,a,n,s,o;try{const{host:e,port:t}=this.brokerPool.seedBroker.connection;o=t;const{slsEvent:r,startTime:s}=U.initializeEvent("kafka_server",e,"connect","kafkajs");a=r,n=s}catch(e){le.addException(e)}try{s=e.apply(this,t)}catch(e){throw a&&(a.setException(a,e),le.addEvent(a)),e}return s=s.catch(e=>{throw r=e,e}).finally(()=>{try{if(!a)return void S.debugLog("Could not initialize kafkajs, skipping response.");U.finalizeEvent(a,n,r,{port:o})}catch(e){le.addException(e)}}),a&&le.addEvent(a,s),s}}function kafkaProducerWrapper(e){return function(t){const r=e.apply(this,[t]);if(r&&!r.__epsagonPatched)try{r.__epsagonPatched=!0,f.wrap(r,"send",()=>{return e=r.send,function(t){let r,a,n,s,o;const i=Ft();try{const{slsEvent:e,startTime:n}=U.initializeEvent("kafka",t.topic,"produce","kafkajs");r=e,a=n,t.messages=t.messages.map(e=>(e.headers||(e.headers={}),e.headers[jt]=i,e))}catch(e){le.addException(e)}try{n=e.apply(this,[t])}catch(e){throw r&&(U.setException(r,e),le.addEvent(r)),e}return n=n.then(e=>(o=e,e)).catch(e=>{throw s=e,e}).finally(()=>{try{if(!r)return void S.debugLog("Could not initialize kafkajs, skipping response.");U.finalizeEvent(r,a,s,{messages_count:t.messages.length,[jt]:i},{messages:t,response:o})}catch(e){le.addException(e)}}),r&&le.addEvent(r,n),n};var e})}catch(e){le.addException(e)}return r}}var Ut={init(){We.patchModule("kafkajs","producer",kafkaProducerWrapper,e=>e.Kafka.prototype),We.patchModule("kafkajs/src/cluster/index.js","connect",kafkaConnectWrapper,e=>e.prototype)}};const{EPSAGON_HEADER:zt}=j,{generateEpsagonTraceId:Ht}=ke;function wrapKafkaSendFunction$1(e){return function(t,r){let a,n,s,o;const i=this,p=Ht(),c=t[0];try{const{slsEvent:e,startTime:r}=U.initializeEvent("kafka",c.topic,"produce","kafka-node");a=e,n=r,t=t.map(e=>{try{if("string"==typeof e.messages){const t=JSON.parse(e.messages);t[zt]=p,e.messages=JSON.stringify(t)}else{const t=JSON.parse(e.messages[0]);t[zt]=p,e.messages[0]=JSON.stringify(t)}}catch(e){S.debugLog("kafka-node - Could not extract epsagon header")}return e})}catch(e){le.addException(e)}const u=new Promise(e=>{o=(t,s)=>{let o;try{if(!a)return S.debugLog("Could not initialize kafka-node, skipping response."),o;U.finalizeEvent(a,n,undefined,{[zt]:p,host:i.client.options.kafkaHost},{messages:c.messages})}catch(e){le.addException(e)}finally{r&&"function"==typeof r&&(o=r(t,s))}return e(),o}});try{s=e.apply(this,[t,o])}catch(e){throw a&&(U.setException(a,e),le.addEvent(a)),e}return a&&le.addEvent(a,u),s}}var Gt={init(){We.patchModule("kafka-node","send",wrapKafkaSendFunction$1,e=>e.Producer.prototype)}};function emitWrapper(e){return function(t,...r){if(!le.isLoggingTracingEnabled())return e.apply(this,[t].concat(r));const a=le.getTraceId();if(!a)return e.apply(this,[t].concat(r));const n={epsagon:{trace_id:a}};if(!t)return e.apply(this,[t].concat(r));for(const e in t)n[e]=t[e];for(const e of Object.getOwnPropertySymbols(t))n[e]=t[e];return le.addLoggingTracingEnabledMetadata(),e.apply(this,[n].concat(r))}}var Kt={init(){We.patchModule("bunyan","_emit",emitWrapper,e=>e.prototype)}};function logWrapper(e){return function(t,r,a,n){if(!le.isLoggingTracingEnabled())return e.apply(this,[t,r,a,n]);const s=le.getTraceId();return s?(t.epsagon={trace_id:s},le.addLoggingTracingEnabledMetadata(),e.apply(this,[t,r,a,n])):e.apply(this,[t,r,a,n])}}var Jt={init(){We.patchModule("pino/lib/tools","asJson",logWrapper)}};function blobUploadWrapper(e){return function(t,r){const{accountName:a,containerName:n}=this,{slsEvent:s,startTime:o}=U.initializeEvent("blob_storage",n,"upload","azure-sdk");U.addToMetadata(s,{"azure.blob.account_name":a,"azure.blob.content_size":r},{"azure.blob.content":t});const i=e.apply(this,[t,r]).then(e=>(U.addToMetadata(s,{"azure.blob.error_code":e.errorCode}),s.setDuration(S.createDurationTimestamp(o)),e)).catch(e=>{throw U.setException(s,e),e});return le.addEvent(s,i),i}}function blobDownloadWrapper(e){return function(t,r,a){const{accountName:n,containerName:s}=this,{slsEvent:o,startTime:i}=U.initializeEvent("blob_storage",s,"download","azure-sdk");U.addToMetadata(o,{"azure.blob.account_name":n,"azure.blob.container_name":s,"azure.blob.offset":t});const p=e.apply(this,[t,r,a]).then(e=>(U.addToMetadata(o,{"azure.blob.content_length":e.contentLength}),o.setDuration(S.createDurationTimestamp(i)),e)).catch(e=>{throw U.setException(o,e),e});return le.addEvent(o,p),p}}function cosmosCreateItemWrapper(e){return function(t,r){const{id:a,content:n}=t,{container:s,clientContext:o}=this,{database:i}=s,p=s.id,{slsEvent:c,startTime:u}=U.initializeEvent("cosmos_db",p,"create","azure-sdk");U.addToMetadata(c,{"azure.cosmos.endpoint":o.cosmosClientOptions.endpoint,"azure.cosmos.database_id":i.id,"azure.cosmos.item_id":a},{"azure.cosmos.item_content":n});const d=e.apply(this,[t,r]).then(e=>(U.addToMetadata(c,{"azure.cosmos.status_code":e.statusCode}),c.setDuration(S.createDurationTimestamp(u)),e)).catch(e=>{throw U.setException(c,e),e});return le.addEvent(c,d),d}}var Qt={init(){We.patchModule("@azure/storage-blob","upload",blobUploadWrapper,e=>e.BlockBlobClient.prototype),We.patchModule("@azure/storage-blob","download",blobDownloadWrapper,e=>e.BlockBlobClient.prototype),We.patchModule("@azure/cosmos","create",cosmosCreateItemWrapper,e=>e.Items.prototype)}};function writeWrapper(e){return function(t,r,a){S.debugLog("in internal winston write");const n=function(e){return e&&"object"==typeof e&&le.isLoggingTracingEnabled()?le.getTraceId():null}(t);if(S.debugLog("winston traceId="+n),!n)return e.apply(this,[t,r,a]);const s={epsagon:{trace_id:n}};for(const e in t)s[e]=t[e];for(const e of Object.getOwnPropertySymbols(t))s[e]=t[e];return le.addLoggingTracingEnabledMetadata(),S.debugLog("finish internal winston write"),e.apply(this,[s,r,a])}}var Vt={init(){We.patchModule("winston/lib/winston/logger","write",writeWrapper,e=>e.prototype)}};const{EPSAGON_HEADER:Zt}=j,{generateEpsagonTraceId:Xt}=ke;function amqplibProducerWrapper(e){return function(t,r,a){let n,s,o;const i=Xt();try{const{slsEvent:e,startTime:r}=U.initializeEvent("rabbitmq",t.routingKey,"SendMessage","amqplib");s=e,o=r,t.headers[Zt]=i}catch(e){le.addException(e)}try{n=e.apply(this,[t,r,a])}catch(e){throw s&&(U.setException(s,e),le.addEvent(s)),e}return U.finalizeEvent(s,o,void 0,{exchange:t.exchange,host:this.connection.stream._host,[Zt]:i,"messaging.message_payload_size_bytes":a.toString().length},{headers:t.headers,message:a.toString()}),le.addEvent(s),n}}var Yt={init(){We.patchModule("amqplib/lib/channel.js","sendMessage",amqplibProducerWrapper,e=>e.Channel.prototype)}};const{EPSAGON_HEADER:er}=j,{generateEpsagonTraceId:tr}=ke;function amqpProducerWrapper(e){return function(t,r,a,n){let s,o,i;const p=tr();try{const{slsEvent:e,startTime:r}=U.initializeEvent("rabbitmq",t,"SendMessage","amqplib");o=e,i=r,a&&a.headers||(a.headers={}),a.headers[er]=p}catch(e){le.addException(e)}try{s=e.apply(this,[t,r,a,n])}catch(e){throw o&&(U.setException(o,e),le.addEvent(o)),e}return U.finalizeEvent(o,i,void 0,{exchange:this.name,host:this.connection.options.host,vhost:this.connection.options.vhost,[er]:p,"messaging.message_payload_size_bytes":r.toString().length},{headers:a.headers,message:JSON.stringify(r)}),le.addEvent(o),s}}var rr={init(){We.patchModule("amqp/lib/exchange.js","publish",amqpProducerWrapper,e=>e.prototype)}};function bindWrapper(e){return function(r,a,n,s){let o,i,p;try{const e=r;"function"==typeof n?(o=n,i=[]):"function"==typeof s&&(o=s,i=n),S.debugLog("LDAP.js bind() wrapper - name: "+e);const a=new T.Resource([this.url.hostname,"ldap","bind"]),c=Date.now(),u=new T.Event(["ldap-"+t(),S.createTimestampFromTime(c),null,"ldap",0,v.ErrorCode.OK]);u.setResource(a);const d=S.flatten({enduser:{id:e},ldap:{strict_dn:S.getValueIfExist(this.url,"strictDN")},net:{transport:"IP.TCP",protocol:S.getValueIfExist(this.url,"protocol"),socket_path:S.getValueIfExist(this.url,"socketPath"),timeout:S.getValueIfExist(this.url,"timeout"),connect_timeout:S.getValueIfExist(this.url,"connectTimeout"),tls_options:S.getValueIfExist(this.url,"tlsOptions"),idle_timeout:S.getValueIfExist(this.url,"idleTimeout"),pathname:S.getValueIfExist(this.url,"pathname"),secure:S.getValueIfExist(this.url,"secure"),peer:{address:S.getValueIfExist(this.url,"href"),hostname:S.getValueIfExist(this.url,"hostname"),port:S.getValueIfExist(this.url,"port"),service:"ldap"}}});U.addToMetadata(u,d);const l=new Promise(e=>{p=(t,r)=>{u.setDuration(S.createDurationTimestamp(c)),t&&U.setException(u,t),e(),o&&o(t,r)}});le.addEvent(u,l)}catch(e){le.addException(e)}return e.apply(this,[r,a,i,p])}}var ar={init(){We.patchModule("ldapjs","bind",bindWrapper,e=>e.Client.prototype)}};const{parse:nr}=mt;function cassandraClientWrapper(e){return function(t,r,a,n){let s,o,i,p,c,u="execute";try{const e=nr(t);u=e.type,p=e.from.length&&e.from[0].table}catch(e){S.debugLog("could not extract cassandra operation "+e)}try{const{slsEvent:e,startTime:t}=U.initializeEvent("cassandra",this.options.contactPoints[0],u,"cassandra-driver");o=e,i=t}catch(e){le.addException(e)}this.options.keyspace&&U.addToMetadata(o,{"db.cassandra.keyspace":this.options.keyspace}),this.options.localDataCenter&&U.addToMetadata(o,{"db.cassandra.coordinator.dc":this.options.localDataCenter}),p&&U.addToMetadata(o,{"db.cassandra.table":p});const d=new Promise(e=>{c=(a,s)=>{let p;try{if(!o)return S.debugLog("Could not initialize cassandra, skipping response."),p;U.finalizeEvent(o,i,a,{"db.name":this.options.contactPoints[0],"db.operation":u},{"db.statement":t,"db.cassandra.params":r})}catch(e){le.addException(e)}finally{n&&"function"==typeof n&&(p=n(a,s))}return e(),p}});try{s=e.apply(this,[t,r,a,c])}catch(e){throw o&&(U.setException(o,e),le.addEvent(o)),e}return o&&le.addEvent(o,d),s}}var sr={init(){We.patchModule("cassandra-driver/lib/client","execute",cassandraClientWrapper,e=>e.prototype)}};function tencentCOSWrapper(e){return function(t){const r=e.apply(this,[t]),a=t._addTask;return t._addTask=(e,t,r,n)=>{const{slsEvent:s,startTime:o}=U.initializeEvent("cos",t.Bucket,e,"tencent-cos");U.addToMetadata(s,{"tencent.region":t.Region,"tencent.cos.object_key":t.Key,"tencent.cos.object_path":t.FilePath});let i=r;const p=new Promise(e=>{i=(t,a)=>(s.setDuration(S.createDurationTimestamp(o)),U.addToMetadata(s,{"tencent.cos.request_id":a.headers["x-cos-request-id"],"tencent.status_code":a.statusCode}),t&&U.setException(s,t),e(),r(t,a))});return le.addEvent(s,p),a(e,t,i,n)},r}}var or={init(){We.patchModule("cos-nodejs-sdk-v5/sdk/task.js","init",tencentCOSWrapper)}};function getArgsFromFunction$1(...e){let t={};switch(e[e.length-1]){case"Session":t={query:e[0],params:e[1],transactionConfig:e[2]};break;case"Transaction":t={query:e[0],params:e[1]}}return t}function getPatchedSubscribeMethods(e,t,r,a,n){const s=[];return{...t,onNext:a=>(s.push(a),t.onNext.apply(e,r)),onCompleted(o){switch(o.queryType){case"s":U.addToMetadata(a,{items_count:s.length,operation_executed:"Schema, Write"});break;case"r":U.addToMetadata(a,{items_count:s.length,operation_executed:"Read"});break;case"w":U.addToMetadata(a,{operation_executed:"Write"},{write_stats:o.counters._stats});break;case"rw":U.addToMetadata(a,{items_count:s.length,operation_executed:"Read, Write"},{write_stats:o.counters._stats});break;default:S.debugLog("Unkown query type: "+o.queryType)}return a.setDuration(S.createDurationTimestamp(n)),le.addEvent(a),t.onCompleted.apply(e,r)},onError:n=>(U.setException(a,n),t.onError.apply(e,r))}}function createNewNeo4jEvent(e,r){const{host:a,port:n}=function(e){let t,r="7474",a="neo4j";switch(e.constructor.name){case"Session":t=e._readConnectionHolder;break;case"Transaction":t=e._connectionHolder;break;default:return{host:a,port:r}}if(t&&t._connectionProvider){const e=t._connectionProvider;r=e._address.port(),a=e._address.host()}return{port:r,host:a}}(e),{metadata:s,fullMetadata:o}=function(e){const t={},r={};let a,n,s="";switch(e.constructor.name){case"Session":a=e._readConnectionHolder,n="READ|WRITE";break;case"Transaction":a=e._connectionHolder,n=a._mode;break;default:return}switch(n){case"READ":s="Read";break;case"WRITE":s="Write";break;case"READ|WRITE":s="Read|Write"}return a&&(t.dbName=a._database?a._database:"default",t.operation=`${e.constructor.name}:${s}`,r.config=a._connectionProvider._config),{metadata:t,fullMetadata:r}}(e);s.port=n;const i=new T.Resource([a,"neo4j",s.operation]),p=new T.Event(["neo4j-"+t(),S.createTimestampFromTime(r),null,"neo4j",0,v.ErrorCode.OK]);return p.setResource(i),U.addToMetadata(p,s,o),p}function neo4jSessionRunWrapper(e){return function(...t){const r=getArgsFromFunction$1(...t,this.constructor.name),{query:a,params:n,transactionConfig:s}=r;let o;S.debugLog("User called Neo4j wrapped Session run function");try{const t=Date.now(),r=createNewNeo4jEvent(this,t);U.addToMetadata(r,{},{query:a,param:n,transaction_config:s}),o=e.apply(this,[a,n,s]);const i=o.subscribe;return o.subscribe=function(e){i.call(this,getPatchedSubscribeMethods(this,e,arguments,r,t))},o}catch(e){return le.addException(e),o}}}function neo4jTransactionRunWrapper(e){return function(...t){const r=getArgsFromFunction$1(...t,this.constructor.name),{query:a,params:n}=r;let s;S.debugLog("User called Neo4j wrapped Transaction run function");try{const t=Date.now(),r=createNewNeo4jEvent(this,t);U.addToMetadata(r,{},{query:a,param:n}),s=e.apply(this,[a,n]);const o=s.subscribe;return s.subscribe=function(e){o.call(this,getPatchedSubscribeMethods(this,e,arguments,r,t))},s}catch(e){return le.addException(e),s}}}var ir={init(){We.patchModule("neo4j-driver/lib/transaction.js","run",neo4jTransactionRunWrapper,e=>e.default.prototype),We.patchModule("neo4j-driver/lib/session.js","run",neo4jSessionRunWrapper,e=>e.default.prototype)}};function wrapFsWriteFileFunction(e,t){return function(r,a,n,s){const o="object"==typeof r?r.toString():r,i="function"==typeof(s||n)&&(s||n),{slsEvent:p,startTime:c}=U.initializeEvent("file_system",o,t,"file_system");if(U.addToMetadata(p,{"fs.file":o}),n&&"object"==typeof n&&U.addToMetadata(p,{options:n}),!i)return function(e,t,r,a){try{return le.addEvent(r),e.apply(this,a)}catch(e){throw U.finalizeEvent(r,t,e),e}}(e,c,p,[o,a,n]);let u,d,l;try{const t=new Promise(e=>{u=t=>{U.finalizeEvent(p,c,t),e(),i(t)}});"function"==typeof s?(l=!0,d=e.apply(this,[r,a,n,u])):"function"==typeof n&&(l=!0,d=e.apply(this,[r,a,u])),le.addEvent(p,t)}catch(e){le.addException(e)}return d||l?d:e.apply(this,[r,a,n,s])}}var pr={init(){"TRUE"===(process.env.EPSAGON_FS_INSTRUMENTATION||"").toUpperCase()&&(We.patchSingle(n,"writeFile",()=>wrapFsWriteFileFunction(n.writeFile,"writeFile")),We.patchSingle(n,"writeFileSync",()=>wrapFsWriteFileFunction(n.writeFileSync,"writeFileSync")))}};const cr={"aws-sdk/global":ze,"azure-sdk":Qt,"winston-cw":se,"cos-nodejs-sdk-v5":or,http:at,http2:ht,pg:bt,mysql:yt,redis:Mt,ioredis:Ct,mongo:Ot,dax:Ge,openwhisk:vt,google:xt,dns:It,nats:qt,myqq:Bt,kafkajs:Ut,kafkanode:Gt,bunyan:Kt,pino:Jt,winston:Vt,amqplib:Yt,amqp:rr,ldap:ar,cassandra:sr,neo4j:ir,fs:pr};function patch(e){try{e.init()}catch(e){"TRUE"===(process.env.EPSAGON_DEBUG||"").toUpperCase()&&S.debugLog(e)}}F.getConfig().isEpsagonPatchDisabled||(F.getConfig().patchWhitelist?F.getConfig().patchWhitelist.forEach(e=>{cr[e]?(S.debugLog("[PATCHER] Whitelisting "+e),patch(cr[e])):S.debugLog("[PATCHER] Unable to find lib to patch: "+e)}):[ze,at,ht,bt,yt,Mt,Ct,Ot,Ge,vt,xt,It,qt,Bt,Ut,Gt,Kt,Jt,Qt,se,Vt,Yt,rr,ar,sr,or,ir,pr].forEach(patch));var ur=createCommonjsModule((function(e){e.exports={lambdaWrapper:e=>e,tencentFunctionWrapper:e=>e,stepLambdaWrapper:e=>e,openWhiskWrapper:e=>e,googleCloudFunctionWrapper:e=>e,nodeWrapper:e=>e,wrapBatchJob:e=>e,label:e=>e,setError:e=>e,setWarning:e=>e,getTraceUrl:e=>e,tracer:le,config:F,utils:S,eventInterface:U,event:T,tryRequire:te,errorCode:v,httpHelpers:ke,consts:j,sqsUtils:fe},F.getConfig().isEpsagonDisabled||(e.exports.lambdaWrapper=lambda_lambdaWrapper,e.exports.tencentFunctionWrapper=tencent_tencentFunctionWrapper,e.exports.stepLambdaWrapper=lambda_stepLambdaWrapper,e.exports.nodeWrapper=node_nodeWrapper,e.exports.googleCloudFunctionWrapper=google_cloud_function_googleCloudFunctionWrapper,e.exports.openWhiskWrapper=openwhisk_openWhiskWrapper,e.exports.wrapBatchJob=batch_wrapBatchJob,e.exports.label=le.label,e.exports.setError=le.setError,e.exports.setWarning=le.setWarning,e.exports.getTraceUrl=le.getTraceUrl),e.exports.wrapper=Oe.wrapper,e.exports.init=le.initTrace,e.exports.disable=le.disable,e.exports.unpatch=We.unpatchModules,e.exports.enable=le.enable,e.exports.moduleUtils=We})),dr=ur.lambdaWrapper,lr=ur.tencentFunctionWrapper,gr=ur.stepLambdaWrapper,fr=ur.openWhiskWrapper,hr=ur.googleCloudFunctionWrapper,mr=ur.nodeWrapper,_r=ur.wrapBatchJob,Er=ur.label,br=ur.setError,yr=ur.setWarning,vr=ur.getTraceUrl,Tr=ur.tracer,$r=ur.config,xr=ur.utils,Sr=ur.eventInterface,Rr=ur.event,Ar=ur.tryRequire,Mr=ur.errorCode,Cr=ur.httpHelpers,Or=ur.consts,wr=ur.sqsUtils,Nr=ur.wrapper,Lr=ur.init,Ir=ur.disable,Dr=ur.unpatch,Pr=ur.enable,kr=ur.moduleUtils;exports.default=ur,exports.lambdaWrapper=dr,exports.tencentFunctionWrapper=lr,exports.stepLambdaWrapper=gr,exports.openWhiskWrapper=fr,exports.googleCloudFunctionWrapper=hr,exports.nodeWrapper=mr,exports.wrapBatchJob=_r,exports.label=Er,exports.setError=br,exports.setWarning=yr,exports.getTraceUrl=vr,exports.tracer=Tr,exports.config=$r,exports.utils=xr,exports.eventInterface=Sr,exports.event=Rr,exports.tryRequire=Ar,exports.errorCode=Mr,exports.httpHelpers=Cr,exports.consts=Or,exports.sqsUtils=wr,exports.wrapper=Nr,exports.init=Lr,exports.disable=Ir,exports.unpatch=Dr,exports.enable=Pr,exports.moduleUtils=kr;
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var googleProtobufMinified = _interopDefault(require('google-protobuf-minified'));
+var uuid4 = _interopDefault(require('uuid4'));
+var axiosMinified = _interopDefault(require('axios-minified'));
+var os = _interopDefault(require('os'));
+var fs = _interopDefault(require('fs'));
+var requireInTheMiddle = _interopDefault(require('require-in-the-middle'));
+var events = _interopDefault(require('events'));
+var https = _interopDefault(require('https'));
+var http = _interopDefault(require('http'));
+var buffer = _interopDefault(require('buffer'));
+var jsonStringifySafe = _interopDefault(require('json-stringify-safe'));
+var md5 = _interopDefault(require('md5'));
+var json = _interopDefault(require('json.sortify'));
+var util = _interopDefault(require('util'));
+var shimmer = _interopDefault(require('shimmer'));
+var zlib = _interopDefault(require('zlib'));
+var uuidParse = _interopDefault(require('uuid-parse'));
+var path = _interopDefault(require('path'));
+var url = _interopDefault(require('url'));
+var dns = _interopDefault(require('dns'));
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+function getCjsExportFromNamespace (n) {
+	return n && n.default || n;
+}
+
+var exception_pb = createCommonjsModule(function (module, exports) {
+/**
+ * @fileoverview
+ * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
+ * @public
+ */
+// GENERATED CODE -- DO NOT EDIT!
+
+
+var goog = googleProtobufMinified;
+var global = Function('return this')();
+
+goog.exportSymbol('proto.Exception', null, global);
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.Exception = function(opt_data) {
+  googleProtobufMinified.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.Exception, googleProtobufMinified.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.Exception.displayName = 'proto.Exception';
+}
+
+
+if (googleProtobufMinified.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.Exception.prototype.toObject = function(opt_includeInstance) {
+  return proto.Exception.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.Exception} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Exception.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    type: googleProtobufMinified.Message.getFieldWithDefault(msg, 1, ""),
+    message: googleProtobufMinified.Message.getFieldWithDefault(msg, 2, ""),
+    traceback: googleProtobufMinified.Message.getFieldWithDefault(msg, 3, ""),
+    time: +googleProtobufMinified.Message.getFieldWithDefault(msg, 4, 0.0),
+    additionalDataMap: (f = msg.getAdditionalDataMap()) ? f.toObject(includeInstance, undefined) : []
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.Exception}
+ */
+proto.Exception.deserializeBinary = function(bytes) {
+  var reader = new googleProtobufMinified.BinaryReader(bytes);
+  var msg = new proto.Exception;
+  return proto.Exception.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.Exception} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.Exception}
+ */
+proto.Exception.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setType(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessage(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTraceback(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setTime(value);
+      break;
+    case 5:
+      var value = msg.getAdditionalDataMap();
+      reader.readMessage(value, function(message, reader) {
+        googleProtobufMinified.Map.deserializeBinary(message, reader, googleProtobufMinified.BinaryReader.prototype.readString, googleProtobufMinified.BinaryReader.prototype.readString);
+         });
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.Exception.prototype.serializeBinary = function() {
+  var writer = new googleProtobufMinified.BinaryWriter();
+  proto.Exception.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.Exception} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Exception.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getType();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getTraceback();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getTime();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      4,
+      f
+    );
+  }
+  f = message.getAdditionalDataMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(5, writer, googleProtobufMinified.BinaryWriter.prototype.writeString, googleProtobufMinified.BinaryWriter.prototype.writeString);
+  }
+};
+
+
+/**
+ * optional string type = 1;
+ * @return {string}
+ */
+proto.Exception.prototype.getType = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.Exception.prototype.setType = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string message = 2;
+ * @return {string}
+ */
+proto.Exception.prototype.getMessage = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.Exception.prototype.setMessage = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string traceback = 3;
+ * @return {string}
+ */
+proto.Exception.prototype.getTraceback = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.Exception.prototype.setTraceback = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional double time = 4;
+ * @return {number}
+ */
+proto.Exception.prototype.getTime = function() {
+  return /** @type {number} */ (+googleProtobufMinified.Message.getFieldWithDefault(this, 4, 0.0));
+};
+
+
+/** @param {number} value */
+proto.Exception.prototype.setTime = function(value) {
+  googleProtobufMinified.Message.setProto3FloatField(this, 4, value);
+};
+
+
+/**
+ * map<string, string> additional_data = 5;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.Exception.prototype.getAdditionalDataMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      googleProtobufMinified.Message.getMapField(this, 5, opt_noLazyCreate,
+      null));
+};
+
+
+proto.Exception.prototype.clearAdditionalDataMap = function() {
+  this.getAdditionalDataMap().clear();
+};
+
+
+goog.object.extend(exports, proto);
+});
+
+var error_code_pb = createCommonjsModule(function (module, exports) {
+/**
+ * @fileoverview
+ * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
+ * @public
+ */
+// GENERATED CODE -- DO NOT EDIT!
+
+
+var goog = googleProtobufMinified;
+var global = Function('return this')();
+
+goog.exportSymbol('proto.ErrorCode', null, global);
+/**
+ * @enum {number}
+ */
+proto.ErrorCode = {
+  OK: 0,
+  ERROR: 1,
+  EXCEPTION: 2,
+  TIMEOUT: 3
+};
+
+goog.object.extend(exports, proto);
+});
+
+var event_pb = createCommonjsModule(function (module, exports) {
+/**
+ * @fileoverview
+ * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
+ * @public
+ */
+// GENERATED CODE -- DO NOT EDIT!
+
+
+var goog = googleProtobufMinified;
+var global = Function('return this')();
+
+
+
+goog.exportSymbol('proto.Event', null, global);
+goog.exportSymbol('proto.Resource', null, global);
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.Resource = function(opt_data) {
+  googleProtobufMinified.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.Resource, googleProtobufMinified.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.Resource.displayName = 'proto.Resource';
+}
+
+
+if (googleProtobufMinified.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.Resource.prototype.toObject = function(opt_includeInstance) {
+  return proto.Resource.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.Resource} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Resource.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: googleProtobufMinified.Message.getFieldWithDefault(msg, 1, ""),
+    type: googleProtobufMinified.Message.getFieldWithDefault(msg, 2, ""),
+    operation: googleProtobufMinified.Message.getFieldWithDefault(msg, 3, ""),
+    metadataMap: (f = msg.getMetadataMap()) ? f.toObject(includeInstance, undefined) : []
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.Resource}
+ */
+proto.Resource.deserializeBinary = function(bytes) {
+  var reader = new googleProtobufMinified.BinaryReader(bytes);
+  var msg = new proto.Resource;
+  return proto.Resource.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.Resource} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.Resource}
+ */
+proto.Resource.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOperation(value);
+      break;
+    case 4:
+      var value = msg.getMetadataMap();
+      reader.readMessage(value, function(message, reader) {
+        googleProtobufMinified.Map.deserializeBinary(message, reader, googleProtobufMinified.BinaryReader.prototype.readString, googleProtobufMinified.BinaryReader.prototype.readString);
+         });
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.Resource.prototype.serializeBinary = function() {
+  var writer = new googleProtobufMinified.BinaryWriter();
+  proto.Resource.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.Resource} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Resource.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getType();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getOperation();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getMetadataMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(4, writer, googleProtobufMinified.BinaryWriter.prototype.writeString, googleProtobufMinified.BinaryWriter.prototype.writeString);
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.Resource.prototype.getName = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.Resource.prototype.setName = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string type = 2;
+ * @return {string}
+ */
+proto.Resource.prototype.getType = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.Resource.prototype.setType = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string operation = 3;
+ * @return {string}
+ */
+proto.Resource.prototype.getOperation = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.Resource.prototype.setOperation = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * map<string, string> metadata = 4;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.Resource.prototype.getMetadataMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      googleProtobufMinified.Message.getMapField(this, 4, opt_noLazyCreate,
+      null));
+};
+
+
+proto.Resource.prototype.clearMetadataMap = function() {
+  this.getMetadataMap().clear();
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.Event = function(opt_data) {
+  googleProtobufMinified.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.Event, googleProtobufMinified.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.Event.displayName = 'proto.Event';
+}
+
+
+if (googleProtobufMinified.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.Event.prototype.toObject = function(opt_includeInstance) {
+  return proto.Event.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.Event} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Event.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: googleProtobufMinified.Message.getFieldWithDefault(msg, 1, ""),
+    startTime: +googleProtobufMinified.Message.getFieldWithDefault(msg, 2, 0.0),
+    resource: (f = msg.getResource()) && proto.Resource.toObject(includeInstance, f),
+    origin: googleProtobufMinified.Message.getFieldWithDefault(msg, 4, ""),
+    duration: +googleProtobufMinified.Message.getFieldWithDefault(msg, 5, 0.0),
+    errorCode: googleProtobufMinified.Message.getFieldWithDefault(msg, 6, 0),
+    exception: (f = msg.getException()) && exception_pb.Exception.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.Event}
+ */
+proto.Event.deserializeBinary = function(bytes) {
+  var reader = new googleProtobufMinified.BinaryReader(bytes);
+  var msg = new proto.Event;
+  return proto.Event.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.Event} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.Event}
+ */
+proto.Event.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setStartTime(value);
+      break;
+    case 3:
+      var value = new proto.Resource;
+      reader.readMessage(value,proto.Resource.deserializeBinaryFromReader);
+      msg.setResource(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrigin(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setDuration(value);
+      break;
+    case 6:
+      var value = /** @type {!proto.ErrorCode} */ (reader.readEnum());
+      msg.setErrorCode(value);
+      break;
+    case 7:
+      var value = new exception_pb.Exception;
+      reader.readMessage(value,exception_pb.Exception.deserializeBinaryFromReader);
+      msg.setException(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.Event.prototype.serializeBinary = function() {
+  var writer = new googleProtobufMinified.BinaryWriter();
+  proto.Event.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.Event} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Event.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getStartTime();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      2,
+      f
+    );
+  }
+  f = message.getResource();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.Resource.serializeBinaryToWriter
+    );
+  }
+  f = message.getOrigin();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getDuration();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      5,
+      f
+    );
+  }
+  f = message.getErrorCode();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
+      f
+    );
+  }
+  f = message.getException();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      exception_pb.Exception.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string id = 1;
+ * @return {string}
+ */
+proto.Event.prototype.getId = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.Event.prototype.setId = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional double start_time = 2;
+ * @return {number}
+ */
+proto.Event.prototype.getStartTime = function() {
+  return /** @type {number} */ (+googleProtobufMinified.Message.getFieldWithDefault(this, 2, 0.0));
+};
+
+
+/** @param {number} value */
+proto.Event.prototype.setStartTime = function(value) {
+  googleProtobufMinified.Message.setProto3FloatField(this, 2, value);
+};
+
+
+/**
+ * optional Resource resource = 3;
+ * @return {?proto.Resource}
+ */
+proto.Event.prototype.getResource = function() {
+  return /** @type{?proto.Resource} */ (
+    googleProtobufMinified.Message.getWrapperField(this, proto.Resource, 3));
+};
+
+
+/** @param {?proto.Resource|undefined} value */
+proto.Event.prototype.setResource = function(value) {
+  googleProtobufMinified.Message.setWrapperField(this, 3, value);
+};
+
+
+proto.Event.prototype.clearResource = function() {
+  this.setResource(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.Event.prototype.hasResource = function() {
+  return googleProtobufMinified.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional string origin = 4;
+ * @return {string}
+ */
+proto.Event.prototype.getOrigin = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.Event.prototype.setOrigin = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional double duration = 5;
+ * @return {number}
+ */
+proto.Event.prototype.getDuration = function() {
+  return /** @type {number} */ (+googleProtobufMinified.Message.getFieldWithDefault(this, 5, 0.0));
+};
+
+
+/** @param {number} value */
+proto.Event.prototype.setDuration = function(value) {
+  googleProtobufMinified.Message.setProto3FloatField(this, 5, value);
+};
+
+
+/**
+ * optional ErrorCode error_code = 6;
+ * @return {!proto.ErrorCode}
+ */
+proto.Event.prototype.getErrorCode = function() {
+  return /** @type {!proto.ErrorCode} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {!proto.ErrorCode} value */
+proto.Event.prototype.setErrorCode = function(value) {
+  googleProtobufMinified.Message.setProto3EnumField(this, 6, value);
+};
+
+
+/**
+ * optional Exception exception = 7;
+ * @return {?proto.Exception}
+ */
+proto.Event.prototype.getException = function() {
+  return /** @type{?proto.Exception} */ (
+    googleProtobufMinified.Message.getWrapperField(this, exception_pb.Exception, 7));
+};
+
+
+/** @param {?proto.Exception|undefined} value */
+proto.Event.prototype.setException = function(value) {
+  googleProtobufMinified.Message.setWrapperField(this, 7, value);
+};
+
+
+proto.Event.prototype.clearException = function() {
+  this.setException(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.Event.prototype.hasException = function() {
+  return googleProtobufMinified.Message.getField(this, 7) != null;
+};
+
+
+goog.object.extend(exports, proto);
+});
+
+var trace_pb = createCommonjsModule(function (module, exports) {
+/**
+ * @fileoverview
+ * @enhanceable
+ * @suppress {messageConventions} JS Compiler reports an error if a variable or
+ *     field starts with 'MSG_' and isn't a translatable message.
+ * @public
+ */
+// GENERATED CODE -- DO NOT EDIT!
+
+
+var goog = googleProtobufMinified;
+var global = Function('return this')();
+
+
+
+goog.exportSymbol('proto.Trace', null, global);
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.Trace = function(opt_data) {
+  googleProtobufMinified.Message.initialize(this, opt_data, 0, -1, proto.Trace.repeatedFields_, null);
+};
+goog.inherits(proto.Trace, googleProtobufMinified.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.Trace.displayName = 'proto.Trace';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.Trace.repeatedFields_ = [3,4];
+
+
+
+if (googleProtobufMinified.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.Trace.prototype.toObject = function(opt_includeInstance) {
+  return proto.Trace.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.Trace} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Trace.toObject = function(includeInstance, msg) {
+  var obj = {
+    appName: googleProtobufMinified.Message.getFieldWithDefault(msg, 1, ""),
+    token: googleProtobufMinified.Message.getFieldWithDefault(msg, 2, ""),
+    eventList: googleProtobufMinified.Message.toObjectList(msg.getEventList(),
+    event_pb.Event.toObject, includeInstance),
+    exceptionList: googleProtobufMinified.Message.toObjectList(msg.getExceptionList(),
+    exception_pb.Exception.toObject, includeInstance),
+    version: googleProtobufMinified.Message.getFieldWithDefault(msg, 5, ""),
+    platform: googleProtobufMinified.Message.getFieldWithDefault(msg, 6, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.Trace}
+ */
+proto.Trace.deserializeBinary = function(bytes) {
+  var reader = new googleProtobufMinified.BinaryReader(bytes);
+  var msg = new proto.Trace;
+  return proto.Trace.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.Trace} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.Trace}
+ */
+proto.Trace.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAppName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
+      break;
+    case 3:
+      var value = new event_pb.Event;
+      reader.readMessage(value,event_pb.Event.deserializeBinaryFromReader);
+      msg.addEvent(value);
+      break;
+    case 4:
+      var value = new exception_pb.Exception;
+      reader.readMessage(value,exception_pb.Exception.deserializeBinaryFromReader);
+      msg.addException(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setVersion(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPlatform(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.Trace.prototype.serializeBinary = function() {
+  var writer = new googleProtobufMinified.BinaryWriter();
+  proto.Trace.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.Trace} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Trace.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAppName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getEventList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      event_pb.Event.serializeBinaryToWriter
+    );
+  }
+  f = message.getExceptionList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      exception_pb.Exception.serializeBinaryToWriter
+    );
+  }
+  f = message.getVersion();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getPlatform();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string app_name = 1;
+ * @return {string}
+ */
+proto.Trace.prototype.getAppName = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.Trace.prototype.setAppName = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string token = 2;
+ * @return {string}
+ */
+proto.Trace.prototype.getToken = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.Trace.prototype.setToken = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * repeated Event event = 3;
+ * @return {!Array.<!proto.Event>}
+ */
+proto.Trace.prototype.getEventList = function() {
+  return /** @type{!Array.<!proto.Event>} */ (
+    googleProtobufMinified.Message.getRepeatedWrapperField(this, event_pb.Event, 3));
+};
+
+
+/** @param {!Array.<!proto.Event>} value */
+proto.Trace.prototype.setEventList = function(value) {
+  googleProtobufMinified.Message.setRepeatedWrapperField(this, 3, value);
+};
+
+
+/**
+ * @param {!proto.Event=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.Event}
+ */
+proto.Trace.prototype.addEvent = function(opt_value, opt_index) {
+  return googleProtobufMinified.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.Event, opt_index);
+};
+
+
+proto.Trace.prototype.clearEventList = function() {
+  this.setEventList([]);
+};
+
+
+/**
+ * repeated Exception exception = 4;
+ * @return {!Array.<!proto.Exception>}
+ */
+proto.Trace.prototype.getExceptionList = function() {
+  return /** @type{!Array.<!proto.Exception>} */ (
+    googleProtobufMinified.Message.getRepeatedWrapperField(this, exception_pb.Exception, 4));
+};
+
+
+/** @param {!Array.<!proto.Exception>} value */
+proto.Trace.prototype.setExceptionList = function(value) {
+  googleProtobufMinified.Message.setRepeatedWrapperField(this, 4, value);
+};
+
+
+/**
+ * @param {!proto.Exception=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.Exception}
+ */
+proto.Trace.prototype.addException = function(opt_value, opt_index) {
+  return googleProtobufMinified.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.Exception, opt_index);
+};
+
+
+proto.Trace.prototype.clearExceptionList = function() {
+  this.setExceptionList([]);
+};
+
+
+/**
+ * optional string version = 5;
+ * @return {string}
+ */
+proto.Trace.prototype.getVersion = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.Trace.prototype.setVersion = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string platform = 6;
+ * @return {string}
+ */
+proto.Trace.prototype.getPlatform = function() {
+  return /** @type {string} */ (googleProtobufMinified.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.Trace.prototype.setPlatform = function(value) {
+  googleProtobufMinified.Message.setProto3StringField(this, 6, value);
+};
+
+
+goog.object.extend(exports, proto);
+});
+
+/**
+ * @fileoverview Utility functions
+ */
+
+/**
+ * Creates a timestamp (according to epsagon-protocol timestamp format) from a given js time
+ * @param {number} time the time in miliseconds to generate the timestamp from
+ * @return {double} the time in epsagon's format
+ */
+function createTimestampFromTime(time) {
+    return time / 1000;
+}
+
+/**
+ * Check if an object is a Promise.
+ * @param {Object} object the time in miliseconds to generate the timestamp from
+ * @return {Boolean} true if promise, else - false.
+ */
+function isPromise(object) {
+    return !!object && typeof object.then === 'function';
+}
+
+/**
+ * Check if a key is in object and return its value if it does.
+ * @param {Object} object the object to look for the key
+ * @param {Object} key the key to look for
+ * @return {Object} key
+ */
+function getValueIfExist(object, key) {
+    return key in object ? object[key] : undefined;
+}
+
+/**
+ * Creates a timestamp (according to epsagon-protocol timestamp format) of the current time
+ * @return {double} the time in epsagon's format
+ */
+function createTimestamp() {
+    return createTimestampFromTime(Date.now());
+}
+
+/**
+ * Creates a timestamp (according to epsagon-protocol timestamp format) describing the time elapsed
+ * since a given time until now
+ * @param {integer} startTime The time to start counting from
+ * @return {double} the duration in epsagon's timestamp format
+ */
+function createDurationTimestamp(startTime) {
+    return createTimestampFromTime(Date.now() - startTime);
+}
+
+/**
+ * Reflects a promise to always resolve, and indicate the original resolve/rejection status via the
+ * resolved value
+ * @param {Promise} promise The promise to reflect
+ * @return {Promise} The reflected promise
+ */
+function reflectPromise(promise) {
+    return promise
+        .then(value => ({ value, status: 'resolved' }))
+        .catch(error => ({ error, status: 'rejected' }));
+}
+
+/**
+ * Prints a log if debugging is enabled
+ * @param {list} args list of arguments as passed to console.log
+ */
+function debugLog(...args) {
+    if ((process.env.EPSAGON_DEBUG || '').toUpperCase() === 'TRUE') {
+        console.log('[EPSAGON]', ...args); // eslint-disable-line no-console
+    }
+}
+
+/**
+ * Prints a warning
+ * @param {list} args list of arguments as passed to console.warn
+ */
+function printWarning(...args) {
+    console.warn(...args); // eslint-disable-line no-console
+}
+
+/**
+ * Prints a error
+ * @param {list} args list of arguments as passed to console.error
+ */
+function printError(...args) {
+    console.error(...args); // eslint-disable-line no-console
+}
+
+/**
+ * This function allow you to modify a JS Promise by adding some status properties.
+ * Based on: http://stackoverflow.com/questions/21485545/is-there-a-way-to-tell-if-an-es6-promise-is-fulfilled-rejected-resolved
+ * But modified according to the specs of promises : https://promisesaplus.com/
+ * @param {Promise} promise the promise to make queryable
+ * @return {Promise} the queryable promise
+ */
+function makeQueryablePromise(promise) {
+    // Don't modify any promise that has been already modified.
+    if (promise.isResolved) return promise;
+
+    // Set initial state
+    let isPending = true;
+    let isRejected = false;
+    let isFulfilled = false;
+
+    // Observe the promise, saving the fulfillment in a closure scope.
+    const result = promise.then(
+        (v) => {
+            isFulfilled = true;
+            isPending = false;
+            return v;
+        },
+        (e) => {
+            isRejected = true;
+            isPending = false;
+            throw e;
+        }
+    );
+
+    result.isFulfilled = () => isFulfilled;
+    result.isPending = () => isPending;
+    result.isRejected = () => isRejected;
+    return result;
+}
+
+/**
+ * Flatten given dictionary
+ * @param {Object} target the target dictionary
+ * @return {Object} flatten dictionary
+ */
+function flatten(target) {
+    const delimiter = '.';
+    const output = {};
+
+    /**
+     * Recursive function in the flatten process
+     * @param {Object} object the current step's value
+     * @param {string} prev the key from previous step
+     * @param {integer} currentDepth the current depth number
+     */
+    function step(object, prev, currentDepth) {
+        const depthNumber = currentDepth || 1;
+        Object.keys(object).forEach((key) => {
+            const value = object[key];
+            if (value == null) return null;
+            const isArray = Array.isArray(value);
+            const type = Object.prototype.toString.call(value);
+            const isObject = (
+                type === '[object Object]' ||
+                type === '[object Array]'
+            );
+
+            const newKey = prev ? prev + delimiter + key : key;
+
+            if (!isArray && !Buffer.isBuffer(value) && isObject && Object.keys(value).length) {
+                return step(value, newKey, depthNumber + 1);
+            }
+
+            if (value != null && ['string', 'number', 'boolean'].includes(typeof value)) {
+                output[newKey] = value;
+            }
+
+            return null;
+        });
+    }
+    step(target);
+    return output;
+}
+
+
+/**
+ * Function to split string into array, which return the last element of the array.
+ * @param {string} string String to be split.
+ * @param {string} seperator Character to split the string.
+ * @returns {string} Last splitted array item.
+ */
+const getLastSplittedItem = (string, seperator) => {
+    const splittedArray = (string && string.split(seperator)) || [];
+    return splittedArray[splittedArray.length - 1];
+};
+
+const isLambdaEnv = !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+
+
+/**
+ * Function to truncate a long string to a maximum length.
+ * @param {string} message to be trancated.
+ * @param {integer} maxSize maximum message length.
+ * @returns {string} First `maxSize` characters of `message`.
+ */
+function truncateMessage(message, maxSize) {
+    if (message.length <= maxSize) {
+        return message;
+    }
+    return message.slice(0, maxSize);
+}
+
+/**
+ * Return unique values from an array
+ * @param {Array} arr  array to distinct
+ * @returns {Array} the unique items
+ */
+function distinct(arr) {
+    return [...new Set(arr)];
+}
+
+
+var createTimestampFromTime_1 = createTimestampFromTime;
+var createTimestamp_1 = createTimestamp;
+var createDurationTimestamp_1 = createDurationTimestamp;
+var reflectPromise_1 = reflectPromise;
+var debugLog_1 = debugLog;
+var printWarning_1 = printWarning;
+var printError_1 = printError;
+var makeQueryablePromise_1 = makeQueryablePromise;
+var flatten_1 = flatten;
+var getLastSplittedItem_1 = getLastSplittedItem;
+var isPromise_1 = isPromise;
+var isLambdaEnv_1 = isLambdaEnv;
+var getValueIfExist_1 = getValueIfExist;
+var truncateMessage_1 = truncateMessage;
+var distinct_1 = distinct;
+
+var utils = {
+	createTimestampFromTime: createTimestampFromTime_1,
+	createTimestamp: createTimestamp_1,
+	createDurationTimestamp: createDurationTimestamp_1,
+	reflectPromise: reflectPromise_1,
+	debugLog: debugLog_1,
+	printWarning: printWarning_1,
+	printError: printError_1,
+	makeQueryablePromise: makeQueryablePromise_1,
+	flatten: flatten_1,
+	getLastSplittedItem: getLastSplittedItem_1,
+	isPromise: isPromise_1,
+	isLambdaEnv: isLambdaEnv_1,
+	getValueIfExist: getValueIfExist_1,
+	truncateMessage: truncateMessage_1,
+	distinct: distinct_1
+};
+
+var name = "epsagon";
+var version = "0.0.0-development";
+var description = "Epsagon Instrumentation for Node.js";
+var keywords = [
+	"serverless",
+	"epsagon",
+	"tracing",
+	"distributed-tracing",
+	"lambda",
+	"aws-lambda",
+	"debugging",
+	"monitoring"
+];
+var author = "Epsagon Team <support@epsagon.com>";
+var license = "MIT";
+var scripts = {
+	pretest: "./scripts/build_peg.sh",
+	test: "nyc --reporter=text ./scripts/run_tests.sh",
+	"lint:js": "eslint --max-warnings=0 ./src/ ./examples/ ./test/unit_tests ./index.js -f table --ext .js --ext .jsx",
+	"lint:js:fix": "eslint --max-warnings=0 ./src/ ./examples/ ./test/unit_tests ./index.js -f table --ext .js --ext .jsx --fix",
+	lint: "npm run lint:js",
+	"build:dev": "./scripts/build_peg.sh && rollup -c",
+	build: "./scripts/build_peg.sh && NODE_ENV=production rollup -c",
+	clean: "rm -r dist/",
+	prepublishOnly: "npm run build",
+	"semantic-release": "semantic-release"
+};
+var bugs = {
+	url: "https://github.com/epsagon/epsagon-node/issues"
+};
+var homepage = "https://github.com/epsagon/epsagon-node#readme";
+var repository = {
+	type: "git",
+	url: "https://github.com/epsagon/epsagon-node.git"
+};
+var main = "dist/bundle.js";
+var files = [
+	"dist"
+];
+var husky = {
+	hooks: {
+		"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+	}
+};
+var devDependencies = {
+	"@babel/runtime": "^7.4.5",
+	"@commitlint/cli": "^9.1.2",
+	"@commitlint/config-angular": "^7.1.2",
+	"@commitlint/config-conventional": "^7.1.2",
+	"aws-sdk": "^2.197.0",
+	"body-parser": "^1.19.0",
+	chai: "^4.1.2",
+	"chai-as-promised": "^7.1.1",
+	dotenv: "^8.2.0",
+	eslint: "^4.18.0",
+	"eslint-config-airbnb": "^17.1.0",
+	"eslint-plugin-chai-friendly": "^0.4.1",
+	"eslint-plugin-import": "^2.14.0",
+	"eslint-plugin-json": "^1.2.1",
+	"eslint-plugin-jsx-a11y": "^6.1.1",
+	"eslint-plugin-mocha": "^4.11.0",
+	"eslint-plugin-react": "^7.11.0",
+	express: "^4.17.1",
+	"express-session": "^1.17.1",
+	husky: "^1.1.0",
+	"ldap-server-mock": "^3.0.0",
+	ldapjs: "^2.1.0",
+	lolex: "^3.0.0",
+	mocha: "^9.0.1",
+	mongodb: "^3.1.13",
+	mysql: "^2.16.0",
+	mysql2: "^1.6.4",
+	nyc: "^15.1.0",
+	pegjs: "^0.10.0",
+	pg: "^7.6.0",
+	"pg-pool": "^2.0.3",
+	proxyquire: "^2.0.1",
+	randomstring: "^1.1.5",
+	redis: "^3.1.2",
+	request: "^2.88.2",
+	"request-promise-native": "^1.0.7",
+	rollup: "^0.66.6",
+	"rollup-plugin-commonjs": "^9.1.8",
+	"rollup-plugin-copy": "^3.1.0",
+	"rollup-plugin-eslint": "^5.0.0",
+	"rollup-plugin-json": "^3.1.0",
+	"rollup-plugin-terser": "^7.0.1",
+	"semantic-release": "^17.4.4",
+	semver: "^7.3.4",
+	"simple-oauth2": "^4.2.0",
+	sinon: "^4.3.0",
+	"uglify-es": "^3.3.9",
+	underscore: "^1.12.0"
+};
+var dependencies = {
+	"axios-minified": "^1.0.2",
+	"google-protobuf-minified": "^1.0.8",
+	"json-stringify-safe": "^5.0.1",
+	"json.sortify": "^2.2.2",
+	md5: "^2.2.1",
+	"require-in-the-middle": "^5.0.3",
+	shimmer: "^1.2.1",
+	"uuid-parse": "^1.1.0",
+	uuid4: "^1.0.0"
+};
+var _package = {
+	name: name,
+	version: version,
+	description: description,
+	keywords: keywords,
+	author: author,
+	license: license,
+	scripts: scripts,
+	bugs: bugs,
+	homepage: homepage,
+	repository: repository,
+	main: main,
+	files: files,
+	husky: husky,
+	devDependencies: devDependencies,
+	dependencies: dependencies
+};
+
+var _package$1 = /*#__PURE__*/Object.freeze({
+	name: name,
+	version: version,
+	description: description,
+	keywords: keywords,
+	author: author,
+	license: license,
+	scripts: scripts,
+	bugs: bugs,
+	homepage: homepage,
+	repository: repository,
+	main: main,
+	files: files,
+	husky: husky,
+	devDependencies: devDependencies,
+	dependencies: dependencies,
+	default: _package
+});
+
+var require$$0 = getCjsExportFromNamespace(_package$1);
+
+var VERSION = require$$0.version;
+
+const DEFAULT_REGION = 'us-east-1';
+let REGION = process.env.AWS_REGION;
+
+// Check that we got region from env.
+if (REGION === undefined) {
+    REGION = DEFAULT_REGION;
+}
+
+var REGION_1 = REGION;
+var LOCAL_URL = 'http://localhost:3000';
+var TRACE_COLLECTOR_URL = `https://${REGION}.tc.epsagon.com`;
+
+var COLD_START = true;
+
+/**
+ * The identifier of the injected step data in the step machine result dict
+ */
+var STEP_ID_NAME = 'Epsagon';
+
+var EPSAGON_EVENT_ID_KEY = '_epsagon_event_id';
+
+var MAX_VALUE_CHARS = 3 * 1024;
+
+var MAX_LABEL_SIZE = 10 * 1024;
+
+var MAX_HTTP_VALUE_SIZE = 10 * 1024;
+
+var MAX_TRACE_SIZE_BYTES = process.env.EPSAGON_MAX_TRACE_SIZE ?
+    parseInt(process.env.EPSAGON_MAX_TRACE_SIZE, 10) : 64 * 1024;
+
+var DEFAULT_SAMPLE_RATE = 1;
+
+var DEFAULT_BATCH_SIZE = 5;
+
+var MAX_TRACE_WAIT = 5000; // miliseconds
+
+var BATCH_SIZE_BYTES_HARD_LIMIT = 10 * 64 * 1024; // 650KB
+
+var QUEUE_SIZE_BYTES_HARD_LIMIT = 10 * 1024 * 1024; // 10MB
+
+
+// Key name to inject epsagon correlation ID
+var EPSAGON_HEADER = 'epsagon-trace-id';
+
+// In some cases we manually add the Lambda node_modules path, where it is not found by default
+var LAMBDA_DEFAULT_NODE_MODULES_PATH = '/var/task/node_modules';
+
+var STRONG_ID_KEYS = [
+    'key',
+    'request_id',
+    'requestid',
+    'request-id',
+    'steps_dict',
+    'message_id',
+    'etag',
+    'item_hash',
+    'sequence_number',
+    'trace_id',
+    'job_id',
+    'activation_id',
+    'http_trace_id',
+    'id',
+    'aws.sqs.message_id',
+    'x-amz-request-id',
+    'object_key',
+    'object_etag',
+    'aws.requestId',
+    'aws.s3.key',
+    'aws.s3.etag',
+    'aws.kinesis.sequence_number',
+    'request_trace_id',
+    'logging_tracing_enabled',
+    'CLOUDWATCH_LOG_GROUP_NAME',
+    'CLOUDWATCH_LOG_STREAM_NAME',
+    'log_stream_name',
+    'log_group_name',
+    'function_version',
+    'memory',
+    'aws_account',
+    'cold_start',
+    'region',
+    'status_code',
+];
+
+var traceUrl = (id, requestTime) => `https://app.epsagon.com/trace/${id}?timestamp=${requestTime}`;
+var lambdaTraceUrl = (awsAccount, region, functionName, requestId, requestTime) => `https://app.epsagon.com/functions/${awsAccount}/${region}/${functionName}?requestId=${requestId}&requestTime=${requestTime}`;
+
+var consts = {
+	VERSION: VERSION,
+	REGION: REGION_1,
+	LOCAL_URL: LOCAL_URL,
+	TRACE_COLLECTOR_URL: TRACE_COLLECTOR_URL,
+	COLD_START: COLD_START,
+	STEP_ID_NAME: STEP_ID_NAME,
+	EPSAGON_EVENT_ID_KEY: EPSAGON_EVENT_ID_KEY,
+	MAX_VALUE_CHARS: MAX_VALUE_CHARS,
+	MAX_LABEL_SIZE: MAX_LABEL_SIZE,
+	MAX_HTTP_VALUE_SIZE: MAX_HTTP_VALUE_SIZE,
+	MAX_TRACE_SIZE_BYTES: MAX_TRACE_SIZE_BYTES,
+	DEFAULT_SAMPLE_RATE: DEFAULT_SAMPLE_RATE,
+	DEFAULT_BATCH_SIZE: DEFAULT_BATCH_SIZE,
+	MAX_TRACE_WAIT: MAX_TRACE_WAIT,
+	BATCH_SIZE_BYTES_HARD_LIMIT: BATCH_SIZE_BYTES_HARD_LIMIT,
+	QUEUE_SIZE_BYTES_HARD_LIMIT: QUEUE_SIZE_BYTES_HARD_LIMIT,
+	EPSAGON_HEADER: EPSAGON_HEADER,
+	LAMBDA_DEFAULT_NODE_MODULES_PATH: LAMBDA_DEFAULT_NODE_MODULES_PATH,
+	STRONG_ID_KEYS: STRONG_ID_KEYS,
+	traceUrl: traceUrl,
+	lambdaTraceUrl: lambdaTraceUrl
+};
+
+var config_1 = createCommonjsModule(function (module) {
+/**
+ * @fileoverview configurations for Epsagon library
+ */
+
+
+
+// User-defined HTTP minimum status code to be treated as an error.
+module.exports.HTTP_ERR_CODE = parseInt(process.env.EPSAGON_HTTP_ERR_CODE, 10) || 400;
+
+/**
+ * process each ignored key to make `studentId` ignore `student_id` as well
+ * @param {string} key the key to process
+ * @returns {string} key after process
+ */
+module.exports.processIgnoredKey = function processIgnoredKey(key) {
+    return key
+        .toLowerCase()
+        .replace('-', '')
+        .replace('_', '')
+        .replace(/\s/g, '');
+};
+
+/**
+ * process list of ignored keys
+ * @param {Array<string | RegExp>} keys the list of keys to process
+ * @returns {Array<string | RegExp>} the list of keys after process
+ */
+const processIgnoredKeys = keys => keys.map(k => (typeof k === 'string' ? module.exports.processIgnoredKey(k) : k));
+
+/**
+ * process list of ignored keys, supporting String & RegExp. Warns if else
+ * @param {Array<string | RegExp>}keys the list of keys to match
+ * @return {Array<string | RegExp>} the list of keys to override in config
+ */
+const matchKeysToIgnore = (keys) => {
+    const filteredKeys = keys
+        .filter(key => key && (typeof key === 'string' || key instanceof RegExp));
+    if (filteredKeys.length !== keys.length) {
+        utils.printWarning(
+            'Epsagon Deprecaion Warning: matched keys supports only strings and RegExp, other values will be ignored. Recieved Keys:',
+            keys
+        );
+    }
+    return processIgnoredKeys(filteredKeys);
+};
+
+/**
+ * The default sendTimeout to send for send operations (both sync and async)
+ */
+const DEFAULT_TIMEOUT_SEC = 1.0;
+
+/**
+ * configuration singleton. preconfigured with default values.
+ */
+const config = {
+    token: process.env.EPSAGON_TOKEN || '',
+    appName: process.env.EPSAGON_APP_NAME || 'Application',
+    metadataOnly: (process.env.EPSAGON_METADATA || '').toUpperCase() === 'TRUE',
+    useSSL: (process.env.EPSAGON_SSL || 'TRUE').toUpperCase() === 'TRUE',
+    traceCollectorURL: process.env.EPSAGON_COLLECTOR_URL || consts.TRACE_COLLECTOR_URL,
+    isEpsagonDisabled: (process.env.DISABLE_EPSAGON || '').toUpperCase() === 'TRUE',
+    urlPatternsToIgnore: [],
+    ignoredDBTables: [],
+    internalSampleRate: consts.DEFAULT_SAMPLE_RATE,
+    labels: {},
+    sendOnlyErrors: (process.env.EPSAGON_SEND_TRACE_ON_ERROR || '').toUpperCase() === 'TRUE',
+    removeIgnoredKeys: (process.env.EPSAGON_REMOVE_IGNORED_KEYS || '').toUpperCase() === 'TRUE',
+    sendTimeout: (Number(process.env.EPSAGON_SEND_TIMEOUT_SEC) || DEFAULT_TIMEOUT_SEC) * 1000.0,
+    decodeHTTP: (process.env.EPSAGON_DECODE_HTTP || 'TRUE').toUpperCase() === 'TRUE',
+    disableHttpResponseBodyCapture: (process.env.EPSAGON_DISABLE_HTTP_RESPONSE || '').toUpperCase() === 'TRUE',
+    loggingTracingEnabled: (process.env.EPSAGON_LOGGING_TRACING_ENABLED || (!utils.isLambdaEnv).toString()).toUpperCase() === 'TRUE',
+    sendBatch: (process.env.EPSAGON_SEND_BATCH || (!utils.isLambdaEnv).toString()).toUpperCase() === 'TRUE',
+    batchSize: (Number(process.env.EPSAGON_BATCH_SIZE) || consts.DEFAULT_BATCH_SIZE),
+    maxTraceWait: (Number(process.env.EPSAGON_MAX_TRACE_WAIT) ||
+     consts.MAX_TRACE_WAIT), // miliseconds
+    maxBatchSizeBytes: consts.BATCH_SIZE_BYTES_HARD_LIMIT,
+    maxQueueSizeBytes: consts.QUEUE_SIZE_BYTES_HARD_LIMIT,
+    logTransportEnabled: (process.env.EPSAGON_LOG_TRANSPORT || 'FALSE').toUpperCase() === 'TRUE',
+
+    /**
+     * get isEpsagonPatchDisabled
+     * @return {boolean} True if DISABLE_EPSAGON or DISABLE_EPSAGON_PATCH are set to TRUE, false
+     *     otherwise
+     */
+    get isEpsagonPatchDisabled() {
+        return this.isEpsagonDisabled || (process.env.DISABLE_EPSAGON_PATCH || '').toUpperCase() === 'TRUE';
+    },
+
+    /**
+     * @return {Number} the current sample rate
+     */
+    get sampleRate() {
+        return this.internalSampleRate;
+    },
+
+    /**
+     * updates the sampling rate, if input is valid
+     * @param {String | Number} newRate The new rate to use
+     */
+    set sampleRate(newRate) {
+        const newParsedRate = parseFloat(newRate);
+        if (!Number.isNaN(newParsedRate)) {
+            this.internalSampleRate = newParsedRate;
+        }
+    },
+};
+
+if (process.env.EPSAGON_SAMPLE_RATE) {
+    config.sampleRate = process.env.EPSAGON_SAMPLE_RATE;
+}
+if (process.env.EPSAGON_URLS_TO_IGNORE) {
+    config.urlPatternsToIgnore = process.env.EPSAGON_URLS_TO_IGNORE.split(',');
+}
+
+if (process.env.EPSAGON_IGNORED_DB_TABLES) {
+    config.ignoredDBTables = process.env.EPSAGON_IGNORED_DB_TABLES.split(',');
+}
+
+if (process.env.EPSAGON_IGNORED_KEYS) {
+    config.ignoredKeys = processIgnoredKeys(process.env.EPSAGON_IGNORED_KEYS.split(','));
+}
+
+if ((process.env.EPSAGON_SSL || 'TRUE').toUpperCase() === 'FALSE') {
+    config.traceCollectorURL = config.traceCollectorURL.replace('https:', 'http:');
+}
+
+if ((process.env.EPSAGON_SSL || 'TRUE').toUpperCase() === 'TRUE') {
+    config.traceCollectorURL = config.traceCollectorURL.replace('http:', 'https:');
+}
+
+if (process.env.EPSAGON_PATCH_WHITELIST) {
+    config.patchWhitelist = process.env.EPSAGON_PATCH_WHITELIST.split(',');
+}
+
+if (process.env.EPSAGON_PAYLOADS_TO_IGNORE) {
+    config.ignoredPayloads = JSON.parse(process.env.EPSAGON_PAYLOADS_TO_IGNORE);
+}
+
+/**
+ * @returns {object} The config object
+ */
+module.exports.getConfig = function getConfig() {
+    return config;
+};
+
+
+/**
+ * Initializes the configuration
+ * @param {object} configData user's configuration
+ */
+module.exports.setConfig = function setConfig(configData) {
+    if (configData === undefined) return;
+
+    if (configData.token) {
+        config.token = configData.token;
+    }
+
+    if (configData.isEpsagonDisabled) {
+        config.isEpsagonDisabled = configData.isEpsagonDisabled;
+    }
+
+    if (configData.appName) {
+        config.appName = configData.appName;
+    }
+
+    if (configData.metadataOnly !== undefined && configData.metadataOnly != null) {
+        config.metadataOnly = configData.metadataOnly;
+    }
+
+    // Set custom URL if defined
+    if (configData.traceCollectorURL) {
+        config.traceCollectorURL = configData.traceCollectorURL;
+    }
+
+    // Use SSL
+    if (configData.useSSL === false) {
+        config.traceCollectorURL = config.traceCollectorURL.replace('https:', 'http:');
+        config.useSSL = configData.useSSL;
+    }
+    if (configData.useSSL) {
+        config.traceCollectorURL = config.traceCollectorURL.replace('http:', 'https:');
+        config.useSSL = configData.useSSL;
+    }
+    // Check if traceCollector run locally
+    if (configData.useLocalCollector) {
+        config.traceCollectorURL = consts.LOCAL_URL;
+    }
+
+    // User-defined URL blacklist.
+    if (configData.urlPatternsToIgnore) {
+        config.urlPatternsToIgnore = configData.urlPatternsToIgnore;
+    }
+
+    // Send traces only on errors.
+    if (configData.sendOnlyErrors) {
+        config.sendOnlyErrors = configData.sendOnlyErrors;
+    }
+
+    // User-defined HTTP minimum status code to be treated as an error.
+    if (configData.httpErrorStatusCode) {
+        module.exports.HTTP_ERR_CODE = configData.httpErrorStatusCode;
+    }
+
+    // Whether to decode HTTP responses (with gzip, brotli, etc.).
+    if (configData.decodeHTTP === false) {
+        config.decodeHTTP = configData.decodeHTTP;
+    }
+
+    // Whether to ignore HTTP responses capture
+    if (configData.disableHttpResponseBodyCapture) {
+        config.disableHttpResponseBodyCapture = configData.disableHttpResponseBodyCapture;
+    }
+
+    // User-defined DB Table response blacklist
+    if (configData.ignoredDBTables && Array.isArray(configData.ignoredDBTables)) {
+        config.ignoredDBTables = matchKeysToIgnore(configData.ignoredDBTables);
+    }
+
+    if (configData.ignoredKeys && Array.isArray(configData.ignoredKeys)) {
+        config.ignoredKeys = matchKeysToIgnore(configData.ignoredKeys);
+    }
+
+    if (configData.removeIgnoredKeys) {
+        config.removeIgnoredKeys = configData.removeIgnoredKeys;
+    }
+
+    if (configData.sampleRate !== null && config.sampleRate !== undefined) {
+        config.sampleRate = configData.sampleRate;
+    }
+
+    if (Number(configData.sendTimeout)) { // we do not allow 0 as a timeout
+        config.sendTimeout = Number(configData.sendTimeout);
+    }
+
+    if (typeof configData.sendBatch === 'boolean') {
+        config.sendBatch = configData.sendBatch;
+    }
+
+    if (Number(configData.batchSize)) {
+        config.batchSize = Number(configData.batchSize);
+    }
+    if (Number(configData.maxTraceWait)) {
+        config.maxTraceWait = Number(configData.maxTraceWait);
+    }
+    if (Number(configData.maxBatchSizeBytes)) {
+        if (Number(configData.maxBatchSizeBytes) > consts.QUEUE_SIZE_BYTES_HARD_LIMIT) {
+            utils.debugLog(`User configured maxBatchSizeBytes exceeded batch size hard limit of ${consts.BATCH_SIZE_BYTES_HARD_LIMIT} Bytes`);
+        } else {
+            config.maxBatchSizeBytes = Number(configData.maxBatchSizeBytes);
+        }
+    }
+
+    if (Number(configData.maxQueueSizeBytes)) {
+        if (Number(configData.maxQueueSizeBytes) > consts.QUEUE_SIZE_BYTES_HARD_LIMIT) {
+            utils.debugLog(`User configured maxQueueSizeBytes exceeded queue size hard limit of ${consts.QUEUE_SIZE_BYTES_HARD_LIMIT} Bytes`);
+        } else {
+            config.maxQueueSizeBytes = Number(configData.maxQueueSizeBytes);
+        }
+    }
+
+
+    if (configData.labels) {
+        config.labels = utils.flatten([...configData.labels].reduce((labels, label) => {
+            const [key, value] = label;
+            return {
+                ...labels,
+                [key]: value,
+            };
+        }, {}));
+    }
+};
+});
+var config_2 = config_1.HTTP_ERR_CODE;
+var config_3 = config_1.processIgnoredKey;
+var config_4 = config_1.getConfig;
+var config_5 = config_1.setConfig;
+
+var event = createCommonjsModule(function (module) {
+/**
+ * @fileoverview an interface to {@link proto.event_pb.Event} objects, with useful methods to
+ * manipulate them
+ */
+
+
+
+
+
+
+
+
+
+/**
+ * Sets an event's exception to the given error
+ * @param {proto.event_pb.Event} event The event the exception is set on
+ * @param {Error} error The error to set as the exception
+ * @param {boolean} handled False if the exception was raised by the wrapped function
+ * @param {boolean} warning True if this exception marked as warning.
+ */
+module.exports.setException = function setException(event, error, handled = true, warning = false) {
+    try {
+        event.setErrorCode(warning ? error_code_pb.ErrorCode.OK : error_code_pb.ErrorCode.EXCEPTION);
+        const userException = new exception_pb.Exception([
+            error.name,
+            error.message,
+            error.stack,
+            utils.createTimestamp(),
+        ]);
+        event.setException(userException);
+        userException.getAdditionalDataMap().set('handled', handled);
+        userException.getAdditionalDataMap().set('warning', warning);
+    } catch (err) {
+        tracer.addException(err);
+    }
+};
+
+/**
+ * Add timeout indication to a given event
+ * @param {proto.event_pb.Event} event The event the timeout is set on
+ */
+module.exports.markAsTimeout = function setTimeout(event) {
+    event.setErrorCode(error_code_pb.ErrorCode.TIMEOUT);
+};
+
+/**
+ * Adds items from a map to a resource Metadata
+ * @param {serverlessEvent.Event} event The event to add the items to
+ * @param {object} map The map containing the objects
+ * @param {object} [fullDataMap={}] Additional data to add only if {@link config.metadataOnly}
+ *     is False
+ */
+module.exports.addToMetadata = function addToMetadata(event, map, fullDataMap = {}) {
+    const resource = event.getResource();
+    const metadataMap = resource && resource.getMetadataMap();
+    if (!metadataMap) {
+        return;
+    }
+
+    Object.keys(map).forEach((key) => {
+        metadataMap.set(key, map[key]);
+    });
+    if (!config_1.getConfig().metadataOnly) {
+        Object.keys(fullDataMap).forEach((key) => {
+            metadataMap.set(key, fullDataMap[key]);
+        });
+    }
+};
+
+
+/**
+ * Adds JSON serialized object to a resource Metadata
+ * @param {proto.event_pb.Event} event The event to add the items to
+ * @param {string} key The name of field that is added
+ * @param {object} object The object to add
+ * @param {array} [dataFields=[]] List of data fields that should be filtered out
+ *  only if {@link config.metadataOnly} is True
+ */
+module.exports.addObjectToMetadata = function addObjectToMetadata(
+    event,
+    key,
+    object,
+    dataFields = []
+) {
+    let objectToAdd = object;
+    if (!config_1.getConfig().metadataOnly && dataFields.length > 0) {
+        const fields = Object.getOwnPropertyNames(object).filter(
+            field => !dataFields.includes(field)
+        );
+        objectToAdd = Object.assign(...(fields.map(field => ({ [field]: object[field] }))));
+        event.getResource().getMetadataMap().set(key, JSON.stringify(objectToAdd));
+    }
+};
+
+/**
+ * Adds a given label to the metadata map
+ * @param {proto.event_pb.Event} event The event to add the items to
+ * @param {string} key key for the added label
+ * @param {string} value value for the added label
+ */
+module.exports.addLabelToMetadata = function addLabelToMetadata(event, key, value) {
+    const currLabels = event.getResource().getMetadataMap().get('labels');
+    let labels = null;
+    if (currLabels !== undefined) {
+        labels = JSON.parse(currLabels);
+        labels[key] = value;
+    } else {
+        labels = { [key]: value };
+    }
+
+    const labelsJson = JSON.stringify(labels);
+    if (labelsJson.length <= consts.MAX_LABEL_SIZE) {
+        event.getResource().getMetadataMap().set('labels', labelsJson);
+    }
+};
+
+/**
+ * Create and initialize a new serverless event in the epsagon format.
+ * @param {string} resourceType resourceType name
+ * @param {string} name Event name
+ * @param {string} operation Operation name
+ * @param {string} origin Origin name
+ * @returns {Object} Object with serverlessEvent and event started time.
+ */
+module.exports.initializeEvent = function initializeEvent(resourceType, name, operation, origin) {
+    const startTime = Date.now();
+    const resource = new event_pb.Resource([
+        name,
+        resourceType,
+        operation,
+    ]);
+    const slsEvent = new event_pb.Event([
+        `${resourceType}-${uuid4()}`,
+        utils.createTimestampFromTime(startTime),
+        null,
+        origin,
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+    slsEvent.setResource(resource);
+    return { slsEvent, startTime };
+};
+
+/**
+ * Adding callback data/error to event, and finalize event.
+ * @param {serverlessEvent.Event} slsEvent Serverless event.
+ * @param {number} startTime Event start time.
+ * @param {Error} error Callback error.
+ * @param {string[] | Object[] | Object} metadata Callback metadata.
+ * @param {string[] | Object[] | Object} payload Payload(Will only be added when
+ *  metaDataOnly=FALSE).
+ */
+module.exports.finalizeEvent = function finalizeEvent(
+    slsEvent,
+    startTime,
+    error,
+    metadata = {},
+    payload = {}
+) {
+    try {
+        if (error) {
+            this.setException(slsEvent, error);
+        }
+        this.addToMetadata(slsEvent, metadata, payload);
+        slsEvent.setDuration(utils.createDurationTimestamp(startTime));
+    } catch (err) {
+        tracer.addException(err);
+    }
+};
+
+
+/**
+ * Creates a UUID as a trace identifier and adds it to a resource's Metadata.
+ * @param {proto.event_pb.Event} event The event to add the items to
+ */
+module.exports.createTraceIdMetadata = function createTraceIdMetadata(event) {
+    module.exports.addToMetadata(event, {
+        trace_id: uuid4(),
+    });
+};
+});
+var event_1 = event.setException;
+var event_2 = event.markAsTimeout;
+var event_3 = event.addToMetadata;
+var event_4 = event.addObjectToMetadata;
+var event_5 = event.addLabelToMetadata;
+var event_6 = event.initializeEvent;
+var event_7 = event.finalizeEvent;
+var event_8 = event.createTraceIdMetadata;
+
+let currentECSLabels = null;
+let currentECSAccount = null;
+
+
+/**
+ * Check if the current process is running inside
+ * an ECS container, if so return the ECS_CONTAINER_METADATA_URI
+ * @returns {string | boolean}  ECS_CONTAINER_METADATA_URI if in ECS else false
+ */
+var hasECSMetadata = function hasECSMetadata() {
+    return process.env.ECS_CONTAINER_METADATA_URI || false;
+};
+
+/**
+ * Load ECS metadata and store it
+ * @param {string} uri  metadata uri to load, @see {@link hasECSMetadata} to get the uri
+ * @returns {Promise}   when resolved will contain the ECS metadata
+ */
+var loadECSMetadata = function loadECSMetadata(uri) {
+    if (currentECSLabels) return Promise.resolve(currentECSLabels);
+
+    utils.debugLog(`loading ecs meta, url: (${uri})`);
+    const promises = [];
+    const labelsPromise = axiosMinified.get(uri).then(res => res.data).then((metadata) => {
+        utils.debugLog(`Received metadata: ${JSON.stringify(metadata)}`);
+        currentECSLabels = metadata && metadata.Labels;
+        const cluster = currentECSLabels && currentECSLabels['com.amazonaws.ecs.cluster'];
+        if (cluster) {
+            // eslint-disable-next-line prefer-destructuring
+            currentECSAccount = cluster.split(':')[4];
+        }
+        return currentECSLabels;
+    }).catch((e) => {
+        utils.debugLog('error fetching ecs metadata: ', e);
+    });
+    promises.push(labelsPromise);
+
+    return Promise.all(promises);
+};
+
+/**
+ * If the current process is running under an ECS container,
+ * it will add the task-arn of the current task to the metadata field
+ * of the trace, if its not running under ECS the trace will return unchanged
+ *
+ * @param {Object} runner  runner object to add the metadata
+ */
+var addECSMetadata = function addECSMetadata(runner) {
+    if (!runner || !currentECSLabels) return;
+    event.addToMetadata(runner, { ECS: currentECSLabels });
+    event.addToMetadata(runner, { 'aws.account_id': currentECSAccount });
+};
+
+var ecs = {
+	hasECSMetadata: hasECSMetadata,
+	loadECSMetadata: loadECSMetadata,
+	addECSMetadata: addECSMetadata
+};
+
+let k8sHostname = null;
+let k8sContainerId = null;
+
+/**
+ * @returns {boolean} true if the current process is running inside
+ * a K8S container, false otherwise
+ */
+var hasK8sMetadata = function hasK8sMetadata() {
+    return !!(process.env.KUBERNETES_SERVICE_HOST);
+};
+
+/**
+ * Load K8S metadata and store it
+ */
+var loadK8sMetadata = function loadK8sMetadata() {
+    if (!k8sHostname) {
+        k8sHostname = os.hostname();
+    }
+
+    if (!k8sContainerId) {
+        try {
+            const data = fs.readFileSync('/proc/self/cgroup');
+            const firstLineParts = data.toString('utf-8').split('\n')[0].split('/');
+            k8sContainerId = firstLineParts[firstLineParts.length - 1];
+        } catch (err) {
+            utils.debugLog('Error loading k8s container id - cannot read cgroup file', err);
+        }
+    }
+};
+
+/**
+ * If the current process is running under an ECS container,
+ * it will add the task-arn of the current task to the metadata field
+ * of the trace, if its not running under ECS the trace will return unchanged
+ *
+ * @param {Object} runner  runner object to add the metadata
+ */
+var addK8sMetadata = function addK8sMetadata(runner) {
+    if (!runner || !k8sHostname) return;
+    const payload = {
+        is_k8s: true,
+        k8s_pod_name: k8sHostname,
+    };
+    if (k8sContainerId) {
+        payload.k8s_container_id = k8sContainerId;
+    }
+
+    event.addToMetadata(runner, payload);
+};
+
+var k8s = {
+	hasK8sMetadata: hasK8sMetadata,
+	loadK8sMetadata: loadK8sMetadata,
+	addK8sMetadata: addK8sMetadata
+};
+
+let currentAzureLabels = null;
+
+const AZURE_CHECK_HOST = process.env.AZURE_HOST || 'http://169.254.169.254';
+const PATH = process.env.AZURE_PATH || '/metadata/instance?api-version=2019-06-01';
+const URL = `${AZURE_CHECK_HOST}${PATH}`;
+const AZURE_REQUEST_TIMEOUT = process.env.AZURE_REQUEST_TIMEOUT || 3000;
+
+const parseAzureTags = (tags) => {
+    const splittedTags = tags.split(';');
+    const parsedTags = splittedTags.reduce((result, currentTag) => {
+        const [key, value] = currentTag.split(':');
+        return (key) ?
+            {
+                ...result,
+                [key]: value,
+            } : result;
+    }, {});
+
+    return parsedTags;
+};
+
+/**
+ * Load Azure metadata and store it
+ * @param {Object} cb callback that fired when load is finished.
+ * @returns {Promise} when resolved will contain the Azure metadata
+ */
+var loadAzureMetadata = function loadAzureMetadata(cb) {
+    if (currentAzureLabels) return Promise.resolve(currentAzureLabels);
+
+    utils.debugLog(`loading azure metadata, url: (${URL})`);
+    const source = axiosMinified.CancelToken.source();
+    setTimeout(() => {
+        source.cancel();
+        // Timeout Logic
+    }, AZURE_REQUEST_TIMEOUT);
+
+    const options = {
+        headers: {
+            Metadata: 'True',
+        },
+        timeout: AZURE_REQUEST_TIMEOUT,
+        cancelToken: source.token,
+    };
+
+    return axiosMinified.get(URL, options).then((response) => {
+        utils.debugLog(`Received response: ${response}`);
+        if (response.status === 200) {
+            const {
+                location,
+                subscriptionId,
+                tags,
+                publisher,
+            } = response.data.compute;
+
+            currentAzureLabels = {
+                'azure.location': location,
+                'azure.subscription_id': subscriptionId,
+                'azure.tags': parseAzureTags(tags),
+                'azure.publisher': publisher,
+            };
+
+            if (cb) {
+                cb({
+                    traceCollectorURL: `http://${location}.atc.epsagon.com`,
+                });
+            }
+
+            utils.debugLog(`Received metadata: ${currentAzureLabels}`);
+        }
+    }).catch(() => {
+        utils.debugLog('Could not load azure metadata');
+    });
+};
+
+/**
+ * If the current process is running in azure cloud,
+ * it will add metadata to trace
+ *
+ * @param {Object} runner  runner object to add the metadata
+ */
+var addAzureMetadata = function addAzureMetadata(runner) {
+    if (!runner || !currentAzureLabels) return;
+    event.addToMetadata(runner, Object.assign({}, currentAzureLabels));
+};
+
+var azure = {
+	loadAzureMetadata: loadAzureMetadata,
+	addAzureMetadata: addAzureMetadata
+};
+
+let currentEC2Labels = null;
+
+const URL$1 = 'http://169.254.169.254/latest/meta-data/';
+const RESPONSE_LEN_THRESHOLD = 100;
+const attributeToGet = ['instance-id', 'instance-type', 'local-ipv4', 'public-hostname', 'public-ipv4'];
+const EPSAGON_EC2_REQUEST_TIMEOUT = process.env.EPSAGON_EC2_REQUEST_TIMEOUT || 3000;
+
+
+/**
+ * Load EC2 metadata and store it
+ * @returns {Promise} when resolved will contain the EC2 metadata
+ */
+var loadEC2Metadata = function loadEC2Metadata() {
+    if (currentEC2Labels) return Promise.resolve(currentEC2Labels);
+
+    const promises = [];
+    utils.debugLog('Loading EC2 metadata');
+    attributeToGet.forEach((attribute) => {
+        const source = axiosMinified.CancelToken.source();
+        setTimeout(() => {
+            source.cancel();
+        }, EPSAGON_EC2_REQUEST_TIMEOUT);
+        promises.push(axiosMinified.get(URL$1 + attribute, {
+            timeout: EPSAGON_EC2_REQUEST_TIMEOUT,
+            cancelToken: source.token,
+        }).then((response) => {
+            utils.debugLog(`Received response for ${attribute}`);
+            // In some cases a long, irrelevant HTML response is being returned
+            if (response.status === 200 && response.data.length < RESPONSE_LEN_THRESHOLD) {
+                const attributeKey = attribute.replace('-', '_');
+                const attributeData = response.data;
+                if (!currentEC2Labels) currentEC2Labels = {};
+                currentEC2Labels[`aws.ec2.${attributeKey}`] = attributeData;
+                utils.debugLog(`${attributeKey} stored with: ${attributeData}`);
+            }
+            return attribute;
+        })
+            .catch(() => {
+                utils.debugLog(`Could not load EC2 metadata for ${attribute}`);
+            }));
+    });
+
+    return Promise.all(promises);
+};
+/**
+ * If the current process is running in EC2 cloud,
+ * it will add metadata to trace
+ *
+ * @param {Object} runner  runner object to add the metadata
+ */
+var addEC2Metadata = function addEC2Metadata(runner) {
+    if (!runner || !currentEC2Labels) return;
+    event.addToMetadata(runner, Object.assign({}, currentEC2Labels));
+};
+
+var ec2 = {
+	loadEC2Metadata: loadEC2Metadata,
+	addEC2Metadata: addEC2Metadata
+};
+
+let lastError = null;
+
+const tryRequire = (id) => {
+    let path$$1;
+    // for webpack we only support requiring external packages
+    const currentRequire = (
+        typeof __webpack_require__ === 'function' ? // eslint-disable-line camelcase
+            __non_webpack_require__ : require // eslint-disable-line no-undef, camelcase
+    );
+
+    try {
+        path$$1 = currentRequire.resolve(id);
+
+        lastError = null;
+    } catch (e) {
+        lastError = e;
+    }
+
+    if (path$$1) {
+        try {
+            return currentRequire(path$$1);
+        } catch (e) {
+            lastError = e;
+        }
+    }
+
+    return undefined;
+};
+
+tryRequire.lastError = () => lastError;
+
+var try_require = tryRequire;
+
+const AWS = try_require('aws-sdk/global');
+const STS = try_require('aws-sdk/clients/sts');
+
+const logDestinations = [];
+
+
+/**
+ * loads data from aws metadata to additional tags
+ * @param {Object} options options cloudwatch winston was initialized with
+ * @returns {Promise} resolves when metadata was loaded with the destination
+ */
+function loadAWSLogDestination(options) {
+    if (!AWS) {
+        return Promise.resolve();
+    }
+
+    const destination = {};
+    destination.log_group_name = options.logGroupName;
+    destination.log_stream_name = options.logStreamName;
+    const sts = new STS();
+    const cwConfig = (options.cloudWatchLogs && options.cloudWatchLogs.config) || {};
+    destination.region = (
+        options.awsRegion ||
+        cwConfig.region ||
+        AWS.config.region ||
+        process.env.AWS_REGION
+    );
+    return sts.getCallerIdentity().promise().then((data) => {
+        destination.account_id = data.Account;
+        return destination;
+    });
+}
+
+
+/**
+ * Capture winston-cloudwatch require
+ * @param {Function} exports returned from requiring the module
+ * @returns {Object} overriden exports
+ */
+function onWinstonCloudwatchRequire(exports) {
+    utils.debugLog('winston-cloudwatch required');
+    if (typeof exports !== 'function') {
+        utils.debugLog('winston-cloudwatch got non-function exports', typeof exports, exports);
+        return exports;
+    }
+    // eslint-disable-next-line no-underscore-dangle
+    if (exports.__epsagon_wrapped) {
+        utils.debugLog('winston-cloudwatch already hooked');
+        return exports;
+    }
+
+    // eslint-disable-next-line no-underscore-dangle,require-jsdoc
+    function wrapper(...args) {
+        const [options] = args;
+        try {
+            utils.debugLog('winston-cloudwatch instance created');
+            loadAWSLogDestination(options)
+                .then(dest => logDestinations.push(dest))
+                .catch(err => tracer.addException(err));
+        } catch (e) {
+            utils.debugLog('failed to set cloudwatch-winston log parameters', e);
+            tracer.addException(e);
+        }
+        return exports.apply(this, args);
+    }
+
+    wrapper.prototype = Object.create(exports.prototype);
+
+    // eslint-disable-next-line no-param-reassign,no-underscore-dangle
+    exports.__epsagon_wrapped = true;
+
+    utils.debugLog('winston-cloudwatch require patching done');
+    return wrapper;
+}
+
+var winston_cloudwatch = {
+    /**
+     * Initializes the bunyan log tracer
+     */
+    init() {
+        utils.debugLog('hooking winston-cloudwatch');
+        requireInTheMiddle(['winston-cloudwatch'], onWinstonCloudwatchRequire);
+        utils.debugLog('hooked winston-cloudwatch');
+    },
+
+    /**
+     * @return {Array} log destinations for winston-cloudwatch
+     */
+    additionalMetadata() {
+        return logDestinations.length ? {
+            'aws.cloudwatch.log_destinations': logDestinations,
+        } : {};
+    },
+};
+
+/**
+ * @fileoverview The traces queue, cunsume traces and sends in batches
+ */
+
+
+
+
+
+
+
+
+/**
+ * Session for the post requests to the collector
+ */
+const session = axiosMinified.create({
+    headers: { Authorization: `Bearer ${config_1.getConfig().token}` },
+    timeout: config_1.getConfig().sendTimeout,
+    httpAgent: new http.Agent({ keepAlive: true }),
+    httpsAgent: new https.Agent({ keepAlive: true }),
+});
+
+/**
+ * Post given batch to epsagon's infrastructure.
+ * @param {*} batchObject The batch data to send.
+ * @returns {Promise} a promise that is resolved after the batch is posted.
+ */
+async function postBatch(batchObject) {
+    utils.debugLog(`[QUEUE] Posting batch to ${config_1.getConfig().traceCollectorURL}...`);
+    const cancelTokenSource = axiosMinified.CancelToken.source();
+    const handle = setTimeout(() => {
+        cancelTokenSource.cancel('Timeout sending batch!');
+    }, config_1.getConfig().sendTimeout);
+
+    return session.post(
+        config_1.getConfig().traceCollectorURL,
+        batchObject,
+        {
+            cancelToken: cancelTokenSource.token,
+        }
+    ).then((res) => {
+        clearTimeout(handle);
+        utils.debugLog('[QUEUE] Batch posted!');
+        return res;
+    }).catch((err) => {
+        clearTimeout(handle);
+        if (err.config && err.config.data) {
+            utils.debugLog(`[QUEUE] Error sending trace. Batch size: ${err.config.data.length}`);
+        } else {
+            utils.debugLog(`[QUEUE] Error sending trace. Error: ${err}`);
+        }
+        utils.debugLog(`[QUEUE] ${err ? err.stack : err}`);
+        return err;
+    });
+}
+
+/**
+ * The trace queue class
+ * @param {function} batchSender function to send batch traces
+ */
+class TraceQueue extends events.EventEmitter {
+    /**
+     * EventEmitter class
+     */
+    constructor() {
+        super();
+        this.batchSender = postBatch;
+        this.initQueue();
+    }
+
+    /**
+   * Update the queue config
+   */
+    updateConfig() {
+        this.maxBatchSizeBytes = config_1.getConfig().maxBatchSizeBytes;
+        this.batchSize = config_1.getConfig().batchSize;
+        this.maxQueueSizeBytes = config_1.getConfig().maxQueueSizeBytes;
+    }
+
+    /**
+   * Init queue event listners
+   */
+    initQueue() {
+        this.updateConfig();
+        this.removeAllListeners();
+        this.flush();
+        this.on('traceQueued', function traceQueued() {
+            if (this.byteSizeLimitReached()) {
+                utils.debugLog(`[QUEUE] Queue Byte size reached ${this.currentByteSize} Bytes, releasing batch...`);
+                this.emit('releaseRequest', Math.max(this.currentSize - 1, 1));
+            } else if (this.batchSizeReached()) {
+                utils.debugLog(`[QUEUE] Queue size reached ${this.currentSize}, releasing batch... `);
+                this.emit('releaseRequest');
+            }
+            return this;
+        });
+
+        this.on('releaseRequest', function releaseRequest(count = this.batchSize) {
+            try {
+                const batch = this.queue.splice(0, count);
+                utils.debugLog('[QUEUE] Releasing batch...');
+                this.subtractFromCurrentByteSize(batch);
+                this.emit('batchReleased', batch);
+            } catch (err) {
+                utils.debugLog('[QUEUE] Failed releasing batch!');
+                utils.debugLog(`[QUEUE] ${err}`);
+            }
+            return this;
+        });
+
+        this.on('batchReleased', async function batchReleased(batch) {
+            utils.debugLog('[QUEUE] Sending batch...');
+            const batchJSON = batch.map(trace => trace.json);
+            this.batchSender(batchJSON);
+        });
+        process.on('exit', function releaseAndClearQueue() {
+            this.emit('releaseRequest');
+            this.removeAllListeners();
+        });
+    }
+
+    /**
+     * Push trace to queue, emit event, and check if queue max queue length reached,
+     * if it does, send batch.
+     * @param {object} traceJson Trace JSON
+     * @returns {TraceQueue} This trace queue
+     */
+    push(traceJson) {
+        try {
+            if (this.currentByteSize >= this.maxQueueSizeBytes) {
+                utils.debugLog(`[QUEUE] Discardig trace, queue size reached max size of ${this.currentByteSize} Bytes`);
+                return this;
+            }
+            const timestamp = Date.now();
+            const json$$1 = traceJson;
+            const string = JSON.stringify(json$$1);
+            const byteLength = string.length;
+            // eslint-disable-next-line object-curly-newline
+            const trace = { json: json$$1, string, byteLength, timestamp };
+            this.queue.push(trace);
+            this.addToCurrentByteSize([trace]);
+            utils.debugLog(`[QUEUE] Trace size ${byteLength} Bytes pushed to queue`);
+            utils.debugLog(`[QUEUE] Queue size: ${this.currentSize} traces, total size of ${this.currentByteSize} Bytes`);
+            this.emit('traceQueued', trace);
+        } catch (err) {
+            utils.debugLog(`[QUEUE] Failed pushing trace to queue: ${err}`);
+        }
+        return this;
+    }
+
+    /**
+    * add given trace byte size to total byte size
+    * @param {Array} traces  Trace object array
+    */
+    addToCurrentByteSize(traces) {
+        traces.forEach((trace) => {
+            this.currentByteSize += trace.byteLength;
+        });
+    }
+
+    /**
+    * subtract given trace byte size to total byte size
+    * @param {Array} traces Trace object array
+    */
+    subtractFromCurrentByteSize(traces) {
+        traces.forEach((trace) => {
+            this.currentByteSize -= trace.byteLength;
+            this.currentByteSize = Math.max(this.currentByteSize, 0);
+        });
+    }
+
+    /**
+   * Queue size getter
+   * @returns {Number} Queue length
+   */
+    get currentSize() {
+        return this.queue.length;
+    }
+
+
+    /**
+   * Checks if queue size reached batch size
+   * @returns {Boolean} Indicator for if current queue size is larger than batch size definition
+   */
+    batchSizeReached() {
+        return this.currentSize >= this.batchSize;
+    }
+
+    /**
+   * Checks if queue byte size reached its limit
+   * @returns {Boolean} Indicator for if current queue byte size is larger than byte size definition
+   */
+    byteSizeLimitReached() {
+        return this.currentByteSize >= this.maxBatchSizeBytes;
+    }
+
+    /**
+   * Flush queue
+   */
+    flush() {
+        this.queue = [];
+        this.currentByteSize = 0;
+    }
+}
+
+const traceQueue = new TraceQueue();
+
+var getInstance = () => traceQueue;
+
+var trace_queue = {
+	getInstance: getInstance
+};
+
+/**
+ * Checks if a URL is in the blacklist
+ * @param {string} url The URL to check
+ * @param {object} urlBlacklist Object of blacklist url objects (KEY=[url], VALUE=[condition]).
+ * @param {string} path The Path to check (optional)
+ * @returns {boolean} True if it is in the blacklist, False otherwise
+ */
+const isBlacklistURL = (url$$1, urlBlacklist, path$$1) => Object.keys(urlBlacklist).some((key) => {
+    if (typeof urlBlacklist[key] === typeof (() => {})) {
+        return urlBlacklist[key](url$$1, key, path$$1);
+    }
+    return url$$1[urlBlacklist[key]](key);
+});
+
+/**
+ * Checks if a user agent header is in the blacklist
+ * @param {string} headers The Headers to check.
+ * @param {Array} userAgentsBlacklist Array of blacklist user agents.
+ * @returns {boolean} True if it is in the blacklist, False otherwise
+ */
+const isBlacklistHeader = (headers, userAgentsBlacklist) => {
+    if (headers) {
+        return userAgentsBlacklist.includes(headers['user-agent']);
+    }
+    return false;
+};
+
+/**
+ * Checks if a key is in the STRONG_ID_KEYS array.
+ * @param {string} key Event key.
+ * @returns {boolean} True if is in the STRONG_ID_KEYS array, False otherwise.
+ */
+const isStrongId = key => consts.STRONG_ID_KEYS.includes(key.toLowerCase().replace(' ', '_'));
+
+var events$1 = {
+    isBlacklistURL, isBlacklistHeader, isStrongId,
+};
+
+/**
+ * @fileoverview Send traces to the epsagon backend by printing it to the logs
+ */
+
+const { Buffer: Buffer$1 } = buffer;
+
+
+var sendTrace = function sendTrace(traceObject) {
+    utils.debugLog('posting trace to logs');
+    utils.debugLog(`trace: ${JSON.stringify(traceObject, null, 2)}`);
+
+    return new Promise((resolve) => {
+        try {
+            const encodedTrace = Buffer$1.from(JSON.stringify(traceObject)).toString('base64');
+            process.stdout.write(`EPSAGON_TRACE: ${encodedTrace}\n`);
+            utils.debugLog('Trace posted!');
+        } catch (err) {
+            utils.debugLog(`Error sending trace. Error: ${err}`);
+        } finally {
+            resolve();
+        }
+    });
+};
+
+var logs = {
+	sendTrace: sendTrace
+};
+
+/**
+ * @fileoverview Send traces to the epsagon backend using http
+ */
+
+
+
+
+
+
+
+/**
+ * Session for the post requests to the collector
+ */
+const session$1 = axiosMinified.create({
+    timeout: config_1.getConfig().sendTimeout,
+    httpAgent: new http.Agent({ keepAlive: true }),
+    httpsAgent: new https.Agent({ keepAlive: true }),
+});
+
+var sendTrace$1 = function sendTrace(traceObject) {
+    utils.debugLog(`Posting trace to ${config_1.getConfig().traceCollectorURL}`);
+
+    if ((process.env.EPSAGON_DEBUG || '').toUpperCase() === 'TRUE') {
+        utils.debugLog(`trace: ${JSON.stringify(traceObject, null, 2)}`);
+    }
+
+    // based on https://github.com/axios/axios/issues/647#issuecomment-322209906
+    // axios timeout is only after the connection is made, not the address resolution itself
+    const cancelTokenSource = axiosMinified.CancelToken.source();
+    const handle = setTimeout(() => {
+        cancelTokenSource.cancel('timeout sending trace');
+    }, config_1.getConfig().sendTimeout);
+
+    return session$1.post(
+        config_1.getConfig().traceCollectorURL,
+        traceObject,
+        {
+            headers: { Authorization: `Bearer ${config_1.getConfig().token}` },
+            timeout: config_1.getConfig().sendTimeout,
+            cancelToken: cancelTokenSource.token,
+        }
+    ).then((res) => {
+        clearTimeout(handle);
+        utils.debugLog('Trace posted!');
+        return res;
+    }).catch((err) => {
+        clearTimeout(handle);
+        if (err.config && err.config.data) {
+            utils.debugLog(`Error sending trace. Trace size: ${err.config.data.length}`);
+        } else {
+            utils.debugLog(`Error sending trace. Error: ${err}`);
+        }
+        utils.debugLog(`${err ? err.stack : err}`);
+        return err;
+    }); // Always resolve.
+};
+
+var http_1 = {
+	sendTrace: sendTrace$1
+};
+
+var tracer = createCommonjsModule(function (module) {
+/**
+ * @fileoverview The tracer, managing all the trace collecting and sending
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const { isStrongId } = events$1;
+
+
+
+
+/**
+ * Returns a function to get the relevant tracer.
+ */
+module.exports.getTrace = () => {};
+
+/**
+ * Returns a trace queue singletone.
+ */
+const traceQueue = trace_queue.getInstance();
+
+/**
+ * Creates a new Trace object
+ * @returns {Object} new Trace
+ */
+module.exports.createTracer = function createTracer() {
+    if (config_1.getConfig().sampleRate <= Math.random()) {
+        // sampling decision. Not initializing tracer for this to be backwards compatible
+        // and for efficiency (initializing a tracer is currently not that cheap, and we
+        // may initialize one for each request.
+        return null;
+    }
+
+    const tracerObj = new trace_pb.Trace([
+        '',
+        '',
+        [],
+        [],
+        consts.VERSION,
+        `node ${process.versions.node}`,
+    ]);
+    // The requests promises pending to resolve. All must be resolved before sending the trace.
+    // A Map containing (event, promise) pairs.
+    return {
+        trace: tracerObj,
+        currRunner: null,
+        pendingEvents: new Map(),
+        createdAt: Date.now(),
+    };
+};
+
+
+/**
+ * Adds an event to the tracer
+ * @param {proto.event_pb.Event} event The event to add
+ * @param {Promise} [promise] A promise that resolves when the event handling is Done, if required.
+ */
+module.exports.addEvent = function addEvent(event$$1, promise) {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        return;
+    }
+    this.addPendingEvent(event$$1, promise);
+    tracerObj.trace.addEvent(event$$1);
+};
+
+/**
+ * Add promise event result to pendingEvents map.
+ * @param {proto.event_pb.Event} event The event
+ * @param {Promise} [promise] A promise that resolves when the event handling is Done
+ */
+module.exports.addPendingEvent = function addPendingEvent(event$$1, promise) {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        return;
+    }
+    if (utils.isPromise(promise)) {
+        tracerObj.pendingEvents.set(
+            event$$1,
+            utils.makeQueryablePromise(promise.catch((err) => {
+                module.exports.addException(err);
+            }))
+        );
+    }
+};
+
+/**
+ * Adds an exception to the tracer
+ * @param {Error} userError The error object describing the exception
+ * @param {Object} additionalData Additional data to send with the error. A map of <string: string>
+ */
+module.exports.addException = function addException(userError, additionalData) {
+    const error = userError || new Error();
+    const raisedException = new exception_pb.Exception([
+        error.name,
+        error.message,
+        error.stack,
+        utils.createTimestamp(),
+    ]);
+
+    if (typeof additionalData === 'object') {
+        Object.keys(additionalData).forEach((key) => {
+            if (additionalData[key] === undefined) {
+                raisedException.getAdditionalDataMap().set(key, 'undefined');
+            } else {
+                raisedException.getAdditionalDataMap().set(key, additionalData[key]);
+            }
+        });
+    }
+
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        return;
+    }
+    tracerObj.trace.addException(raisedException);
+};
+
+/**
+ * Initializes the tracer
+ * @param {object} configData user's configuration
+ */
+module.exports.initTrace = function initTrace(
+    configData
+) {
+    try {
+        if (!utils.isLambdaEnv) {
+            const ecsMetaUri = ecs.hasECSMetadata();
+            if (ecsMetaUri) {
+                ecs.loadECSMetadata(ecsMetaUri).catch(err => utils.debugLog(err));
+            }
+            if (k8s.hasK8sMetadata()) {
+                k8s.loadK8sMetadata();
+            }
+            azure.loadAzureMetadata((azureAdditionalConfig) => {
+                config_1.setConfig(Object.assign(azureAdditionalConfig, configData));
+            });
+            ec2.loadEC2Metadata().catch(err => utils.debugLog(err));
+        }
+    } catch (err) {
+        utils.debugLog('Could not extract container env data');
+    }
+    config_1.setConfig(configData);
+    traceQueue.updateConfig();
+};
+
+
+/**
+ * Adds a runner to the current trace.
+ * @param {object} runner The runner of the current trace
+ * @param {Promise} runnerPromise A promise that resolves when the event handling is Done,
+ *      if required.
+ */
+module.exports.addRunner = function addRunner(runner, runnerPromise) {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        return;
+    }
+    tracerObj.trace.addEvent(runner, runnerPromise);
+    tracerObj.currRunner = runner;
+};
+
+/**
+ * Restarts the tracer. Has to be called after a trace has been sent to reset the tracer
+ * and start collecting a new trace
+ */
+module.exports.restart = function restart() {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        return;
+    }
+    tracerObj.disabled = false;
+    tracerObj.trace.clearExceptionList();
+    tracerObj.trace.clearEventList();
+    tracerObj.trace.setAppName(config_1.getConfig().appName);
+    tracerObj.trace.setToken(config_1.getConfig().token);
+};
+
+
+/**
+ * Keeps only strong IDs in event metadata.
+ * @param {array} eventMetadata Event metadata.
+ * @param {boolean} isRunner is evnet origin is runner.
+ * @returns {array} Trimmed event metadata.
+ */
+function getTrimmedMetadata(eventMetadata, isRunner) {
+    let trimmedEventMetadata;
+    Object.keys(eventMetadata).forEach((eventKey) => {
+        if (!(isStrongId(eventKey) || (isRunner && eventKey === 'labels'))) {
+            if (!trimmedEventMetadata) {
+                trimmedEventMetadata = eventMetadata;
+                trimmedEventMetadata.is_trimmed = true;
+            }
+            delete trimmedEventMetadata[eventKey];
+        }
+    });
+    return trimmedEventMetadata;
+}
+
+
+/**
+ * Trimming trace exceptions.
+ * @param {Object} traceExceptions Trace exceptions
+ * @returns {array} array of the first exception,
+ *  total exceptions have been trimmed and the reduce size.
+ */
+function trimTraceExceptions(traceExceptions) {
+    const firstException = traceExceptions[0];
+    const totalTrimmed = traceExceptions.length - 1;
+    const reduceSize =
+    JSON.stringify(traceExceptions).length - JSON.stringify(firstException).length;
+    return [firstException, totalTrimmed, reduceSize];
+}
+
+/**
+ * Trimming trace to a size less than MAX_TRACE_SIZE_BYTES.
+ * @param {number} traceSize Trace size.
+ * @param {JSON} jsTrace Trace.
+ * @returns {JSON} Trace with trimmed events metadata.
+ */
+function getTrimmedTrace(traceSize, jsTrace) {
+    let currentTraceSize = traceSize;
+    const trimmedTrace = Object.assign({}, jsTrace);
+    let totalTrimmedExceptions = 0;
+    let totalTrimmedEvents = 0;
+    // Trimming trace exceptions.
+    if (trimmedTrace.exceptions.length > 1) {
+        const [firstException, totalTrimmed, reduceSize] = trimTraceExceptions(
+            trimmedTrace.exceptions
+        );
+        currentTraceSize -= reduceSize;
+        totalTrimmedExceptions = totalTrimmed;
+        trimmedTrace.exceptions = [firstException];
+    }
+    utils.debugLog(`Epsagon - Pre metadata trim: current trace size ${currentTraceSize}`);
+    // Trimming trace events metadata.
+    if (currentTraceSize >= consts.MAX_TRACE_SIZE_BYTES) {
+        trimmedTrace.events = jsTrace.events.sort(event$$1 => (['runner', 'trigger'].includes(event$$1.origin) ? -1 : 1));
+        for (let i = jsTrace.events.length - 1; i >= 0; i -= 1) {
+            const currentEvent = trimmedTrace.events[i];
+            let eventMetadata = currentEvent.resource.metadata;
+            if (eventMetadata) {
+                const isRunner = currentEvent.origin === 'runner';
+                const originalEventMetadataSize = JSON.stringify(eventMetadata).length;
+                const trimmedMetadata = getTrimmedMetadata(eventMetadata, isRunner);
+                if (trimmedMetadata) {
+                    eventMetadata = trimmedMetadata;
+                    const trimmedSize =
+                    originalEventMetadataSize - JSON.stringify(trimmedMetadata).length;
+                    currentTraceSize -= trimmedSize;
+                    if (currentTraceSize < consts.MAX_TRACE_SIZE_BYTES) {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    utils.debugLog(`Epsagon - After metadata trim: current trace size ${currentTraceSize}`);
+    // Trimming trace events.
+    if (currentTraceSize >= consts.MAX_TRACE_SIZE_BYTES) {
+        for (let i = jsTrace.events.length - 1; i >= 0; i -= 1) {
+            const event$$1 = trimmedTrace.events[i];
+            if (!['runner', 'trigger'].includes(event$$1.origin)) {
+                totalTrimmedEvents += 1;
+                trimmedTrace.events.splice(i, 1);
+                currentTraceSize -= JSON.stringify(event$$1).length;
+                if (currentTraceSize < consts.MAX_TRACE_SIZE_BYTES) {
+                    break;
+                }
+            }
+        }
+    }
+    utils.debugLog(`Epsagon - After events trim: current trace size ${currentTraceSize}`);
+    if (totalTrimmedEvents || totalTrimmedExceptions) {
+        utils.debugLog(`Epsagon - Trace size is larger than maximum size, ${totalTrimmedEvents} events and ${totalTrimmedExceptions} exceptions were trimmed.`);
+    }
+    return trimmedTrace;
+}
+
+/**
+ * Sets labels to trace metadata
+ * @param {object} tracerObj: Tracer object
+ */
+function addLabelsToTrace() {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        return;
+    }
+    Object.keys(config_1.getConfig().labels).forEach((key) => {
+        const currLabels = tracerObj.currRunner.getResource().getMetadataMap().get('labels');
+        if (!currLabels) {
+            event.addLabelToMetadata(tracerObj.currRunner,
+                key,
+                config_1.getConfig().labels[key]);
+        } else if (!JSON.parse(currLabels)[key]) {
+            event.addLabelToMetadata(
+                tracerObj.currRunner,
+                key,
+                config_1.getConfig().labels[key]
+            );
+        }
+    });
+}
+
+
+/**
+ * Builds and sends current collected trace
+ * Sends the trace to the epsagon infrastructure now, assuming all required event's promises was
+ * handled
+ * @param {function} traceSender: The function to use to send the trace. Gets the trace object
+ *     as a parameter and sends a JSON version of it to epsagon's infrastructure
+ * @param {object} tracerObject Optional tracer object to use for sending.
+ * @return {*} traceSender's result
+ */
+function sendCurrentTrace(traceSender, tracerObject) {
+    const tracerObj = tracerObject || module.exports.getTrace();
+
+    const { sendOnlyErrors, ignoredKeys, removeIgnoredKeys } = config_1.getConfig();
+    if (!tracerObj) {
+        utils.debugLog('Trace object not found for sending');
+        return Promise.resolve();
+    }
+    addLabelsToTrace();
+
+    if (!tracerObj.currRunner) {
+        utils.debugLog('Epsagon - no trace was sent since runner was not found.');
+        return Promise.resolve();
+    }
+
+    // adding metadata here since it has a better chance of completing in time
+    event.addToMetadata(
+        tracerObj.currRunner,
+        winston_cloudwatch.additionalMetadata()
+    );
+    ecs.addECSMetadata(tracerObj.currRunner);
+    k8s.addK8sMetadata(tracerObj.currRunner);
+    azure.addAzureMetadata(tracerObj.currRunner);
+    ec2.addEC2Metadata(tracerObj.currRunner);
+
+    // Check if got error events
+    if (sendOnlyErrors) {
+        const errorEvents = tracerObj.trace.getEventList().filter(event$$1 => event$$1.getErrorCode());
+        if (errorEvents.length === 0) {
+            utils.debugLog('Epsagon - no trace was sent since no error events found.');
+            tracerObj.pendingEvents.clear();
+            return Promise.resolve();
+        }
+    }
+    let traceJson = {
+        app_name: tracerObj.trace.getAppName(),
+        token: tracerObj.trace.getToken(),
+        events: tracerObj.trace.getEventList().map(entry => ({
+            id: entry.getId(),
+            start_time: entry.getStartTime(),
+            resource: entry.hasResource() ? {
+                name: entry.getResource().getName(),
+                type: entry.getResource().getType(),
+                operation: entry.getResource().getOperation(),
+                metadata: entry.getResource().getMetadataMap().toArray().reduce((map, obj) => {
+                    // not linting this line because this is a hack until protobuf
+                    map[obj[0]] = obj[1]; // eslint-disable-line
+                    return map;
+                }, {}),
+            } : {},
+            origin: entry.getOrigin(),
+            duration: entry.getDuration(),
+            error_code: entry.getErrorCode(),
+            exception: entry.hasException() ? {
+                type: entry.getException().getType(),
+                message: entry.getException().getMessage(),
+                traceback: entry.getException().getTraceback(),
+                time: entry.getException().getTime(),
+                additional_data: entry.getException().getAdditionalDataMap()
+                    .toArray().reduce((map, obj) => {
+                        // not linting this line because this is a hack until protobuf
+                        map[obj[0]] = obj[1]; // eslint-disable-line
+                        return map;
+                    }, {}),
+            } : {},
+        })),
+        exceptions: tracerObj.trace.getExceptionList().map(entry => ({
+            type: entry.getType(),
+            message: entry.getMessage(),
+            traceback: entry.getTraceback(),
+            time: entry.getTime(),
+            additional_data: entry.getAdditionalDataMap().toArray().reduce((map, obj) => {
+                // not linting this line because this is a hack until protobuf
+                map[obj[0]] = obj[1]; // eslint-disable-line
+                return map;
+            }, {}),
+        })),
+        version: tracerObj.trace.getVersion(),
+        platform: tracerObj.trace.getPlatform(),
+    };
+
+    try {
+        traceJson = ignoredKeys &&
+            Array.isArray(ignoredKeys) &&
+            ignoredKeys.length > 0 ?
+            module.exports.filterTrace(traceJson, ignoredKeys, removeIgnoredKeys) : traceJson;
+    } catch (err) {
+        utils.printWarning('Epsagon - failed to filter trace, cancelling send', err);
+        return Promise.resolve({});
+    }
+
+    let stringifyTraceJson;
+    try {
+        stringifyTraceJson = JSON.stringify(traceJson);
+    } catch (err) {
+        utils.printWarning('Epsagon - no trace was sent since there was an error serializing the trace. Please contact support.', err);
+        return Promise.resolve();
+    }
+    const originalTraceLength = stringifyTraceJson.length;
+    if (originalTraceLength >= consts.MAX_TRACE_SIZE_BYTES) {
+        traceJson = getTrimmedTrace(originalTraceLength, traceJson);
+    }
+
+    const sendResult = traceSender(traceJson);
+    tracerObj.pendingEvents.clear();
+
+    if (config_1.getConfig().sampleRate !== consts.DEFAULT_SAMPLE_RATE) {
+        tracerObj.deleted = true;
+    }
+    return sendResult;
+}
+
+/**
+ * Tests if a string value (which is suspected to be a stringyfied JSON)
+ * contains an ignored key
+ * @param {Array<String | RegExp>} keysToIgnore a list of keys to ignore
+ * @param {string} value a value to search ignored keys in
+ * @returns {boolean} true for non-ignored keys
+ */
+module.exports.doesContainIgnoredKey = function doesContainIgnoredKey(keysToIgnore, value) {
+    return keysToIgnore
+        .some((predicate) => {
+            if (typeof predicate === 'string' && config_1.processIgnoredKey(value).includes(predicate)) {
+                return true;
+            }
+            if (predicate instanceof RegExp && predicate.test(value)) {
+                return true;
+            }
+            return false;
+        });
+};
+
+/**
+ * Filter a trace to exclude all unwanted keys
+ * @param {Object} traceObject  the trace to filter
+ * @param {Array<String>} ignoredKeys   keys to ignore
+ * @param {Boolean} removeIgnoredKeys Whether to remove keys instead of masking
+ * @returns {Object}  filtered trace
+ */
+module.exports.filterTrace = function filterTrace(traceObject, ignoredKeys, removeIgnoredKeys) {
+    const isString = x => typeof x === 'string';
+
+    const isPossibleStringJSON = v => isString(v) && v.length > 1 && ['[', '{'].includes(v[0]);
+
+    /**
+     * Tests if a key is to be ignored or not.
+     * @param {string} key a key in an object or hash map
+     * @returns {boolean} true for non-ignored keys
+     */
+    function isNotIgnored(key) {
+        for (let i = 0; i < ignoredKeys.length; i += 1) {
+            const predicate = ignoredKeys[i];
+            if (typeof predicate === 'string' &&
+            predicate === config_1.processIgnoredKey(key)) {
+                return false;
+            }
+            if (predicate instanceof RegExp && predicate.test(key)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * stringify replacer function, used to ignore the relevant keys
+     * @param {string} key  the key of the value
+     * @param {any} value   the json value
+     * @returns {any} the value to serialize
+     */
+    function replacer(key, value) {
+        if (isNotIgnored(key)) {
+            if (isPossibleStringJSON(value)) {
+                try {
+                    const objValue = JSON.parse(value);
+                    const filtered = jsonStringifySafe(objValue, replacer, 0, () => {});
+                    return JSON.parse(filtered);
+                } catch (e) {
+                    return value;
+                }
+            }
+
+            return value;
+        }
+
+        return removeIgnoredKeys ? undefined : '****';
+    }
+
+    utils.debugLog('Trace was filtered with ignored keys');
+    const events$$1 = traceObject.events.map((event$$1) => {
+        if (!(event$$1 && event$$1.resource && event$$1.resource.metadata)) {
+            return event$$1;
+        }
+
+        const filteredEvent = Object.assign({}, event$$1);
+
+        // remove all circular references from the metadata object
+        // before recursively ignoring keys to avoid an endless recursion
+        const metadata = JSON.parse(jsonStringifySafe(event$$1.resource.metadata, replacer, 0, () => {}));
+        filteredEvent.resource.metadata = metadata;
+
+        return filteredEvent;
+    });
+
+    return Object.assign({}, traceObject, { events: events$$1 });
+};
+
+/**
+ * Post given trace to epsagon's infrastructure.
+ * @param {*} traceObject The trace data to send.
+ * @returns {Promise} a promise that is resolved after the trace is posted.
+ *  */
+module.exports.postTrace = function postTrace(traceObject) {
+    if (config_1.getConfig().logTransportEnabled) {
+        return logs.sendTrace(traceObject);
+    }
+
+    return http_1.sendTrace(traceObject);
+};
+
+/**
+ * Sends the trace to epsagon's infrastructure when all pending events are finished.
+ * @param {function} runnerUpdateFunc function that sets the duration of the runner.
+ * @param {object} tracerObject Optional tracer object to use for sending.
+ * @returns {Promise} a promise that is resolved when the trace transmission ends.
+ */
+module.exports.sendTrace = function sendTrace(runnerUpdateFunc, tracerObject) {
+    const tracerObj = tracerObject || module.exports.getTrace();
+    if (!tracerObj || (tracerObj && tracerObj.disabled)) {
+        utils.debugLog('Trace object not found or disabled');
+        return Promise.resolve();
+    }
+
+    if (config_1.getConfig().isEpsagonDisabled) {
+        tracerObj.pendingEvents.clear();
+        return Promise.resolve();
+    }
+
+    addLabelsToTrace();
+    utils.debugLog('Sending trace async...');
+    return Promise.all(tracerObj.pendingEvents.values()).then(() => {
+        // Setting runner's duration.
+        runnerUpdateFunc();
+        if (config_1.getConfig().sendBatch) {
+            return sendCurrentTrace(traceObject => traceQueue.push(traceObject), tracerObj);
+        }
+        return sendCurrentTrace(traceObject => module.exports.postTrace(traceObject), tracerObj);
+    });
+};
+
+/**
+ * Sends the trace to epsagon's infrastructure, marking all the pending promises as
+ * failures.
+ * @param {Object} tracer  Optional tracer
+ * @returns {Promise} a promise that is resolved when the trace transmission ends.
+ */
+module.exports.sendTraceSync = function sendTraceSync() {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj || (tracerObj && tracerObj.disabled)) {
+        return Promise.resolve();
+    }
+
+    if (config_1.getConfig().isEpsagonDisabled) {
+        tracerObj.pendingEvents.clear();
+        return Promise.resolve();
+    }
+
+    utils.debugLog('Sending trace sync');
+    tracerObj.pendingEvents.forEach((promise, event$$1) => {
+        if (promise.isPending()) {
+            // Consider changing to report a different type of error. Maybe a new error code
+            // describing an unknown operation state
+            if (!event$$1.getId()) {
+                event$$1.setId(uuid4());
+            }
+            if (event$$1.getErrorCode() === error_code_pb.ErrorCode.OK) {
+                event.addToMetadata(event$$1, {
+                    premature_exit: true,
+                });
+            }
+            if (event$$1.getDuration() === 0) {
+                event$$1.setDuration(utils.createDurationTimestamp(event$$1.getStartTime() * 1000));
+            }
+        }
+    });
+
+    return sendCurrentTrace(traceObject => module.exports.postTrace(traceObject));
+};
+
+/**
+ * Add a custom label to the runner of the current trace.
+ * @param {string} key key for the added label
+ * @param {string} value value for the added label
+ */
+module.exports.label = function addLabel(key, value) {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj || !tracerObj.currRunner) {
+        utils.debugLog('Failed to label without an active tracer');
+        return;
+    }
+    const labels = {
+        [key]: value,
+    };
+    const flatLabels = utils.flatten(labels);
+    Object.keys(flatLabels).forEach((k) => {
+        event.addLabelToMetadata(tracerObj.currRunner, k, flatLabels[k]);
+    });
+};
+
+/**
+ * Set runner as an error.
+ * @param {Error} err error data
+ */
+module.exports.setError = function setRunnerError(err) {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj || !tracerObj.currRunner) {
+        utils.debugLog('Failed to setError without an active tracer');
+        return;
+    }
+    event.setException(tracerObj.currRunner, err);
+};
+
+/**
+ * Set runner as an warning.
+ * @param {Error} err error data
+ */
+module.exports.setWarning = function setRunnerWarning(err) {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj || !tracerObj.currRunner) {
+        utils.debugLog('Failed to setWarning without an active tracer');
+        return;
+    }
+    event.setException(tracerObj.currRunner, err, true, true);
+};
+
+/**
+ * Get a link to the trace in Epsagon.
+ * @returns {string} traceUrl link to Epsagon.
+ */
+module.exports.getTraceUrl = function getTraceUrl() {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj || !tracerObj.currRunner) {
+        utils.debugLog('Failed to get trace URL without an active tracer');
+        return '';
+    }
+    const activeRunner = tracerObj.currRunner.getResource();
+    return (activeRunner.getType() !== 'lambda') ?
+        consts.traceUrl(
+            module.exports.getTraceId(),
+            parseInt(tracerObj.currRunner.getStartTime(), 10)
+        ) : consts.lambdaTraceUrl(
+            activeRunner.getMetadataMap().get('aws_account'),
+            activeRunner.getMetadataMap().get('region'),
+            activeRunner.getName(),
+            tracerObj.currRunner.getId(),
+            parseInt(tracerObj.currRunner.getStartTime(), 10)
+        );
+};
+
+/**
+ * Disable tracer
+ */
+module.exports.disable = function disable() {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        utils.debugLog('Failed to disabled without an active tracer');
+        return;
+    }
+    tracerObj.disabled = true;
+};
+
+
+/**
+ * Enable tracer
+ */
+module.exports.enable = function enable() {
+    const tracerObj = module.exports.getTrace();
+    if (!tracerObj) {
+        utils.debugLog('Failed to enable without an active tracer');
+        return;
+    }
+    tracerObj.disabled = false;
+};
+
+module.exports.getTrimmedTrace = getTrimmedTrace;
+
+/**
+ * @returns {string} the current runner's log uuid
+ */
+module.exports.isLoggingTracingEnabled = function isLoggingTracingEnabled() {
+    return config_1.getConfig().loggingTracingEnabled;
+};
+
+/**
+ * @returns {string} the current runner's log uuid
+ */
+module.exports.getTraceId = function getTraceId() {
+    const tracer = module.exports.getTrace();
+    if (tracer && tracer.currRunner && tracer.currRunner.hasResource()) {
+        return tracer.currRunner.getResource().getMetadataMap().get('trace_id');
+    }
+    return null;
+};
+
+
+/**
+ * Adds `logging_tracing_enabled: true` to the current runner's Metadata iff it is enabled
+ * in the config
+ */
+module.exports.addLoggingTracingEnabledMetadata = function addLoggingTracingEnabledMetadata() {
+    if (config_1.getConfig().loggingTracingEnabled) {
+        const tracer = module.exports.getTrace();
+        if (tracer && tracer.currRunner) {
+            utils.debugLog('Setting logging_tracing_enabled');
+            event.addToMetadata(tracer.currRunner, {
+                logging_tracing_enabled: true,
+            });
+        }
+    }
+};
+});
+var tracer_1 = tracer.getTrace;
+var tracer_2 = tracer.createTracer;
+var tracer_3 = tracer.addEvent;
+var tracer_4 = tracer.addPendingEvent;
+var tracer_5 = tracer.addException;
+var tracer_6 = tracer.initTrace;
+var tracer_7 = tracer.addRunner;
+var tracer_8 = tracer.restart;
+var tracer_9 = tracer.doesContainIgnoredKey;
+var tracer_10 = tracer.filterTrace;
+var tracer_11 = tracer.postTrace;
+var tracer_12 = tracer.sendTrace;
+var tracer_13 = tracer.sendTraceSync;
+var tracer_14 = tracer.label;
+var tracer_15 = tracer.setError;
+var tracer_16 = tracer.setWarning;
+var tracer_17 = tracer.getTraceUrl;
+var tracer_18 = tracer.disable;
+var tracer_19 = tracer.enable;
+var tracer_20 = tracer.getTrimmedTrace;
+var tracer_21 = tracer.isLoggingTracingEnabled;
+var tracer_22 = tracer.getTraceId;
+var tracer_23 = tracer.addLoggingTracingEnabledMetadata;
+
+/**
+ * @fileoverview holds tracer singleton.
+ */
+
+
+/**
+ * The tracer singleton, used to manage the trace and send it at the end of the function invocation.
+ * In a Lambda environment we use this singleton, while in other environment we use the one from
+ * the context.
+ */
+let tracer$1 = null;
+
+
+/**
+ * The tracer singleton getter function
+ * @returns {Object} tracer object
+ */
+var get = () => {
+    if (!tracer$1 || tracer$1.deleted) {
+        tracer$1 = tracer.createTracer();
+    }
+    return tracer$1;
+};
+
+var trace_object = {
+	get: get
+};
+
+/**
+ * @fileoverview SQS utility functions
+ */
+
+/**
+ * If exists, gets the SNS message that triggered the SQS,
+ * and generates event data out of it.
+ * @param {object} messages The SQS messages object
+ * @returns {object} SNS event data json
+ */
+function getSNSTrigger(messages) {
+    let foundSnsEvent = null;
+    messages.some((message) => {
+        try {
+            let body = null;
+            if ('Body' in message) {
+                body = JSON.parse(message.Body);
+            } else if ('body' in message) {
+                body = JSON.parse(message.body);
+            } else {
+                return true;
+            }
+
+            if ('Type' in body &&
+                'MessageId' in body &&
+                'TopicArn' in body &&
+                'Message' in body &&
+                'Timestamp' in body) {
+                foundSnsEvent = body;
+                return true;
+            }
+        } catch (ex) {
+            // Continue to the next message
+        }
+
+        return true;
+    });
+
+    return foundSnsEvent;
+}
+
+var getSNSTrigger_1 = getSNSTrigger;
+
+var sqs_utils = {
+	getSNSTrigger: getSNSTrigger_1
+};
+
+/**
+ * @fileoverview Trigger creation for aws-Lambda function invocations
+ */
+
+
+JSON.sortify = json;
+
+
+
+
+
+
+
+
+const DynamoDB = try_require('aws-sdk/clients/dynamodb');
+
+/**
+ * Fills the common fields for a trigger event
+ * @param {proto.event_pb.Event} trigger The trigger whose fields are being filled
+ * @param {string} resourceType The type of the resource that initiated the trigger
+ */
+function fillCommonFields(trigger, resourceType) {
+    trigger.setStartTime(utils.createTimestamp());
+    trigger.setDuration(utils.createTimestampFromTime(0));
+    trigger.setOrigin('trigger');
+    trigger.getResource().setType(resourceType);
+    trigger.setErrorCode(error_code_pb.ErrorCode.OK);
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by JSON (invoke)
+ * @param {object} event The event the Lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ * @param {object} context The context the Lambda was triggered with
+ */
+function createJSONTrigger(event$$1, trigger, context) {
+    const resource = trigger.getResource();
+    trigger.setId(`trigger-${uuid4()}`);
+    resource.setName(`trigger-${context.functionName}`);
+    resource.setOperation('Event');
+    event.addToMetadata(trigger, {}, {
+        data: event$$1,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by S3
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createS3Trigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.Records[0].responseElements['x-amz-request-id']);
+    resource.setName(event$$1.Records[0].s3.bucket.name);
+    resource.setOperation(event$$1.Records[0].eventName);
+    event.addToMetadata(trigger, {
+        region: `${event$$1.Records[0].awsRegion}`,
+        request_parameters: JSON.stringify(event$$1.Records[0].requestParameters),
+        user_identity: JSON.stringify(event$$1.Records[0].userIdentity),
+        object_key: `${event$$1.Records[0].s3.object.key}`,
+        object_size: `${event$$1.Records[0].s3.object.size}`,
+        object_etag: `${event$$1.Records[0].s3.object.eTag}`,
+        'x-amz-request-id': `${event$$1.Records[0].responseElements['x-amz-request-id']}`,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by Kinesis
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createKinesisTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.Records[0].eventID);
+    resource.setName(event$$1.Records[0].eventSourceARN.split('/').pop());
+    resource.setOperation(event$$1.Records[0].eventName.replace('aws:kinesis:', ''));
+    event.addToMetadata(trigger, {
+        region: event$$1.Records[0].awsRegion,
+        invoke_identity: event$$1.Records[0].invokeIdentityArn,
+        sequence_number: event$$1.Records[0].kinesis.sequenceNumber,
+        partition_key: event$$1.Records[0].kinesis.partitionKey,
+        total_record_count: event$$1.Records.length,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by SNS
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createSNSTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.Records[0].Sns.MessageId);
+    resource.setName(event$$1.Records[0].EventSubscriptionArn.split(':').slice(-2)[0]);
+    resource.setOperation(event$$1.Records[0].Sns.Type);
+    event.addToMetadata(trigger, {
+        'Notification Subject': event$$1.Records[0].Sns.Subject,
+    }, {
+        'Notification Message': event$$1.Records[0].Sns.Message,
+        'Notification Message Attributes': event$$1.Records[0].Sns.MessageAttributes,
+    });
+}
+
+const MAX_SQS_BODY_LENGTH = 1 * 1024; // (1K)
+/**
+ * Initializes an event representing a trigger to the lambda caused by SQS
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createSQSTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.Records[0].messageId);
+    resource.setName(event$$1.Records[0].eventSourceARN.split(':').slice(-1)[0]);
+    resource.setOperation('ReceiveMessage');
+    const sqsMessageBody = event$$1.Records[0].body || '{}';
+    event.addToMetadata(trigger, {
+        record: event$$1.Records.map((r) => {
+            const record = {
+                'MD5 Of Message Body': r.md5OfBody,
+                'Message ID': r.messageId,
+            };
+            if (!config_1.getConfig().metadataOnly) {
+                record['Message Body'] = utils.truncateMessage(r.body || '{}', MAX_SQS_BODY_LENGTH);
+                record.Attributes = r.attributes;
+                record['Message Attributes'] = r.messageAttributes;
+            }
+            return record;
+        }),
+        total_record_count: event$$1.Records.length,
+    });
+    try {
+        const messageBody = JSON.parse(sqsMessageBody);
+        // Extracting sqs data in case of is a part of a step functions flow.
+        if (messageBody.input && messageBody.input.Epsagon) {
+            event.addToMetadata(trigger, {
+                steps_dict: messageBody.input.Epsagon,
+            });
+        }
+    } catch (err) {
+        utils.debugLog(`Could not parse SQS message body: ${sqsMessageBody}`);
+    }
+
+    const snsData = sqs_utils.getSNSTrigger(event$$1.Records);
+    if (snsData != null) {
+        event.addToMetadata(trigger, { 'SNS Trigger': snsData });
+    }
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by API Trigger
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createAPIGatewayTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.requestContext.requestId);
+    resource.setName(event$$1.headers.Host || event$$1.requestContext.apiId);
+    resource.setOperation(event$$1.httpMethod);
+    event.addToMetadata(trigger, {
+        stage: event$$1.requestContext.stage,
+        query_string_parameters: event$$1.queryStringParameters,
+        path_parameters: event$$1.pathParameters,
+        path: event$$1.resource,
+    }, {
+        body: event$$1.body,
+        headers: event$$1.headers,
+        requestContext: event$$1.requestContext,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by HTTP API v2 Trigger
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createAPIGatewayHTTPV2Trigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.requestContext.requestId);
+    resource.setName(event$$1.headers.Host || event$$1.requestContext.domainName);
+    resource.setOperation(event$$1.requestContext.http.method);
+    event.addToMetadata(trigger, {
+        stage: event$$1.requestContext.stage,
+        query_string_parameters: event$$1.queryStringParameters,
+        path_parameters: event$$1.pathParameters,
+        path: event$$1.requestContext.http.path,
+        'aws.api_gateway.api_id': event$$1.requestContext.apiId,
+    }, {
+        body: event$$1.body,
+        headers: event$$1.headers,
+        requestContext: event$$1.requestContext,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by No-Proxy API Trigger
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createNoProxyAPIGatewayTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.context['request-id']);
+    resource.setName(event$$1.params.header.Host || event$$1.context['api-id']);
+    resource.setOperation(event$$1.context['http-method']);
+    event.addToMetadata(trigger, {
+        stage: event$$1.context.stage,
+        query_string_parameters: event$$1.params.querystring,
+        path_parameters: event$$1.params.path,
+        path: event$$1.context['resource-path'],
+    }, {
+        body: event$$1['body-json'],
+        headers: event$$1.params.header,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by Web Socket API Trigger
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createWebSocketTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.requestContext.requestId);
+    resource.setName(event$$1.requestContext.domainName);
+    resource.setOperation(event$$1.requestContext.eventType || 'CONNECT');
+    event.addToMetadata(trigger, {
+        stage: event$$1.requestContext.stage,
+        route_key: event$$1.requestContext.routeKey,
+        message_id: event$$1.requestContext.messageId,
+        connection_id: event$$1.requestContext.connectionId,
+        request_id: event$$1.requestContext.requestId,
+        message_direction: event$$1.requestContext.messageDirection,
+    }, {
+        body: event$$1.body,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by Events
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createEventsTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.id);
+    let name = 'CloudWatch Events';
+    if (typeof event$$1.resources[0] === 'string') {
+        name = event$$1.resources[0].split('/').pop();
+    }
+    resource.setName(name);
+    resource.setOperation(event$$1['detail-type']);
+    event.addToMetadata(trigger, {
+        region: event$$1.region,
+        detail: JSON.stringify(event$$1.detail),
+        account: event$$1.account,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by DynamoDB
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createDynamoDBTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    const record = event$$1.Records[0];
+    let itemHash = '';
+    if (DynamoDB) {
+        // in case of a delete - hash only the key.
+        const item = (
+            record.eventName === 'REMOVE' ?
+                DynamoDB.Converter.unmarshall(record.dynamodb.Keys) :
+                DynamoDB.Converter.unmarshall(record.dynamodb.NewImage)
+        );
+        itemHash = md5(JSON.sortify(item));
+    }
+    trigger.setId(record.eventID);
+    resource.setName(record.eventSourceARN.split('/')[1]);
+    resource.setOperation(record.eventName);
+    event.addToMetadata(trigger, {
+        region: record.awsRegion,
+        sequence_number: record.dynamodb.SequenceNumber,
+        item_hash: itemHash,
+        total_record_count: event$$1.Records.length,
+    }, {
+        data: JSON.stringify(event$$1.Records),
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by API Trigger
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createElbTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(`elb-${uuid4()}`);
+    resource.setName(event$$1.headers.host);
+    resource.setOperation(event$$1.httpMethod);
+    event.addToMetadata(trigger, {
+        query_string_parameters: JSON.stringify(event$$1.queryStringParameters),
+        target_group_arn: event$$1.requestContext.elb.targetGroupArn,
+        path: event$$1.path,
+    }, {
+        body: JSON.stringify(event$$1.body),
+        headers: JSON.stringify(event$$1.headers),
+    });
+}
+
+
+/**
+ * Initializes an event representing a trigger to the lambda caused by Cognito
+ * @param {object} event The event the lambda was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createCognitoTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(`cognito-${uuid4()}`);
+    resource.setName(event$$1.userPoolId);
+    resource.setOperation(event$$1.triggerSource);
+    event.addToMetadata(trigger, {
+        username: event$$1.userName,
+        region: event$$1.region,
+    }, {
+        caller_context: event$$1.callerContext,
+        request: event$$1.request,
+        response: event$$1.response,
+    });
+}
+
+const resourceTypeToFactoryMap = {
+    s3: createS3Trigger,
+    json: createJSONTrigger,
+    kinesis: createKinesisTrigger,
+    events: createEventsTrigger,
+    sns: createSNSTrigger,
+    sqs: createSQSTrigger,
+    api_gateway: createAPIGatewayTrigger,
+    api_gateway_no_proxy: createNoProxyAPIGatewayTrigger,
+    api_gateway_websocket: createWebSocketTrigger,
+    api_gateway_http2: createAPIGatewayHTTPV2Trigger,
+    dynamodb: createDynamoDBTrigger,
+    elastic_load_balancer: createElbTrigger,
+    cognito: createCognitoTrigger,
+};
+
+
+/**
+ * Creates an {@link proto.event_pb.Event} describing the lambda trigger
+ * @param {object} event The event the lambda was triggered with
+ * @param {object} context The context the lambda was triggered with
+ * @return {proto.event_pb.Event} The trigger of the lambda
+ */
+var createFromEvent = function createFromEvent(event$$1, context) {
+    let triggerService = 'json';
+    if (event$$1) {
+        if ('Records' in event$$1) {
+            if ('EventSource' in event$$1.Records[0]) {
+                triggerService = event$$1.Records[0].EventSource.split(':').pop();
+            }
+
+            if ('eventSource' in event$$1.Records[0]) {
+                triggerService = event$$1.Records[0].eventSource.split(':').pop();
+            }
+        } else if ('source' in event$$1 && 'detail-type' in event$$1 && 'detail' in event$$1) {
+            triggerService = 'events';
+        } else if ('source' in event$$1 && event$$1.source) {
+            triggerService = event$$1.source.split('.').pop();
+        } else if (('requestContext' in event$$1) && ('elb' in event$$1.requestContext)) {
+            triggerService = 'elastic_load_balancer';
+        } else if ('httpMethod' in event$$1) {
+            triggerService = 'api_gateway';
+        } else if (('context' in event$$1) && ('http-method' in event$$1.context)) {
+            triggerService = 'api_gateway_no_proxy';
+        } else if ('dynamodb' in event$$1) {
+            triggerService = 'dynamodb';
+        } else if ('userPoolId' in event$$1) {
+            triggerService = 'cognito';
+        } else if (
+            ('requestContext' in event$$1) &&
+            ('apiId' in event$$1.requestContext) &&
+            ('http' in event$$1.requestContext)
+        ) {
+            triggerService = 'api_gateway_http2';
+        } else if (('requestContext' in event$$1) && ('apiId' in event$$1.requestContext)) {
+            triggerService = 'api_gateway_websocket';
+        }
+    }
+
+    const resource = new event_pb.Resource();
+    const trigger = new event_pb.Event();
+    trigger.setResource(resource);
+    resourceTypeToFactoryMap[triggerService](event$$1, trigger, context);
+    fillCommonFields(trigger, triggerService);
+    return trigger;
+};
+
+var aws_lambda = {
+	createFromEvent: createFromEvent
+};
+
+/**
+ * @fileoverview runners for the AWS Lambda environment
+ */
+
+
+
+
+
+
+
+/**
+ * Creates an Event representing the running lambda (runner)
+ * @param {object} originalContext The context the lambda was triggered with
+ * @param {string} [resourceType='lambda'] The resource type to use for the runner
+ * @return {proto.event_pb.Event} The runner representing the lambda
+ */
+function createRunner(originalContext, resourceType = 'lambda') {
+    const runnerResource = new event_pb.Resource([
+        originalContext.functionName,
+        resourceType,
+        'invoke',
+        {},
+    ]);
+
+    const runner = new event_pb.Event([
+        // Generating id in case of local invocation with Serverless framework
+        (originalContext.awsRequestId === 'id') ? `local-${uuid4()}` : originalContext.awsRequestId,
+        0,
+        null,
+        'runner',
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+
+    runner.setResource(runnerResource);
+    const arnSplit = (originalContext.invokedFunctionArn || '').split(':');
+    const AWSAccountNumber = (arnSplit.length > 4) ? arnSplit[4] : '';
+
+    // In case function is provisioned concurrency mode, so cold_start should be false
+    if (process.env.AWS_LAMBDA_INITIALIZATION_TYPE === 'provisioned-concurrency') {
+        consts.COLD_START = false;
+    }
+
+    event.addToMetadata(runner, {
+        log_stream_name: `${originalContext.logStreamName}`,
+        log_group_name: `${originalContext.logGroupName}`,
+        function_version: `${originalContext.functionVersion}`,
+        aws_account: AWSAccountNumber,
+        cold_start: `${consts.COLD_START}`,
+        memory: `${originalContext.memoryLimitInMB}`,
+        region: consts.REGION,
+    });
+
+    // Extract function alias if present.
+    if (arnSplit.length === 8) {
+        event.addToMetadata(runner, {
+            function_alias: arnSplit[7],
+        });
+    }
+
+    consts.COLD_START = false;
+    return runner;
+}
+
+var createRunner_1 = createRunner;
+
+var aws_lambda$1 = {
+	createRunner: createRunner_1
+};
+
+/**
+ * @fileoverview Epsagon's lambda wrapper, for tracing lambda invocations.
+ */
+/* eslint-disable no-underscore-dangle */
+
+
+
+
+
+const { getConfig } = config_1;
+
+
+
+const { STEP_ID_NAME: STEP_ID_NAME$1, MAX_VALUE_CHARS: MAX_VALUE_CHARS$1, EPSAGON_EVENT_ID_KEY: EPSAGON_EVENT_ID_KEY$1 } = consts;
+
+const FAILED_TO_SERIALIZE_MESSAGE = 'Unable to stringify response body as json';
+const TIMEOUT_WINDOW = parseInt(process.env.EPSAGON_LAMBDA_TIMEOUT_THRESHOLD_MS || 200, 10);
+const epsagonWrapped = Symbol('epsagonWrapped');
+
+var epsagonWrapped_1 = epsagonWrapped;
+var TIMEOUT_WINDOW_1 = TIMEOUT_WINDOW;
+var FAILED_TO_SERIALIZE_MESSAGE_1 = FAILED_TO_SERIALIZE_MESSAGE;
+
+
+/**
+ * Appends the Epsagon ID (runner request ID) for distributed tracing connection
+ * @param {Event} runner event
+ * @param {object} returnValue Current function's return value
+ * @returns {object} returnValue Updated return value
+ */
+function propagateEpsagonId(runner, returnValue) {
+    if (
+        process.env.EPSAGON_PROPAGATE_LAMBDA_ID &&
+        returnValue &&
+        !Array.isArray(returnValue) &&
+        typeof returnValue === 'object'
+    ) {
+        // eslint-disable-next-line no-param-reassign
+        returnValue[EPSAGON_EVENT_ID_KEY$1] = runner.getId();
+        event.addToMetadata(runner, {
+            propagation_enabled: true,
+        });
+    }
+    return returnValue;
+}
+
+
+/**
+ * Patch node's UncaughtException and UnhandledRejection handlers
+ * @param {function} handleUserExecutionDone handler for user execution done
+ * @param {object} runner the runner object
+ */
+function patchErrorHandlers(handleUserExecutionDone, runner) {
+    const originalUncaughtException = process._events.uncaughtException;
+    process._events.uncaughtException = (err, original) => {
+        process._events.uncaughtException = originalUncaughtException;
+        event.setException(runner, err, false);
+        handleUserExecutionDone(err, null, true).then(() => {
+            if (originalUncaughtException && typeof originalUncaughtException === 'function') {
+                originalUncaughtException(err, original);
+            }
+        });
+    };
+    const originalUnhandledRejection = process._events.unhandledRejection;
+    process._events.unhandledRejection = (reason, promise) => {
+        process._events.unhandledRejection = originalUnhandledRejection;
+        const err = Error(reason);
+        event.setException(runner, err, false);
+        handleUserExecutionDone(err, null, true).then(() => {
+            if (originalUnhandledRejection && typeof originalUnhandledRejection === 'function') {
+                originalUnhandledRejection(reason, promise);
+            }
+        });
+    };
+}
+
+/**
+ * The epsagon's base lambda wrapper, wrap a lambda function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @param {string} [runnerResourceType='lambda'] The resource type to set for the runner
+ * @param {boolean} [shouldPassRunner=false] True if the runner should be passed to the wrapped
+ *     function false otherwise. used when additional action in required on the runner on complex
+ *     wrappers
+ * @param {function} [originalFunctionToWrap=null] The original Function to wrap. Used when the
+ *     function to wrap is already wrapped with another proxy, and a critical error occurs.
+ * @return {function} The original function, wrapped by our tracer
+ */
+function baseLambdaWrapper(
+    functionToWrap,
+    runnerResourceType = 'lambda',
+    shouldPassRunner = false,
+    originalFunctionToWrap = null
+) {
+    // eslint-disable-next-line consistent-return
+    return (originalEvent, originalContext, originalCallback) => {
+        if (getConfig().ignoredPayloads || process.env.EPSAGON_PAYLOADS_TO_IGNORE) {
+            const ignoredPayloads = (getConfig().ignoredPayloads) ?
+                getConfig().ignoredPayloads :
+                JSON.parse(process.env.EPSAGON_PAYLOADS_TO_IGNORE);
+
+            const matches = ignoredPayloads.filter(
+                payload => JSON.stringify(payload) ===
+                    JSON.stringify(originalEvent)
+            );
+            if (matches.length > 0) {
+                return functionToWrap(originalEvent, originalContext,
+                    originalCallback);
+            }
+        }
+
+        tracer.getTrace = trace_object.get;
+
+        tracer.restart();
+        let runner;
+        let timeoutHandler;
+        let tracesSent = false;
+        let callbackCalled = false;
+
+        try {
+            runner = aws_lambda$1.createRunner(originalContext, runnerResourceType);
+            tracer.addRunner(runner);
+        } catch (err) {
+            const wrappedFunction =
+        originalFunctionToWrap === null ?
+            functionToWrap :
+            originalFunctionToWrap;
+            return wrappedFunction(originalEvent, originalContext, originalCallback);
+        }
+
+        try {
+            const trigger = aws_lambda.createFromEvent(
+                originalEvent,
+                originalContext
+            );
+
+            tracer.addEvent(trigger);
+        } catch (err) {
+            utils.debugLog(`Error parsing trigger: ${err.stack}, Event: ${JSON.stringify(originalEvent)}`);
+        }
+
+        const startTime = Date.now();
+        const runnerSendUpdateHandler = () => {
+            runner.setDuration(utils.createDurationTimestamp(startTime));
+        };
+
+        // Hook when the event loop is empty, in case callback is not called.
+        // Based on the way AWS Lambda implements it
+        // This is done so we will send a trace even if callback is not called
+        // This is relevant only for sync functions (async functions node > 8 will never use this)
+        const originalBeforeExit = process._events.beforeExit;
+        process._events.beforeExit = () => {
+            tracer.sendTrace(runnerSendUpdateHandler).then(() => {
+                // Restore to original and exit, the event loop will take care of the rest
+                process._events.beforeExit = originalBeforeExit;
+            });
+        };
+
+        const handleUserExecutionDone = (error, result, sendSync) => {
+            clearTimeout(timeoutHandler);
+
+            if (tracesSent || callbackCalled) {
+                return Promise.resolve();
+            }
+            callbackCalled = true;
+            if (error) {
+                // not catching false here, but that seems OK
+                let reportedError = error;
+                if (!error.name) {
+                    let errorMessage;
+                    try {
+                        errorMessage = typeof error === 'string' ? error : JSON.stringify(error);
+                    } catch (stringifyErr) {
+                        errorMessage = '';
+                    }
+
+                    reportedError = {
+                        name: 'LambdaExecutionError',
+                        message: errorMessage,
+                    };
+                }
+
+                // Setting this error only if there is no existing error already
+                if (!runner.getException()) {
+                    utils.debugLog('Setting exception from handleUserExecutionDone');
+                    event.setException(runner, reportedError, false);
+                }
+            }
+
+            const { statusCode } = result || {};
+            if (statusCode) {
+                event.addToMetadata(runner, { status_code: statusCode });
+            }
+
+            if (error === null && !getConfig().metadataOnly) {
+                let jsonResult;
+                try {
+                    // Taken from AWS Lambda runtime
+                    jsonResult = JSON.stringify(
+                        typeof result === 'undefined' ? null : result
+                    );
+                } catch (err) {
+                    jsonResult = `${FAILED_TO_SERIALIZE_MESSAGE}: ${err.message}`;
+                }
+                event.addToMetadata(
+                    runner,
+                    {
+                        return_value: jsonResult.substring(0, MAX_VALUE_CHARS$1),
+                    }
+                );
+            }
+
+            // Restoring empty event loop handling.
+            // eslint-disable-next-line no-underscore-dangle
+            process._events.beforeExit = originalBeforeExit;
+
+            // Mark trace as sent.
+            tracesSent = true;
+
+            // If the user is waiting for the rest of the events, we can send async. Otherwise
+            // don't wait ourselves and send sync.
+            if (!sendSync && originalContext.callbackWaitsForEmptyEventLoop) {
+                return tracer.sendTrace(runnerSendUpdateHandler);
+            }
+
+            // The callback does not wait, don't wait for events.
+            runnerSendUpdateHandler();
+            return tracer.sendTraceSync();
+        };
+        patchErrorHandlers(handleUserExecutionDone, runner);
+
+        let waitForOriginalCallbackPromise = Promise.resolve();
+        const wrappedCallback = (error, result) => {
+            utils.debugLog('wrapped callback called', error, result);
+            // eslint-disable-next-line no-param-reassign
+            result = propagateEpsagonId(runner, result);
+            if (callbackCalled) {
+                utils.debugLog('not calling callback since it was already called');
+                return;
+            }
+            waitForOriginalCallbackPromise = new Promise((resolve) => {
+                utils.debugLog('handling execution done before calling callback');
+                handleUserExecutionDone(error, result).then(() => {
+                    utils.debugLog("calling User's callback");
+                    originalCallback(error, result);
+                    resolve();
+                });
+            });
+        };
+
+        let waitForContextResultHandlersPromise = Promise.resolve();
+        const patchedContext = Object.assign({}, originalContext, {
+            succeed: (res) => {
+                utils.debugLog('wrapped succeed called');
+                if (callbackCalled) {
+                    utils.debugLog('not calling succeed, callback was already called');
+                    return;
+                }
+                waitForContextResultHandlersPromise = new Promise((resolve) => {
+                    handleUserExecutionDone(null, res, true)
+                        .then(() => waitForOriginalCallbackPromise)
+                        .then(() => originalContext.succeed(res))
+                        .then(() => resolve());
+                });
+            },
+            fail: (err) => {
+                utils.debugLog('wrapped fail called');
+                if (callbackCalled) {
+                    utils.debugLog('not calling fail, callback was already called');
+                    return;
+                }
+                waitForContextResultHandlersPromise = new Promise((resolve) => {
+                    handleUserExecutionDone(err, null, true)
+                        .then(() => waitForOriginalCallbackPromise)
+                        .then(() => originalContext.fail(err))
+                        .then(() => resolve());
+                });
+            },
+            done: (res, err) => {
+                utils.debugLog('wrapped done called');
+                if (callbackCalled) {
+                    utils.debugLog('not calling done, callback was already called');
+                    return;
+                }
+                waitForContextResultHandlersPromise = new Promise((resolve) => {
+                    handleUserExecutionDone(res, err, true)
+                        .then(() => waitForOriginalCallbackPromise)
+                        .then(() => originalContext.done(res, err))
+                        .then(() => resolve());
+                });
+            },
+        });
+
+        // Adding wrappers to original setter and getter
+        Object.defineProperty(patchedContext, 'callbackWaitsForEmptyEventLoop', {
+            set: (value) => {
+                // eslint-disable-next-line no-param-reassign
+                originalContext.callbackWaitsForEmptyEventLoop = value;
+            },
+            get: () => originalContext.callbackWaitsForEmptyEventLoop,
+        });
+
+        try {
+            timeoutHandler = setTimeout(() => {
+                utils.debugLog('In timeout handler');
+                tracesSent = true;
+                event.markAsTimeout(runner);
+                runnerSendUpdateHandler();
+                tracer.sendTraceSync();
+            }, patchedContext.getRemainingTimeInMillis() - TIMEOUT_WINDOW);
+            runner.setStartTime(utils.createTimestampFromTime(startTime));
+            let result = shouldPassRunner ?
+                functionToWrap(originalEvent, patchedContext, wrappedCallback, runner) :
+                functionToWrap(originalEvent, patchedContext, wrappedCallback);
+
+            // Check if result is an instance of Promise (some Webpack versions
+            // don't support instanceof Promise)
+            if (result && typeof result.then === 'function') {
+                let raisedError;
+                let returnValue;
+                result = result
+                    .then((res) => {
+                        utils.debugLog('user promise resolved (in then)');
+                        // eslint-disable-next-line no-param-reassign
+                        res = propagateEpsagonId(runner, res);
+                        returnValue = res;
+                        return handleUserExecutionDone(null, res, true);
+                    })
+                    .catch((err) => {
+                        utils.debugLog('user promise rejected (in catch)');
+                        raisedError = err;
+                        return handleUserExecutionDone(err, null, true);
+                    })
+                    .then(() => waitForOriginalCallbackPromise)
+                    .then(() => waitForContextResultHandlersPromise)
+                    .then(() => {
+                        if (raisedError) {
+                            throw raisedError;
+                        }
+                        return returnValue;
+                    });
+            }
+            return result;
+        } catch (err) {
+            patchedContext.fail(err);
+        }
+    };
+}
+
+/**
+ * Epsagon's lambda wrapper, wrap a lambda function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @return {function} The original function, wrapped by our tracer
+ */
+var lambdaWrapper = function lambdaWrapper(functionToWrap) {
+    if (functionToWrap[epsagonWrapped]) {
+        return functionToWrap;
+    }
+
+    const wrapped = baseLambdaWrapper(functionToWrap);
+    Object.defineProperty(wrapped, epsagonWrapped, {
+        value: true,
+        writable: false,
+    });
+
+    return wrapped;
+};
+
+
+/**
+ * Extract the step data from the event, and updates the runner and the response.
+ * @param {object} originalEvent Lambda function event data
+ * @param {Event} runner event
+ * @param {object} response Lambda function response data
+ * @returns {object} response the update response with steps
+ */
+function extractAndAppendStepData(originalEvent, runner, response) {
+    let step = null;
+    if (typeof response === 'object') {
+        if (!step) {
+            if (originalEvent && originalEvent[STEP_ID_NAME$1]) {
+                step = Object.assign({}, originalEvent[STEP_ID_NAME$1]);
+                step.step_num += 1;
+            } else {
+                step = { id: uuid4(), step_num: 0 };
+            }
+        }
+        response[STEP_ID_NAME$1] = step; // eslint-disable-line no-param-reassign
+        event.addToMetadata(runner, {
+            steps_dict: step,
+        });
+    }
+
+    utils.debugLog('Step function response update attempt');
+    utils.debugLog(`Updated response: ${util.inspect(response, { showHidden: false, depth: null })}`);
+    return response;
+}
+
+
+/**
+ * Creates a wrapper that adds a step id to the result of a step machine.
+ * @param {function} functionToWrap The function to wrap
+ * @returns {function} the wrapped function
+ */
+function createStepIdAddWrapper(functionToWrap) {
+    return (originalEvent, originalContext, originalCallback, runner) => {
+        const updateStepResult = response => extractAndAppendStepData(
+            originalEvent,
+            runner,
+            response
+        );
+
+        const callbackWrapper = (error, result) => {
+            if (!error) {
+                updateStepResult(result, originalEvent, runner);
+            }
+            return originalCallback(error, result);
+        };
+
+        let result = functionToWrap(
+            originalEvent,
+            originalContext,
+            callbackWrapper
+        );
+
+        if (result && typeof result.then === 'function') {
+            utils.debugLog('Step function response is async');
+            result = result.then(response => extractAndAppendStepData(
+                originalEvent,
+                runner,
+                response
+            ));
+        }
+
+        return result;
+    };
+}
+
+/**
+ * Epsagon's step lambda wrapper, wrap a lambda function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @return {function} The original function, wrapped by our tracer
+ */
+var stepLambdaWrapper = function stepLambdaWrapper(functionToWrap) {
+    if (functionToWrap[epsagonWrapped]) {
+        return functionToWrap;
+    }
+
+    const stepIdAddWrapper = createStepIdAddWrapper(functionToWrap);
+    const wrapped = baseLambdaWrapper(
+        stepIdAddWrapper,
+        'step_function_lambda',
+        true,
+        functionToWrap
+    );
+
+    Object.defineProperty(wrapped, epsagonWrapped, {
+        value: true,
+        writable: false,
+    });
+
+    return wrapped;
+};
+
+var lambda = {
+	epsagonWrapped: epsagonWrapped_1,
+	TIMEOUT_WINDOW: TIMEOUT_WINDOW_1,
+	FAILED_TO_SERIALIZE_MESSAGE: FAILED_TO_SERIALIZE_MESSAGE_1,
+	lambdaWrapper: lambdaWrapper,
+	stepLambdaWrapper: stepLambdaWrapper
+};
+
+/**
+ * @fileoverview Trigger creation for Tencent function invocations
+ */
+
+
+
+
+
+
+
+/**
+ * Fills the common fields for a trigger event
+ * @param {proto.event_pb.Event} trigger The trigger whose fields are being filled
+ * @param {string} resourceType The type of the resource that initiated the trigger
+ */
+function fillCommonFields$1(trigger, resourceType) {
+    trigger.setStartTime(utils.createTimestamp());
+    trigger.setDuration(utils.createTimestampFromTime(0));
+    trigger.setOrigin('trigger');
+    trigger.getResource().setType(resourceType);
+    trigger.setErrorCode(error_code_pb.ErrorCode.OK);
+}
+
+/**
+ * Initializes an event representing a trigger to the Tencent Function caused by JSON (invoke)
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ * @param {object} context The context the Tencent Function was triggered with
+ * @param {object} runner The original runner
+ */
+function createJSONTrigger$1(event$$1, trigger, context, runner) {
+    event.addToMetadata(runner, {}, {
+        'tencent.scf.trigger_data': event$$1,
+    });
+}
+
+/**
+ * Initializes an event representing a trigger to the Tencent Function caused by a timer
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createTimerTrigger(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(`timer-${uuid4()}`);
+    resource.setName(event$$1.TriggerName);
+    resource.setOperation('Timer');
+    event.addToMetadata(trigger, {
+        'tencent.timer.timestamp': event$$1.Time,
+    }, {
+        'tencent.timer.message': event$$1.Message,
+    });
+}
+
+
+/**
+ * Initializes an event representing a trigger to the Tencent Function caused by COS
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createCOSTrigger(event$$1, trigger) {
+    const record = event$$1.Records[0];
+    const resource = trigger.getResource();
+    trigger.setId(record.cos.cosObject.meta['x-cos-request-id']);
+    resource.setName(`${record.cos.cosBucket.name}-${record.cos.cosBucket.appid}`);
+    resource.setOperation(record.event.eventName.replace('cos:', ''));
+    event.addToMetadata(trigger, {
+        'tencent.region': record.cos.cosBucket.cosRegion,
+        'tencent.app_id': record.cos.cosBucket.appid,
+        'tencent.cos.object_key': record.cos.cosObject.key,
+        'tencent.cos.object_size': record.cos.cosObject.size,
+        'tencent.cos.request_id': record.cos.cosObject.meta['x-cos-request-id'],
+    });
+}
+
+
+/**
+ * Initializes an event representing a trigger to the Tencent Function caused by CMQ
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createCMQTrigger(event$$1, trigger) {
+    const record = event$$1.Records[0].CMQ;
+    const resource = trigger.getResource();
+    trigger.setId(record.msgId);
+    resource.setName(record.topicName);
+    resource.setOperation('consume');
+    event.addToMetadata(trigger, {
+        'tencent.cmq.message.id': record.msgId,
+        'tencent.cmq.message.tags': record.msgTag,
+        'tencent.cmq.request_id': record.requestId,
+        'tencent.cmq.subscription_name': record.subscriptionName,
+    }, {
+        'tencent.cmq.message.body': record.msgBody,
+    });
+}
+
+
+/**
+ * Initializes an event representing a trigger to the Tencent Function caused by CKafka
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createKafkaTrigger(event$$1, trigger) {
+    const record = event$$1.Records[0].Ckafka;
+    const resource = trigger.getResource();
+    trigger.setId(record.msgKey);
+    resource.setName(record.topic);
+    resource.setOperation('consume');
+    event.addToMetadata(trigger, {
+        'messaging.message.partition': record.partition,
+        'messaging.message.offset': record.offset,
+        'messaging.message.key': record.msgKey,
+    }, {
+        'messaging.message.body': record.msgBody,
+    });
+}
+
+
+/**
+ * Initializes an event representing a trigger to the Tencent Function caused by APIGW
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {proto.event_pb.Event} trigger An Event to initialize as the trigger
+ */
+function createAPIGatewayTrigger$1(event$$1, trigger) {
+    const resource = trigger.getResource();
+    trigger.setId(event$$1.requestContext.requestId || event$$1.headers['x-api-requestid']);
+    resource.setName(event$$1.headers.Host || event$$1.headers.host);
+    resource.setOperation(event$$1.httpMethod);
+    event.addToMetadata(trigger, {
+        'http.route': event$$1.requestContext.path,
+        'http.request.path': event$$1.path,
+        'tencent.api_gateway.request_id': event$$1.headers['x-api-requestid'],
+        'tencent.api_gateway.stage': event$$1.requestContext.stage,
+    }, {
+        'http.request.headers': event$$1.headers,
+        'http.request.body': event$$1.body,
+        'http.request.path_params': event$$1.pathParameters,
+        'http.request.query': event$$1.queryString,
+    });
+}
+
+
+const resourceTypeToFactoryMap$1 = {
+    json: createJSONTrigger$1,
+    timer: createTimerTrigger,
+    http: createAPIGatewayTrigger$1,
+    cos: createCOSTrigger,
+    cmq: createCMQTrigger,
+    kafka: createKafkaTrigger,
+};
+
+
+/**
+ * Creates an {@link proto.event_pb.Event} describing the Tencent Function trigger
+ * @param {object} event The event the Tencent Function was triggered with
+ * @param {object} context The context the Tencent Function was triggered with
+ * @param {object} runner The Tencent Function runner event
+ * @return {proto.event_pb.Event} The trigger of the Tencent Function
+ */
+var createFromEvent$1 = function createFromEvent(event$$1, context, runner) {
+    let triggerService = 'json';
+
+    if (event$$1) {
+        if ('Type' in event$$1 && event$$1.Type === 'Timer') {
+            triggerService = 'timer';
+        } else if ('httpMethod' in event$$1) {
+            triggerService = 'http';
+        } else if ('Records' in event$$1) {
+            if ('cos' in event$$1.Records[0]) {
+                triggerService = 'cos';
+            } else if ('CMQ' in event$$1.Records[0]) {
+                triggerService = 'cmq';
+            } else if ('Ckafka' in event$$1.Records[0]) {
+                triggerService = 'kafka';
+            }
+        }
+    }
+
+    const resource = new event_pb.Resource();
+    const trigger = new event_pb.Event();
+    trigger.setResource(resource);
+    resourceTypeToFactoryMap$1[triggerService](event$$1, trigger, context, runner);
+    fillCommonFields$1(trigger, triggerService);
+    return trigger;
+};
+
+var tencent_function = {
+	createFromEvent: createFromEvent$1
+};
+
+/**
+ * @fileoverview runners for the Tencent Serverless Cloud Function environment
+ */
+
+
+
+
+
+
+/**
+ * Creates an Event representing the running Serverless Cloud Function (runner)
+ * @param {object} originalContext The context the Serverless Cloud Function was triggered with
+ * @return {proto.event_pb.Event} The runner representing the Serverless Cloud Function
+ */
+function createRunner$1(originalContext) {
+    const runnerResource = new event_pb.Resource([
+        originalContext.function_name,
+        'tencent_function',
+        'invoke',
+        {},
+    ]);
+
+    const runner = new event_pb.Event([
+        originalContext.request_id,
+        0,
+        null,
+        'runner',
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+
+    runner.setResource(runnerResource);
+
+    event.addToMetadata(runner, {
+        'tencent.scf.version': originalContext.function_version,
+        'tencent.scf.memory': originalContext.memory_limit_in_mb,
+        'tencent.scf.cold_start': consts.COLD_START,
+        'tencent.namespace': originalContext.namespace,
+        'tencent.uin': originalContext.tencentcloud_uin,
+        'tencent.app_id': originalContext.tencentcloud_appid,
+        'tencent.region': originalContext.tencentcloud_region,
+    });
+
+    consts.COLD_START = false;
+    return runner;
+}
+
+var createRunner_1$1 = createRunner$1;
+
+var tencent_function$1 = {
+	createRunner: createRunner_1$1
+};
+
+/**
+ * @fileoverview Epsagon's lambda wrapper, for tracing lambda invocations.
+ */
+/* eslint-disable no-underscore-dangle */
+
+
+
+const { getConfig: getConfig$1 } = config_1;
+
+
+
+const { MAX_VALUE_CHARS: MAX_VALUE_CHARS$2 } = consts;
+
+const FAILED_TO_SERIALIZE_MESSAGE$1 = 'Unable to stringify response body as json';
+const TIMEOUT_WINDOW$1 = 500;
+const epsagonWrapped$1 = Symbol('epsagonWrapped');
+
+var epsagonWrapped_1$1 = epsagonWrapped$1;
+var TIMEOUT_WINDOW_1$1 = TIMEOUT_WINDOW$1;
+var FAILED_TO_SERIALIZE_MESSAGE_1$1 = FAILED_TO_SERIALIZE_MESSAGE$1;
+
+
+/**
+ * Patch node's UncaughtException and UnhandledRejection handlers
+ * @param {function} handleUserExecutionDone handler for user execution done
+ * @param {object} runner the runner object
+ */
+function patchErrorHandlers$1(handleUserExecutionDone, runner) {
+    const originalUncaughtException = process._events.uncaughtException;
+    process._events.uncaughtException = (err, original) => {
+        process._events.uncaughtException = originalUncaughtException;
+        event.setException(runner, err, false);
+        handleUserExecutionDone(err, null, true).then(() => {
+            if (originalUncaughtException && typeof originalUncaughtException === 'function') {
+                originalUncaughtException(err, original);
+            }
+        });
+    };
+    const originalUnhandledRejection = process._events.unhandledRejection;
+    process._events.unhandledRejection = (reason, promise) => {
+        process._events.unhandledRejection = originalUnhandledRejection;
+        const err = Error(reason);
+        event.setException(runner, err, false);
+        handleUserExecutionDone(err, null, true).then(() => {
+            if (originalUnhandledRejection && typeof originalUnhandledRejection === 'function') {
+                originalUnhandledRejection(reason, promise);
+            }
+        });
+    };
+}
+
+/**
+ * The epsagon's base lambda wrapper, wrap a lambda function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @param {string} [runnerResourceType='lambda'] The resource type to set for the runner
+ * @param {boolean} [shouldPassRunner=false] True if the runner should be passed to the wrapped
+ *     function false otherwise. used when additional action in required on the runner on complex
+ *     wrappers
+ * @param {function} [originalFunctionToWrap=null] The original Function to wrap. Used when the
+ *     function to wrap is already wrapped with another proxy, and a critical error occurs.
+ * @return {function} The original function, wrapped by our tracer
+ */
+function baseTencentFunctionWrapper(functionToWrap) {
+    tracer.getTrace = trace_object.get;
+    // eslint-disable-next-line consistent-return
+    return (originalEvent, originalContext, originalCallback) => {
+        tracer.restart();
+        let runner;
+        let timeoutHandler;
+        let tracesSent = false;
+        let callbackCalled = false;
+
+        try {
+            runner = tencent_function$1.createRunner(originalContext);
+            tracer.addRunner(runner);
+        } catch (err) {
+            return functionToWrap(originalEvent, originalContext, originalCallback);
+        }
+
+        try {
+            const trigger = tencent_function.createFromEvent(
+                originalEvent,
+                originalContext,
+                runner
+            );
+            tracer.addEvent(trigger);
+        } catch (err) {
+            utils.debugLog(`Error parsing trigger: ${err.stack}, Event: ${JSON.stringify(originalEvent)}`);
+        }
+
+        const startTime = Date.now();
+        const runnerSendUpdateHandler = () => {
+            runner.setDuration(utils.createDurationTimestamp(startTime));
+        };
+
+        // Hook when the event loop is empty, in case callback is not called.
+        // Based on the way AWS Lambda implements it
+        // This is done so we will send a trace even if callback is not called
+        // This is relevant only for sync functions (async functions node > 8 will never use this)
+        const originalBeforeExit = process._events.beforeExit;
+        process._events.beforeExit = () => {
+            tracer.sendTrace(runnerSendUpdateHandler).then(() => {
+                // Restore to original and exit, the event loop will take care of the rest
+                process._events.beforeExit = originalBeforeExit;
+            });
+        };
+
+        const handleUserExecutionDone = (error, result, sendSync) => {
+            clearTimeout(timeoutHandler);
+
+            if (tracesSent || callbackCalled) {
+                return Promise.resolve();
+            }
+            callbackCalled = true;
+            if (error) {
+                // not catching false here, but that seems OK
+                let reportedError = error;
+                if (!error.name) {
+                    let errorMessage;
+                    try {
+                        errorMessage = typeof error === 'string' ? error : JSON.stringify(error);
+                    } catch (stringifyErr) {
+                        errorMessage = '';
+                    }
+
+                    reportedError = {
+                        name: 'SCFExecutionError',
+                        message: errorMessage,
+                    };
+                }
+
+                // Setting this error only if there is no existing error already
+                if (!runner.getException()) {
+                    utils.debugLog('Setting exception from handleUserExecutionDone');
+                    event.setException(runner, reportedError, false);
+                }
+            }
+
+            const { statusCode } = result || {};
+            if (statusCode) {
+                event.addToMetadata(runner, { status_code: statusCode });
+            }
+
+            if (error === null && !getConfig$1().metadataOnly) {
+                let jsonResult;
+                try {
+                    // Taken from AWS Lambda runtime
+                    jsonResult = JSON.stringify(
+                        typeof result === 'undefined' ? null : result
+                    );
+                } catch (err) {
+                    jsonResult = `${FAILED_TO_SERIALIZE_MESSAGE$1}: ${err.message}`;
+                }
+                event.addToMetadata(
+                    runner,
+                    {
+                        'tencent.scf.return_data': jsonResult.substring(0, MAX_VALUE_CHARS$2),
+                    }
+                );
+            }
+
+            // Restoring empty event loop handling.
+            // eslint-disable-next-line no-underscore-dangle
+            process._events.beforeExit = originalBeforeExit;
+
+            // Mark trace as sent.
+            tracesSent = true;
+
+            // If the user is waiting for the rest of the events, we can send async. Otherwise
+            // don't wait ourselves and send sync.
+            if (!sendSync && originalContext.callbackWaitsForEmptyEventLoop) {
+                return tracer.sendTrace(runnerSendUpdateHandler);
+            }
+
+            // The callback does not wait, don't wait for events.
+            runnerSendUpdateHandler();
+            return tracer.sendTraceSync();
+        };
+        patchErrorHandlers$1(handleUserExecutionDone, runner);
+
+        let waitForOriginalCallbackPromise = Promise.resolve();
+        const wrappedCallback = (error, result) => {
+            utils.debugLog('wrapped callback called', error, result);
+            if (callbackCalled) {
+                utils.debugLog('not calling callback since it was already called');
+                return;
+            }
+            waitForOriginalCallbackPromise = new Promise((resolve) => {
+                utils.debugLog('handling execution done before calling callback');
+                handleUserExecutionDone(error, result).then(() => {
+                    utils.debugLog("calling User's callback");
+                    originalCallback(error, result);
+                    resolve();
+                });
+            });
+        };
+
+        try {
+            timeoutHandler = setTimeout(() => {
+                utils.debugLog('In timeout handler');
+                tracesSent = true;
+                event.markAsTimeout(runner);
+                runnerSendUpdateHandler();
+                tracer.sendTraceSync();
+            }, originalContext.getRemainingTimeInMillis() - TIMEOUT_WINDOW$1);
+            runner.setStartTime(utils.createTimestampFromTime(startTime));
+            let result = functionToWrap(originalEvent, originalContext, wrappedCallback);
+
+            // Check if result is an instance of Promise (some Webpack versions
+            // don't support instanceof Promise)
+            if (result && typeof result.then === 'function') {
+                let raisedError;
+                let returnValue;
+                result = result
+                    .then((res) => {
+                        utils.debugLog('user promise resolved (in then)');
+                        returnValue = res;
+                        return handleUserExecutionDone(null, res, true);
+                    })
+                    .catch((err) => {
+                        utils.debugLog('user promise rejected (in catch)');
+                        raisedError = err;
+                        return handleUserExecutionDone(err, null, true);
+                    })
+                    .then(() => waitForOriginalCallbackPromise)
+                    .then(() => {
+                        if (raisedError) {
+                            throw raisedError;
+                        }
+                        return returnValue;
+                    });
+            }
+            return result;
+        } catch (err) {
+            throw err;
+        }
+    };
+}
+
+/**
+ * Epsagon's lambda wrapper, wrap a lambda function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @return {function} The original function, wrapped by our tracer
+ */
+var tencentFunctionWrapper = function tencentFunctionWrapper(functionToWrap) {
+    if (functionToWrap[epsagonWrapped$1]) {
+        return functionToWrap;
+    }
+
+    const wrapped = baseTencentFunctionWrapper(functionToWrap);
+    Object.defineProperty(wrapped, epsagonWrapped$1, {
+        value: true,
+        writable: false,
+    });
+
+    return wrapped;
+};
+
+var tencent = {
+	epsagonWrapped: epsagonWrapped_1$1,
+	TIMEOUT_WINDOW: TIMEOUT_WINDOW_1$1,
+	FAILED_TO_SERIALIZE_MESSAGE: FAILED_TO_SERIALIZE_MESSAGE_1$1,
+	tencentFunctionWrapper: tencentFunctionWrapper
+};
+
+/**
+ * @return {Function} the user's handler, or an error handler if an
+ *     error occurred.
+ */
+function getUserHandler() {
+    const createErrorHandler = err => ((event, context) => {
+        context.fail(err);
+    });
+
+    const createErrorHandlerWithMessage = (message, err) => ((event, context) => {
+        console.log(message); // eslint-disable-line no-console
+        context.fail(err);
+    });
+
+    const handlerString = process.env.EPSAGON_HANDLER;
+    if (!handlerString) {
+        return createErrorHandler(new Error(`invalid EPSAGON_HANDLER ${handlerString}`));
+    }
+
+    const appParts = handlerString.split('.');
+    if (appParts.length !== 2) {
+        return createErrorHandler(new Error(`Bad handler ${handlerString}`));
+    }
+
+    const modulePath = appParts[0];
+    const handlerName = appParts[1];
+    try {
+        const lambdaTaskRoot = process.env.LAMBDA_TASK_ROOT;
+        const moduleFullPath = `${lambdaTaskRoot}/${modulePath}`;
+        const app = try_require(moduleFullPath);
+        if (!app) {
+            return createErrorHandler(try_require.lastError());
+        }
+        const userHandler = app[handlerName];
+
+        if (!userHandler) {
+            return createErrorHandler(
+                new Error(`Handler '${handlerName}' missing on module '${modulePath}'`)
+            );
+        }
+
+        return userHandler;
+    } catch (e) {
+        if (e.code === 'MODULE_NOT_FOUND') {
+            return createErrorHandlerWithMessage(
+                `Unable to import module '${modulePath}'`,
+                e
+            );
+        }
+        if (e instanceof SyntaxError) {
+            return createErrorHandlerWithMessage(
+                `Syntax error in module '${modulePath}'`,
+                e
+            );
+        }
+        return createErrorHandlerWithMessage(
+            'module initialization error',
+            e
+        );
+    }
+}
+const userHandler = getUserHandler();
+var wrapper = config_1.getConfig().isEpsagonDisabled ? userHandler :
+    lambda.lambdaWrapper(userHandler);
+
+var lambda_env = {
+	wrapper: wrapper
+};
+
+/**
+ * @fileoverview Epsagon's Openwhisk wrapper, for tracing actions invocations.
+ */
+
+
+
+
+
+
+const epsagonWrapped$2 = Symbol('epsagonWrapped');
+
+/**
+ * The tracer map contains the currently active tracers with the openwhisk activationId as key.
+ * @type {Map<string, tracer>}
+ */
+const tracerMap = new Map();
+
+/**
+ * For openwhisk we need to create a tracer for each activationId, because the same action can
+ * be invoked concurrently. Also, if the openWhiskWrapper() wasn't invoked, we don't want to
+ * trace anything (or at least no record it).
+ * @returns {tracer} The tracer or {@code null}.
+ */
+function getTracer() {
+    const id = process.env['__OW_ACTIVATION_ID']; // eslint-disable-line dot-notation
+    return id ? tracerMap.get(id) : null;
+}
+
+/**
+ * Creates a new tracer and registers it in the map.
+ */
+function registerTracer() {
+    const id = process.env['__OW_ACTIVATION_ID']; // eslint-disable-line dot-notation
+    if (id) {
+        tracerMap.set(id, tracer.createTracer());
+    }
+}
+
+/**
+ * Unregister the tracer from the map.
+ */
+function unregisterTracer() {
+    const id = process.env['__OW_ACTIVATION_ID']; // eslint-disable-line dot-notation
+    if (id) {
+        tracerMap.delete(id);
+    }
+}
+
+/**
+ * Creates an Event representing the running function (runner)
+ * @param {string} functionName The name of the wrapped function
+ * @param {Array} originalParams The arguments passed to the function
+ * @return {proto.event_pb.Event} The runner representing the function
+ */
+function createRunner$2(functionName, originalParams) {
+    const runnerResource = new event_pb.Resource([
+        functionName,
+        'openwhisk_action',
+        'invoke',
+        {},
+    ]);
+
+    const runner = new event_pb.Event([
+        process.env['__OW_ACTIVATION_ID'], // eslint-disable-line dot-notation
+        0,
+        null,
+        'runner',
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+
+    runner.setResource(runnerResource);
+    event.addToMetadata(runner, {
+        activation_id: process.env['__OW_ACTIVATION_ID'], // eslint-disable-line dot-notation
+        transaction_id: process.env['__OW_TRANSACTION_ID'], // eslint-disable-line dot-notation
+        api_host: process.env['__OW_API_HOST'], // eslint-disable-line dot-notation
+        namespace: process.env['__OW_NAMESPACE'], // eslint-disable-line dot-notation
+        params: originalParams,
+    });
+    return runner;
+}
+
+/**
+ * Epsagon's OpenWhisk wrapper, wrap an action with it to trace it.
+ * @param {function} functionToWrap The function to wrap and trace
+ * @param {object} options options used to initialize the Epsagon handler
+ * @param {string} options.token_param name of the parameter passed to the OpenWhisk action
+ * that will contain the Epsagon token. The value is only read when `options.token` is falsy
+ * @return {function} The original function, wrapped by our tracer
+ */
+function baseOpenWhiskWrapper(functionToWrap, options) {
+    // register the openwhisk specific getter as soon as the wrapper is instrumented.
+    tracer.getTrace = getTracer;
+
+    return (originalParams) => { // eslint-disable-line consistent-return
+        if (options && typeof options === 'object') {
+            if (options.token) {
+                tracer.initTrace(options);
+            } else if (options.token_param && originalParams) {
+                tracer.initTrace(Object.assign({
+                    token: originalParams[options.token_param],
+                }, options));
+            }
+        }
+        registerTracer();
+        tracer.restart(); // actually not needed, because we should now have an empty tracer
+        let runner;
+
+        try {
+            // eslint-disable-next-line dot-notation
+            runner = createRunner$2(process.env['__OW_ACTION_NAME'], originalParams);
+        } catch (err) {
+            // If we failed, call the user's function anyway
+            return functionToWrap(originalParams);
+        }
+
+        tracer.addRunner(runner);
+
+        const startTime = Date.now();
+        const runnerSendUpdateHandler = (() => {
+            runner.setDuration(utils.createDurationTimestamp(startTime));
+        });
+
+        try {
+            runner.setStartTime(utils.createTimestampFromTime(startTime));
+            const result = functionToWrap(originalParams);
+            if (result && typeof result.then === 'function') {
+                return result.catch((err) => {
+                    event.setException(runner, err);
+                    runnerSendUpdateHandler();
+                    throw err;
+                }).finally(() => (
+                    tracer.sendTrace(runnerSendUpdateHandler).catch(
+                        () => {}
+                    ).finally(unregisterTracer)
+                ));
+            }
+            tracer.sendTrace(runnerSendUpdateHandler).catch(() => {}).finally(unregisterTracer);
+            return result;
+        } catch (err) {
+            event.setException(runner, err);
+            runnerSendUpdateHandler(); // Doing it here since the send is synchronous on error
+            tracer.sendTraceSync().finally(unregisterTracer);
+            throw err;
+        }
+    };
+}
+
+/**
+ * Epsagon's OpenWhisk wrapper, wrap an action with it to trace it.
+ * @param {function} functionToWrap The function to wrap and trace
+ * @param {object} options options used to initialize the Epsagon handler
+ * @param {string} options.token_param name of the parameter passed to the OpenWhisk action
+ * that will contain the Epsagon token. The value is only read when `options.token` is falsy
+ * @return {function} The original function, wrapped by our tracer
+ */
+var openWhiskWrapper = function openWhiskWrapper(functionToWrap, options) {
+    if (functionToWrap[epsagonWrapped$2]) {
+        return functionToWrap;
+    }
+
+    const wrapped = baseOpenWhiskWrapper(functionToWrap, options);
+    Object.defineProperty(wrapped, epsagonWrapped$2, {
+        value: true,
+        writable: false,
+    });
+
+    return wrapped;
+};
+
+var openwhisk = {
+	openWhiskWrapper: openWhiskWrapper
+};
+
+/**
+ * @fileoverview Epsagon's node wrapper, for tracing node functions.
+ */
+
+
+
+
+
+
+
+
+const { getConfig: getConfig$2 } = config_1;
+
+const FAILED_TO_SERIALIZE_MESSAGE$2 = 'Unable to stringify response body as json';
+
+/**
+ * Creates an Event representing the running function (runner)
+ * @param {object} functionToWrap The function that is wrapped
+ * @param {Array} args The arguments passed to the function
+ * @return {proto.event_pb.Event} The runner representing the lambda
+ */
+function createRunner$3(functionToWrap, args) {
+    const runnerResource = new event_pb.Resource([
+        functionToWrap.name || 'handler',
+        'node_function',
+        'invoke',
+        {},
+    ]);
+
+    const runner = new event_pb.Event([
+        uuid4(),
+        0,
+        null,
+        'runner',
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+
+    runner.setResource(runnerResource);
+    event.addToMetadata(runner, {
+        args_length: args.length,
+    }, {
+        arguments: args,
+    });
+    event.createTraceIdMetadata(runner);
+
+    consts.COLD_START = false;
+    return runner;
+}
+
+/**
+ * Handle ECS step of AWS Step Functions.
+ * Getting step id from epsagon steps dict environment variable.
+ * If exists - Adding steps_dict object to event metadata.
+ * optional - Step number can be set by the user, default is 0.
+ * @param {*} runner Runner event.
+ */
+function handleEcsStepOfStepFunctions(runner) {
+    if (process.env.EPSAGON_STEPS_ID) {
+        event.addToMetadata(runner, {
+            steps_dict: {
+                id: process.env.EPSAGON_STEPS_ID,
+                step_num: process.env.EPSAGON_STEPS_NUM || 0,
+            },
+        });
+    }
+}
+
+/**
+ * Epsagon's node function wrapper, wrap a lambda function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @return {function} The original function, wrapped by our tracer
+ */
+var nodeWrapper = function nodeWrapper(functionToWrap) {
+    tracer.getTrace = trace_object.get;
+    return (...args) => { // eslint-disable-line consistent-return
+        tracer.restart();
+        let runner;
+
+        try {
+            runner = createRunner$3(functionToWrap, args);
+        } catch (err) {
+            // If we failed, call the user's function anyway
+            return functionToWrap(...args);
+        }
+
+        tracer.addRunner(runner);
+
+        const startTime = Date.now();
+        const runnerSendUpdateHandler = (() => {
+            runner.setDuration(utils.createDurationTimestamp(startTime));
+        });
+
+        try {
+            runner.setStartTime(utils.createTimestampFromTime(startTime));
+            const result = functionToWrap(...args);
+            handleEcsStepOfStepFunctions(runner);
+            const promiseResult = Promise.resolve(result).then((resolvedResult) => {
+                if (!getConfig$2().metadataOnly) {
+                    let jsonResult;
+                    try {
+                        jsonResult = JSON.stringify(
+                            typeof resolvedResult === 'undefined' ? null : resolvedResult
+                        );
+                    } catch (err) {
+                        jsonResult = `${FAILED_TO_SERIALIZE_MESSAGE$2}: ${err.message}`;
+                    }
+                    event.addToMetadata(
+                        runner,
+                        {
+                            return_value: jsonResult.substring(0, consts.MAX_VALUE_CHARS),
+                        }
+                    );
+                }
+                tracer.sendTrace(runnerSendUpdateHandler);
+            }).catch((err) => {
+                event.setException(runner, err);
+                runnerSendUpdateHandler(); // Doing it here since the send is synchronous on error
+                tracer.sendTraceSync().then(() => {
+                    throw err;
+                });
+            });
+            if (result && typeof result.then === 'function') {
+                return promiseResult;
+            }
+            return result;
+        } catch (err) {
+            event.setException(runner, err);
+            runnerSendUpdateHandler(); // Doing it here since the send is synchronous on error
+            tracer.sendTraceSync(); // best effort
+            throw err;
+        }
+    };
+};
+
+var node = {
+	nodeWrapper: nodeWrapper
+};
+
+/**
+ * @fileoverview Epsagon's Google Cloud Function wrapper.
+ */
+
+
+
+
+
+
+
+/**
+ * Creates an Event representing the running function (runner)
+ * @param {express.Request} req incoming http request
+ * @return {proto.event_pb.Event} The runner representing the gcp function
+ */
+function createRunner$4(req) {
+    const { slsEvent, startTime } = event.initializeEvent(
+        'google_cloud_function',
+        process.env.K_SERVICE,
+        'execute',
+        'runner'
+    );
+    event.addToMetadata(slsEvent, {
+        'gcp.function.name': process.env.K_SERVICE,
+        'gcp.function.revision': process.env.K_REVISION,
+        'gcp.function.runtime': process.env.GAE_RUNTIME,
+        'gcp.function.execution_id': req.headers['function-execution-id'],
+        'gcp.function.cold_start': consts.COLD_START,
+    });
+    event.createTraceIdMetadata(slsEvent);
+
+    consts.COLD_START = false;
+    return { slsEvent, startTime };
+}
+
+
+/**
+ * Creates an Event representing the trigger function
+ * @param {express.Request} req incoming http request
+ * @param {express.Response} res outgoing http response
+ * @return {proto.event_pb.Event} The runner representing the trigger
+ */
+function createHTTPTrigger(req, res) {
+    const { slsEvent } = event.initializeEvent(
+        'http',
+        req.hostname,
+        req.method,
+        'trigger'
+    );
+    event.addToMetadata(slsEvent, {
+        'http.status_code': res.statusCode,
+        'http.request.path': req.path,
+    }, {
+        'http.request.path_params': req.params,
+        'http.request.headers': req.headers,
+        'http.response.headers': res.getHeaders(),
+    });
+    if (req.body) {
+        event.addToMetadata(slsEvent, {}, {
+            'http.request.body': req.body,
+        });
+    }
+    if (req.query) {
+        event.addToMetadata(slsEvent, {}, {
+            'http.request.query_params': req.query,
+        });
+    }
+    return slsEvent;
+}
+
+
+/**
+ * Epsagon's node function wrapper, wrap a gcp function function with it to trace it
+ * @param {function} functionToWrap The function to wrap and trace
+ * @return {function} The original function, wrapped by our tracer
+ */
+var googleCloudFunctionWrapper = function googleCloudFunctionWrapper(functionToWrap) {
+    tracer.getTrace = trace_object.get;
+    return (req, res) => {
+        tracer.restart();
+        let runner;
+        let eventStartTime;
+
+        try {
+            const { slsEvent, startTime } = createRunner$4(req);
+            runner = slsEvent;
+            eventStartTime = startTime;
+            tracer.addRunner(runner);
+        } catch (err) {
+            console.log(err); // eslint-disable-line no-console
+            // If we failed, call the user's function anyway
+            return functionToWrap(req, res);
+        }
+
+        res.on('finish', () => {
+            runner.setDuration(utils.createDurationTimestamp(eventStartTime));
+            try {
+                const trigger = createHTTPTrigger(req, res);
+                trigger.setDuration(utils.createDurationTimestamp(eventStartTime));
+                tracer.addEvent(trigger);
+            } catch (err) {
+                utils.debugLog(`Error parsing trigger: ${err.stack}`);
+            }
+            tracer.sendTrace(() => {});
+        });
+        return functionToWrap(req, res);
+    };
+};
+
+var google_cloud_function = {
+	googleCloudFunctionWrapper: googleCloudFunctionWrapper
+};
+
+/**
+ * @fileoverview Runner for AWS Batch environment
+ */
+
+
+
+
+
+
+
+/**
+ * Creates an Event representing the running function (runner)
+ * @return {Object} The runner representing the lambda, and a promise
+ *     That resolved when all it's required fields are filled
+ */
+function createRunner$5() {
+    const runnerResource = new event_pb.Resource([
+        process.env.AWS_BATCH_JOB_ID,
+        'batch',
+        'invoke',
+        {},
+    ]);
+
+    const runner = new event_pb.Event([
+        process.env.AWS_BATCH_JOB_ID,
+        0,
+        null,
+        'runner',
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+
+    runner.setResource(runnerResource);
+    event.addToMetadata(runner, {
+        'Job ID': process.env.AWS_BATCH_JOB_ID,
+        'Job Queue Name': process.env.AWS_BATCH_JQ_NAME,
+        'Compute Environment Name': process.env.AWS_BATCH_CE_NAME,
+        'Job Attempt': process.env.AWS_BATCH_JOB_ATTEMPT,
+    }, {
+        Hostname: process.env.HOSTNAME,
+        Home: process.env.HOME,
+        Path: process.env.PATH,
+        Arguments: JSON.stringify(process.argv),
+    });
+    event.createTraceIdMetadata(runner);
+
+    // Getting region
+    const runnerPromise = axiosMinified.get(
+        'http://169.254.169.254/latest/dynamic/instance-identity/document',
+        { timeout: 100 }
+    ).then(
+        (response) => {
+            utils.debugLog(`Got Batch response ${response.data}`);
+            try {
+                const parsedBatchData = JSON.parse(response.data);
+                event.addToMetadata(runner, {
+                    Region: parsedBatchData.region,
+                });
+            } catch (err) {
+                utils.debugLog(`Could not parse Batch env data ${err.toString()}`);
+            }
+        }
+    )
+        .catch((err) => {
+            tracer.addException(err);
+            throw err;
+        });
+
+    return {
+        runner,
+        runnerPromise,
+    };
+}
+
+var createRunner_1$2 = createRunner$5;
+
+var aws_batch = {
+	createRunner: createRunner_1$2
+};
+
+/**
+ * @fileoverview Epsagon's batch wrapper, for tracing Batch Jobs
+ */
+
+
+
+
+
+
+
+/**
+ * Epsagon's batch Job wrapper, sets tracing on a batch job
+ */
+var wrapBatchJob = function wrapBatchJob() {
+    tracer.getTrace = trace_object.get;
+    tracer.restart();
+    try {
+        const { runner, runnerPromise } = aws_batch.createRunner();
+        tracer.addRunner(runner, runnerPromise);
+        const startTime = Date.now();
+
+        const runnerSendUpdateHandler = (() => {
+            runner.setDuration(utils.createDurationTimestamp(startTime));
+        });
+
+        runner.setStartTime(utils.createTimestampFromTime(startTime));
+        process.on('uncaughtException', (err) => {
+            event.setException(runner, err);
+        });
+        process.once('beforeExit', () => {
+            tracer.sendTrace(runnerSendUpdateHandler);
+        });
+
+        const processExitWrapper = (
+            wrappedFunction => function internalProcessExitWrapper(errorCode) {
+                runnerSendUpdateHandler();
+                tracer.sendTraceSync();
+                wrappedFunction.apply(this, [errorCode]);
+            }
+        );
+
+        shimmer.wrap(process, 'exit', processExitWrapper);
+    } catch (err) {
+        utils.debugLog(
+            'failed to create Batch runner',
+            err
+        );
+        tracer.addException(err);
+    }
+};
+
+var batch = {
+	wrapBatchJob: wrapBatchJob
+};
+
+const { MAX_HTTP_VALUE_SIZE: MAX_HTTP_VALUE_SIZE$1 } = consts;
+
+const URL_BLACKLIST = {
+    'tc.epsagon.com': 'endsWith',
+    'oauth2.googleapis.com': 'endsWith',
+    'amazonaws.com':
+        (url$$1, pattern) => (url$$1.endsWith(pattern) || url$$1.endsWith(`${pattern}:443`)) &&
+            (url$$1.indexOf('.execute-api.') === -1) &&
+            (url$$1.indexOf('.es.') === -1) &&
+            (url$$1.indexOf('.elb.') === -1) &&
+            (url$$1.indexOf('.appsync-api.') === -1),
+    'blob.core.windows.net': 'endsWith',
+    'myqcloud.com': 'endsWith',
+    'documents.azure.com': 'endsWith',
+    '127.0.0.1': (url$$1, pattern, path$$1) => (url$$1 === pattern) && path$$1.startsWith('/2018-06-01/runtime/invocation/'),
+    '169.254.169.254': 'startsWith', // EC2 document ip. Have better filtering in the future
+};
+
+
+// Brotli decompression exists since Node v10
+const ENCODING_FUNCTIONS = {
+    br: zlib.brotliDecompressSync,
+    brotli: zlib.brotliDecompressSync,
+    gzip: zlib.gunzipSync,
+    deflate: zlib.deflateSync,
+};
+
+const USER_AGENTS_BLACKLIST = ['openwhisk-client-js'];
+
+/**
+ * Checks if a URL is in the user-defined blacklist.
+ * @param {string} url The URL to check
+ * @returns {boolean} True if it is in the user-defined blacklist, False otherwise.
+ */
+function isURLIgnoredByUser(url$$1) {
+    return config_1.getConfig().urlPatternsToIgnore.some(pattern => url$$1.includes(pattern));
+}
+
+
+/**
+ * Set the duration of the event, and resolves the promise using the given function.
+ * @param {object} httpEvent The current event
+ * @param {Function} resolveFunction Function that will be used to resolve the promise
+ * @param {integer} startTime The time the event started at
+ */
+function resolveHttpPromise(httpEvent, resolveFunction, startTime) {
+    httpEvent.setDuration(utils.createDurationTimestamp(startTime));
+    resolveFunction();
+}
+
+
+/**
+ * Attempts to json parse the data and set it at key on the event's metadata.
+ * @param {object} httpEvent The current event
+ * @param {string} key name in metadata
+ * @param {string} data data to jsonify
+ * @param {string} encoding data encoding from the headers
+ */
+function setJsonPayload(httpEvent, key, data, encoding) {
+    try {
+        let decodedData = data;
+        if (config_1.getConfig().decodeHTTP && ENCODING_FUNCTIONS[encoding]) {
+            try {
+                decodedData = ENCODING_FUNCTIONS[encoding](data);
+            } catch (err) {
+                utils.debugLog(`Could decode ${key} with ${encoding} in http`);
+            }
+        }
+        const jsonData = decodedData;
+        try {
+            JSON.parse(jsonData);
+            event.addToMetadata(httpEvent, {}, {
+                [key]: jsonData.toString(),
+            });
+        } catch (err) {
+            utils.debugLog(`Could not parse JSON ${key} in http`);
+            event.addToMetadata(httpEvent, {}, {
+                [key]: decodedData.toString('utf-8'),
+            });
+        }
+    } catch (err) {
+        utils.debugLog(`Could not decode data and parse JSON ${key} in http`);
+        event.addToMetadata(httpEvent, {}, {
+            [key]: data,
+        });
+    }
+}
+
+
+/**
+ * Return UUID in hex string.
+ * @param {string} uuid uuid object.
+ * @returns {string} UUID in hex.
+ */
+function UUIDToHex(uuid) {
+    const uuidBuffer = Buffer.alloc(16);
+    uuidParse.parse(uuid, uuidBuffer);
+    return uuidBuffer.toString('hex');
+}
+
+
+/**
+ * Return an Epsagon trace ID to put in the request headers.
+ * @returns {string} Epsagon trace id.
+ */
+function generateEpsagonTraceId() {
+    const hexTraceId = UUIDToHex(uuid4());
+    const spanId = UUIDToHex(uuid4()).slice(16);
+    const parentSpanId = UUIDToHex(uuid4()).slice(16);
+
+    return `${hexTraceId}:${spanId}:${parentSpanId}:1`;
+}
+
+
+/**
+ * Checks if API Gateway details appear in the headers, and update event accordingly
+ * @param {object} headers data
+ * @param {Event} httpEvent object
+ */
+function updateAPIGateway(headers, httpEvent) {
+    if (headers && 'x-amzn-requestid' in headers) {
+        // This is a request to AWS API Gateway
+        httpEvent.getResource().setType('api_gateway');
+        event.addToMetadata(httpEvent, {
+            request_trace_id: headers['x-amzn-requestid'],
+        });
+    }
+}
+
+
+/**
+ * Adding HTTP response chunks into the array, according to the constraints
+ * @param {Object} chunk the part in String or Buffer
+ * @param {Array} chunks array of chunks
+ */
+function addChunk(chunk, chunks) {
+    if (chunk) {
+        const totalSize = chunks.reduce((total, item) => item.length + total, 0);
+        if (totalSize + chunk.length <= MAX_HTTP_VALUE_SIZE$1) {
+            chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+        }
+    }
+}
+
+var http$1 = {
+    isURLIgnoredByUser,
+    resolveHttpPromise,
+    USER_AGENTS_BLACKLIST,
+    URL_BLACKLIST,
+    generateEpsagonTraceId,
+    updateAPIGateway,
+    setJsonPayload,
+    addChunk,
+};
+
+var module_utils = createCommonjsModule(function (module) {
+const { LAMBDA_DEFAULT_NODE_MODULES_PATH } = consts;
+
+let autoNodePaths;
+/**
+ * finds recursively all node_modules sub folders.
+ * @param {String} dirPath the root folder to start searching.
+ * @param {Array} arrayOfNodeModulesPaths array of the founded node_modules paths.
+ * @return {Array} an array of all the founded node_modules sub folders paths
+ */
+const getAllNodeModulesPaths = (dirPath, arrayOfNodeModulesPaths = []) => {
+    let arrayOfNodeModulesPathsCopied = arrayOfNodeModulesPaths;
+    const files = fs.readdirSync(dirPath);
+    files.forEach((file) => {
+        if (fs.statSync(`${dirPath}/${file}`).isDirectory()) {
+            if (file === 'node_modules') {
+                arrayOfNodeModulesPathsCopied.push(path.join(dirPath, file));
+            } else {
+                arrayOfNodeModulesPathsCopied = getAllNodeModulesPaths(`${dirPath}/${file}`, arrayOfNodeModulesPathsCopied);
+            }
+        }
+    });
+    return arrayOfNodeModulesPathsCopied;
+};
+
+/**
+ * finds all the instances of a module in the NODE_PATH
+ * @param {String} id the id of the module to load
+ * @return {Array} an array of all the module instances in the PATH
+ */
+module.exports.getModules = function getModules(id) {
+    const modules = [];
+    if (typeof require.resolve.paths !== 'function') {
+        utils.debugLog('require.resolve.paths is not a function');
+        // running in a bundler that doesn't support require.resolve.paths(). e.g. webpack.
+        const module = try_require(id);
+        if (module) {
+            modules.push(module);
+        }
+        return modules;
+    }
+
+    const searchPaths = require.resolve.paths(id);
+    if (process.env.EPSAGON_ADD_NODE_PATH) {
+        searchPaths.push(...process.env.EPSAGON_ADD_NODE_PATH.split(':').map(
+            item => path.resolve(item.trim())
+        ));
+    }
+    if (process.env.EPSAGON_AUTO_ADD_NODE_PATHS &&
+        process.env.EPSAGON_AUTO_ADD_NODE_PATHS.toUpperCase() === 'TRUE'
+    ) {
+        const rootFolder = path.dirname(require.main.filename);
+        if (!autoNodePaths) {
+            autoNodePaths = getAllNodeModulesPaths(rootFolder);
+        }
+        utils.debugLog('Found the following paths', autoNodePaths);
+        autoNodePaths.forEach((nodePath) => {
+            if (!searchPaths.includes(nodePath)) {
+                searchPaths.push(nodePath);
+            }
+        });
+    }
+    if (utils.isLambdaEnv && !searchPaths.includes(LAMBDA_DEFAULT_NODE_MODULES_PATH)) {
+        searchPaths.push(LAMBDA_DEFAULT_NODE_MODULES_PATH);
+    }
+
+    utils.distinct(searchPaths).forEach((searchPath) => {
+        const modulePath = path.resolve(`${searchPath}/${id}`);
+        const module = try_require(modulePath);
+
+        if (module) {
+            utils.debugLog('Loaded module', id, searchPath);
+            modules.push(module);
+        }
+    });
+    return modules;
+};
+
+const shimmerPatches = [];
+
+/**
+ * Patches all instances of a module
+ * @param {String} id The module id
+ * @param {String} methodName the method name
+ * @param {Function} wrapper The wrapper function
+ * @param {Function} memberExtractor Extracts the wrapped member from the module
+ */
+module.exports.patchModule = function patchModule(
+    id,
+    methodName,
+    wrapper,
+    memberExtractor = (mod => mod)
+) {
+    utils.debugLog('patching module:', id);
+    const modules = module.exports.getModules(id);
+    utils.debugLog('found module copies:', modules.length);
+    modules.forEach((module) => {
+        const extracted = memberExtractor(module);
+        shimmerPatches.push({ id, methodName, module: extracted });
+        shimmer.wrap(extracted, methodName, wrapper);
+    });
+    utils.debugLog('done patching module:', id);
+};
+
+/**
+ * Patch single module
+ * @param {any} module   the module
+ * @param {String} methodName    the method to patch
+ * @param {Function} wrapper     the wrapper to apply
+ */
+module.exports.patchSingle = function patchSingle(module, methodName, wrapper) {
+    shimmerPatches.push({ id: methodName, methodName, module });
+    shimmer.wrap(module, methodName, wrapper);
+};
+
+/** Unpatch all modules */
+module.exports.unpatchModules = function unpatchModules() {
+    console.log('unpatching all modules');
+
+    shimmerPatches.forEach((patch) => {
+        console.log(`unpatching ${patch.methodName} from ${patch.id}`);
+        shimmer.unwrap(patch.module, patch.methodName);
+    });
+
+    console.log('finished unpatching');
+};
+});
+var module_utils_1 = module_utils.getModules;
+var module_utils_2 = module_utils.patchModule;
+var module_utils_3 = module_utils.patchSingle;
+var module_utils_4 = module_utils.unpatchModules;
+
+/**
+ * @fileoverview Handlers for the aws-sdk js library instrumentation.
+ */
+
+
+JSON.sortify = json;
+
+
+
+
+
+const { STEP_ID_NAME: STEP_ID_NAME$2 } = consts;
+
+
+
+
+const DynamoDB$1 = try_require('aws-sdk/clients/dynamodb');
+
+const s3EventCreator = {
+    /**
+     * Updates an event with the appropriate fields from a S3 request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const { operation } = request;
+        const resource = event$$1.getResource();
+
+        resource.setName(`${parameters.Bucket}`);
+
+        switch (operation) {
+        case 'headObject':
+            // fall through
+        case 'getObject':
+            // fall through
+        case 'putObject':
+            resource.getMetadataMap().set('key', `${parameters.Key}`);
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a S3 response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        const resource = event$$1.getResource();
+
+        switch (response.request.operation) {
+        case 'listObjects':
+            resource.getMetadataMap().set(
+                'files',
+                response.data.Contents.map(
+                    entry => [`${entry.Key}`, entry.Size, entry.Etag]
+                ).toString()
+            );
+            break;
+
+        case 'putObject':
+            resource.getMetadataMap().set('etag', `${response.data.ETag.replace(/"/g, '')}`);
+            break;
+
+        case 'headObject':
+            // fall through
+        case 'getObject':
+            event.addToMetadata(event$$1, {
+                etag: `${response.data.ETag.replace(/"/g, '')}`,
+                file_size: `${response.data.ContentLength}`,
+                last_modified: `${response.data.LastModified}`,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+};
+
+const kinesisEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from a Kinesis request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const { operation } = request;
+        const resource = event$$1.getResource();
+        resource.setName(`${parameters.StreamName}` || 'Kinesis');
+        switch (operation) {
+        case 'putRecord':
+            event.addToMetadata(event$$1, {
+                partition_key: `${parameters.PartitionKey}`,
+            }, {
+                data: `${parameters.Data}`,
+            });
+            break;
+        case 'putRecords':
+            event.addToMetadata(event$$1, {
+                total_record_count: `${parameters.Records.length}`,
+            }, {
+                data: JSON.stringify(parameters.Records),
+            });
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a Kinesis response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        let errorMessages = '';
+        let errorMessagesCount = 0;
+        switch (response.request.operation) {
+        case 'putRecord':
+            event.addToMetadata(event$$1, {
+                shard_id: `${response.data.ShardId}`,
+                sequence_number: `${response.data.SequenceNumber}`,
+            });
+            break;
+        case 'putRecords':
+            if (response.data.FailedRecordCount && response.data.FailedRecordCount > 0) {
+                errorMessages = JSON.stringify(response.data.Records
+                    .map(item => item.ErrorMessage));
+                errorMessagesCount = response.data.FailedRecordCount;
+            }
+            event.addToMetadata(event$$1, {
+                total_record_count: `${response.data.Records.length}`,
+                failed_record_count: `${errorMessagesCount}`,
+                kinesis_error_messages: errorMessages,
+            });
+            // Adding sequence number for the first event
+            if (response.data.Records.length > 0) {
+                event.addToMetadata(event$$1, {
+                    sequence_number: `${response.data.Records[0].SequenceNumber}`,
+                });
+            }
+            break;
+        default:
+            break;
+        }
+    },
+};
+
+const SNSEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from a SNS request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const resource = event$$1.getResource();
+        const paramArn = parameters.TopicArn || parameters.TargetArn;
+        resource.setName(`${paramArn.split(':').pop()}` || 'N/A');
+        event.addToMetadata(event$$1, {}, {
+            'Notification Message': `${parameters.Message}`,
+            'Notification Message Attributes': `${JSON.stringify(parameters.MessageAttributes)}`,
+        });
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a SNS response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'publish':
+            event.addToMetadata(event$$1, {
+                'Message ID': `${response.data.MessageId}`,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+};
+
+const SQSEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from a SQS request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const resource = event$$1.getResource();
+
+        if ('QueueUrl' in parameters) {
+            resource.setName(`${parameters.QueueUrl.split('/').pop()}`);
+        }
+        if ('QueueName' in parameters) {
+            resource.setName(parameters.QueueName);
+        }
+
+        const entry = ('Entries' in parameters) ? parameters.Entries : parameters;
+        if ('MessageBody' in entry) {
+            event.addToMetadata(event$$1, {}, {
+                'Message Body': entry.MessageBody,
+            });
+        }
+        if ('MessageAttributes' in entry) {
+            event.addToMetadata(event$$1, {}, {
+                'Message Attributes': entry.MessageAttributes,
+            });
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a SNS response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        let errorMessages = '';
+        let errorMessagesCount = 0;
+        switch (response.request.operation) {
+        case 'sendMessage':
+            event.addToMetadata(event$$1, {
+                'Message ID': `${response.data.MessageId}`,
+                'MD5 Of Message Body': `${response.data.MD5OfMessageBody}`,
+            });
+            break;
+        case 'sendMessageBatch':
+            if (response.data.Successful && response.data.Successful.length > 0) {
+                event.addToMetadata(event$$1, {
+                    record: JSON.stringify(response.data.Successful.map(item => item)),
+                });
+            }
+            if (response.data.Failed && response.data.Failed > 0) {
+                errorMessages = JSON.stringify(response.data.Failed
+                    .map(item => item));
+                errorMessagesCount = response.data.FailedRecordCount;
+            }
+            event.addToMetadata(event$$1, {
+                successful_record_count: `${response.data.Successful.length}`,
+                failed_record_count: `${errorMessagesCount}`,
+                sqs_error_messages: errorMessages,
+            });
+            break;
+        case 'deleteMessageBatch':
+            if (response.data.Failed && response.data.Failed > 0) {
+                errorMessages = JSON.stringify(response.data.Failed
+                    .map(item => item));
+                errorMessagesCount = response.data.FailedRecordCount;
+            }
+            event.addToMetadata(event$$1, {
+                successful_record_count: `${response.data.Successful.length}`,
+                failed_record_count: `${errorMessagesCount}`,
+                sqs_error_messages: errorMessages,
+            });
+            break;
+        case 'receiveMessage': {
+            let messagesNumber = 0;
+            if (('Messages' in response.data) && (response.data.Messages.length > 0)) {
+                messagesNumber = response.data.Messages.length;
+                event.addToMetadata(event$$1, {
+                    'Message ID': `${response.data.Messages[0].MessageId}`,
+                    'MD5 Of Message Body': `${response.data.Messages[0].MD5OfBody}`,
+                });
+                const snsData = sqs_utils.getSNSTrigger(response.data.Messages);
+                if (snsData != null) {
+                    event.addToMetadata(event$$1, { 'SNS Trigger': snsData });
+                }
+            }
+            event.addToMetadata(event$$1, { 'Number Of Messages': messagesNumber });
+            break;
+        }
+        default:
+            break;
+        }
+    },
+};
+
+const SESEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from a SES request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        switch (request.operation) {
+        case 'sendEmail':
+            event.addToMetadata(event$$1, {
+                source: `${parameters.Source}`,
+                destination: `${parameters.Destination.ToAddresses}`,
+            }, {
+                subject: `${parameters.Message.Subject.Data}`,
+                'Message Text': `${parameters.Message.Body.Text.Data}`,
+                'Message Html': `${parameters.Message.Body.Html.Data}`,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a SES response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'sendEmail':
+            event.addToMetadata(event$$1, {
+                message_id: `${response.data.MessageId}`,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+};
+
+const lambdaEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from a Lambda invoke request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const resource = event$$1.getResource();
+        utils.debugLog(`Got lambda event on function: ${parameters.FunctionName}`);
+        const name = (parameters.FunctionName.includes(':')) ?
+            parameters.FunctionName.split(':').slice(-1)[0] : parameters.FunctionName;
+        resource.setName(name);
+        event.addToMetadata(event$$1, {}, {
+            payload: `${parameters.Payload}`,
+        });
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a Lambda invoke response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) { // eslint-disable-line no-unused-vars
+    },
+};
+
+const dynamoDBEventCreator = {
+    /**
+     * Generates the Hash of a DynamoDB entry as should be sent to the server.
+     * @param {Object} item The DynamoDB item to store
+     * @return {string} The hash of the item
+     */
+    generateItemHash(item) {
+        const unmarshalledItem = DynamoDB$1.Converter.unmarshall(item);
+        return md5(JSON.sortify(unmarshalledItem));
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a DynamoDB request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const resource = event$$1.getResource();
+        const { operation } = request;
+
+        resource.setName(parameters.TableName || 'DynamoDBEngine');
+        switch (operation) {
+        case 'deleteItem':
+            // on delete, hash only the key
+            event.addToMetadata(event$$1, {
+                item_hash: this.generateItemHash(parameters.Key),
+            });
+            /* fallthrough */
+        case 'getItem':
+            event.addToMetadata(event$$1, {}, {
+                Key: parameters.Key,
+            });
+            break;
+
+        case 'putItem':
+            event.addToMetadata(event$$1, {
+                item_hash: this.generateItemHash(parameters.Item),
+            }, {
+                Item: JSON.stringify(parameters.Item),
+            });
+            break;
+
+        case 'updateItem':
+            event.addToMetadata(event$$1, {
+                Key: parameters.Key,
+            }, {
+                'Update Expression': JSON.stringify(
+                    parameters.UpdateExpression
+                ),
+                'Expression Attribute Names': JSON.stringify(
+                    parameters.ExpressionAttributeNames
+                ),
+                'Expression Attribute Values': JSON.stringify(
+                    parameters.ExpressionAttributeValues
+                ),
+            });
+            break;
+
+        case 'query': {
+            event.addObjectToMetadata(
+                event$$1,
+                'Parameters',
+                parameters,
+                [
+                    'KeyConditions',
+                    'QueryFilter',
+                    'ExclusiveStartKey',
+                    'ProjectionExpression',
+                    'FilterExpression',
+                    'KeyConditionExpression',
+                    'ExpressionAttributeValues',
+                ]
+            );
+            break;
+        }
+
+        case 'scan': {
+            event.addObjectToMetadata(
+                event$$1,
+                'Parameters',
+                parameters,
+                [
+                    'ScanFilter',
+                    'ExclusiveStartKey',
+                    'ProjectionExpression',
+                    'FilterExpression',
+                    'ExpressionAttributeValues',
+                ]
+            );
+            break;
+        }
+
+        case 'batchWriteItem': {
+            const tableName = Object.keys(parameters.RequestItems)[0];
+            resource.setName(tableName || parameters.TableName);
+            const addedItems = [];
+            const deletedKeys = [];
+            parameters.RequestItems[tableName].forEach(
+                (item) => {
+                    if (item.PutRequest) {
+                        addedItems.push(item.PutRequest.Item);
+                    }
+                    if (item.DeleteRequest) {
+                        deletedKeys.push(item.DeleteRequest.Key);
+                    }
+                }
+            );
+            if (addedItems.length !== 0) {
+                event.addToMetadata(event$$1, {}, { 'Added Items': JSON.stringify(addedItems) });
+            }
+            if (deletedKeys.length !== 0) {
+                event.addToMetadata(event$$1, {}, { 'Deleted Keys': JSON.stringify(deletedKeys) });
+            }
+            break;
+        }
+
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a DynamoDB response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'getItem':
+            event.addToMetadata(event$$1, {}, {
+                Item: JSON.stringify(response.data.Item),
+            });
+            break;
+        case 'updateItem':
+            // To capture the hash correctly ReturnValues=ALL_NEW in the request params
+            if (response.data.Attributes) {
+                event.addToMetadata(event$$1, {
+                    item_hash: this.generateItemHash(response.data.Attributes),
+                }, {});
+            }
+            break;
+
+        case 'listTables':
+            event.addToMetadata(event$$1, {
+                'Table Names': response.data.TableNames.join(', '),
+            });
+            break;
+
+        case 'scan':
+        case 'query': {
+            event.addObjectToMetadata(
+                event$$1,
+                'Response',
+                response.data,
+                ['Items', 'LastEvaluatedKey']
+            );
+            break;
+        }
+
+        default:
+            break;
+        }
+    },
+};
+
+const athenaEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from an Athena request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        switch (request.operation) {
+        case 'startQueryExecution':
+            if (('QueryExecutionContext' in parameters) &&
+            ('Database' in parameters.QueryExecutionContext)) {
+                event.addToMetadata(event$$1, {
+                    Database: `${parameters.QueryExecutionContext.Database}`,
+                });
+            }
+            event.addToMetadata(event$$1, {}, {
+                Query: `${parameters.QueryString}`,
+            });
+            break;
+        case 'getQueryExecution':
+        case 'getQueryResults':
+        case 'stopQueryExecution':
+            event.addToMetadata(event$$1, {
+                'Query ID': `${parameters.QueryExecutionId}`,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from an Athena response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'getQueryExecution':
+            if (('Status' in response.data.QueryExecution) &&
+            ('State' in response.data.QueryExecution.Status)) {
+                event.addToMetadata(event$$1, {
+                    State: `${response.data.QueryExecution.Status.State}`,
+                });
+            }
+            if (('ResultConfiguration' in response.data.QueryExecution) &&
+            ('OutputLocation' in response.data.QueryExecution.Status)) {
+                event.addToMetadata(event$$1, {
+                    'Result Location': `${response.data.QueryExecution.ResultConfiguration.OutputLocation}`,
+                });
+            }
+            event.addToMetadata(event$$1, {
+                'Query ID': `${response.data.QueryExecutionId}`,
+            }, {
+                Query: `${response.data.Query}`,
+            });
+            break;
+        case 'getQueryResults':
+            event.addToMetadata(event$$1, {
+                'Query Row Count': `${response.data.ResultSet.Rows.length}`,
+            });
+            break;
+        case 'startQueryExecution':
+            event.addToMetadata(event$$1, {
+                'Query ID': `${response.data.QueryExecutionId}`,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+};
+
+/**
+ * Generate a new stpes_dict id, set the step number as -1 to mark the invoker,
+ * and adding the new steps_dict to the event metadata.
+ * @param {object} request The AWS.Request object
+ * @param {string} paramsPropertyName relevant params property
+ * @param {proto.event_pb.Event} event the event to update the new steps dict on
+ */
+const initializeStepsDict = (request, paramsPropertyName, event$$1) => {
+    const data = (request.params || {})[paramsPropertyName];
+    let parsedData;
+    try {
+        // According to the docs input must be at least "{}". so if it is not
+        // JSON parsable an error will be raised for sure and the machine won't
+        // be invoked anyway.
+        parsedData = JSON.parse(data);
+    } catch (error) {
+        parsedData = null;
+    }
+    if (parsedData) {
+        parsedData[STEP_ID_NAME$2] = { id: uuid4(), step_num: -1 };
+        request.params[paramsPropertyName] = JSON.stringify(parsedData);
+        event.addToMetadata(event$$1, {
+            steps_dict: parsedData[STEP_ID_NAME$2],
+        });
+    }
+};
+
+const stepFunctionsEventCreator = {
+    /**
+     * Patches the input of a step functions AWS Request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    patchInput(request, event$$1) {
+        switch (request.operation) {
+        case 'startExecution':
+            initializeStepsDict(request, 'input', event$$1);
+            break;
+        case 'stopExecution':
+            initializeStepsDict(request, 'input', event$$1);
+            break;
+        case 'sendTaskSuccess':
+            initializeStepsDict(request, 'output', event$$1);
+            break;
+        case 'sendTaskFailure':
+            initializeStepsDict(request, 'output', event$$1);
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a stepFunctions request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params;
+        const resource = event$$1.getResource();
+        switch (request.operation) {
+        case 'startExecution':
+            resource.setName(`${parameters.stateMachineArn.split(':').pop()}`);
+            event.addToMetadata(event$$1, {
+                'State Machine ARN': `${parameters.stateMachineArn}`,
+                'Execution Name': `${parameters.name}`,
+            }, {
+                Input: `${parameters.input}`,
+            });
+            break;
+
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from a stepFunctions response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'startExecution':
+            event.addToMetadata(event$$1, {
+                'Execution ARN': `${response.data.executionArn}`,
+                'Start Date': `${response.data.startDate}`,
+            });
+            break;
+
+        default:
+            break;
+        }
+    },
+};
+
+const batchEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from an AWS Batch request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const { operation } = request;
+        const resource = event$$1.getResource();
+
+
+        switch (operation) {
+        case 'submitJob': {
+            resource.setName(`${parameters.jobName}`);
+            const additionalData = {};
+            if ('containerOverrides' in parameters) {
+                additionalData['Container Overrides'] = parameters.containerOverrides;
+            }
+            if ('parameters' in parameters) {
+                additionalData.Parameters = parameters.parameters;
+            }
+
+            event.addToMetadata(event$$1, {
+                'Job Definition': `${parameters.jobDefinition}`,
+                'Job Queue': `${parameters.jobQueue}`,
+            }, additionalData);
+            break;
+        }
+
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from an AWS Batch response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'submitJob':
+            event.addToMetadata(event$$1, {
+                'Job ID': `${response.data.jobId}`,
+            });
+            break;
+
+        default:
+            break;
+        }
+    },
+};
+
+const CloudWatchEventsEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from an AWS CloudWatch Events request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const entry = parameters.Entries[0] || {};
+        const { operation } = request;
+        const resource = event$$1.getResource();
+        resource.setType('events');
+        switch (operation) {
+        case 'putEvents':
+            resource.setName(entry.EventBusName || 'CloudWatch Events');
+            event.addToMetadata(event$$1, {
+                'aws.cloudwatch.detail_type': entry.DetailType,
+                'aws.cloudwatch.resources': entry.Resources,
+                'aws.cloudwatch.source': entry.Source,
+            }, {
+                'aws.cloudwatch.detail': entry.Detail,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from an AWS CloudWatch Events response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'putEvents':
+            event.addToMetadata(event$$1, {
+                'aws.cloudwatch.event_id': `${response.data.Entries[0].EventId}`,
+            });
+            break;
+
+        default:
+            break;
+        }
+    },
+};
+
+
+const CognitoIDPEventsEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from an AWS Cognito IDP Events request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const resource = event$$1.getResource();
+        if (parameters.UserPoolId) {
+            resource.setName(parameters.UserPoolId);
+        }
+        resource.setType('cognito-idp');
+        event.addToMetadata(event$$1, {}, {
+            'aws.cognito.request': parameters,
+        });
+    },
+
+    /**
+     * Updates an event with the appropriate fields from an AWS Cognito IDP Events response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        event.addToMetadata(event$$1, {}, {
+            'aws.cognito.response': response.data,
+        });
+    },
+};
+
+const CloudWatchLogsEventCreator = {
+    /**
+     * Updates an event with the appropriate fields from an AWS CloudWatch Logs request
+     * @param {object} request The AWS.Request object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const { operation } = request;
+        const resource = event$$1.getResource();
+        resource.setType('logs');
+        switch (operation) {
+        case 'filterLogEvents':
+            resource.setName(parameters.logGroupName);
+            event.addToMetadata(event$$1, {
+                'aws.cloudwatch.log_streams': request.logStreamNames,
+                'aws.cloudwatch.start_time': request.startTime,
+            });
+            break;
+        case 'getMetricData':
+            resource.setName(parameters.logGroupName);
+            event.addToMetadata(event$$1, {
+                'aws.cloudwatch.start_time': request.startTime,
+                'aws.cloudwatch.end_time': request.endTime,
+            });
+            break;
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from an AWS CloudWatch Logs response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'filterLogEvents':
+            event.addToMetadata(event$$1, {
+                'aws.cloudwatch.events_count': response.data.events.length,
+                'aws.cloudwatch.searched_log_streams': response.data.searchedLogStreams.length,
+            });
+            break;
+
+        default:
+            break;
+        }
+    },
+};
+
+const SSMEventCreator = {
+    /**
+    * Updates an event with the appropriate fields from an AWS SSM request
+    * @param {object} request The AWS.Request object
+    * @param {proto.event_pb.Event} event The event to update the data on
+    */
+    requestHandler(request, event$$1) {
+        const parameters = request.params || {};
+        const resource = event$$1.getResource();
+        const { operation } = request;
+
+        resource.setName(parameters.Name || parameters.Path || 'SSM');
+        switch (operation) {
+        case 'getParameter':
+        case 'getParameters':
+        case 'getParametersByPath':
+            event.addToMetadata(event$$1, {}, {
+                WithDecryption: parameters.WithDecryption,
+            });
+            break;
+
+        default:
+            break;
+        }
+    },
+
+    /**
+     * Updates an event with the appropriate fields from an AWS SSM response
+     * @param {object} response The AWS.Response object
+     * @param {proto.event_pb.Event} event The event to update the data on
+     */
+    responseHandler(response, event$$1) {
+        switch (response.request.operation) {
+        case 'getParameter':
+            event.addToMetadata(event$$1, {}, {
+                parameter: {
+                    Name: (response.data.Parameter || { Name: '' }).Name || '',
+                    Value: (response.data.Parameter || { Value: '' }).Value || '',
+                    Type: (response.data.Parameter || { Type: '' }).Type || '',
+                },
+            });
+            break;
+
+        case 'getParameters':
+        case 'getParametersByPath':
+            if (response.data.InvalidParameters && response.data.InvalidParameters.length > 0) {
+                event.addToMetadata(
+                    event$$1,
+                    {},
+                    { invalid_parameters: response.data.InvalidParameters }
+                );
+            }
+
+            if (response.data.Parameters && response.data.Parameters.length > 0) {
+                event.addToMetadata(event$$1, {}, {
+                    parameters: response.data.Parameters
+                        .map(singleParameter => ({
+                            Name: singleParameter.Name,
+                            Value: singleParameter.Value,
+                            Type: singleParameter.Type,
+                        })),
+                });
+            }
+            break;
+
+        default:
+            break;
+        }
+    },
+};
+
+/**
+ * a map between AWS resource names and their appropriate creator object.
+ */
+const specificEventCreators = {
+    s3: s3EventCreator,
+    kinesis: kinesisEventCreator,
+    sns: SNSEventCreator,
+    sqs: SQSEventCreator,
+    ses: SESEventCreator,
+    lambda: lambdaEventCreator,
+    dynamodb: dynamoDBEventCreator,
+    athena: athenaEventCreator,
+    stepfunctions: stepFunctionsEventCreator,
+    batch: batchEventCreator,
+    cloudwatchevents: CloudWatchEventsEventCreator,
+    cognitoidentityserviceprovider: CognitoIDPEventsEventCreator,
+    eventbridge: CloudWatchEventsEventCreator,
+    cloudwatchlogs: CloudWatchLogsEventCreator,
+    ssm: SSMEventCreator,
+};
+
+/**
+ * Wraps the aws-sdk Request object send/promise function with tracing
+ * @param {Function} wrappedFunction The function to wrap
+ * @returns {Function} The wrapped function
+ */
+function AWSSDKWrapper(wrappedFunction) {
+    return function internalAWSSDKWrapper(callback) {
+        try {
+            const request = this;
+            const { serviceIdentifier } = (
+                request.service.constructor.prototype
+            );
+
+            if (!(serviceIdentifier in specificEventCreators)) {
+                // resource is not supported yet
+                return wrappedFunction.apply(this, [callback]);
+            }
+
+            const resource = new event_pb.Resource([
+                '',
+                serviceIdentifier,
+                `${request.operation}`,
+            ]);
+
+            const startTime = Date.now();
+            const awsEvent = new event_pb.Event([
+                '',
+                utils.createTimestampFromTime(startTime),
+                null,
+                'aws-sdk',
+                0,
+                error_code_pb.ErrorCode.OK,
+            ]);
+
+            awsEvent.setResource(resource);
+
+            if ('patchInput' in specificEventCreators[serviceIdentifier]) {
+                specificEventCreators[serviceIdentifier].patchInput(this, awsEvent);
+            }
+
+            const responsePromise = new Promise((resolve) => {
+                request.on('send', () => {
+                    try {
+                        specificEventCreators[serviceIdentifier].requestHandler(
+                            request,
+                            awsEvent
+                        );
+                    } catch (e) {
+                        tracer.addException(e);
+                    }
+                }).on('error', (error) => {
+                    try {
+                        event.setException(awsEvent, error);
+                    } catch (e) {
+                        tracer.addException(e);
+                    }
+                }).on('complete', (response) => {
+                    try {
+                        awsEvent.setId(`${response.requestId}`);
+                        awsEvent.setDuration(utils.createDurationTimestamp(startTime));
+
+                        if (response.data !== null) {
+                            awsEvent.setErrorCode(error_code_pb.ErrorCode.OK);
+                            event.addToMetadata(awsEvent, {
+                                request_id: `${response.requestId}`,
+                                retry_attempts: `${response.retryCount}`,
+                                status_code: `${response.httpResponse.statusCode}`,
+                            });
+
+                            specificEventCreators[serviceIdentifier].responseHandler(
+                                response,
+                                awsEvent
+                            );
+                        }
+
+                        if (response.error !== null) {
+                            if (awsEvent.getErrorCode() !== error_code_pb.ErrorCode.EXCEPTION) {
+                                awsEvent.setErrorCode(error_code_pb.ErrorCode.ERROR);
+                            }
+
+                            event.addToMetadata(awsEvent, {
+                                request_id: `${response.requestId}`,
+                                error_message: `${response.error.message}`,
+                                error_code: `${response.error.code}`,
+                            });
+                        }
+                    } catch (e) {
+                        tracer.addException(e);
+                    } finally {
+                        resolve();
+                    }
+                });
+            });
+
+            tracer.addEvent(awsEvent, responsePromise);
+        } catch (error) {
+            tracer.addException(error);
+        }
+        return wrappedFunction.apply(this, [callback]);
+    };
+}
+
+/**
+ * aws-sdk dynamically creates the `promise` function, so we have to re-wrap it
+ * every time `addPromisesToClass` is called
+ * @param {Function} wrappedFunction the `addPromisesToClass` function
+ * @return {Function} The wrapped function
+ */
+function wrapPromiseOnAdd(wrappedFunction) {
+    return function internalWrapPromiseOnAdd(promiseDependency) {
+        const result = wrappedFunction.apply(this, [promiseDependency]);
+        try {
+            // it is OK to just re-wrap, as the original function overrides
+            // `promise` anyway
+            module_utils.patchModule(
+                'aws-sdk/global',
+                'promise',
+                AWSSDKWrapper,
+                AWSmod => AWSmod.Request.prototype
+            );
+        } catch (err) {
+            utils.debugLog('Failed to re-instrument aws-sdk\'s promise method', err);
+        }
+        return result;
+    };
+}
+
+var aws_sdk = {
+    /**
+     * Initializes the aws-sdk tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'aws-sdk/global',
+            'send',
+            AWSSDKWrapper,
+            AWSmod => AWSmod.Request.prototype
+        );
+        module_utils.patchModule(
+            'aws-sdk/global',
+            'promise',
+            AWSSDKWrapper,
+            AWSmod => AWSmod.Request.prototype
+        );
+
+        // This method is static - not in prototype
+        module_utils.patchModule(
+            'aws-sdk/global',
+            'addPromisesToClass',
+            wrapPromiseOnAdd,
+            AWSmod => AWSmod.Request
+        );
+    },
+
+    /**
+     * For DAX instrumentation
+     */
+    dynamoDBEventCreator,
+};
+
+/**
+ * @fileoverview Handlers for the amazon-dax-client js library instrumantation.
+ */
+
+
+
+
+
+const { dynamoDBEventCreator: dynamoDBEventCreator$1 } = aws_sdk;
+
+
+/**
+ * Wraps the Dax client request methods with tracing
+ * @param {Function} wrappedFunction The function to wrap
+ * @returns {Function} The wrapped function
+ */
+function DAXWrapper(wrappedFunction) {
+    return function internalDAXWrapper(opname, params, operation, callback) {
+        const resource = new event_pb.Resource([
+            '',
+            'dax',
+            `${opname}`,
+        ]);
+        const startTime = Date.now();
+        const daxEvent = new event_pb.Event([
+            '',
+            utils.createTimestampFromTime(startTime),
+            null,
+            'amazon-dax-client',
+            0,
+            error_code_pb.ErrorCode.OK,
+        ]);
+        daxEvent.setResource(resource);
+        try {
+            dynamoDBEventCreator$1.requestHandler(
+                {
+                    params,
+                    operation: opname,
+                },
+                daxEvent
+            );
+        } catch (e) {
+            tracer.addException(e);
+        }
+        const request = wrappedFunction.apply(this, [opname, params, operation, callback]);
+        try {
+            const responsePromise = new Promise((resolve) => {
+                request.once('error', (error) => {
+                    try {
+                        event.setException(daxEvent, error);
+                    } catch (e) {
+                        tracer.addException(e);
+                    }
+                    if (request.listenerCount('error') === 0) {
+                        throw error; // no error listener, we should explode
+                    }
+                }).on('complete', (response) => {
+                    try {
+                        daxEvent.setId(`${response.requestId}`);
+                        daxEvent.setDuration(utils.createDurationTimestamp(startTime));
+
+                        if (response.data !== null) {
+                            daxEvent.setErrorCode(error_code_pb.ErrorCode.OK);
+                            event.addToMetadata(daxEvent, {
+                                request_id: `${response.requestId}`,
+                                retry_attempts: `${response.retryCount}`,
+                                status_code: `${response.httpResponse.statusCode}`,
+                            });
+
+                            dynamoDBEventCreator$1.responseHandler(
+                                response,
+                                daxEvent
+                            );
+                        }
+
+                        if (response.error !== null) {
+                            if (daxEvent.getErrorCode() !== error_code_pb.ErrorCode.EXCEPTION) {
+                                daxEvent.setErrorCode(error_code_pb.ErrorCode.ERROR);
+                            }
+
+                            event.addToMetadata(daxEvent, {
+                                request_id: `${response.requestId}`,
+                                error_message: `${response.error.message}`,
+                                error_code: `${response.error.code}`,
+                            });
+                        }
+                    } catch (e) {
+                        tracer.addException(e);
+                    } finally {
+                        resolve();
+                    }
+                });
+            });
+            tracer.addEvent(daxEvent, responsePromise);
+        } catch (error) {
+            tracer.addException(error);
+        }
+        return request;
+    };
+}
+
+var amazon_dax_client = {
+    /**
+   * Initializes the dax tracer
+   */
+    init() {
+        module_utils.patchModule(
+            'amazon-dax-client',
+            '_makeWriteRequestWithRetries',
+            DAXWrapper,
+            AmazonDaxClient => AmazonDaxClient.prototype
+        );
+
+        module_utils.patchModule(
+            'amazon-dax-client',
+            '_makeReadRequestWithRetries',
+            DAXWrapper,
+            AmazonDaxClient => AmazonDaxClient.prototype
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for http & https libraries instrumentation
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+const { isBlacklistURL: isBlacklistURL$1, isBlacklistHeader: isBlacklistHeader$1 } = events$1;
+const {
+    isURLIgnoredByUser: isURLIgnoredByUser$1,
+    resolveHttpPromise: resolveHttpPromise$1,
+    USER_AGENTS_BLACKLIST: USER_AGENTS_BLACKLIST$1,
+    URL_BLACKLIST: URL_BLACKLIST$1,
+    generateEpsagonTraceId: generateEpsagonTraceId$1,
+    updateAPIGateway: updateAPIGateway$1,
+    setJsonPayload: setJsonPayload$1,
+    addChunk: addChunk$1,
+} = http$1;
+
+
+/**
+ * Builds the HTTP Params array
+ * @param {string} url The URL, if exists
+ * @param {object} options The Options object, if exists
+ * @param {callback} callback The callback function, if exists
+ * @returns {object} The params array
+ */
+function buildParams(url$$1, options, callback) {
+    if (url$$1 && options) {
+        // in case of both input and options returning all three
+        return [url$$1, options, callback];
+    }
+    if (url$$1 && !options) {
+        // in case of missing options returning only url and callback
+        return [url$$1, callback];
+    }
+    // url is missing - returning options and callback
+    return [options, callback];
+}
+
+
+/**
+ * Parses arguments for http wrapper
+ * @param {object} a First http wrapper param
+ * @param {object} b Second http wrapper param
+ * @param {object} c Third http wrapper param
+ * @returns {object} The params object { url, options, callback }
+ */
+function parseArgs(a, b, c) {
+    let url$$1 = a;
+    let options = b;
+    let callback = c;
+    // handling case of request(options, callback)
+    if (!(['string', 'URL'].includes(typeof url$$1)) && !callback) {
+        callback = b;
+        options = a;
+        url$$1 = undefined;
+    }
+
+    // handling case of request(url, callback)
+    if ((typeof options === 'function') && (!callback)) {
+        callback = options;
+        options = null;
+    }
+
+    // handling case of got.post(url, options)
+    if (a.constructor && a.constructor.name === 'URL' && typeof b === 'object' && !c) {
+        url$$1 = a;
+        url$$1.path = url$$1.pathname;
+        options = b;
+        callback = undefined;
+    }
+
+    return { url: url$$1, options, callback };
+}
+
+
+/**
+ * Wraps 'on' method in a response to capture data event.
+ * @param {Function} wrappedResFunction The wrapped end function
+ * @param {Array} chunks array of chunks
+ * @returns {Function} The wrapped function
+ */
+function responseOnWrapper(wrappedResFunction, chunks) {
+    return function internalResponseOnWrapper(resEvent, resCallback) {
+        if (resEvent !== 'data' || typeof resCallback !== 'function') {
+            return wrappedResFunction.apply(this, [resEvent, resCallback]);
+        }
+        const resPatchedCallback = (chunk) => {
+            addChunk$1(chunk, chunks);
+            return resCallback(chunk);
+        };
+        return wrappedResFunction.apply(
+            this,
+            [resEvent, resPatchedCallback.bind(this)]
+        );
+    };
+}
+
+
+/**
+ * Wraps 'on' method in a request to capture response event.
+ * @param {Function} wrappedReqFunction The wrapped end function
+ * @param {Array} chunks array of chunks
+ * @returns {Function} The wrapped function
+ */
+function requestOnWrapper(wrappedReqFunction, chunks) {
+    // epsagonMarker is sent only on our call in this module and it equals to 'skip'
+    return function internalRequestOnWrapper(reqEvent, reqCallback, epsagonMarker) {
+        if (
+            reqEvent !== 'response' ||
+            epsagonMarker === 'skip' ||
+            typeof reqCallback !== 'function'
+        ) {
+            return wrappedReqFunction.apply(this, [reqEvent, reqCallback]);
+        }
+        const reqPatchedCallback = (res) => {
+            if (res && res.EPSAGON_PATCH) {
+                return reqCallback(res);
+            }
+            res.EPSAGON_PATCH = true;
+            shimmer.wrap(res, 'on', wrapped => responseOnWrapper(wrapped, chunks));
+            return reqCallback(res);
+        };
+        return wrappedReqFunction.apply(
+            this,
+            [reqEvent, reqPatchedCallback.bind(this)]
+        );
+    };
+}
+
+/**
+ * Wraps the http's module request function with tracing
+ * @param {Function} wrappedFunction The http's request module
+ * @returns {Function} The wrapped function
+ */
+function httpWrapper(wrappedFunction) {
+    return function internalHttpWrapper(a, b, c) {
+        const { url: url$$1, options, callback } = parseArgs(a, b, c);
+        const chunks = [];
+
+        let clientRequest = null;
+        try {
+            let parsedUrl = url$$1;
+
+            if (typeof parsedUrl === 'string') {
+                parsedUrl = url.parse(parsedUrl);
+            }
+
+            let hostname = (
+                (parsedUrl && parsedUrl.hostname) ||
+                (parsedUrl && parsedUrl.host) ||
+                (options && options.hostname) ||
+                (options && options.host) ||
+                (options && options.uri && options.uri.hostname) ||
+                'localhost'
+            );
+            utils.debugLog(`[http] captured call ${hostname}`);
+
+            // eslint-disable-next-line no-underscore-dangle
+            if (callback && callback.__epsagonCallback) {
+                // we are already tracing this request. can happen in
+                // https->http cases
+                utils.debugLog(`[http] filtered patched callback ${hostname}`);
+                return wrappedFunction.apply(this, [a, b, c]);
+            }
+
+            // Capture the port if provided and is different than standard 80 and 443
+            if (options.port && !['80', '443', 80, 443].includes(options.port)) {
+                hostname = `${hostname}:${options.port}`;
+            }
+
+            const path$$1 = (
+                (parsedUrl && parsedUrl.path) ||
+                (options && options.path) ||
+                ('/')
+            );
+
+            const pathname = (
+                (parsedUrl && parsedUrl.pathname) ||
+                (options && options.pathname) ||
+                ('/')
+            );
+
+            const headers = (
+                (options && options.headers) || {}
+            );
+
+            if (isBlacklistURL$1(hostname, URL_BLACKLIST$1, path$$1) || isURLIgnoredByUser$1(hostname)) {
+                utils.debugLog(`[http] filtered ignored hostname ${hostname}`);
+                return wrappedFunction.apply(this, [a, b, c]);
+            }
+            if (isBlacklistHeader$1(headers, USER_AGENTS_BLACKLIST$1)) {
+                utils.debugLog('[http] filtered ignored headers');
+                return wrappedFunction.apply(this, [a, b, c]);
+            }
+
+            const epsagonTraceId = generateEpsagonTraceId$1();
+            // Inject header to support tracing over HTTP requests to opentracing monitored code
+            if ((process.env.EPSAGON_DISABLE_HTTP_TRACE_ID || '').toUpperCase() !== 'TRUE') {
+                headers['epsagon-trace-id'] = epsagonTraceId;
+                // In case no headers defined in the options, we add them.
+                if (!options.headers) {
+                    options.headers = headers;
+                }
+            }
+
+            if (options &&
+                options.headers &&
+                options.headers.epsagonSkipResponseData &&
+                options.agent) {
+                options.agent.epsagonSkipResponseData = true;
+                delete options.headers.epsagonSkipResponseData;
+            }
+
+            const agent = (
+                // eslint-disable-next-line no-underscore-dangle
+                (options && options.agent) || (options && options._defaultAgent) ||
+                undefined
+            );
+            const port = (
+                (parsedUrl && parsedUrl.port) || (options && options.port) ||
+                (options && options.defaultPort) || (agent && agent.defaultPort) || 80
+            );
+            let protocol = (
+                (parsedUrl && parsedUrl.protocol) ||
+                (port === 443 && 'https:') ||
+                (options && options.protocol) ||
+                (agent && agent.protocol) ||
+                'http:'
+            );
+            protocol = protocol.slice(0, -1);
+
+            const body = (
+                options &&
+                options.body &&
+                (options.body instanceof String || options.body instanceof Buffer)
+            ) ? options.body : '';
+            const method = (options && options.method) || 'GET';
+
+            const resource = new event_pb.Resource([
+                hostname,
+                'http',
+                method,
+            ]);
+
+            const startTime = Date.now();
+            const httpEvent = new event_pb.Event([
+                `http-${uuid4()}`,
+                utils.createTimestampFromTime(startTime),
+                null,
+                'http',
+                0,
+                error_code_pb.ErrorCode.OK,
+            ]);
+
+            const requestUrl = `${protocol}://${hostname}${pathname}`;
+            httpEvent.setResource(resource);
+
+            event.addToMetadata(httpEvent,
+                {
+                    url: requestUrl,
+                    http_trace_id: epsagonTraceId,
+                }, {
+                    path: path$$1,
+                    request_headers: headers,
+                });
+            if (body) {
+                utils.debugLog(`Set request body=${body}`);
+                event.addToMetadata(httpEvent, {}, {
+                    request_body: body,
+                });
+            }
+
+            const patchedCallback = (res) => {
+                utils.debugLog(`[http] patched callback called for ${hostname}`);
+                const metadataFields = {};
+                if ('x-openwhisk-activation-id' in res.headers) {
+                    // This field is used to identify activation ID from 'OpenWhisk'
+                    metadataFields.openwhisk_act_id = res.headers['x-openwhisk-activation-id'];
+                }
+                if ('x-last-activation-id' in res.headers) {
+                    // Used to identify the last activation ID from 'OpenWhisk' sequences
+                    metadataFields.openwhisk_last_act_id = res.headers['x-last-activation-id'];
+                }
+                if ('x-request-id' in res.headers) {
+                    // This field is used to identify transaction ID from 'OpenWhisk'
+                    metadataFields.request_id = res.headers['x-request-id'];
+                }
+                event.addToMetadata(httpEvent, { status: res.statusCode });
+                if (res.statusCode >= config_1.HTTP_ERR_CODE) {
+                    event.setException(httpEvent, new Error(`Response code: ${res.statusCode}`));
+                }
+                // The complete headers will override metadata only when needed
+                event.addToMetadata(httpEvent, metadataFields, {
+                    response_headers: res.headers,
+                });
+
+                // Override request headers if they are present here. In some libs they are not
+                // available on `options.headers`
+                if (res.req && res.req.getHeaders()) {
+                    event.addToMetadata(httpEvent, {}, {
+                        request_headers: res.req.getHeaders(),
+                    });
+                }
+
+                updateAPIGateway$1(res.headers, httpEvent);
+                if (callback && typeof callback === 'function') {
+                    callback(res);
+                }
+            };
+            patchedCallback.__epsagonCallback = true; // eslint-disable-line no-underscore-dangle
+            clientRequest = wrappedFunction.apply(
+                this, buildParams(url$$1, options, patchedCallback)
+            );
+            utils.debugLog(`[http] request sent ${hostname}`);
+
+            if (
+                options &&
+                options.epsagonSkipResponseData &&
+                !config_1.getConfig().disableHttpResponseBodyCapture
+            ) {
+                shimmer.wrap(
+                    clientRequest,
+                    'on',
+                    wrapped => requestOnWrapper(wrapped, chunks)
+                );
+            }
+
+            /**
+             * Wraps 'write' method in a request to pick up request body
+             * @param {Function} wrappedWriteFunc The wrapped write function
+             * @returns {Function} The wrapped function
+             */
+            function WriteWrapper(wrappedWriteFunc) { // eslint-disable-line no-inner-declarations
+                return function internalWriteWrapper(...args) {
+                    try {
+                        if (
+                            (!body || body === '') && args[0] && (
+                                (typeof args[0] === 'string') || (args[0] instanceof Buffer)
+                            )
+                        ) {
+                            setJsonPayload$1(httpEvent, 'request_body', args[0]);
+                        }
+                    } catch (err) {
+                        utils.debugLog('Could not parse request body in write wrapper');
+                    }
+                    return wrappedWriteFunc.apply(this, args);
+                };
+            }
+
+            /**
+             * Wraps 'end' method in a request to terminate the request writing
+             * @param {Function} wrappedEndFunc The wrapped end function
+             * @returns {Function} The wrapped function
+             */
+            function endWrapper(wrappedEndFunc) { // eslint-disable-line no-inner-declarations
+                return function internalEndWrapper(...args) {
+                    try {
+                        if (
+                            (!body || body === '') && args[0] && (
+                                (typeof args[0] === 'string') || (args[0] instanceof Buffer)
+                            )
+                        ) {
+                            setJsonPayload$1(httpEvent, 'request_body', args[0]);
+                        }
+                    } catch (err) {
+                        utils.debugLog('Could not parse request body in end wrapper');
+                    }
+                    return wrappedEndFunc.apply(this, args);
+                };
+            }
+
+            try {
+                shimmer.wrap(clientRequest, 'write', WriteWrapper);
+                shimmer.wrap(clientRequest, 'end', endWrapper);
+            } catch (err) {
+                // In some libs it might not be possible to hook on write
+            }
+
+
+            const responsePromise = new Promise((resolve) => {
+                let isTimeout = false;
+                clientRequest.on('timeout', () => {
+                    isTimeout = true;
+                });
+
+                clientRequest.once('error', (error) => {
+                    const patchedError = new Error();
+                    patchedError.message = error.message;
+                    patchedError.stack = error.stack;
+                    patchedError.name = error.name;
+                    if (isTimeout) {
+                        patchedError.message += '\nTimeout exceeded';
+                    }
+                    if (clientRequest.aborted) {
+                        patchedError.message += '\nRequest aborted';
+                    }
+                    event.setException(httpEvent, patchedError);
+                    resolveHttpPromise$1(httpEvent, resolve, startTime);
+
+                    // if there are no listeners on eventEmitter.error, the process
+                    // should explode. let's simulate that.
+                    if (clientRequest.listenerCount('error') === 0) {
+                        throw error; // no error listener, we should explode
+                    }
+                });
+
+                const checkIfOmitData = () => {
+                    if (options) {
+                        if (options.epsagonSkipResponseData) {
+                            return true;
+                        }
+                        if (options.agent && options.agent.epsagonSkipResponseData) {
+                            return true;
+                        }
+                    }
+                    if (config_1.getConfig().disableHttpResponseBodyCapture) {
+                        return true;
+                    }
+
+                    return false;
+                };
+
+                clientRequest.on('response', (res) => {
+                    utils.debugLog(`[http] response arrived for ${hostname}`);
+                    // Listening to data only if options.epsagonSkipResponseData!=true or no options
+                    if (!checkIfOmitData()) {
+                        res.on('data', chunk => addChunk$1(chunk, chunks));
+                    }
+                    res.on('end', () => {
+                        const contentEncoding = res.headers && res.headers['content-encoding'];
+                        setJsonPayload$1(httpEvent, 'response_body', Buffer.concat(chunks), contentEncoding);
+                        resolveHttpPromise$1(httpEvent, resolve, startTime);
+                    });
+                }, 'skip'); // skip is for epsagonMarker
+            }).catch((err) => {
+                tracer.addException(err);
+            });
+
+            tracer.addEvent(httpEvent, responsePromise);
+            utils.debugLog(`[http] event added ${hostname}`);
+        } catch (error) {
+            tracer.addException(error);
+        }
+
+        if (!clientRequest) {
+            utils.debugLog('[http] not client request set');
+            clientRequest = wrappedFunction.apply(this, [a, b, c]);
+        }
+
+        utils.debugLog('[http] done handling call');
+        return clientRequest;
+    };
+}
+
+/**
+ * We have to replace http.get since it uses a closure to reference
+ * the requeset
+ * @param {Module} module The module to use (http or https)
+ * @return {Function} the wrapped function
+ */
+function httpGetWrapper(module) {
+    return function internalHttpGetWrapper(url$$1, options, callback) {
+        const req = module.request(url$$1, options, callback);
+        req.end();
+        return req;
+    };
+}
+
+
+/**
+ * Flagging fetch-h2 http1 requests with a flag to omit our response.on('data') because of collision
+ * @param {Function} wrappedFunc connect function
+ * @return {Function} the wrapped function
+ */
+function fetchH2Wrapper(wrappedFunc) {
+    return function internalFetchH2Wrapper(options) {
+        return wrappedFunc.apply(this, [{ ...options, epsagonSkipResponseData: true }]);
+    };
+}
+
+/**
+ * Flagging simple-oauth2 http requests with
+ * a flag to omit our response.on('data') because of collision
+ * @param {Function} wrappedFunc connect function
+ * @return {Function} the wrapped function
+ */
+function clientRequestWrapper(wrappedFunc) {
+    return function internalClientRequestWrapper(url$$1, params, opts) {
+        const newOpts = opts || {};
+        if (newOpts.headers) {
+            newOpts.headers = {
+                ...opts.headers,
+                epsagonSkipResponseData: true,
+            };
+        } else {
+            newOpts.headers = {
+                epsagonSkipResponseData: true,
+            };
+        }
+        return wrappedFunc.apply(this, [url$$1, params, newOpts]);
+    };
+}
+
+
+var http_1$2 = {
+    /**
+     * Initializes the http tracer
+     */
+    init() {
+        // using shimmer directly cause can only be bundled in node
+        shimmer.wrap(http, 'get', () => httpGetWrapper(http));
+        shimmer.wrap(http, 'request', httpWrapper);
+        shimmer.wrap(https, 'get', () => httpGetWrapper(https));
+        shimmer.wrap(https, 'request', httpWrapper);
+
+        module_utils.patchModule(
+            'fetch-h2/dist/lib/context-http1',
+            'connect',
+            fetchH2Wrapper,
+            fetch => fetch.OriginPool.prototype
+        );
+        // simple-oauth2 < 4.0
+        module_utils.patchModule(
+            'simple-oauth2/lib/client.js',
+            'request',
+            clientRequestWrapper,
+            client => client.prototype
+        );
+        // simple-oauth2 >= 4.0
+        module_utils.patchModule(
+            'simple-oauth2/lib/client/client.js',
+            'request',
+            clientRequestWrapper,
+            client => client.prototype
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for http2 libraries instrumentation
+ */
+
+
+
+
+
+
+
+const { MAX_HTTP_VALUE_SIZE: MAX_HTTP_VALUE_SIZE$2 } = consts;
+const { isBlacklistURL: isBlacklistURL$2, isBlacklistHeader: isBlacklistHeader$2 } = events$1;
+const {
+    isURLIgnoredByUser: isURLIgnoredByUser$2,
+    resolveHttpPromise: resolveHttpPromise$2,
+    USER_AGENTS_BLACKLIST: USER_AGENTS_BLACKLIST$2,
+    URL_BLACKLIST: URL_BLACKLIST$2,
+    generateEpsagonTraceId: generateEpsagonTraceId$2,
+    updateAPIGateway: updateAPIGateway$2,
+    setJsonPayload: setJsonPayload$2,
+} = http$1;
+
+
+const http2 = try_require('http2');
+
+
+/**
+ * http2 module adds in the request and response headers also extra fields with a ':' prefix.
+ * For example :path, :method, etc. When we want to record just the headers, we want to clear
+ * out these fields - using this function.
+ * @param {object} headers data
+ * @returns {object} only real headers without ':'
+ */
+function extractHeaders(headers) {
+    return Object.entries(headers) // Iterate over key-value pairs
+        .filter(header => !header[0].startsWith(':')) // Filter out keys that start with ':'
+        .reduce((obj, header) => { // Rebuild key-value into object using reduce
+            const [key, value] = header;
+            obj[key] = value; // eslint-disable-line no-param-reassign
+            return obj;
+        }, {});
+}
+
+/**
+ * Wraps the http2's module request function with tracing
+ * @param {Function} wrappedFunction The http2's request module
+ * @param {string} authority hostname
+ * @returns {Function} The wrapped function
+ */
+function httpWrapper$1(wrappedFunction, authority) {
+    return function internalHttpWrapper(headers, options) {
+        let clientRequest = null;
+        let httpEvent = null;
+        let startTime = null;
+        try {
+            const { hostname } = url.parse(authority);
+
+            if (isBlacklistURL$2(hostname, URL_BLACKLIST$2, headers[':path']) || isURLIgnoredByUser$2(hostname)) {
+                utils.debugLog(`filtered blacklist hostname ${hostname}`);
+                return wrappedFunction.apply(this, [headers, options]);
+            }
+
+            const reqHeaders = extractHeaders(headers);
+            if (isBlacklistHeader$2(reqHeaders, USER_AGENTS_BLACKLIST$2)) {
+                utils.debugLog('filtered blacklist headers');
+                return wrappedFunction.apply(this, [headers, options]);
+            }
+
+            // Inject header to support tracing over HTTP requests to opentracing monitored code
+            const epsagonTraceId = generateEpsagonTraceId$2();
+            headers['epsagon-trace-id'] = epsagonTraceId; // eslint-disable-line no-param-reassign
+
+            const { slsEvent, startTime: eventStartTime } = event.initializeEvent(
+                'http',
+                hostname,
+                headers[':method'],
+                'http'
+            );
+            httpEvent = slsEvent;
+            startTime = eventStartTime;
+
+            event.addToMetadata(httpEvent,
+                {
+                    http_trace_id: epsagonTraceId,
+                }, {
+                    path: headers[':path'],
+                    request_headers: reqHeaders,
+                });
+        } catch (error) {
+            tracer.addException(error);
+            return wrappedFunction.apply(this, [headers, options]);
+        }
+
+        try {
+            clientRequest = wrappedFunction.apply(this, [headers, options]);
+        } catch (err) {
+            event.setException(httpEvent, err);
+            tracer.addEvent(httpEvent);
+            throw err;
+        }
+
+        try {
+            const responsePromise = new Promise((resolve) => {
+                const chunks = [];
+                let responseHeaders;
+                if (!config_1.getConfig().disableHttpResponseBodyCapture) {
+                    clientRequest.on('data', (chunk) => {
+                        if (!chunk) {
+                            // Skip empty data
+                            return;
+                        }
+                        const totalSize = chunks.reduce((total, item) => item.length + total, 0);
+                        if (totalSize + chunk.length <= MAX_HTTP_VALUE_SIZE$2) {
+                            chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+                        }
+                    });
+                }
+
+                clientRequest.once('error', (error) => {
+                    event.setException(httpEvent, error);
+                    resolveHttpPromise$2(httpEvent, resolve, startTime);
+                    // if there are no listeners on eventEmitter.error, the process
+                    // should explode. let's simulate that.
+                    if (clientRequest.listenerCount('error') === 0) {
+                        throw error; // no error listener, we should explode
+                    }
+                });
+
+                clientRequest.once('close', () => {
+                    const contentEncoding = responseHeaders && responseHeaders['content-encoding'];
+                    setJsonPayload$2(httpEvent, 'response_body', Buffer.concat(chunks), contentEncoding);
+                    resolveHttpPromise$2(httpEvent, resolve, startTime);
+                });
+
+                clientRequest.once('response', (res) => {
+                    updateAPIGateway$2(res, httpEvent);
+                    responseHeaders = extractHeaders(res);
+                    event.addToMetadata(httpEvent, {
+                        status: res[':status'],
+                    }, {
+                        response_headers: responseHeaders,
+                    });
+                });
+            }).catch((err) => {
+                tracer.addException(err);
+            });
+
+            tracer.addEvent(httpEvent, responsePromise);
+        } catch (error) {
+            tracer.addException(error);
+        }
+
+        return clientRequest;
+    };
+}
+
+/**
+ * Wraps the request method of HTTP2 connect
+ * @param {Function} connectFunction connect function
+ * @return {Function} the wrapped function
+ */
+function wrapHttp2Connect(connectFunction) {
+    return function innerWrapHttp2Connect(authority, options, listener) {
+        const clientSession = connectFunction.apply(this, [authority, options, listener]);
+        try {
+            shimmer.wrap(clientSession, 'request', wrappedFunction => httpWrapper$1(wrappedFunction, authority));
+        } catch (err) {
+            utils.debugLog(`Could not instrument http2 session request ${err}`);
+        }
+        return clientSession;
+    };
+}
+
+
+var http2_1 = {
+    /**
+     * Initializes the http2 tracer
+     */
+    init() {
+        if (http2) {
+            utils.debugLog('Patching http2 module');
+            shimmer.wrap(http2, 'connect', wrapHttp2Connect);
+        }
+    },
+};
+
+/*
+ * Generated by PEG.js 0.10.0.
+ *
+ * http://pegjs.org/
+ */
+
+function peg$subclass(child, parent) {
+  function ctor() { this.constructor = child; }
+  ctor.prototype = parent.prototype;
+  child.prototype = new ctor();
+}
+
+function peg$SyntaxError(message, expected, found, location) {
+  this.message  = message;
+  this.expected = expected;
+  this.found    = found;
+  this.location = location;
+  this.name     = "SyntaxError";
+
+  if (typeof Error.captureStackTrace === "function") {
+    Error.captureStackTrace(this, peg$SyntaxError);
+  }
+}
+
+peg$subclass(peg$SyntaxError, Error);
+
+peg$SyntaxError.buildMessage = function(expected, found) {
+  var DESCRIBE_EXPECTATION_FNS = {
+        literal: function(expectation) {
+          return "\"" + literalEscape(expectation.text) + "\"";
+        },
+
+        "class": function(expectation) {
+          var escapedParts = "",
+              i;
+
+          for (i = 0; i < expectation.parts.length; i++) {
+            escapedParts += expectation.parts[i] instanceof Array
+              ? classEscape(expectation.parts[i][0]) + "-" + classEscape(expectation.parts[i][1])
+              : classEscape(expectation.parts[i]);
+          }
+
+          return "[" + (expectation.inverted ? "^" : "") + escapedParts + "]";
+        },
+
+        any: function(expectation) {
+          return "any character";
+        },
+
+        end: function(expectation) {
+          return "end of input";
+        },
+
+        other: function(expectation) {
+          return expectation.description;
+        }
+      };
+
+  function hex(ch) {
+    return ch.charCodeAt(0).toString(16).toUpperCase();
+  }
+
+  function literalEscape(s) {
+    return s
+      .replace(/\\/g, '\\\\')
+      .replace(/"/g,  '\\"')
+      .replace(/\0/g, '\\0')
+      .replace(/\t/g, '\\t')
+      .replace(/\n/g, '\\n')
+      .replace(/\r/g, '\\r')
+      .replace(/[\x00-\x0F]/g,          function(ch) { return '\\x0' + hex(ch); })
+      .replace(/[\x10-\x1F\x7F-\x9F]/g, function(ch) { return '\\x'  + hex(ch); });
+  }
+
+  function classEscape(s) {
+    return s
+      .replace(/\\/g, '\\\\')
+      .replace(/\]/g, '\\]')
+      .replace(/\^/g, '\\^')
+      .replace(/-/g,  '\\-')
+      .replace(/\0/g, '\\0')
+      .replace(/\t/g, '\\t')
+      .replace(/\n/g, '\\n')
+      .replace(/\r/g, '\\r')
+      .replace(/[\x00-\x0F]/g,          function(ch) { return '\\x0' + hex(ch); })
+      .replace(/[\x10-\x1F\x7F-\x9F]/g, function(ch) { return '\\x'  + hex(ch); });
+  }
+
+  function describeExpectation(expectation) {
+    return DESCRIBE_EXPECTATION_FNS[expectation.type](expectation);
+  }
+
+  function describeExpected(expected) {
+    var descriptions = new Array(expected.length),
+        i, j;
+
+    for (i = 0; i < expected.length; i++) {
+      descriptions[i] = describeExpectation(expected[i]);
+    }
+
+    descriptions.sort();
+
+    if (descriptions.length > 0) {
+      for (i = 1, j = 1; i < descriptions.length; i++) {
+        if (descriptions[i - 1] !== descriptions[i]) {
+          descriptions[j] = descriptions[i];
+          j++;
+        }
+      }
+      descriptions.length = j;
+    }
+
+    switch (descriptions.length) {
+      case 1:
+        return descriptions[0];
+
+      case 2:
+        return descriptions[0] + " or " + descriptions[1];
+
+      default:
+        return descriptions.slice(0, -1).join(", ")
+          + ", or "
+          + descriptions[descriptions.length - 1];
+    }
+  }
+
+  function describeFound(found) {
+    return found ? "\"" + literalEscape(found) + "\"" : "end of input";
+  }
+
+  return "Expected " + describeExpected(expected) + " but " + describeFound(found) + " found.";
+};
+
+function peg$parse(input, options) {
+  options = options !== void 0 ? options : {};
+
+  var peg$FAILED = {},
+
+      peg$startRuleFunctions = { start: peg$parsestart },
+      peg$startRuleFunction  = peg$parsestart,
+
+      peg$c0 = function(ast) {
+            ast.params = params;
+            return ast;
+          },
+      peg$c1 = function(ast) {
+            return ast;
+          },
+      peg$c2 = function(head, tail) {
+            var cur = head;
+            for (var i = 0; i < tail.length; i++) {
+              cur._next = tail[i][3];
+              cur = cur._next;
+            }
+            return head;
+          },
+      peg$c3 = "(",
+      peg$c4 = peg$literalExpectation("(", false),
+      peg$c5 = ")",
+      peg$c6 = peg$literalExpectation(")", false),
+      peg$c7 = ";",
+      peg$c8 = peg$literalExpectation(";", false),
+      peg$c9 = function(tb, clist, topt, popt) {
+          return {
+            type: 'create_table',
+            name: tb,
+            columns: clist,
+            tableOptions: topt,
+            partitionOptions: popt
+          }
+        },
+      peg$c10 = function(h, t) {
+          return createList(h, t);
+        },
+      peg$c11 = function(n, t, e) {
+            let ext = [];
+            e.forEach((v) => {
+                ext.push(v[1]);
+            });
+            return {
+              name: n,
+              type: t,
+              ext: ext
+            }
+          },
+      peg$c12 = function(ct) {
+          if (ct.type === 'function') {
+            let args = [];
+            ct.args.value.forEach((v) => {
+              args.push(v.value);
+            });
+            return {
+              type: ct.name,
+              args: args
+            }
+          } else {
+            return {type: ct}
+          }
+        },
+      peg$c13 = function(h, t) {
+          let res = h;
+          t.forEach((v) => {
+              let tmp = v[1];
+            let keys = Object.keys(tmp);
+              keys.forEach((k) => {
+                res[k] = tmp[k].column;
+              });
+          });
+          return res;
+        },
+      peg$c14 = "=",
+      peg$c15 = peg$literalExpectation("=", false),
+      peg$c16 = function(k, v) {
+          let obj = {};
+          let key = k.type === 'column_ref' ? k.column : k.value;
+          let value = v.type === 'column_ref' ? v.column : v.value;
+          obj[key] = value;
+          return obj;
+        },
+      peg$c17 = function(h, t) {
+         let res = [h];
+         t.forEach((v) => {
+          res.push(v);
+         });
+         return res;
+       },
+      peg$c18 = "key",
+      peg$c19 = peg$literalExpectation("KEY", true),
+      peg$c20 = "index",
+      peg$c21 = peg$literalExpectation("INDEX", true),
+      peg$c22 = function(f, n, l) {
+         let list = [];
+         l.forEach((v) => {
+           list.push(v.expr.column);
+         });
+         return {
+           type: f,
+           name: n,
+           columns: list
+         }
+       },
+      peg$c23 = function(f, w) {
+        return {
+          type: 'delete',
+          from: f,
+          where: w
+        }
+      },
+      peg$c24 = function(s) {
+            return s[2];
+          },
+      peg$c25 = function(d, c, f, w, g, o, l) {
+            return {
+              type      : 'select',
+              distinct  : d,
+              columns   : c,
+              from      : f,
+              where     : w,
+              groupby   : g,
+              orderby   : o,
+              limit     : l
+            }
+        },
+      peg$c26 = peg$otherExpectation("column_clause"),
+      peg$c27 = function() {
+            return '*';
+          },
+      peg$c28 = function(head, tail) {
+            return createList(head, tail);
+          },
+      peg$c29 = function(e, alias) {
+            return {
+              expr : e,
+              as : alias
+            };
+          },
+      peg$c30 = function(i) { return i; },
+      peg$c31 = function(l) { return l; },
+      peg$c32 = function(head, tail) {
+            tail.unshift(head);
+            return tail;
+          },
+      peg$c33 = function(t) { return t; },
+      peg$c34 = function(op, t, expr) {
+          t.join = op;
+          t.on   = expr;
+          return t;
+          /*
+            return  {
+              db    : t.db,
+              table : t.table,
+              as    : t.as,
+              join  : op,
+              on    : expr
+            }
+          */
+          },
+      peg$c35 = function(t, alias) {
+            if (t.type == 'var') {
+              t.as = alias;
+              return t;
+            } else {
+              return  {
+                db    : t.db,
+                table : t.table,
+                as    : alias
+              }
+            }
+          },
+      peg$c36 = function() { return 'LEFT JOIN'; },
+      peg$c37 = function() { return 'INNER JOIN'; },
+      peg$c38 = "`",
+      peg$c39 = peg$literalExpectation("`", false),
+      peg$c40 = function(dt, tail) {
+            var obj = {
+              db : '',
+              table : dt
+            };
+            if (tail) {
+              obj.db = dt;
+              obj.table = tail[3];
+            }
+            return obj;
+          },
+      peg$c41 = function(v) {
+            v.db = '';
+            v.table = v.name;
+            return v;
+          },
+      peg$c42 = function(e) { return e; },
+      peg$c43 = function(e, d) {
+          var obj = {
+            expr : e,
+            type : 'ASC'
+          };
+          if (d == 'DESC') {
+            obj.type = 'DESC';
+          }
+          return obj;
+        },
+      peg$c44 = function(i1, tail) {
+            var res = [i1];
+            if (!tail) {
+              res.unshift({
+                type  : 'number',
+                value : 0
+              });
+            } else {
+              res.push(tail[2]);
+            }
+            return res;
+          },
+      peg$c45 = function(t, l, w) {
+            return {
+              type  : 'update',
+              db    : t.db,
+              table : t.table,
+              set   : l,
+              where : w
+            }
+          },
+      peg$c46 = function(c, v) {
+            return {
+              column: c,
+              value : v
+            }
+          },
+      peg$c47 = function(ri, t, c, v) {
+            return {
+              type      : ri,
+              db        : t.db,
+              table     : t.table,
+              columns   : c,
+              values    : v
+            }
+          },
+      peg$c48 = function() { return 'insert'; },
+      peg$c49 = function() { return 'replace' },
+      peg$c50 = function(l) {
+            return l;
+          },
+      peg$c51 = function(head, tail) {
+            var el = {
+              type : 'expr_list'
+            };
+
+            var l = createExprList(head, tail, el);
+
+            el.value = l;
+            return el;
+          },
+      peg$c52 = "",
+      peg$c53 = function() {
+            return {
+              type  : 'expr_list',
+              value : []
+            }
+          },
+      peg$c54 = function(head, tail) {
+            return createBinaryExprChain(head, tail);
+          },
+      peg$c55 = "!",
+      peg$c56 = peg$literalExpectation("!", false),
+      peg$c57 = function(expr) {
+            return createUnaryExpr('NOT', expr);
+          },
+      peg$c58 = function(left, rh) {
+            if (!rh) {
+              return left;
+            } else {
+              var res = null;
+              if (rh.type == 'arithmetic') {
+                res = createBinaryExprChain(left, rh.tail);
+              } else {
+                res = createBinaryExpr(rh.op, left, rh.right);
+              }
+              return res;
+            }
+          },
+      peg$c59 = function(l) {
+            return {
+              type : 'arithmetic',
+              tail : l
+            }
+          },
+      peg$c60 = ">=",
+      peg$c61 = peg$literalExpectation(">=", false),
+      peg$c62 = ">",
+      peg$c63 = peg$literalExpectation(">", false),
+      peg$c64 = "<=",
+      peg$c65 = peg$literalExpectation("<=", false),
+      peg$c66 = "<>",
+      peg$c67 = peg$literalExpectation("<>", false),
+      peg$c68 = "<",
+      peg$c69 = peg$literalExpectation("<", false),
+      peg$c70 = "!=",
+      peg$c71 = peg$literalExpectation("!=", false),
+      peg$c72 = function(op, right) {
+            return {
+              op    : op,
+              right : right
+            }
+          },
+      peg$c73 = function(op, begin, end) {
+            return {
+              op    : op,
+              right : {
+                type : 'expr_list',
+                value : [begin, end]
+              }
+            }
+          },
+      peg$c74 = function(nk) { return nk[0] + ' ' + nk[2]; },
+      peg$c75 = function(op, l) {
+            return {
+              op    : op,
+              right : l
+            }
+          },
+      peg$c76 = function(op, e) {
+            return {
+              op    : op,
+              right : e
+            }
+          },
+      peg$c77 = "+",
+      peg$c78 = peg$literalExpectation("+", false),
+      peg$c79 = "-",
+      peg$c80 = peg$literalExpectation("-", false),
+      peg$c81 = function(head, tail) {
+            return createBinaryExprChain(head, tail)
+          },
+      peg$c82 = "*",
+      peg$c83 = peg$literalExpectation("*", false),
+      peg$c84 = "/",
+      peg$c85 = peg$literalExpectation("/", false),
+      peg$c86 = "%",
+      peg$c87 = peg$literalExpectation("%", false),
+      peg$c88 = function(e) {
+            e.paren = true;
+            return e;
+          },
+      peg$c89 = function(tbl, col) {
+            return {
+              type  : 'column_ref',
+              table : tbl,
+              column : col
+            };
+          },
+      peg$c90 = function(col) {
+            return {
+              type  : 'column_ref',
+              table : '',
+              column: col
+            };
+          },
+      peg$c91 = function(name) { return reservedMap[name.toUpperCase()] === true; },
+      peg$c92 = function(name) {
+          return name;
+        },
+      peg$c93 = /^[^`]/,
+      peg$c94 = peg$classExpectation(["`"], true, false),
+      peg$c95 = function(chars) {
+          return chars.join('');
+        },
+      peg$c96 = function(start, parts) { return start + parts.join(''); },
+      peg$c97 = /^[A-Za-z_]/,
+      peg$c98 = peg$classExpectation([["A", "Z"], ["a", "z"], "_"], false, false),
+      peg$c99 = /^[A-Za-z0-9_]/,
+      peg$c100 = peg$classExpectation([["A", "Z"], ["a", "z"], ["0", "9"], "_"], false, false),
+      peg$c101 = /^[A-Za-z0-9_:]/,
+      peg$c102 = peg$classExpectation([["A", "Z"], ["a", "z"], ["0", "9"], "_", ":"], false, false),
+      peg$c103 = peg$otherExpectation("PARAM[:param, ?]"),
+      peg$c104 = ":",
+      peg$c105 = peg$literalExpectation(":", false),
+      peg$c106 = "?",
+      peg$c107 = peg$literalExpectation("?", false),
+      peg$c108 = function(l) {
+          var p = {
+            type : 'param',
+            value: l.length > 1 ? l[1] : l[0]
+          };
+          params.push(p);
+          return p;
+        },
+      peg$c109 = function(name, e) {
+            return {
+              type : 'aggr_func',
+              name : name,
+              args : {
+                expr : e
+              }
+            }
+          },
+      peg$c110 = /^[0-9a-zA-Z_]/,
+      peg$c111 = peg$classExpectation([["0", "9"], ["a", "z"], ["A", "Z"], "_"], false, false),
+      peg$c112 = function(w) {return w.join('');},
+      peg$c113 = function(name, arg) {
+            return {
+              type : 'aggr_func',
+              name : name,
+              args : arg
+            }
+          },
+      peg$c114 = function(e) {
+            return {
+              expr  : e
+            }
+          },
+      peg$c115 = function(d, c) {
+            return {
+              distinct : d,
+              expr   : c
+            }
+          },
+      peg$c116 = function() {
+            return {
+              type  : 'star',
+              value : '*'
+            }
+          },
+      peg$c117 = function(name, l) {
+            return {
+              type : 'function',
+              name : name,
+              args : l
+            }
+          },
+      peg$c118 = function() {
+            return {
+              type  : 'null',
+              value : null
+            };
+          },
+      peg$c119 = function() {
+            return {
+              type  : 'bool',
+              value : true
+            };
+          },
+      peg$c120 = function() {
+            return {
+              type  : 'bool',
+              value : false
+            };
+          },
+      peg$c121 = "\"",
+      peg$c122 = peg$literalExpectation("\"", false),
+      peg$c123 = "'",
+      peg$c124 = peg$literalExpectation("'", false),
+      peg$c125 = function(ca) {
+            return {
+              type  : 'string',
+              value : ca[1].join('')
+            }
+          },
+      peg$c126 = /^[^'\\\0-\x1F\x7F]/,
+      peg$c127 = peg$classExpectation(["'", "\\", ["\0", "\x1F"], "\x7F"], true, false),
+      peg$c128 = /^[^"\\\0-\x1F\x7F]/,
+      peg$c129 = peg$classExpectation(["\"", "\\", ["\0", "\x1F"], "\x7F"], true, false),
+      peg$c130 = "\\'",
+      peg$c131 = peg$literalExpectation("\\'", false),
+      peg$c132 = function() { return "'";  },
+      peg$c133 = "\\\"",
+      peg$c134 = peg$literalExpectation("\\\"", false),
+      peg$c135 = function() { return '"';  },
+      peg$c136 = "\\\\",
+      peg$c137 = peg$literalExpectation("\\\\", false),
+      peg$c138 = function() { return "\\"; },
+      peg$c139 = "\\/",
+      peg$c140 = peg$literalExpectation("\\/", false),
+      peg$c141 = function() { return "/";  },
+      peg$c142 = "\\b",
+      peg$c143 = peg$literalExpectation("\\b", false),
+      peg$c144 = function() { return "\b"; },
+      peg$c145 = "\\f",
+      peg$c146 = peg$literalExpectation("\\f", false),
+      peg$c147 = function() { return "\f"; },
+      peg$c148 = "\\n",
+      peg$c149 = peg$literalExpectation("\\n", false),
+      peg$c150 = function() { return "\n"; },
+      peg$c151 = "\\r",
+      peg$c152 = peg$literalExpectation("\\r", false),
+      peg$c153 = function() { return "\r"; },
+      peg$c154 = "\\t",
+      peg$c155 = peg$literalExpectation("\\t", false),
+      peg$c156 = function() { return "\t"; },
+      peg$c157 = "\\u",
+      peg$c158 = peg$literalExpectation("\\u", false),
+      peg$c159 = function(h1, h2, h3, h4) {
+            return String.fromCharCode(parseInt("0x" + h1 + h2 + h3 + h4));
+          },
+      peg$c162 = function(n) {
+            return {
+              type  : 'number',
+              value : n
+            }
+          },
+      peg$c163 = peg$otherExpectation("LITERAL INT"),
+      peg$c164 = function(n) {
+          return {
+            type: 'number',
+            value: n
+          }
+        },
+      peg$c165 = function(int_, frac, exp) { var x = parseFloat(int_ + frac + exp); return (x % 1 != 0) ? x.toString() : x.toString() + ".0"},
+      peg$c166 = function(int_, frac) { var x = parseFloat(int_ + frac); return (x % 1 != 0) ? x.toString() : x.toString() + ".0"},
+      peg$c167 = function(int_, exp) { return parseFloat(int_ + exp).toString(); },
+      peg$c168 = function(int_) { return parseFloat(int_).toString(); },
+      peg$c169 = function(digit19, digits) { return digit19 + digits;       },
+      peg$c170 = function(op, digit19, digits) { return "-" + digit19 + digits; },
+      peg$c171 = function(op, digit) { return "-" + digit;            },
+      peg$c172 = ".",
+      peg$c173 = peg$literalExpectation(".", false),
+      peg$c174 = function(digits) { return "." + digits; },
+      peg$c175 = function(e, digits) { return e + digits; },
+      peg$c176 = function(digits) { return digits.join(""); },
+      peg$c177 = peg$otherExpectation("NUMBER"),
+      peg$c178 = /^[0-9]/,
+      peg$c179 = peg$classExpectation([["0", "9"]], false, false),
+      peg$c180 = /^[1-9]/,
+      peg$c181 = peg$classExpectation([["1", "9"]], false, false),
+      peg$c182 = peg$otherExpectation("HEX"),
+      peg$c183 = /^[0-9a-fA-F]/,
+      peg$c184 = peg$classExpectation([["0", "9"], ["a", "f"], ["A", "F"]], false, false),
+      peg$c185 = /^[eE]/,
+      peg$c186 = peg$classExpectation(["e", "E"], false, false),
+      peg$c187 = /^[+\-]/,
+      peg$c188 = peg$classExpectation(["+", "-"], false, false),
+      peg$c189 = function(e, sign) { return e + sign; },
+      peg$c190 = "null",
+      peg$c191 = peg$literalExpectation("NULL", true),
+      peg$c192 = "true",
+      peg$c193 = peg$literalExpectation("TRUE", true),
+      peg$c194 = "false",
+      peg$c195 = peg$literalExpectation("FALSE", true),
+      peg$c200 = "select",
+      peg$c201 = peg$literalExpectation("SELECT", true),
+      peg$c202 = "update",
+      peg$c203 = peg$literalExpectation("UPDATE", true),
+      peg$c204 = "create",
+      peg$c205 = peg$literalExpectation("CREATE", true),
+      peg$c206 = "delete",
+      peg$c207 = peg$literalExpectation("DELETE", true),
+      peg$c208 = "insert",
+      peg$c209 = peg$literalExpectation("INSERT", true),
+      peg$c210 = "replace",
+      peg$c211 = peg$literalExpectation("REPLACE", true),
+      peg$c214 = "into",
+      peg$c215 = peg$literalExpectation("INTO", true),
+      peg$c216 = "from",
+      peg$c217 = peg$literalExpectation("FROM", true),
+      peg$c218 = "set",
+      peg$c219 = peg$literalExpectation("SET", true),
+      peg$c220 = "as",
+      peg$c221 = peg$literalExpectation("AS", true),
+      peg$c222 = "table",
+      peg$c223 = peg$literalExpectation("TABLE", true),
+      peg$c224 = "on",
+      peg$c225 = peg$literalExpectation("ON", true),
+      peg$c226 = "left",
+      peg$c227 = peg$literalExpectation("LEFT", true),
+      peg$c228 = "inner",
+      peg$c229 = peg$literalExpectation("INNER", true),
+      peg$c230 = "join",
+      peg$c231 = peg$literalExpectation("JOIN", true),
+      peg$c232 = "union",
+      peg$c233 = peg$literalExpectation("UNION", true),
+      peg$c234 = "values",
+      peg$c235 = peg$literalExpectation("VALUES", true),
+      peg$c236 = "if",
+      peg$c237 = peg$literalExpectation("IF", true),
+      peg$c238 = "exists",
+      peg$c239 = peg$literalExpectation("EXISTS", true),
+      peg$c240 = "where",
+      peg$c241 = peg$literalExpectation("WHERE", true),
+      peg$c242 = "group",
+      peg$c243 = peg$literalExpectation("GROUP", true),
+      peg$c244 = "by",
+      peg$c245 = peg$literalExpectation("BY", true),
+      peg$c246 = "order",
+      peg$c247 = peg$literalExpectation("ORDER", true),
+      peg$c250 = "limit",
+      peg$c251 = peg$literalExpectation("LIMIT", true),
+      peg$c252 = "asc",
+      peg$c253 = peg$literalExpectation("ASC", true),
+      peg$c254 = function() { return 'ASC';     },
+      peg$c255 = "desc",
+      peg$c256 = peg$literalExpectation("DESC", true),
+      peg$c257 = function() { return 'DESC';    },
+      peg$c258 = "all",
+      peg$c259 = peg$literalExpectation("ALL", true),
+      peg$c260 = function() { return 'ALL';     },
+      peg$c261 = "distinct",
+      peg$c262 = peg$literalExpectation("DISTINCT", true),
+      peg$c263 = function() { return 'DISTINCT';},
+      peg$c264 = "between",
+      peg$c265 = peg$literalExpectation("BETWEEN", true),
+      peg$c266 = function() { return 'BETWEEN'; },
+      peg$c267 = "in",
+      peg$c268 = peg$literalExpectation("IN", true),
+      peg$c269 = function() { return 'IN';      },
+      peg$c270 = "is",
+      peg$c271 = peg$literalExpectation("IS", true),
+      peg$c272 = function() { return 'IS';      },
+      peg$c273 = "like",
+      peg$c274 = peg$literalExpectation("LIKE", true),
+      peg$c275 = function() { return 'LIKE';    },
+      peg$c276 = "contains",
+      peg$c277 = peg$literalExpectation("CONTAINS", true),
+      peg$c278 = function() { return 'CONTAINS';},
+      peg$c279 = "not",
+      peg$c280 = peg$literalExpectation("NOT", true),
+      peg$c281 = function() { return 'NOT';     },
+      peg$c282 = "and",
+      peg$c283 = peg$literalExpectation("AND", true),
+      peg$c284 = function() { return 'AND';     },
+      peg$c285 = "or",
+      peg$c286 = peg$literalExpectation("OR", true),
+      peg$c287 = function() { return 'OR';      },
+      peg$c288 = "count",
+      peg$c289 = peg$literalExpectation("COUNT", true),
+      peg$c290 = function() { return 'COUNT';   },
+      peg$c303 = ",",
+      peg$c304 = peg$literalExpectation(",", false),
+      peg$c305 = "[",
+      peg$c306 = peg$literalExpectation("[", false),
+      peg$c307 = "]",
+      peg$c308 = peg$literalExpectation("]", false),
+      peg$c310 = peg$otherExpectation("WHITE_SPACE"),
+      peg$c311 = /^[ \t\n\r]/,
+      peg$c312 = peg$classExpectation([" ", "\t", "\n", "\r"], false, false),
+      peg$c314 = function(s) {
+            return {
+              stmt : s,
+              vars: varList
+            }
+          },
+      peg$c315 = function() { varList = []; return true; },
+      peg$c316 = function(va, e) {
+          return {
+            type : 'assign',
+            left : va,
+            right: e
+          }
+        },
+      peg$c317 = function(e) {
+        return {
+          type : 'return',
+          expr: e
+        }
+      },
+      peg$c318 = function(lt, op, rt, expr) {
+            return {
+              type    : 'join',
+              ltable  : lt,
+              rtable  : rt,
+              op      : op,
+              on      : expr
+            }
+          },
+      peg$c319 = function(name, l) {
+            return {
+              type : 'function',
+              name : name,
+              args : {
+                type  : 'expr_list',
+                value : l
+              }
+            }
+          },
+      peg$c320 = function(l) {
+          return {
+            type : 'array',
+            value : l
+          }
+        },
+      peg$c321 = function(name, m) {
+          varList.push(name);
+          return {
+            type : 'var',
+            name : name,
+            members : m
+          }
+        },
+      peg$c322 = function(l) {
+          var s = [];
+          for (var i = 0; i < l.length; i++) {
+            s.push(l[i][1]);
+          }
+          return s;
+        },
+      peg$c323 = "$",
+      peg$c324 = peg$literalExpectation("$", false),
+      peg$c325 = "return",
+      peg$c326 = peg$literalExpectation("return", true),
+      peg$c327 = ":=",
+      peg$c328 = peg$literalExpectation(":=", false),
+
+      peg$currPos          = 0,
+      peg$posDetailsCache  = [{ line: 1, column: 1 }],
+      peg$maxFailPos       = 0,
+      peg$maxFailExpected  = [],
+      peg$silentFails      = 0,
+
+      peg$result;
+
+  if ("startRule" in options) {
+    if (!(options.startRule in peg$startRuleFunctions)) {
+      throw new Error("Can't start parsing from rule \"" + options.startRule + "\".");
+    }
+
+    peg$startRuleFunction = peg$startRuleFunctions[options.startRule];
+  }
+
+  function peg$literalExpectation(text, ignoreCase) {
+    return { type: "literal", text: text, ignoreCase: ignoreCase };
+  }
+
+  function peg$classExpectation(parts, inverted, ignoreCase) {
+    return { type: "class", parts: parts, inverted: inverted, ignoreCase: ignoreCase };
+  }
+
+  function peg$endExpectation() {
+    return { type: "end" };
+  }
+
+  function peg$otherExpectation(description) {
+    return { type: "other", description: description };
+  }
+
+  function peg$computePosDetails(pos) {
+    var details = peg$posDetailsCache[pos], p;
+
+    if (details) {
+      return details;
+    } else {
+      p = pos - 1;
+      while (!peg$posDetailsCache[p]) {
+        p--;
+      }
+
+      details = peg$posDetailsCache[p];
+      details = {
+        line:   details.line,
+        column: details.column
+      };
+
+      while (p < pos) {
+        if (input.charCodeAt(p) === 10) {
+          details.line++;
+          details.column = 1;
+        } else {
+          details.column++;
+        }
+
+        p++;
+      }
+
+      peg$posDetailsCache[pos] = details;
+      return details;
+    }
+  }
+
+  function peg$computeLocation(startPos, endPos) {
+    var startPosDetails = peg$computePosDetails(startPos),
+        endPosDetails   = peg$computePosDetails(endPos);
+
+    return {
+      start: {
+        offset: startPos,
+        line:   startPosDetails.line,
+        column: startPosDetails.column
+      },
+      end: {
+        offset: endPos,
+        line:   endPosDetails.line,
+        column: endPosDetails.column
+      }
+    };
+  }
+
+  function peg$fail(expected) {
+    if (peg$currPos < peg$maxFailPos) { return; }
+
+    if (peg$currPos > peg$maxFailPos) {
+      peg$maxFailPos = peg$currPos;
+      peg$maxFailExpected = [];
+    }
+
+    peg$maxFailExpected.push(expected);
+  }
+
+  function peg$buildStructuredError(expected, found, location) {
+    return new peg$SyntaxError(
+      peg$SyntaxError.buildMessage(expected, found),
+      expected,
+      found,
+      location
+    );
+  }
+
+  function peg$parsestart() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = peg$parse__();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parseunion_stmt();
+      if (s2 === peg$FAILED) {
+        s2 = peg$parseupdate_stmt();
+        if (s2 === peg$FAILED) {
+          s2 = peg$parsedelete_stmt();
+          if (s2 === peg$FAILED) {
+            s2 = peg$parsereplace_insert_stmt();
+            if (s2 === peg$FAILED) {
+              s2 = peg$parsecreate_table_stmt();
+            }
+          }
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c0(s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parseproc_stmts();
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c1(s1);
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parseunion_stmt() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseselect_stmt();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseKW_UNION();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseselect_stmt();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseKW_UNION();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseselect_stmt();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c2(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecreate_table_stmt() {
+    var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_CREATE();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_TABLE();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$currPos;
+            s6 = peg$parseKW_IF();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parse__();
+              if (s7 !== peg$FAILED) {
+                s8 = peg$parseKW_NOT();
+                if (s8 !== peg$FAILED) {
+                  s9 = peg$parse__();
+                  if (s9 !== peg$FAILED) {
+                    s10 = peg$parseKW_EXISTS();
+                    if (s10 !== peg$FAILED) {
+                      s11 = peg$parse__();
+                      if (s11 !== peg$FAILED) {
+                        s6 = [s6, s7, s8, s9, s10, s11];
+                        s5 = s6;
+                      } else {
+                        peg$currPos = s5;
+                        s5 = peg$FAILED;
+                      }
+                    } else {
+                      peg$currPos = s5;
+                      s5 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s5;
+                    s5 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s5;
+                  s5 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s5;
+                s5 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s5;
+              s5 = peg$FAILED;
+            }
+            if (s5 === peg$FAILED) {
+              s5 = null;
+            }
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parsetable_name();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parse__();
+                if (s7 !== peg$FAILED) {
+                  if (input.charCodeAt(peg$currPos) === 40) {
+                    s8 = peg$c3;
+                    peg$currPos++;
+                  } else {
+                    s8 = peg$FAILED;
+                    if (peg$silentFails === 0) { peg$fail(peg$c4); }
+                  }
+                  if (s8 !== peg$FAILED) {
+                    s9 = peg$parse__();
+                    if (s9 !== peg$FAILED) {
+                      s10 = peg$parsecolumns_defs();
+                      if (s10 !== peg$FAILED) {
+                        s11 = peg$parse__();
+                        if (s11 !== peg$FAILED) {
+                          if (input.charCodeAt(peg$currPos) === 41) {
+                            s12 = peg$c5;
+                            peg$currPos++;
+                          } else {
+                            s12 = peg$FAILED;
+                            if (peg$silentFails === 0) { peg$fail(peg$c6); }
+                          }
+                          if (s12 !== peg$FAILED) {
+                            s13 = peg$parse__();
+                            if (s13 !== peg$FAILED) {
+                              s14 = peg$parsetable_options();
+                              if (s14 === peg$FAILED) {
+                                s14 = null;
+                              }
+                              if (s14 !== peg$FAILED) {
+                                s15 = peg$parse__();
+                                if (s15 !== peg$FAILED) {
+                                  s16 = peg$parsepartition_options();
+                                  if (s16 === peg$FAILED) {
+                                    s16 = null;
+                                  }
+                                  if (s16 !== peg$FAILED) {
+                                    s17 = peg$parse__();
+                                    if (s17 !== peg$FAILED) {
+                                      if (input.charCodeAt(peg$currPos) === 59) {
+                                        s18 = peg$c7;
+                                        peg$currPos++;
+                                      } else {
+                                        s18 = peg$FAILED;
+                                        if (peg$silentFails === 0) { peg$fail(peg$c8); }
+                                      }
+                                      if (s18 === peg$FAILED) {
+                                        s18 = null;
+                                      }
+                                      if (s18 !== peg$FAILED) {
+                                        s19 = peg$parse__();
+                                        if (s19 === peg$FAILED) {
+                                          s19 = null;
+                                        }
+                                        if (s19 !== peg$FAILED) {
+                                          s1 = peg$c9(s6, s10, s14, s16);
+                                          s0 = s1;
+                                        } else {
+                                          peg$currPos = s0;
+                                          s0 = peg$FAILED;
+                                        }
+                                      } else {
+                                        peg$currPos = s0;
+                                        s0 = peg$FAILED;
+                                      }
+                                    } else {
+                                      peg$currPos = s0;
+                                      s0 = peg$FAILED;
+                                    }
+                                  } else {
+                                    peg$currPos = s0;
+                                    s0 = peg$FAILED;
+                                  }
+                                } else {
+                                  peg$currPos = s0;
+                                  s0 = peg$FAILED;
+                                }
+                              } else {
+                                peg$currPos = s0;
+                                s0 = peg$FAILED;
+                              }
+                            } else {
+                              peg$currPos = s0;
+                              s0 = peg$FAILED;
+                            }
+                          } else {
+                            peg$currPos = s0;
+                            s0 = peg$FAILED;
+                          }
+                        } else {
+                          peg$currPos = s0;
+                          s0 = peg$FAILED;
+                        }
+                      } else {
+                        peg$currPos = s0;
+                        s0 = peg$FAILED;
+                      }
+                    } else {
+                      peg$currPos = s0;
+                      s0 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s0;
+                    s0 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumns_defs() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecolumn_def();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parsecolumn_def();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsecolumn_def();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c10(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_def() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$parseindex_def();
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parsecolumn();
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parse__();
+        if (s2 !== peg$FAILED) {
+          s3 = peg$parsecolumn_type();
+          if (s3 !== peg$FAILED) {
+            s4 = [];
+            s5 = peg$currPos;
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseliteral();
+              if (s7 === peg$FAILED) {
+                s7 = peg$parseident_name();
+              }
+              if (s7 !== peg$FAILED) {
+                s6 = [s6, s7];
+                s5 = s6;
+              } else {
+                peg$currPos = s5;
+                s5 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s5;
+              s5 = peg$FAILED;
+            }
+            while (s5 !== peg$FAILED) {
+              s4.push(s5);
+              s5 = peg$currPos;
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseliteral();
+                if (s7 === peg$FAILED) {
+                  s7 = peg$parseident_name();
+                }
+                if (s7 !== peg$FAILED) {
+                  s6 = [s6, s7];
+                  s5 = s6;
+                } else {
+                  peg$currPos = s5;
+                  s5 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s5;
+                s5 = peg$FAILED;
+              }
+            }
+            if (s4 !== peg$FAILED) {
+              s1 = peg$c11(s1, s3, s4);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_type() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    s1 = peg$parsefunc_call();
+    if (s1 === peg$FAILED) {
+      s1 = peg$parseident();
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c12(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parsetable_options() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parsetable_option();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parsetable_option();
+        if (s5 !== peg$FAILED) {
+          s4 = [s4, s5];
+          s3 = s4;
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parsetable_option();
+          if (s5 !== peg$FAILED) {
+            s4 = [s4, s5];
+            s3 = s4;
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c13(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsetable_option() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseprimary();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        if (input.charCodeAt(peg$currPos) === 61) {
+          s3 = peg$c14;
+          peg$currPos++;
+        } else {
+          s3 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c15); }
+        }
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseprimary();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c16(s1, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsepartition_options() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseprimary();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseprimary();
+        if (s5 !== peg$FAILED) {
+          s4 = [s4, s5];
+          s3 = s4;
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseprimary();
+          if (s5 !== peg$FAILED) {
+            s4 = [s4, s5];
+            s3 = s4;
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c17(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseindex_def() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    s2 = peg$currPos;
+    s3 = [];
+    s4 = peg$parseident_name();
+    while (s4 !== peg$FAILED) {
+      s3.push(s4);
+      s4 = peg$parseident_name();
+    }
+    if (s3 !== peg$FAILED) {
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        if (input.substr(peg$currPos, 3).toLowerCase() === peg$c18) {
+          s5 = input.substr(peg$currPos, 3);
+          peg$currPos += 3;
+        } else {
+          s5 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c19); }
+        }
+        if (s5 === peg$FAILED) {
+          if (input.substr(peg$currPos, 5).toLowerCase() === peg$c20) {
+            s5 = input.substr(peg$currPos, 5);
+            peg$currPos += 5;
+          } else {
+            s5 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c21); }
+          }
+        }
+        if (s5 !== peg$FAILED) {
+          s3 = [s3, s4, s5];
+          s2 = s3;
+        } else {
+          peg$currPos = s2;
+          s2 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s2;
+      s2 = peg$FAILED;
+    }
+    if (s2 !== peg$FAILED) {
+      s1 = input.substring(s1, peg$currPos);
+    } else {
+      s1 = s2;
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsecolumn();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            if (input.charCodeAt(peg$currPos) === 40) {
+              s5 = peg$c3;
+              peg$currPos++;
+            } else {
+              s5 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c4); }
+            }
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parsecolumn_clause();
+              if (s6 !== peg$FAILED) {
+                if (input.charCodeAt(peg$currPos) === 41) {
+                  s7 = peg$c5;
+                  peg$currPos++;
+                } else {
+                  s7 = peg$FAILED;
+                  if (peg$silentFails === 0) { peg$fail(peg$c6); }
+                }
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c22(s1, s3, s6);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsedelete_stmt() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_DELETE();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsefrom_clause();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsewhere_clause();
+            if (s5 === peg$FAILED) {
+              s5 = null;
+            }
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c23(s3, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseselect_stmt() {
+    var s0, s1, s2, s3, s4, s5, s6;
+
+    s0 = peg$parseselect_stmt_nake();
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$currPos;
+      if (input.charCodeAt(peg$currPos) === 40) {
+        s2 = peg$c3;
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c4); }
+      }
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parse__();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parseselect_stmt();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parse__();
+            if (s5 !== peg$FAILED) {
+              if (input.charCodeAt(peg$currPos) === 41) {
+                s6 = peg$c5;
+                peg$currPos++;
+              } else {
+                s6 = peg$FAILED;
+                if (peg$silentFails === 0) { peg$fail(peg$c6); }
+              }
+              if (s6 !== peg$FAILED) {
+                s2 = [s2, s3, s4, s5, s6];
+                s1 = s2;
+              } else {
+                peg$currPos = s1;
+                s1 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s1;
+              s1 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s1;
+            s1 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c24(s1);
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parseselect_stmt_nake() {
+    var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_SELECT();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_DISTINCT();
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsecolumn_clause();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parsefrom_clause();
+                if (s7 === peg$FAILED) {
+                  s7 = null;
+                }
+                if (s7 !== peg$FAILED) {
+                  s8 = peg$parse__();
+                  if (s8 !== peg$FAILED) {
+                    s9 = peg$parsewhere_clause();
+                    if (s9 === peg$FAILED) {
+                      s9 = null;
+                    }
+                    if (s9 !== peg$FAILED) {
+                      s10 = peg$parse__();
+                      if (s10 !== peg$FAILED) {
+                        s11 = peg$parsegroup_by_clause();
+                        if (s11 === peg$FAILED) {
+                          s11 = null;
+                        }
+                        if (s11 !== peg$FAILED) {
+                          s12 = peg$parse__();
+                          if (s12 !== peg$FAILED) {
+                            s13 = peg$parseorder_by_clause();
+                            if (s13 === peg$FAILED) {
+                              s13 = null;
+                            }
+                            if (s13 !== peg$FAILED) {
+                              s14 = peg$parse__();
+                              if (s14 !== peg$FAILED) {
+                                s15 = peg$parselimit_clause();
+                                if (s15 === peg$FAILED) {
+                                  s15 = null;
+                                }
+                                if (s15 !== peg$FAILED) {
+                                  s1 = peg$c25(s3, s5, s7, s9, s11, s13, s15);
+                                  s0 = s1;
+                                } else {
+                                  peg$currPos = s0;
+                                  s0 = peg$FAILED;
+                                }
+                              } else {
+                                peg$currPos = s0;
+                                s0 = peg$FAILED;
+                              }
+                            } else {
+                              peg$currPos = s0;
+                              s0 = peg$FAILED;
+                            }
+                          } else {
+                            peg$currPos = s0;
+                            s0 = peg$FAILED;
+                          }
+                        } else {
+                          peg$currPos = s0;
+                          s0 = peg$FAILED;
+                        }
+                      } else {
+                        peg$currPos = s0;
+                        s0 = peg$FAILED;
+                      }
+                    } else {
+                      peg$currPos = s0;
+                      s0 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s0;
+                    s0 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_clause() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = peg$parseKW_ALL();
+    if (s1 === peg$FAILED) {
+      s1 = peg$currPos;
+      s2 = peg$parseSTAR();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$currPos;
+        peg$silentFails++;
+        s4 = peg$parseident_start();
+        peg$silentFails--;
+        if (s4 === peg$FAILED) {
+          s3 = void 0;
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+        if (s3 !== peg$FAILED) {
+          s2 = [s2, s3];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c27();
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parsecolumn_list_item();
+      if (s1 !== peg$FAILED) {
+        s2 = [];
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsecolumn_list_item();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+        while (s3 !== peg$FAILED) {
+          s2.push(s3);
+          s3 = peg$currPos;
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseCOMMA();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parsecolumn_list_item();
+                if (s7 !== peg$FAILED) {
+                  s4 = [s4, s5, s6, s7];
+                  s3 = s4;
+                } else {
+                  peg$currPos = s3;
+                  s3 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        }
+        if (s2 !== peg$FAILED) {
+          s1 = peg$c28(s1, s2);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c26); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_list_item() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseadditive_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsealias_clause();
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c29(s1, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsealias_clause() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_AS();
+    if (s1 === peg$FAILED) {
+      s1 = null;
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseident();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c30(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsefrom_clause() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_FROM();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsetable_ref_list();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c31(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsetable_ref_list() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parsetable_base();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$parsetable_ref();
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$parsetable_ref();
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c32(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsetable_ref() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$parse__();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parseCOMMA();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parse__();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parsetable_base();
+          if (s4 !== peg$FAILED) {
+            s1 = peg$c33(s4);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parse__();
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parsetable_join();
+        if (s2 !== peg$FAILED) {
+          s1 = peg$c33(s2);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsetable_join() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parsejoin_op();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsetable_base();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseon_clause();
+            if (s5 === peg$FAILED) {
+              s5 = null;
+            }
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c34(s1, s3, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsetable_base() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parsetable_name();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_AS();
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseident();
+            if (s5 === peg$FAILED) {
+              s5 = null;
+            }
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c35(s1, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsejoin_op() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_LEFT();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_JOIN();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c36();
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$currPos;
+      s2 = peg$parseKW_INNER();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parse__();
+        if (s3 !== peg$FAILED) {
+          s2 = [s2, s3];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+      if (s1 === peg$FAILED) {
+        s1 = null;
+      }
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parseKW_JOIN();
+        if (s2 !== peg$FAILED) {
+          s1 = peg$c37();
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsetable_name() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 96) {
+      s1 = peg$c38;
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c39); }
+    }
+    if (s1 === peg$FAILED) {
+      s1 = null;
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parseident();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseDOT();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseident_name();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          if (input.charCodeAt(peg$currPos) === 96) {
+            s4 = peg$c38;
+            peg$currPos++;
+          } else {
+            s4 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c39); }
+          }
+          if (s4 === peg$FAILED) {
+            s4 = null;
+          }
+          if (s4 !== peg$FAILED) {
+            s1 = peg$c40(s2, s3);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parsevar_decl();
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c41(s1);
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parseon_clause() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_ON();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseor_expr();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c42(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsewhere_clause() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_WHERE();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseor_expr();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c42(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsegroup_by_clause() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_GROUP();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_BY();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsecolumn_ref_list();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c31(s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_ref_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecolumn_ref();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parsecolumn_ref();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsecolumn_ref();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c28(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseorder_by_clause() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_ORDER();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_BY();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseorder_by_list();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c31(s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseorder_by_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseorder_by_element();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseorder_by_element();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseorder_by_element();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c28(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseorder_by_element() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseor_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_DESC();
+        if (s3 === peg$FAILED) {
+          s3 = peg$parseKW_ASC();
+        }
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c43(s1, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseint_or_param() {
+    var s0;
+
+    s0 = peg$parseliteral_int();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseparam();
+    }
+
+    return s0;
+  }
+
+  function peg$parselimit_clause() {
+    var s0, s1, s2, s3, s4, s5, s6, s7, s8;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_LIMIT();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseint_or_param();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$currPos;
+            s6 = peg$parseCOMMA();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parse__();
+              if (s7 !== peg$FAILED) {
+                s8 = peg$parseint_or_param();
+                if (s8 !== peg$FAILED) {
+                  s6 = [s6, s7, s8];
+                  s5 = s6;
+                } else {
+                  peg$currPos = s5;
+                  s5 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s5;
+                s5 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s5;
+              s5 = peg$FAILED;
+            }
+            if (s5 === peg$FAILED) {
+              s5 = null;
+            }
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c44(s3, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseupdate_stmt() {
+    var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_UPDATE();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsetable_name();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseKW_SET();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseset_list();
+                if (s7 !== peg$FAILED) {
+                  s8 = peg$parse__();
+                  if (s8 !== peg$FAILED) {
+                    s9 = peg$parsewhere_clause();
+                    if (s9 !== peg$FAILED) {
+                      s1 = peg$c45(s3, s7, s9);
+                      s0 = s1;
+                    } else {
+                      peg$currPos = s0;
+                      s0 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s0;
+                    s0 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseset_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseset_item();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseset_item();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseset_item();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c28(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseset_item() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecolumn_name();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        if (input.charCodeAt(peg$currPos) === 61) {
+          s3 = peg$c14;
+          peg$currPos++;
+        } else {
+          s3 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c15); }
+        }
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseadditive_expr();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c46(s1, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsereplace_insert_stmt() {
+    var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13;
+
+    s0 = peg$currPos;
+    s1 = peg$parsereplace_insert();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_INTO();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsetable_name();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseLPAREN();
+                if (s7 !== peg$FAILED) {
+                  s8 = peg$parse__();
+                  if (s8 !== peg$FAILED) {
+                    s9 = peg$parsecolumn_list();
+                    if (s9 !== peg$FAILED) {
+                      s10 = peg$parse__();
+                      if (s10 !== peg$FAILED) {
+                        s11 = peg$parseRPAREN();
+                        if (s11 !== peg$FAILED) {
+                          s12 = peg$parse__();
+                          if (s12 !== peg$FAILED) {
+                            s13 = peg$parsevalue_clause();
+                            if (s13 !== peg$FAILED) {
+                              s1 = peg$c47(s1, s5, s9, s13);
+                              s0 = s1;
+                            } else {
+                              peg$currPos = s0;
+                              s0 = peg$FAILED;
+                            }
+                          } else {
+                            peg$currPos = s0;
+                            s0 = peg$FAILED;
+                          }
+                        } else {
+                          peg$currPos = s0;
+                          s0 = peg$FAILED;
+                        }
+                      } else {
+                        peg$currPos = s0;
+                        s0 = peg$FAILED;
+                      }
+                    } else {
+                      peg$currPos = s0;
+                      s0 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s0;
+                    s0 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsereplace_insert() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_INSERT();
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c48();
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parseKW_REPLACE();
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c49();
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parsevalue_clause() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_VALUES();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsevalue_list();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c31(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsevalue_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsevalue_item();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parsevalue_item();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsevalue_item();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c28(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsevalue_item() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseLPAREN();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseexpr_list();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseRPAREN();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c50(s3);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseexpr_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseor_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseor_expr();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseor_expr();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c51(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseexpr_list_or_empty() {
+    var s0, s1;
+
+    s0 = peg$parseexpr_list();
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$c52;
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c53();
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parseor_expr() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseand_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseKW_OR();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseand_expr();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseKW_OR();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseand_expr();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c54(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseand_expr() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsenot_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseKW_AND();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parsenot_expr();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseKW_AND();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsenot_expr();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c54(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsenot_expr() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_NOT();
+    if (s1 === peg$FAILED) {
+      s1 = peg$currPos;
+      if (input.charCodeAt(peg$currPos) === 33) {
+        s2 = peg$c55;
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c56); }
+      }
+      if (s2 !== peg$FAILED) {
+        s3 = peg$currPos;
+        peg$silentFails++;
+        if (input.charCodeAt(peg$currPos) === 61) {
+          s4 = peg$c14;
+          peg$currPos++;
+        } else {
+          s4 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c15); }
+        }
+        peg$silentFails--;
+        if (s4 === peg$FAILED) {
+          s3 = void 0;
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+        if (s3 !== peg$FAILED) {
+          s2 = [s2, s3];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsenot_expr();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c57(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$parsecomparison_expr();
+    }
+
+    return s0;
+  }
+
+  function peg$parsecomparison_expr() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseadditive_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsecomparison_op_right();
+        if (s3 === peg$FAILED) {
+          s3 = null;
+        }
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c58(s1, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecomparison_op_right() {
+    var s0;
+
+    s0 = peg$parsearithmetic_op_right();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parsein_op_right();
+      if (s0 === peg$FAILED) {
+        s0 = peg$parsebetween_op_right();
+        if (s0 === peg$FAILED) {
+          s0 = peg$parseis_op_right();
+          if (s0 === peg$FAILED) {
+            s0 = peg$parselike_op_right();
+            if (s0 === peg$FAILED) {
+              s0 = peg$parsecontains_op_right();
+            }
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsearithmetic_op_right() {
+    var s0, s1, s2, s3, s4, s5, s6;
+
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = peg$currPos;
+    s3 = peg$parse__();
+    if (s3 !== peg$FAILED) {
+      s4 = peg$parsearithmetic_comparison_operator();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parse__();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parseadditive_expr();
+          if (s6 !== peg$FAILED) {
+            s3 = [s3, s4, s5, s6];
+            s2 = s3;
+          } else {
+            peg$currPos = s2;
+            s2 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s2;
+          s2 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s2;
+      s2 = peg$FAILED;
+    }
+    if (s2 !== peg$FAILED) {
+      while (s2 !== peg$FAILED) {
+        s1.push(s2);
+        s2 = peg$currPos;
+        s3 = peg$parse__();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parsearithmetic_comparison_operator();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parse__();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parseadditive_expr();
+              if (s6 !== peg$FAILED) {
+                s3 = [s3, s4, s5, s6];
+                s2 = s3;
+              } else {
+                peg$currPos = s2;
+                s2 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s2;
+              s2 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s2;
+            s2 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s2;
+          s2 = peg$FAILED;
+        }
+      }
+    } else {
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c59(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parsearithmetic_comparison_operator() {
+    var s0;
+
+    if (input.substr(peg$currPos, 2) === peg$c60) {
+      s0 = peg$c60;
+      peg$currPos += 2;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c61); }
+    }
+    if (s0 === peg$FAILED) {
+      if (input.charCodeAt(peg$currPos) === 62) {
+        s0 = peg$c62;
+        peg$currPos++;
+      } else {
+        s0 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c63); }
+      }
+      if (s0 === peg$FAILED) {
+        if (input.substr(peg$currPos, 2) === peg$c64) {
+          s0 = peg$c64;
+          peg$currPos += 2;
+        } else {
+          s0 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c65); }
+        }
+        if (s0 === peg$FAILED) {
+          if (input.substr(peg$currPos, 2) === peg$c66) {
+            s0 = peg$c66;
+            peg$currPos += 2;
+          } else {
+            s0 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c67); }
+          }
+          if (s0 === peg$FAILED) {
+            if (input.charCodeAt(peg$currPos) === 60) {
+              s0 = peg$c68;
+              peg$currPos++;
+            } else {
+              s0 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c69); }
+            }
+            if (s0 === peg$FAILED) {
+              if (input.charCodeAt(peg$currPos) === 61) {
+                s0 = peg$c14;
+                peg$currPos++;
+              } else {
+                s0 = peg$FAILED;
+                if (peg$silentFails === 0) { peg$fail(peg$c15); }
+              }
+              if (s0 === peg$FAILED) {
+                if (input.substr(peg$currPos, 2) === peg$c70) {
+                  s0 = peg$c70;
+                  peg$currPos += 2;
+                } else {
+                  s0 = peg$FAILED;
+                  if (peg$silentFails === 0) { peg$fail(peg$c71); }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseis_op_right() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_IS();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseadditive_expr();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c72(s1, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsebetween_op_right() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_BETWEEN();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseadditive_expr();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseKW_AND();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseadditive_expr();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c73(s1, s3, s7);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parselike_op() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    s2 = peg$parseKW_NOT();
+    if (s2 !== peg$FAILED) {
+      s3 = peg$parse__();
+      if (s3 !== peg$FAILED) {
+        s4 = peg$parseKW_LIKE();
+        if (s4 !== peg$FAILED) {
+          s2 = [s2, s3, s4];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s1;
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c74(s1);
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseKW_LIKE();
+    }
+
+    return s0;
+  }
+
+  function peg$parsein_op() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    s2 = peg$parseKW_NOT();
+    if (s2 !== peg$FAILED) {
+      s3 = peg$parse__();
+      if (s3 !== peg$FAILED) {
+        s4 = peg$parseKW_IN();
+        if (s4 !== peg$FAILED) {
+          s2 = [s2, s3, s4];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s1;
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c74(s1);
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseKW_IN();
+    }
+
+    return s0;
+  }
+
+  function peg$parsecontains_op() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    s2 = peg$parseKW_NOT();
+    if (s2 !== peg$FAILED) {
+      s3 = peg$parse__();
+      if (s3 !== peg$FAILED) {
+        s4 = peg$parseKW_CONTAINS();
+        if (s4 !== peg$FAILED) {
+          s2 = [s2, s3, s4];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s1;
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c74(s1);
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseKW_CONTAINS();
+    }
+
+    return s0;
+  }
+
+  function peg$parselike_op_right() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parselike_op();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsecomparison_expr();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c72(s1, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsein_op_right() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsein_op();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseLPAREN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseexpr_list();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseRPAREN();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c75(s1, s5);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parsein_op();
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parse__();
+        if (s2 !== peg$FAILED) {
+          s3 = peg$parsevar_decl();
+          if (s3 !== peg$FAILED) {
+            s1 = peg$c76(s1, s3);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecontains_op_right() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecontains_op();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseLPAREN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseexpr_list();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseRPAREN();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c75(s1, s5);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parsecontains_op();
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parse__();
+        if (s2 !== peg$FAILED) {
+          s3 = peg$parsevar_decl();
+          if (s3 !== peg$FAILED) {
+            s1 = peg$c76(s1, s3);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseadditive_expr() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsemultiplicative_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseadditive_operator();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parsemultiplicative_expr();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseadditive_operator();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsemultiplicative_expr();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c54(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseadditive_operator() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 43) {
+      s0 = peg$c77;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c78); }
+    }
+    if (s0 === peg$FAILED) {
+      if (input.charCodeAt(peg$currPos) === 45) {
+        s0 = peg$c79;
+        peg$currPos++;
+      } else {
+        s0 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c80); }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsemultiplicative_expr() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseprimary();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parsemultiplicative_operator();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseprimary();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parsemultiplicative_operator();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseprimary();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c81(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsemultiplicative_operator() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 42) {
+      s0 = peg$c82;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c83); }
+    }
+    if (s0 === peg$FAILED) {
+      if (input.charCodeAt(peg$currPos) === 47) {
+        s0 = peg$c84;
+        peg$currPos++;
+      } else {
+        s0 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c85); }
+      }
+      if (s0 === peg$FAILED) {
+        if (input.charCodeAt(peg$currPos) === 37) {
+          s0 = peg$c86;
+          peg$currPos++;
+        } else {
+          s0 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c87); }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseprimary() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$parseliteral();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseaggr_func();
+      if (s0 === peg$FAILED) {
+        s0 = peg$parsefunc_call();
+        if (s0 === peg$FAILED) {
+          s0 = peg$parsecolumn_ref();
+          if (s0 === peg$FAILED) {
+            s0 = peg$parseparam();
+            if (s0 === peg$FAILED) {
+              s0 = peg$currPos;
+              s1 = peg$parseLPAREN();
+              if (s1 !== peg$FAILED) {
+                s2 = peg$parse__();
+                if (s2 !== peg$FAILED) {
+                  s3 = peg$parseor_expr();
+                  if (s3 !== peg$FAILED) {
+                    s4 = peg$parse__();
+                    if (s4 !== peg$FAILED) {
+                      s5 = peg$parseRPAREN();
+                      if (s5 !== peg$FAILED) {
+                        s1 = peg$c88(s3);
+                        s0 = s1;
+                      } else {
+                        peg$currPos = s0;
+                        s0 = peg$FAILED;
+                      }
+                    } else {
+                      peg$currPos = s0;
+                      s0 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s0;
+                    s0 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+              if (s0 === peg$FAILED) {
+                s0 = peg$parsevar_decl();
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_ref() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseident();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseDOT();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsecolumn();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c89(s1, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parsecolumn();
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c90(s1);
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecolumn();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parsecolumn();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parsecolumn();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c28(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseident() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = peg$parseident_name();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$c91(s1);
+      if (s2) {
+        s2 = peg$FAILED;
+      } else {
+        s2 = void 0;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c92(s1);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecolumn_name();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$c91(s1);
+      if (s2) {
+        s2 = peg$FAILED;
+      } else {
+        s2 = void 0;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c92(s1);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      if (input.charCodeAt(peg$currPos) === 96) {
+        s1 = peg$c38;
+        peg$currPos++;
+      } else {
+        s1 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c39); }
+      }
+      if (s1 !== peg$FAILED) {
+        s2 = [];
+        if (peg$c93.test(input.charAt(peg$currPos))) {
+          s3 = input.charAt(peg$currPos);
+          peg$currPos++;
+        } else {
+          s3 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c94); }
+        }
+        if (s3 !== peg$FAILED) {
+          while (s3 !== peg$FAILED) {
+            s2.push(s3);
+            if (peg$c93.test(input.charAt(peg$currPos))) {
+              s3 = input.charAt(peg$currPos);
+              peg$currPos++;
+            } else {
+              s3 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c94); }
+            }
+          }
+        } else {
+          s2 = peg$FAILED;
+        }
+        if (s2 !== peg$FAILED) {
+          if (input.charCodeAt(peg$currPos) === 96) {
+            s3 = peg$c38;
+            peg$currPos++;
+          } else {
+            s3 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c39); }
+          }
+          if (s3 !== peg$FAILED) {
+            s1 = peg$c95(s2);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_name() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseident_start();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$parsecolumn_part();
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$parsecolumn_part();
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c96(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseident_name() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseident_start();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$parseident_part();
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$parseident_part();
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c96(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseident_start() {
+    var s0;
+
+    if (peg$c97.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c98); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseident_part() {
+    var s0;
+
+    if (peg$c99.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c100); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecolumn_part() {
+    var s0;
+
+    if (peg$c101.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c102); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseparam() {
+    var s0, s1, s2;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 58) {
+      s1 = peg$c104;
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c105); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parseident_name();
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      if (input.charCodeAt(peg$currPos) === 63) {
+        s1 = peg$c106;
+        peg$currPos++;
+      } else {
+        s1 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c107); }
+      }
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c108(s1);
+      }
+      s0 = s1;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c103); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseaggr_func() {
+    var s0;
+
+    s0 = peg$parseaggr_fun_count();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseaggr_fun_smma();
+    }
+
+    return s0;
+  }
+
+  function peg$parseaggr_fun_smma() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_SUM_MAX_MIN_AVG();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseLPAREN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseadditive_expr();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseRPAREN();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c109(s1, s5);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_SUM_MAX_MIN_AVG() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = [];
+    if (peg$c110.test(input.charAt(peg$currPos))) {
+      s2 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c111); }
+    }
+    if (s2 !== peg$FAILED) {
+      while (s2 !== peg$FAILED) {
+        s1.push(s2);
+        if (peg$c110.test(input.charAt(peg$currPos))) {
+          s2 = input.charAt(peg$currPos);
+          peg$currPos++;
+        } else {
+          s2 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c111); }
+        }
+      }
+    } else {
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c112(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parseaggr_fun_count() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_COUNT();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseLPAREN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsecount_arg();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseRPAREN();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c113(s1, s5);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsecount_arg() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parsestar_expr();
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c114(s1);
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parseKW_DISTINCT();
+      if (s1 === peg$FAILED) {
+        s1 = null;
+      }
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parse__();
+        if (s2 !== peg$FAILED) {
+          s3 = peg$parsecolumn_ref();
+          if (s3 !== peg$FAILED) {
+            s1 = peg$c115(s1, s3);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsestar_expr() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 42) {
+      s1 = peg$c82;
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c83); }
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c116();
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parsefunc_call() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseident();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseLPAREN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseexpr_list_or_empty();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseRPAREN();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c117(s1, s5);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseliteral() {
+    var s0;
+
+    s0 = peg$parseliteral_string();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseliteral_numeric();
+      if (s0 === peg$FAILED) {
+        s0 = peg$parseliteral_bool();
+        if (s0 === peg$FAILED) {
+          s0 = peg$parseliteral_null();
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseliteral_null() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_NULL();
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c118();
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parseliteral_bool() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_TRUE();
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c119();
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parseKW_FALSE();
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c120();
+      }
+      s0 = s1;
+    }
+
+    return s0;
+  }
+
+  function peg$parseliteral_string() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 34) {
+      s2 = peg$c121;
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c122); }
+    }
+    if (s2 !== peg$FAILED) {
+      s3 = [];
+      s4 = peg$parsedouble_char();
+      while (s4 !== peg$FAILED) {
+        s3.push(s4);
+        s4 = peg$parsedouble_char();
+      }
+      if (s3 !== peg$FAILED) {
+        if (input.charCodeAt(peg$currPos) === 34) {
+          s4 = peg$c121;
+          peg$currPos++;
+        } else {
+          s4 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c122); }
+        }
+        if (s4 !== peg$FAILED) {
+          s2 = [s2, s3, s4];
+          s1 = s2;
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s1;
+      s1 = peg$FAILED;
+    }
+    if (s1 === peg$FAILED) {
+      s1 = peg$currPos;
+      if (input.charCodeAt(peg$currPos) === 39) {
+        s2 = peg$c123;
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c124); }
+      }
+      if (s2 !== peg$FAILED) {
+        s3 = [];
+        s4 = peg$parsesingle_char();
+        while (s4 !== peg$FAILED) {
+          s3.push(s4);
+          s4 = peg$parsesingle_char();
+        }
+        if (s3 !== peg$FAILED) {
+          if (input.charCodeAt(peg$currPos) === 39) {
+            s4 = peg$c123;
+            peg$currPos++;
+          } else {
+            s4 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c124); }
+          }
+          if (s4 !== peg$FAILED) {
+            s2 = [s2, s3, s4];
+            s1 = s2;
+          } else {
+            peg$currPos = s1;
+            s1 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s1;
+          s1 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s1;
+        s1 = peg$FAILED;
+      }
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c125(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parsesingle_char() {
+    var s0;
+
+    if (peg$c126.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c127); }
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseescape_char();
+    }
+
+    return s0;
+  }
+
+  function peg$parsedouble_char() {
+    var s0;
+
+    if (peg$c128.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c129); }
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseescape_char();
+    }
+
+    return s0;
+  }
+
+  function peg$parseescape_char() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2) === peg$c130) {
+      s1 = peg$c130;
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c131); }
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c132();
+    }
+    s0 = s1;
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      if (input.substr(peg$currPos, 2) === peg$c133) {
+        s1 = peg$c133;
+        peg$currPos += 2;
+      } else {
+        s1 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c134); }
+      }
+      if (s1 !== peg$FAILED) {
+        s1 = peg$c135();
+      }
+      s0 = s1;
+      if (s0 === peg$FAILED) {
+        s0 = peg$currPos;
+        if (input.substr(peg$currPos, 2) === peg$c136) {
+          s1 = peg$c136;
+          peg$currPos += 2;
+        } else {
+          s1 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c137); }
+        }
+        if (s1 !== peg$FAILED) {
+          s1 = peg$c138();
+        }
+        s0 = s1;
+        if (s0 === peg$FAILED) {
+          s0 = peg$currPos;
+          if (input.substr(peg$currPos, 2) === peg$c139) {
+            s1 = peg$c139;
+            peg$currPos += 2;
+          } else {
+            s1 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c140); }
+          }
+          if (s1 !== peg$FAILED) {
+            s1 = peg$c141();
+          }
+          s0 = s1;
+          if (s0 === peg$FAILED) {
+            s0 = peg$currPos;
+            if (input.substr(peg$currPos, 2) === peg$c142) {
+              s1 = peg$c142;
+              peg$currPos += 2;
+            } else {
+              s1 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c143); }
+            }
+            if (s1 !== peg$FAILED) {
+              s1 = peg$c144();
+            }
+            s0 = s1;
+            if (s0 === peg$FAILED) {
+              s0 = peg$currPos;
+              if (input.substr(peg$currPos, 2) === peg$c145) {
+                s1 = peg$c145;
+                peg$currPos += 2;
+              } else {
+                s1 = peg$FAILED;
+                if (peg$silentFails === 0) { peg$fail(peg$c146); }
+              }
+              if (s1 !== peg$FAILED) {
+                s1 = peg$c147();
+              }
+              s0 = s1;
+              if (s0 === peg$FAILED) {
+                s0 = peg$currPos;
+                if (input.substr(peg$currPos, 2) === peg$c148) {
+                  s1 = peg$c148;
+                  peg$currPos += 2;
+                } else {
+                  s1 = peg$FAILED;
+                  if (peg$silentFails === 0) { peg$fail(peg$c149); }
+                }
+                if (s1 !== peg$FAILED) {
+                  s1 = peg$c150();
+                }
+                s0 = s1;
+                if (s0 === peg$FAILED) {
+                  s0 = peg$currPos;
+                  if (input.substr(peg$currPos, 2) === peg$c151) {
+                    s1 = peg$c151;
+                    peg$currPos += 2;
+                  } else {
+                    s1 = peg$FAILED;
+                    if (peg$silentFails === 0) { peg$fail(peg$c152); }
+                  }
+                  if (s1 !== peg$FAILED) {
+                    s1 = peg$c153();
+                  }
+                  s0 = s1;
+                  if (s0 === peg$FAILED) {
+                    s0 = peg$currPos;
+                    if (input.substr(peg$currPos, 2) === peg$c154) {
+                      s1 = peg$c154;
+                      peg$currPos += 2;
+                    } else {
+                      s1 = peg$FAILED;
+                      if (peg$silentFails === 0) { peg$fail(peg$c155); }
+                    }
+                    if (s1 !== peg$FAILED) {
+                      s1 = peg$c156();
+                    }
+                    s0 = s1;
+                    if (s0 === peg$FAILED) {
+                      s0 = peg$currPos;
+                      if (input.substr(peg$currPos, 2) === peg$c157) {
+                        s1 = peg$c157;
+                        peg$currPos += 2;
+                      } else {
+                        s1 = peg$FAILED;
+                        if (peg$silentFails === 0) { peg$fail(peg$c158); }
+                      }
+                      if (s1 !== peg$FAILED) {
+                        s2 = peg$parsehexDigit();
+                        if (s2 !== peg$FAILED) {
+                          s3 = peg$parsehexDigit();
+                          if (s3 !== peg$FAILED) {
+                            s4 = peg$parsehexDigit();
+                            if (s4 !== peg$FAILED) {
+                              s5 = peg$parsehexDigit();
+                              if (s5 !== peg$FAILED) {
+                                s1 = peg$c159(s2, s3, s4, s5);
+                                s0 = s1;
+                              } else {
+                                peg$currPos = s0;
+                                s0 = peg$FAILED;
+                              }
+                            } else {
+                              peg$currPos = s0;
+                              s0 = peg$FAILED;
+                            }
+                          } else {
+                            peg$currPos = s0;
+                            s0 = peg$FAILED;
+                          }
+                        } else {
+                          peg$currPos = s0;
+                          s0 = peg$FAILED;
+                        }
+                      } else {
+                        peg$currPos = s0;
+                        s0 = peg$FAILED;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseliteral_numeric() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    s1 = peg$parsenumber();
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c162(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parseliteral_int() {
+    var s0, s1;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = peg$parseint();
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c164(s1);
+    }
+    s0 = s1;
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c163); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsenumber() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = peg$parseint();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parsefrac();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseexp();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s1 = peg$c165(s1, s2, s3);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$currPos;
+      s1 = peg$parseint();
+      if (s1 !== peg$FAILED) {
+        s2 = peg$parsefrac();
+        if (s2 !== peg$FAILED) {
+          s3 = peg$parse__();
+          if (s3 !== peg$FAILED) {
+            s1 = peg$c166(s1, s2);
+            s0 = s1;
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+      if (s0 === peg$FAILED) {
+        s0 = peg$currPos;
+        s1 = peg$parseint();
+        if (s1 !== peg$FAILED) {
+          s2 = peg$parseexp();
+          if (s2 !== peg$FAILED) {
+            s3 = peg$parse__();
+            if (s3 !== peg$FAILED) {
+              s1 = peg$c167(s1, s2);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+        if (s0 === peg$FAILED) {
+          s0 = peg$currPos;
+          s1 = peg$parseint();
+          if (s1 !== peg$FAILED) {
+            s2 = peg$parse__();
+            if (s2 !== peg$FAILED) {
+              s1 = peg$c168(s1);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseint() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parsedigit19();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parsedigits();
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c169(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    if (s0 === peg$FAILED) {
+      s0 = peg$parsedigit();
+      if (s0 === peg$FAILED) {
+        s0 = peg$currPos;
+        if (input.charCodeAt(peg$currPos) === 45) {
+          s1 = peg$c79;
+          peg$currPos++;
+        } else {
+          s1 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c80); }
+        }
+        if (s1 === peg$FAILED) {
+          if (input.charCodeAt(peg$currPos) === 43) {
+            s1 = peg$c77;
+            peg$currPos++;
+          } else {
+            s1 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c78); }
+          }
+        }
+        if (s1 !== peg$FAILED) {
+          s2 = peg$parsedigit19();
+          if (s2 !== peg$FAILED) {
+            s3 = peg$parsedigits();
+            if (s3 !== peg$FAILED) {
+              s1 = peg$c170(s1, s2, s3);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+        if (s0 === peg$FAILED) {
+          s0 = peg$currPos;
+          if (input.charCodeAt(peg$currPos) === 45) {
+            s1 = peg$c79;
+            peg$currPos++;
+          } else {
+            s1 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c80); }
+          }
+          if (s1 === peg$FAILED) {
+            if (input.charCodeAt(peg$currPos) === 43) {
+              s1 = peg$c77;
+              peg$currPos++;
+            } else {
+              s1 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c78); }
+            }
+          }
+          if (s1 !== peg$FAILED) {
+            s2 = peg$parsedigit();
+            if (s2 !== peg$FAILED) {
+              s1 = peg$c171(s1, s2);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parsefrac() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 46) {
+      s1 = peg$c172;
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c173); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parsedigits();
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c174(s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseexp() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = peg$parsee();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parsedigits();
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c175(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsedigits() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = peg$parsedigit();
+    if (s2 !== peg$FAILED) {
+      while (s2 !== peg$FAILED) {
+        s1.push(s2);
+        s2 = peg$parsedigit();
+      }
+    } else {
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c176(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parsedigit() {
+    var s0;
+
+    peg$silentFails++;
+    if (peg$c178.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c179); }
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$c177); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsedigit19() {
+    var s0;
+
+    peg$silentFails++;
+    if (peg$c180.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c181); }
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$c177); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsehexDigit() {
+    var s0;
+
+    peg$silentFails++;
+    if (peg$c183.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c184); }
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$c182); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsee() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    if (peg$c185.test(input.charAt(peg$currPos))) {
+      s1 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c186); }
+    }
+    if (s1 !== peg$FAILED) {
+      if (peg$c187.test(input.charAt(peg$currPos))) {
+        s2 = input.charAt(peg$currPos);
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c188); }
+      }
+      if (s2 === peg$FAILED) {
+        s2 = null;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c189(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_NULL() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c190) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c191); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_TRUE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c192) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c193); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_FALSE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c194) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c195); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_SELECT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c200) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c201); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_UPDATE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c202) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c203); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_CREATE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c204) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c205); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_DELETE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c206) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c207); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_INSERT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c208) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c209); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_REPLACE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 7).toLowerCase() === peg$c210) {
+      s1 = input.substr(peg$currPos, 7);
+      peg$currPos += 7;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c211); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_INTO() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c214) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c215); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_FROM() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c216) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c217); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_SET() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 3).toLowerCase() === peg$c218) {
+      s1 = input.substr(peg$currPos, 3);
+      peg$currPos += 3;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c219); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_AS() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c220) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c221); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_TABLE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c222) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c223); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_ON() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c224) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c225); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_LEFT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c226) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c227); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_INNER() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c228) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c229); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_JOIN() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c230) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c231); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_UNION() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c232) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c233); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_VALUES() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c234) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c235); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_IF() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c236) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c237); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_EXISTS() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c238) {
+      s1 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c239); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_WHERE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c240) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c241); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_GROUP() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c242) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c243); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_BY() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c244) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c245); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_ORDER() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c246) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c247); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_LIMIT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c250) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c251); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = [s1, s2];
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_ASC() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 3).toLowerCase() === peg$c252) {
+      s1 = input.substr(peg$currPos, 3);
+      peg$currPos += 3;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c253); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c254();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_DESC() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c255) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c256); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c257();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_ALL() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 3).toLowerCase() === peg$c258) {
+      s1 = input.substr(peg$currPos, 3);
+      peg$currPos += 3;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c259); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c260();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_DISTINCT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 8).toLowerCase() === peg$c261) {
+      s1 = input.substr(peg$currPos, 8);
+      peg$currPos += 8;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c262); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c263();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_BETWEEN() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 7).toLowerCase() === peg$c264) {
+      s1 = input.substr(peg$currPos, 7);
+      peg$currPos += 7;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c265); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c266();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_IN() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c267) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c268); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c269();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_IS() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c270) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c271); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c272();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_LIKE() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 4).toLowerCase() === peg$c273) {
+      s1 = input.substr(peg$currPos, 4);
+      peg$currPos += 4;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c274); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c275();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_CONTAINS() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 8).toLowerCase() === peg$c276) {
+      s1 = input.substr(peg$currPos, 8);
+      peg$currPos += 8;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c277); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c278();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_NOT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 3).toLowerCase() === peg$c279) {
+      s1 = input.substr(peg$currPos, 3);
+      peg$currPos += 3;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c280); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c281();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_AND() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 3).toLowerCase() === peg$c282) {
+      s1 = input.substr(peg$currPos, 3);
+      peg$currPos += 3;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c283); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c284();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_OR() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 2).toLowerCase() === peg$c285) {
+      s1 = input.substr(peg$currPos, 2);
+      peg$currPos += 2;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c286); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c287();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_COUNT() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 5).toLowerCase() === peg$c288) {
+      s1 = input.substr(peg$currPos, 5);
+      peg$currPos += 5;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c289); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      peg$silentFails++;
+      s3 = peg$parseident_start();
+      peg$silentFails--;
+      if (s3 === peg$FAILED) {
+        s2 = void 0;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c290();
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseDOT() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 46) {
+      s0 = peg$c172;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c173); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseCOMMA() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 44) {
+      s0 = peg$c303;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c304); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseSTAR() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 42) {
+      s0 = peg$c82;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c83); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseLPAREN() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 40) {
+      s0 = peg$c3;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c4); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseRPAREN() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 41) {
+      s0 = peg$c5;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c6); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseLBRAKE() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 91) {
+      s0 = peg$c305;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c306); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseRBRAKE() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 93) {
+      s0 = peg$c307;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c308); }
+    }
+
+    return s0;
+  }
+
+  function peg$parse__() {
+    var s0, s1;
+
+    s0 = [];
+    s1 = peg$parsewhitespace();
+    while (s1 !== peg$FAILED) {
+      s0.push(s1);
+      s1 = peg$parsewhitespace();
+    }
+
+    return s0;
+  }
+
+  function peg$parsewhitespace() {
+    var s0;
+
+    peg$silentFails++;
+    if (peg$c311.test(input.charAt(peg$currPos))) {
+      s0 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c312); }
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$c310); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_stmts() {
+    var s0, s1;
+
+    s0 = [];
+    s1 = peg$parseproc_stmt();
+    while (s1 !== peg$FAILED) {
+      s0.push(s1);
+      s1 = peg$parseproc_stmt();
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_stmt() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    peg$silentFails++;
+    s2 = peg$parseproc_init();
+    peg$silentFails--;
+    if (s2 !== peg$FAILED) {
+      peg$currPos = s1;
+      s1 = void 0;
+    } else {
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseassign_stmt();
+        if (s3 === peg$FAILED) {
+          s3 = peg$parsereturn_stmt();
+        }
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c314(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_init() {
+    var s0, s1;
+
+    s0 = peg$currPos;
+    s1 = peg$c52;
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c315();
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parseassign_stmt() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parsevar_decl();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseKW_ASSIGN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseproc_expr();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c316(s1, s5);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsereturn_stmt() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_RETURN();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseproc_expr();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c317(s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_expr() {
+    var s0;
+
+    s0 = peg$parseselect_stmt();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parseproc_join();
+      if (s0 === peg$FAILED) {
+        s0 = peg$parseproc_additive_expr();
+        if (s0 === peg$FAILED) {
+          s0 = peg$parseproc_array();
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_additive_expr() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseproc_multiplicative_expr();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseadditive_operator();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseproc_multiplicative_expr();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseadditive_operator();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseproc_multiplicative_expr();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c54(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_multiplicative_expr() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseproc_primary();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parsemultiplicative_operator();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseproc_primary();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parsemultiplicative_operator();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseproc_primary();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c54(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_join() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parsevar_decl();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsejoin_op();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parsevar_decl();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseon_clause();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c318(s1, s3, s5, s7);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_primary() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$parseliteral();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parsevar_decl();
+      if (s0 === peg$FAILED) {
+        s0 = peg$parseproc_func_call();
+        if (s0 === peg$FAILED) {
+          s0 = peg$parseparam();
+          if (s0 === peg$FAILED) {
+            s0 = peg$currPos;
+            s1 = peg$parseLPAREN();
+            if (s1 !== peg$FAILED) {
+              s2 = peg$parse__();
+              if (s2 !== peg$FAILED) {
+                s3 = peg$parseproc_additive_expr();
+                if (s3 !== peg$FAILED) {
+                  s4 = peg$parse__();
+                  if (s4 !== peg$FAILED) {
+                    s5 = peg$parseRPAREN();
+                    if (s5 !== peg$FAILED) {
+                      s1 = peg$c88(s3);
+                      s0 = s1;
+                    } else {
+                      peg$currPos = s0;
+                      s0 = peg$FAILED;
+                    }
+                  } else {
+                    peg$currPos = s0;
+                    s0 = peg$FAILED;
+                  }
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          }
+        }
+      }
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_func_call() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseident();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseLPAREN();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseproc_primary_list();
+            if (s5 !== peg$FAILED) {
+              s6 = peg$parse__();
+              if (s6 !== peg$FAILED) {
+                s7 = peg$parseRPAREN();
+                if (s7 !== peg$FAILED) {
+                  s1 = peg$c319(s1, s5);
+                  s0 = s1;
+                } else {
+                  peg$currPos = s0;
+                  s0 = peg$FAILED;
+                }
+              } else {
+                peg$currPos = s0;
+                s0 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_primary_list() {
+    var s0, s1, s2, s3, s4, s5, s6, s7;
+
+    s0 = peg$currPos;
+    s1 = peg$parseproc_primary();
+    if (s1 !== peg$FAILED) {
+      s2 = [];
+      s3 = peg$currPos;
+      s4 = peg$parse__();
+      if (s4 !== peg$FAILED) {
+        s5 = peg$parseCOMMA();
+        if (s5 !== peg$FAILED) {
+          s6 = peg$parse__();
+          if (s6 !== peg$FAILED) {
+            s7 = peg$parseproc_primary();
+            if (s7 !== peg$FAILED) {
+              s4 = [s4, s5, s6, s7];
+              s3 = s4;
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s3;
+        s3 = peg$FAILED;
+      }
+      while (s3 !== peg$FAILED) {
+        s2.push(s3);
+        s3 = peg$currPos;
+        s4 = peg$parse__();
+        if (s4 !== peg$FAILED) {
+          s5 = peg$parseCOMMA();
+          if (s5 !== peg$FAILED) {
+            s6 = peg$parse__();
+            if (s6 !== peg$FAILED) {
+              s7 = peg$parseproc_primary();
+              if (s7 !== peg$FAILED) {
+                s4 = [s4, s5, s6, s7];
+                s3 = s4;
+              } else {
+                peg$currPos = s3;
+                s3 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s3;
+              s3 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s3;
+            s3 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s3;
+          s3 = peg$FAILED;
+        }
+      }
+      if (s2 !== peg$FAILED) {
+        s1 = peg$c28(s1, s2);
+        s0 = s1;
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parseproc_array() {
+    var s0, s1, s2, s3, s4, s5;
+
+    s0 = peg$currPos;
+    s1 = peg$parseLBRAKE();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parse__();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parseproc_primary_list();
+        if (s3 !== peg$FAILED) {
+          s4 = peg$parse__();
+          if (s4 !== peg$FAILED) {
+            s5 = peg$parseRBRAKE();
+            if (s5 !== peg$FAILED) {
+              s1 = peg$c320(s3);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsevar_decl() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseKW_VAR_PRE();
+    if (s1 !== peg$FAILED) {
+      s2 = peg$parseident_name();
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsemem_chain();
+        if (s3 !== peg$FAILED) {
+          s1 = peg$c321(s2, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsemem_chain() {
+    var s0, s1, s2, s3, s4;
+
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 46) {
+      s3 = peg$c172;
+      peg$currPos++;
+    } else {
+      s3 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c173); }
+    }
+    if (s3 !== peg$FAILED) {
+      s4 = peg$parseident_name();
+      if (s4 !== peg$FAILED) {
+        s3 = [s3, s4];
+        s2 = s3;
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s2;
+      s2 = peg$FAILED;
+    }
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      s2 = peg$currPos;
+      if (input.charCodeAt(peg$currPos) === 46) {
+        s3 = peg$c172;
+        peg$currPos++;
+      } else {
+        s3 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c173); }
+      }
+      if (s3 !== peg$FAILED) {
+        s4 = peg$parseident_name();
+        if (s4 !== peg$FAILED) {
+          s3 = [s3, s4];
+          s2 = s3;
+        } else {
+          peg$currPos = s2;
+          s2 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s2;
+        s2 = peg$FAILED;
+      }
+    }
+    if (s1 !== peg$FAILED) {
+      s1 = peg$c322(s1);
+    }
+    s0 = s1;
+
+    return s0;
+  }
+
+  function peg$parseKW_VAR_PRE() {
+    var s0;
+
+    if (input.charCodeAt(peg$currPos) === 36) {
+      s0 = peg$c323;
+      peg$currPos++;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c324); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_RETURN() {
+    var s0;
+
+    if (input.substr(peg$currPos, 6).toLowerCase() === peg$c325) {
+      s0 = input.substr(peg$currPos, 6);
+      peg$currPos += 6;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c326); }
+    }
+
+    return s0;
+  }
+
+  function peg$parseKW_ASSIGN() {
+    var s0;
+
+    if (input.substr(peg$currPos, 2) === peg$c327) {
+      s0 = peg$c327;
+      peg$currPos += 2;
+    } else {
+      s0 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c328); }
+    }
+
+    return s0;
+  }
+
+    function createUnaryExpr(op, e) {
+      return {
+        type     : 'unary_expr',
+        operator : op,
+        expr     : e
+      }
+    }
+
+    function createBinaryExpr(op, left, right) {
+      return {
+        type      : 'binary_expr',
+        operator  : op,
+        left      : left,
+        right     : right
+      }
+    }
+
+    function createList(head, tail) {
+      var result = [head];
+      for (var i = 0; i < tail.length; i++) {
+        result.push(tail[i][3]);
+      }
+      return result;
+    }
+
+    function createExprList(head, tail, room) {
+      var epList = createList(head, tail);
+      var exprList  = [];
+      var ep;
+      for (var i = 0; i < epList.length; i++) {
+        ep = epList[i];
+        if (ep.type == 'param') {
+          ep.room = room;
+          ep.pos  = i;
+        } else {
+          exprList.push(ep);
+        }
+      }
+      return exprList;
+    }
+
+    function createBinaryExprChain(head, tail) {
+      var result = head;
+      for (var i = 0; i < tail.length; i++) {
+        result = createBinaryExpr(tail[i][1], result, tail[i][3]);
+      }
+      return result;
+    }
+
+    var reservedMap = {
+      'SHOW'    : true,
+      'DROP'    : true,
+      'SELECT'  : true,
+      'UPDATE'  : true,
+      'CREATE'  : true,
+      'DELETE'  : true,
+      'INSERT'  : true,
+      'REPLACE' : true,
+      'EXPLAIN' : true,
+      'ALL'     : true,
+      'DISTINCT': true,
+      'AS'      : true,
+      'TABLE'   : true,
+      'INTO'    : true,
+      'FROM'    : true,
+      'SET'     : true,
+      'LEFT'    : true,
+      'ON'      : true,
+      'INNER'   : true,
+      'JOIN'    : true,
+      'UNION'   : true,
+      'VALUES'  : true,
+      'EXISTS'  : true,
+      'WHERE'   : true,
+      'GROUP'   : true,
+      'BY'      : true,
+      'HAVING'  : true,
+      'ORDER'   : true,
+      'ASC'     : true,
+      'DESC'    : true,
+      'LIMIT'   : true,
+      'BETWEEN' : true,
+      'IN'      : true,
+      'IS'      : true,
+      'LIKE'    : true,
+      'CONTAINS': true,
+      'NOT'     : true,
+      'AND'     : true,
+      'OR'      : true,
+      'TRUE'    : true,
+      'FALSE'   : true,
+      'NULL'    : true
+    };
+
+    var params = [];
+
+    var varList = [];
+
+
+  peg$result = peg$startRuleFunction();
+
+  if (peg$result !== peg$FAILED && peg$currPos === input.length) {
+    return peg$result;
+  } else {
+    if (peg$result !== peg$FAILED && peg$currPos < input.length) {
+      peg$fail(peg$endExpectation());
+    }
+
+    throw peg$buildStructuredError(
+      peg$maxFailExpected,
+      peg$maxFailPos < input.length ? input.charAt(peg$maxFailPos) : null,
+      peg$maxFailPos < input.length
+        ? peg$computeLocation(peg$maxFailPos, peg$maxFailPos + 1)
+        : peg$computeLocation(peg$maxFailPos, peg$maxFailPos)
+    );
+  }
+}
+
+var sql_utils = {
+  SyntaxError: peg$SyntaxError,
+  parse:       peg$parse
+};
+
+const { parse } = sql_utils;
+
+
+
+
+
+
+
+const MAX_QUERY_SIZE = 2048;
+const MAX_PARAMS_LENGTH = 5;
+const MAX_QUERY_ELEMENTS = 100;
+
+
+/**
+ * Parse query arguments - get the callback and params
+ * @param {Array|Function} arg1 First argument
+ * @param {Function} arg2 Second argument
+ * @returns {{params: Array, callback: Function}} The callback and params
+ */
+var parseQueryArgs = function parseQueryArgs(arg1, arg2) {
+    const paramNotSet = (arg2 === undefined && arg1 instanceof Function);
+    const callback = (paramNotSet) ? arg1 : arg2;
+    const params = (paramNotSet) ? [] : arg1;
+
+    return { params, callback };
+};
+
+/**
+ * Wrap SQL query call with tracing
+ * @param {string} queryString The executed SQL command
+ * @param {Array} params The params argument (values)
+ * @param {Function} callback The callback argument (cb)
+ * @param {Object} config The connection config object
+ * @param {string} driver The database driver type (mysql/pg/..)
+ * @returns {Array} The arguments
+ */
+var wrapSqlQuery = function wrapSqlQuery(queryString, params, callback, config, driver) {
+    let patchedCallback;
+
+    try {
+        let sqlObj = {};
+        try {
+            // Sanitizing query.
+            let queryStringSan = queryString.split('`').join('');
+            if (queryStringSan.endsWith(';')) {
+                queryStringSan = queryStringSan.substr(0, queryStringSan.length - 1);
+            }
+            sqlObj = parse(queryStringSan);
+        } catch (error) {
+            sqlObj.type = 'SQL-Command';
+        }
+
+        const { type } = sqlObj;
+        let { tables } = sqlObj;
+        if (!tables) {
+            tables = sqlObj.from.map(f => f.table);
+        }
+
+        const { database, host } = config;
+
+        let resourceType = 'sql';
+        if (host.match('.rds.')) { resourceType = 'rds'; }
+        if (host.match('.redshift.')) { resourceType = 'redshift'; }
+
+        const resource = new event_pb.Resource([
+            database, // name of the database
+            resourceType,
+            type,
+        ]);
+
+        const startTime = Date.now();
+
+        const dbapiEvent = new event_pb.Event([
+            `dbapi-${uuid4()}`,
+            utils.createTimestampFromTime(startTime),
+            null,
+            driver,
+            0,
+            error_code_pb.ErrorCode.OK,
+        ]);
+
+        dbapiEvent.setResource(resource);
+        event.addToMetadata(dbapiEvent, {
+            Host: host,
+            Driver: driver,
+            Type: type,
+            'Table Name': (tables.length === 1 ? tables[0] : tables),
+        }, {
+            Query: queryString.substring(0, MAX_QUERY_SIZE),
+        });
+        if (params && params.length) {
+            event.addToMetadata(dbapiEvent, { }, {
+                Params: params.slice(0, MAX_PARAMS_LENGTH),
+            });
+        }
+
+        const responsePromise = new Promise((resolve) => {
+            patchedCallback = (err, res, fields) => {
+                utils.debugLog('SQL Patched callback was called');
+                dbapiEvent.setDuration(utils.createDurationTimestamp(startTime));
+
+                if (err) {
+                    event.setException(dbapiEvent, err);
+                } else {
+                    let { rowCount, rows } = res;
+                    if (!rowCount && res instanceof Array) {
+                        rowCount = res.length;
+                        rows = res;
+                    }
+                    event.addToMetadata(dbapiEvent, { rowCount });
+                    const ignoredTables = config_1.getConfig().ignoredDBTables;
+                    if (rowCount &&
+                        rows instanceof Array &&
+                        rows.length &&
+                        !tables.some(t => tracer.doesContainIgnoredKey(ignoredTables, t))
+                    ) {
+                        if (rows.length > MAX_QUERY_ELEMENTS) {
+                            event.addToMetadata(dbapiEvent, { is_trimmed: true });
+                        }
+                        event.addToMetadata(
+                            dbapiEvent,
+                            { 'sql.rows': rows.slice(0, MAX_QUERY_ELEMENTS) }
+                        );
+                    }
+                }
+
+                resolve();
+
+                if (callback) {
+                    callback(err, res, fields);
+                }
+            };
+        });
+
+        tracer.addEvent(dbapiEvent, responsePromise);
+    } catch (error) {
+        tracer.addException(error);
+    }
+
+    return patchedCallback || callback;
+};
+
+var sql = {
+	parseQueryArgs: parseQueryArgs,
+	wrapSqlQuery: wrapSqlQuery
+};
+
+const pgPath = process.env.EPSAGON_PG_PATH ? `${process.cwd()}${process.env.EPSAGON_PG_PATH}` : 'pg';
+/**
+ * Wraps the pg's module request function with tracing
+ * @param {Function} wrappedFunction The pg's module
+ * @returns {Function} The wrapped function
+ */
+function pgClientWrapper(wrappedFunction) {
+    return function internalPgClientWrapper(queryString, arg1, arg2) {
+        if (queryString && queryString.submit) {
+            // this is a Submittable instance, not supported yet - return as is.
+            return wrappedFunction.apply(this, [queryString, arg1, arg2]);
+        }
+
+        const parseResult = sql.parseQueryArgs(arg1, arg2);
+        let { params } = parseResult;
+        const { callback } = parseResult;
+
+        let sqlString = queryString;
+        let sqlParams = params;
+        if (queryString && queryString.text) {
+            // this is a query object, use the values inside it.
+            sqlString = queryString.text;
+            if (queryString.values && params && !params.length) {
+                // values are in the object
+                params = undefined;
+                sqlParams = queryString.values;
+            }
+        }
+
+        let patchedCallback = sql.wrapSqlQuery(
+            sqlString,
+            sqlParams,
+            callback,
+            this.connectionParameters || this._clients[0], // eslint-disable-line
+            'pg'
+        );
+
+
+        if (callback) {
+            // it's safe to use callback, user not expecting a Promise.
+            return wrappedFunction.apply(this, [queryString, params, patchedCallback]);
+        }
+
+        // verify we have a patched callback;
+        patchedCallback = patchedCallback || (() => {});
+        // we need to return a Promise. we can't pass patchedCallback or a Promise won't be returned
+        const responsePromise = wrappedFunction.apply(this, [queryString, params]);
+
+        if (!(responsePromise && typeof responsePromise.then === 'function')) {
+            // the return value is not a promise. This is an old version
+            // call patchedCallback now or it will never be called
+            // using empty result
+            patchedCallback(null, null, null);
+        }
+
+        // we got a promise. call patchedCallback when it resolves/rejects.
+        return responsePromise.then((res) => {
+            patchedCallback(null, res, null);
+            return res;
+        }, (err) => {
+            patchedCallback(err, null, null);
+            throw err;
+        });
+    };
+}
+
+var pg = {
+    /**
+     * Initializes the pg tracer
+     */
+    init() {
+        if (process.env.EPSAGON_PG_PATH) {
+            utils.debugLog(`EPSAGON_PG_PATH=${process.env.EPSAGON_PG_PATH}`);
+            utils.debugLog(`cwd=${process.cwd()}`);
+        }
+
+        module_utils.patchModule(
+            pgPath,
+            'query',
+            pgClientWrapper,
+            pg => pg.Client.prototype
+        );
+        module_utils.patchModule(
+            'pg-pool',
+            'query',
+            pgClientWrapper,
+            Pool => Pool.prototype
+        );
+    },
+};
+
+/**
+ * Wraps Connection.query function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mysql
+ * @returns {Function} The wrapped function
+ */
+function mysqlQueryWrapper(wrappedFunction) {
+    return function internalMySqlQueryWrapper(sql$$1, arg1, arg2) {
+        let queryString;
+        let callback;
+        let params;
+        let overrideInnerCallback = false;
+        if (typeof sql$$1 !== 'string') {
+            queryString = sql$$1.sql;
+        } else {
+            queryString = sql$$1;
+        }
+
+        if (sql$$1.onResult) {
+            params = sql$$1.values;
+            callback = sql$$1.onResult;
+        } else {
+            ({ params, callback } = sql.parseQueryArgs(arg1, arg2));
+        }
+
+        if (callback === undefined && sql$$1._callback) { // eslint-disable-line no-underscore-dangle
+            // In pool connection, no callback passed, but _callback is being used.
+            callback = sql$$1._callback; // eslint-disable-line no-underscore-dangle
+            overrideInnerCallback = true;
+        }
+
+        const patchedCallback = sql.wrapSqlQuery(
+            queryString,
+            params,
+            callback,
+            this.config,
+            'mysql'
+        );
+        if (sql$$1.onResult) {
+            sql$$1.onResult = patchedCallback; // eslint-disable-line
+        } else {
+            callback = patchedCallback;
+        }
+        if (overrideInnerCallback) {
+            // eslint-disable-next-line no-underscore-dangle,no-param-reassign
+            sql$$1._callback = patchedCallback;
+        }
+        return wrappedFunction.apply(this, [sql$$1, params, callback]);
+    };
+}
+
+var mysql = {
+    /**
+     * Initializes the mysql tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'mysql2',
+            'query',
+            mysqlQueryWrapper,
+            mysql2 => mysql2.Connection.prototype
+        );
+
+        module_utils.patchModule(
+            'mysql2',
+            'execute',
+            mysqlQueryWrapper,
+            mysql2 => mysql2.Connection.prototype
+        );
+
+        module_utils.patchModule(
+            'mysql/lib/Connection.js',
+            'query',
+            mysqlQueryWrapper,
+            mysqlConnection => mysqlConnection.prototype
+        );
+    },
+};
+
+/**
+ * Wraps the openwhisk module.
+ * @param {Function} wrappedFunction The openwhisk module
+ * @returns {Function} The wrapped function
+ */
+function openWhiskWrapper$1(wrappedFunction) {
+    return function internalOWWrapper(options, callback) {
+        const { name } = options;
+        const fullName = `/${process.env['__OW_NAMESPACE']}/${name || options}`; // eslint-disable-line dot-notation
+        const resource = new event_pb.Resource([
+            fullName,
+            'openwhisk_action',
+            'invoke',
+        ]);
+        const startTime = Date.now();
+        const invokeEvent = new event_pb.Event([
+            `openwhisk-${uuid4()}`,
+            utils.createTimestampFromTime(startTime),
+            null,
+            'openwhisk',
+            0,
+            error_code_pb.ErrorCode.OK,
+        ]);
+
+        invokeEvent.setResource(resource);
+        event.addToMetadata(invokeEvent, {
+            api_host: options.apihost || process.env['__OW_API_HOST'], // eslint-disable-line dot-notation
+            namespace: options.namespace || process.env['__OW_NAMESPACE'], // eslint-disable-line dot-notation
+        }, {
+            params: options.params,
+        });
+        let request;
+        let response;
+        if (options.result) {
+            // action.invoke would return directly `response.result` so we would loose some
+            // of the information from the response.
+            const opts = {
+                ...options,
+                result: false,
+            };
+            request = wrappedFunction.apply(this, [opts, callback]);
+            // ensure we return the originally requested form
+            response = request.then(res => res.response.result);
+        } else {
+            request = wrappedFunction.apply(this, [options, callback]);
+            response = request;
+        }
+
+        const responsePromise = new Promise((resolve) => {
+            request.then((res) => {
+                let resp = res.response;
+                if (resp && resp.result && resp.result.body && resp.result.body.length > 100) {
+                    // create copy so we can trim the long response body
+                    resp = Object.assign({}, resp);
+                    resp.result = Object.assign({}, resp.result);
+                    resp.result.body = `${resp.result.body.substring(0, 100)}...(truncated)`;
+                }
+                const lastActivationId = resp.result && resp.result.headers && resp.result.headers['x-last-activation-id'];
+                const brief = {
+                    activation_id: lastActivationId || res.activationId,
+                    status: resp.status,
+                    result_statusCode: resp.result && resp.result.statusCode,
+                };
+                event.addToMetadata(
+                    invokeEvent,
+                    brief,
+                    {
+                        response: resp,
+                    }
+                );
+                invokeEvent.setDuration(utils.createDurationTimestamp(startTime));
+            }).catch((err) => {
+                event.setException(invokeEvent, err);
+            }).finally(() => {
+                resolve();
+            });
+        });
+
+        tracer.addEvent(invokeEvent, responsePromise);
+        return response;
+    };
+}
+
+var openwhisk$1 = {
+    /**
+     * Initializes the openwhisk tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'openwhisk/lib/actions.js',
+            'invoke',
+            openWhiskWrapper$1,
+            actions => actions.prototype
+        );
+    },
+};
+
+/**
+ * @fileoverview Instrumentation for google cloud library.
+ */
+
+
+
+
+
+
+
+
+const URL_SPLIT_STRING = 'googleapis.com/';
+const BIG_QUERY = 'bigquery';
+
+const GOOGLE_CLOUD_TYPES = {
+    defaultProjectId: '{{projectId}}',
+    pubsub: {
+        type: 'pubsub',
+        origin: 'google_cloud/pubsub',
+    },
+};
+
+/**
+ * Wraps the bigQuery makeRequest function.
+ * @param {Function} wrappedFunction The makeRequest function
+ * @returns {Function} The wrapped function
+ */
+function bigQueryWrapper(wrappedFunction) {
+    return function internalOWWrapper(reqOpts, config, callback) {
+        if (reqOpts.uri.indexOf(BIG_QUERY) === -1) {
+            return wrappedFunction.apply(this, [reqOpts, config, callback]);
+        }
+
+        const uri = reqOpts.uri.split(URL_SPLIT_STRING)[1] || '';
+        const splitUri = uri.split('/');
+        const service = splitUri[0] || 'google-cloud';
+        const projectId = splitUri[3] || 'Unknown';
+        const path$$1 = uri.split(`${projectId}/`)[1];
+        const operation = path$$1.split('/')[0] || 'Unknown';
+        const resource = new event_pb.Resource([
+            projectId,
+            service,
+            operation,
+        ]);
+
+        const startTime = Date.now();
+        let eventName = `${service}-${uuid4()}`;
+        let jsonMetadata = {};
+
+        if (reqOpts.json !== undefined) {
+            if (reqOpts.json.jobReference) {
+                eventName = reqOpts.json.jobReference.jobId;
+            }
+            jsonMetadata = reqOpts.json;
+        } else if (reqOpts.uri !== undefined) {
+            // eslint-disable-next-line
+            eventName = reqOpts.uri.split('/')[8];
+        }
+        const invokeEvent = new event_pb.Event([
+            eventName,
+            utils.createTimestampFromTime(startTime),
+            null,
+            service,
+            0,
+            error_code_pb.ErrorCode.OK,
+        ]);
+
+        invokeEvent.setResource(resource);
+        event.addToMetadata(
+            invokeEvent,
+            {},
+            jsonMetadata
+        );
+
+        let patchedCallback;
+        const responsePromise = new Promise((resolve) => {
+            patchedCallback = (err, body, response) => {
+                invokeEvent.setDuration(utils.createDurationTimestamp(startTime));
+                event.addToMetadata(invokeEvent, {}, response.body);
+                resolve();
+                callback(err, body, response);
+            };
+        }).catch((err) => {
+            tracer.addException(err);
+        });
+
+        tracer.addEvent(invokeEvent, responsePromise);
+        return wrappedFunction.apply(this, [reqOpts, config, patchedCallback]);
+    };
+}
+
+/**
+ * Getting message data from array.
+ * Message data is Buffer which contain a json of js object.
+ * @param {Array} reqOptsMessages array with messages data
+ * @param {number} index index of message
+ * @returns {*} message data, null if not found.
+ */
+const getMessageData = (reqOptsMessages, index) => {
+    if (Array.isArray(reqOptsMessages) &&
+        reqOptsMessages.length > index &&
+        reqOptsMessages[index].data
+    ) {
+        try {
+            const messageData = JSON.parse(`${reqOptsMessages[index].data}`);
+            if (typeof messageData === 'object') {
+                return messageData;
+            }
+        } catch (err) {
+            return null;
+        }
+    }
+    return null;
+};
+
+const getMessageIdsArray = (messages) => {
+    const messageIds = messages && messages.messageIds ? messages.messageIds : messages;
+    if (Array.isArray(messageIds)) {
+        return messageIds;
+    }
+    return null;
+};
+
+const handlePublishMethod = (messages, config) => {
+    const messageIdsArray = getMessageIdsArray(messages);
+    if (messageIdsArray) {
+        const reqOptsMessages = config.reqOpts && config.reqOpts.messages;
+        const parsedMessages = messageIdsArray.reduce((acc, messageId, currentIndex) => {
+            let message = { id: messageId };
+            const messageData = getMessageData(reqOptsMessages, currentIndex);
+            if (messageData) {
+                message = Object.assign(message, messageData);
+            }
+            acc.push(message);
+            return acc;
+        }, []);
+        return { messages: parsedMessages, messageIdsArray };
+    }
+    return {};
+};
+
+const getMessagesFromResponse = (res) => {
+    if (res && res.receivedMessages) {
+        const messageIdsArray = [];
+        const messages = res.receivedMessages.reduce((acc, current) => {
+            const { messageId } = current.message;
+            messageIdsArray.push(messageId);
+            let messageObject = { messageId };
+            const messageData = (current.message.data && JSON.parse(`${current.message.data}`));
+            if (messageData && typeof messageData === 'object') {
+                messageObject = Object.assign(messageObject, messageData);
+            }
+            acc.push(messageObject);
+            return acc;
+        }, []);
+        return { messages, messageIdsArray };
+    }
+    return {};
+};
+
+
+/**
+ * Wrap pubsub request function.
+ * @param {Function} original pubsub request function.
+ * @returns {Function} The wrapped function
+ */
+function wrapPubSubRequestFunction(original) {
+    return function internalPubSubRequestFunction(config, callback) {
+        let patchedCallback = callback;
+        try {
+            const pubsubProjectId = this.projectId;
+            const { slsEvent: pubsubEvent, startTime } = event.initializeEvent(
+                GOOGLE_CLOUD_TYPES.pubsub.type,
+                pubsubProjectId,
+                config.method,
+                GOOGLE_CLOUD_TYPES.pubsub.origin
+            );
+            const requestFunctionThis = this;
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, arg2, ...arg3) => {
+                    if ((!pubsubProjectId || pubsubProjectId === GOOGLE_CLOUD_TYPES
+                        .defaultProjectId) && !!requestFunctionThis.projectId) {
+                        pubsubEvent.getResource().setName(requestFunctionThis.projectId);
+                    }
+                    const responseMetadata = {};
+                    const payload = {};
+                    switch (arg2 && config.method) {
+                    case 'publish': {
+                        const { messages, messageIdsArray } = handlePublishMethod(arg2, config);
+                        if (messageIdsArray) {
+                            responseMetadata.messageIds = messageIdsArray;
+                            if (messageIdsArray.length) {
+                                pubsubEvent.setId(messageIdsArray[0]);
+                            }
+                        }
+                        if (messages) {
+                            payload.messages = messages;
+                        }
+                        break;
+                    }
+                    case 'createSubscription':
+                        responseMetadata.subscription = arg2;
+                        break;
+                    case 'deleteSubscription':
+                        if (config.reqOpts && config.reqOpts.subscription) {
+                            responseMetadata.subscription = utils.getLastSplittedItem(
+                                config.reqOpts.subscription,
+                                '/'
+                            );
+                        }
+                        break;
+                    case 'createTopic':
+                        responseMetadata.topic = arg2;
+                        break;
+                    case 'deleteTopic':
+                        if (config.reqOpts && config.reqOpts.topic) {
+                            responseMetadata.topic = utils.getLastSplittedItem(
+                                config.reqOpts.topic,
+                                '/'
+                            );
+                        }
+                        break;
+                    default:
+                        break;
+                    }
+                    event.finalizeEvent(
+                        pubsubEvent,
+                        startTime,
+                        err,
+                        responseMetadata,
+                        payload
+                    );
+                    resolve();
+                    if (callback) {
+                        callback(err, arg2, ...arg3);
+                    }
+                };
+            });
+            tracer.addEvent(pubsubEvent, responsePromise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+        return original.apply(this, [config, patchedCallback]);
+    };
+}
+
+/**
+ * Wrap pubsub request function.
+ * @param {Function} original pubsub request function.
+ * @returns {Function} The wrapped function
+ */
+function wrapPubSubPullFunction(original) {
+    return function internalPubSubPullFunction(request, options, callback) {
+        let clientPromiseRequest;
+        try {
+            let pubsubProjectId;
+            if (request && request.subscription) {
+                const subscriptionSplited = request.subscription.split('/');
+                if (subscriptionSplited.length > 1) {
+                    [, pubsubProjectId] = subscriptionSplited;
+                }
+            }
+            const { slsEvent: pubsubEvent, startTime } = event.initializeEvent(
+                GOOGLE_CLOUD_TYPES.pubsub.type, pubsubProjectId, 'Pull', GOOGLE_CLOUD_TYPES.pubsub.origin
+            );
+            const patchedCallback = (err, res, promiseResolve) => {
+                const responseMetadata = {};
+                const payload = {};
+                const { messages, messageIdsArray } = getMessagesFromResponse(res);
+                if (messageIdsArray) {
+                    responseMetadata.messageIds = messageIdsArray;
+                    if (messageIdsArray.length) {
+                        pubsubEvent.setId(messageIdsArray[0]);
+                    }
+                }
+                if (messages) {
+                    payload.receivedMessages = messages;
+                }
+                event.finalizeEvent(
+                    pubsubEvent,
+                    startTime,
+                    err,
+                    responseMetadata,
+                    payload
+                );
+                if (promiseResolve) {
+                    promiseResolve();
+                }
+                if (callback) {
+                    callback(err, res);
+                }
+            };
+            // in case callback was given from the client.
+            if (callback) {
+                let patchedCallbackWithPromise = callback;
+                const promise = new Promise((resolve) => {
+                    patchedCallbackWithPromise = (err, res) => {
+                        patchedCallback(err, res, resolve);
+                    };
+                });
+                tracer.addEvent(pubsubEvent, promise);
+                return original.apply(this, [request, options, patchedCallbackWithPromise]);
+            }
+            clientPromiseRequest = original.apply(this, [request, options, callback]).then(
+                (res) => {
+                    const [response] = res;
+                    patchedCallback(null, response);
+                    return res;
+                }, (err) => {
+                    patchedCallback(err, null);
+                    throw err;
+                }
+            );
+            tracer.addEvent(pubsubEvent, clientPromiseRequest);
+        } catch (err) {
+            tracer.addException(err);
+            if (!clientPromiseRequest) {
+                clientPromiseRequest = original.apply(this, [request, options, callback]);
+            }
+        }
+        return clientPromiseRequest;
+    };
+}
+
+var google_cloud = {
+    /**
+     * Initializes the bigQuery makeRequest tracer
+     */
+    init() {
+        module_utils.patchModule(
+            '@google-cloud/common/',
+            'makeRequest',
+            bigQueryWrapper,
+            common => common.util
+        );
+        module_utils.patchModule(
+            '@google-cloud/pubsub/',
+            'request',
+            wrapPubSubRequestFunction,
+            pubsub => pubsub.PubSub.prototype
+        );
+        module_utils.patchModule(
+            '@google-cloud/pubsub/',
+            'pull',
+            wrapPubSubPullFunction,
+            pubsub => pubsub.v1.SubscriberClient.prototype
+        );
+    },
+};
+
+var getMessageData_1 = getMessageData;
+var handlePublishMethod_1 = handlePublishMethod;
+var getMessagesFromResponse_1 = getMessagesFromResponse;
+google_cloud.getMessageData = getMessageData_1;
+google_cloud.handlePublishMethod = handlePublishMethod_1;
+google_cloud.getMessagesFromResponse = getMessagesFromResponse_1;
+
+/**
+ * Wraps the redis' send command function with tracing
+ * @param {Function} wrappedFunction The wrapped function from redis module
+ * @returns {Function} The wrapped function
+ */
+function redisClientWrapper(wrappedFunction) {
+    return function internalRedisClientWrapper(commandObj) {
+        try {
+            // This is used to prevent duplicates command tracing. In this case,
+            // the command won't be executed until the client is able to do it,
+            // and the wrapped internal function will be called again.
+            if (this.ready === false || this.stream.writable === false) {
+                return wrappedFunction.apply(this, [commandObj]);
+            }
+
+            const { callback } = commandObj;
+
+            const host = this.connection_options.host || 'local';
+            const resource = new event_pb.Resource([
+                this.connection_options.host || 'local',
+                'redis',
+                commandObj.command,
+            ]);
+
+            const startTime = Date.now();
+
+            const dbapiEvent = new event_pb.Event([
+                `redis-${uuid4()}`,
+                utils.createTimestampFromTime(startTime),
+                null,
+                'redis',
+                0,
+                error_code_pb.ErrorCode.OK,
+            ]);
+
+            dbapiEvent.setResource(resource);
+
+            event.addToMetadata(dbapiEvent, {
+                'Redis Host': host,
+                'Redis Port': this.connection_options.port,
+                'Redis DB Index': this.connection_options.db || '0',
+            }, {
+                'Command Arguments': commandObj.args,
+            });
+
+            const responsePromise = new Promise((resolve) => {
+                commandObj.callback = (err, res) => { // eslint-disable-line no-param-reassign
+                    // The callback is run when the response for the command is received
+                    dbapiEvent.setDuration(utils.createDurationTimestamp(startTime));
+
+                    // Note: currently not saving the response
+                    if (err) {
+                        event.setException(dbapiEvent, err);
+                    }
+
+                    // Resolving to mark this event as complete
+                    resolve();
+
+                    if (callback) {
+                        callback(err, res);
+                    }
+                };
+            });
+
+            tracer.addEvent(dbapiEvent, responsePromise);
+        } catch (error) {
+            tracer.addException(error);
+        }
+
+        return wrappedFunction.apply(this, [commandObj]);
+    };
+}
+
+var redis = {
+    /**
+   * Initializes the Redis tracer
+   */
+    init() {
+        module_utils.patchModule(
+            'redis',
+            'internal_send_command',
+            redisClientWrapper,
+            redis => redis.RedisClient.prototype
+        );
+    },
+};
+
+/**
+ * Wraps the redis' send command function with tracing
+ * @param {Function} wrappedFunction The wrapped function from redis module
+ * @returns {Function} The wrapped function
+ */
+function redisClientWrapper$1(wrappedFunction) {
+    return function internalRedisClientWrapper(command, stream) {
+        try {
+            if (this.status !== 'ready') {
+                // Skipping such events since they are irrelevant / duplicated
+                return wrappedFunction.apply(this, [command, stream]);
+            }
+
+            const host = this.options.host || 'local';
+            const resource = new event_pb.Resource([
+                host,
+                'redis',
+                command.name,
+            ]);
+
+            const startTime = Date.now();
+
+            const dbapiEvent = new event_pb.Event([
+                `ioredis-${uuid4()}`,
+                utils.createTimestampFromTime(startTime),
+                null,
+                'redis',
+                0,
+                error_code_pb.ErrorCode.OK,
+            ]);
+
+            dbapiEvent.setResource(resource);
+
+            const commandArgs = Array.isArray(command.args) ? command.args : [];
+
+            event.addToMetadata(dbapiEvent, {
+                'Redis Host': host,
+                'Redis Port': this.options.port,
+                'Redis DB Index': this.options.db || '0',
+            }, {
+                'Command Arguments': commandArgs.map(arg => arg.toString()),
+            });
+
+
+            const responsePromise = new Promise((resolve) => {
+                command.promise.then((result) => {
+                    if (result) {
+                        event.addToMetadata(dbapiEvent, {
+                            'redis.response': result.toString(),
+                        });
+                    }
+                }).catch((err) => {
+                    event.setException(dbapiEvent, err);
+                }).finally(() => {
+                    dbapiEvent.setDuration(utils.createDurationTimestamp(startTime));
+                    resolve();
+                });
+            });
+            tracer.addEvent(dbapiEvent, responsePromise);
+        } catch (error) {
+            tracer.addException(error);
+        }
+
+        return wrappedFunction.apply(this, [command, stream]);
+    };
+}
+
+var ioredis = {
+    /**
+   * Initializes the ioredis tracer
+   */
+    init() {
+        module_utils.patchModule(
+            'ioredis',
+            'sendCommand',
+            redisClientWrapper$1,
+            redis => redis.prototype
+        );
+        module_utils.patchModule(
+            'ioredis-move',
+            'sendCommand',
+            redisClientWrapper$1,
+            redis => redis.prototype
+        );
+        module_utils.patchModule(
+            'dy-ioredis/lib/redis.js',
+            'sendCommand',
+            redisClientWrapper$1,
+            redis => redis.prototype
+        );
+    },
+};
+
+/**
+  * Gets command's metadata
+  * @param {*} cmd original command that passed to mongodb function
+  * @returns {Object} json with command's metadata
+  */
+function getCommandMetadata(cmd) {
+    const result = {};
+    if (!cmd || (typeof cmd !== 'object' && !Array.isArray(cmd))) return result;
+    let filter = '';
+    let query = '';
+    if (typeof cmd === 'object') {
+        filter = JSON.stringify(cmd.filter);
+        query = JSON.stringify(cmd.query);
+    }
+    if (filter) {
+        result.filter = filter;
+    }
+    if (query) {
+        result.query = query;
+    }
+    if (Object.keys(result).length === 0) {
+        result.criteria = JSON.stringify(cmd);
+    }
+
+    return result;
+}
+
+/**
+ * Gets the post and the host of the mongodb server
+ * @param {Object} server original server arg that provided to function
+ * @returns {Object} json with host and port
+ */
+function getHostAndPort(server) {
+    let port = '27017';
+    let host = 'mongodb';
+    if (server && server.s && server.s.options) {
+        const { options } = server.s;
+        port = options.port ? options.port : port;
+        host = options.host ? options.host : host;
+    }
+
+    return { port, host };
+}
+
+/**
+ * Gets the number of documents that mongodb operation affected
+ * @param {String} operationName mongodb operation name
+ * @param {Object} response response of the mongodb operation
+ * @returns {Number} the number of documents that mongodb operation affected
+ */
+function getItemsCount(operationName, response) {
+    let itemsCount;
+    switch (operationName) {
+    case 'find':
+        itemsCount = response.result.cursor.firstBatch.length;
+        break;
+    case 'insert':
+    case 'update':
+    case 'delete':
+        itemsCount = response.result.n;
+        break;
+    case 'getMore':
+        itemsCount = response.cursor.nextBatch.length;
+        break;
+    default:
+        break;
+    }
+
+    return itemsCount;
+}
+
+/**
+ * Extracts the relevant arguments from provided arguments
+ * @returns {Object} Object of the extracted arguments
+ */
+function getArgsFromFunction(...args) {
+    return {
+        server: args[0],
+        namespace: args[1],
+        cmd: args[args.length - 2] === 'getMore' ? {} : args[2],
+        callback: args[args.length - 3],
+        operationName: args[args.length - 2],
+        wrappedFunction: args[args.length - 1],
+    };
+}
+
+/**
+ * Wrap Mongodb operations call with tracing
+ * @returns {Array} Execiton of the called function
+ */
+function internalMongodbOperationWrapper(...args) {
+    const relevantArgs = getArgsFromFunction(...args);
+    const {
+        server, namespace, cmd, callback, operationName, wrappedFunction,
+    } = relevantArgs;
+    let patchedCallback = callback;
+    try {
+        const startTime = Date.now();
+        const criteria = getCommandMetadata(cmd);
+        const { host, port } = getHostAndPort(server);
+        const resource = new event_pb.Resource([
+            host,
+            'mongodb',
+            operationName,
+        ]);
+        const dbapiEvent = new event_pb.Event([
+            `mongodb-${uuid4()}`,
+            utils.createTimestampFromTime(startTime),
+            null,
+            'mongodb',
+            0,
+            error_code_pb.ErrorCode.OK,
+        ]);
+        dbapiEvent.setResource(resource);
+
+        event.addToMetadata(dbapiEvent, {
+            namespace,
+        }, {
+            ...criteria,
+            port,
+        });
+
+        const responsePromise = new Promise((resolve) => {
+            patchedCallback = (err, response) => {
+                utils.debugLog('MongoDb Patched callback was called.');
+                dbapiEvent.setDuration(utils.createDurationTimestamp(startTime));
+
+                if (err) {
+                    event.setException(dbapiEvent, err);
+                } else {
+                    event.addToMetadata(dbapiEvent,
+                        { items_count: getItemsCount(operationName, response) });
+                }
+
+                resolve();
+
+                if (callback) {
+                    callback(err, response);
+                }
+            };
+        });
+
+        tracer.addEvent(dbapiEvent, responsePromise);
+    } catch (error) {
+        tracer.addException(error);
+    }
+
+    arguments[args.length - 3] = patchedCallback; // eslint-disable-line prefer-rest-params
+    return wrappedFunction.apply(this, arguments); // eslint-disable-line prefer-rest-params
+}
+
+/**
+ * Wraps insert function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mongodb
+ * @returns {Function} The wrapped function
+ */
+function mongodbInsertWrapper(wrappedFunction) {
+    return function internalMongodbInsertWrapper(...args) {
+        return internalMongodbOperationWrapper(...args, 'insert', wrappedFunction);
+    };
+}
+
+/**
+ * Wraps update function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mongodb
+ * @returns {Function} The wrapped function
+ */
+function mongodbUpdateWrapper(wrappedFunction) {
+    return function internalMongodbUpdateWrapper(...args) {
+        return internalMongodbOperationWrapper(...args, 'update', wrappedFunction);
+    };
+}
+
+/**
+ * Wraps remove function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mongodb
+ * @returns {Function} The wrapped function
+ */
+function mongodbRemoveWrapper(wrappedFunction) {
+    return function internalMongodbRemoveWrapper(...args) {
+        return internalMongodbOperationWrapper(...args, 'delete', wrappedFunction);
+    };
+}
+
+/**
+ * Wraps getMore function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mongodb
+ * @returns {Function} The wrapped function
+ */
+function mongodbGetMoreWrapper(wrappedFunction) {
+    return function internalMongodbGetMoreWrapper(...args) {
+        return internalMongodbOperationWrapper(...args, 'getMore', wrappedFunction);
+    };
+}
+
+/**
+ * Wraps query/find function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mongodb
+ * @returns {Function} The wrapped function
+ */
+function mongodbQueryWrapper(wrappedFunction) {
+    return function internalMongodbQueryWrapper(...args) {
+        return internalMongodbOperationWrapper(...args, 'find', wrappedFunction);
+    };
+}
+
+/**
+ * Wraps command (count for example) function with tracing
+ * @param {Function} wrappedFunction The function to wrap from mongodb
+ * @returns {Function} The wrapped function
+ */
+function mongodbCommandWrapper(wrappedFunction) {
+    return function internalMongodbCommandWrapper(...args) {
+        const cmd = args[2];
+        if (cmd && cmd.ismaster) {
+            return wrappedFunction.apply(this, args);
+        }
+        return internalMongodbOperationWrapper(...args, cmd && typeof cmd === 'object' ? Object.keys(cmd)[0] : '', wrappedFunction);
+    };
+}
+
+var mongodb = {
+    /**
+     * Initializes the mongodb tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'mongodb/lib/core/wireprotocol/index.js',
+            'insert',
+            mongodbInsertWrapper,
+            mongodb => mongodb
+        );
+        module_utils.patchModule(
+            'mongodb/lib/core/wireprotocol/index.js',
+            'update',
+            mongodbUpdateWrapper,
+            mongodb => mongodb
+        );
+        module_utils.patchModule(
+            'mongodb/lib/core/wireprotocol/index.js',
+            'remove',
+            mongodbRemoveWrapper,
+            mongodb => mongodb
+        );
+        module_utils.patchModule(
+            'mongodb/lib/core/wireprotocol/index.js',
+            'query',
+            mongodbQueryWrapper,
+            mongodb => mongodb
+        );
+        module_utils.patchModule(
+            'mongodb/lib/core/wireprotocol/index.js',
+            'getMore',
+            mongodbGetMoreWrapper,
+            mongodb => mongodb
+        );
+        module_utils.patchModule(
+            'mongodb/lib/core/wireprotocol/index.js',
+            'command',
+            mongodbCommandWrapper,
+            mongodb => mongodb
+        );
+    },
+};
+
+const { isBlacklistURL: isBlacklistURL$3 } = events$1;
+
+const URL_BLACKLIST$3 = {
+    'tc.epsagon.com': 'endsWith',
+};
+
+// Resouece records types
+const rrtypesMethods = {
+    resolveAny: 'ANY',
+    resolve6: 'AAAA',
+    resolve4: 'A',
+    resolveCname: 'CNAME',
+    resolveMx: 'MX',
+    resolveNaptr: 'NAPTR',
+    resolveNs: 'NS',
+    resolvePtr: 'PTR',
+    resolveSoa: 'SOA',
+    resolveSrv: 'SRV',
+    resolveTxt: 'TXT',
+};
+
+/**
+ * Checking resource record type by resolve function name (default resolve4 - 'A').
+ * @param {*} arg1 function first argument.
+ * @param {*} arg2 function second argument.
+ * @param {*} arg3 function third argument.
+ * @param {string} functionName function resolve name.
+ * @returns {Object} Object of Hostname to resolve, Resource record type, and callback.
+ */
+const getRrtypeArguments = (arg1, arg2, arg3, functionName) => {
+    const hostname = arg1;
+    let rrtype = rrtypesMethods.resolve4;
+    let callback = arg3;
+    // in case of arg3 doesn't exist or arg2 is options.
+    if (!arg3 || typeof arg2 === 'object') {
+        if (functionName) {
+            rrtype = Object.values(rrtypesMethods).find(type => functionName.toLocaleLowerCase().includes((`query${type}`.toLocaleLowerCase())));
+        }
+        if (!arg3) {
+            callback = arg2;
+        }
+    }
+    return { hostname, rrtype, callback };
+};
+
+/**
+ * Getting lookup arguments with options.
+ * @param {*} arg1 function first argument.
+ * @param {*} arg2 function second argument
+ * @param {*} arg3 function third argument
+ * @returns {Object} Object of Hostname, options (if doesnt exist - undefined) and callback.
+ */
+const getLookupArguments = (arg1, arg2, arg3) => {
+    const hostname = arg1;
+    let options = arg2;
+    let callback = arg3;
+    if (!arg3) {
+        options = undefined;
+        callback = arg2;
+    }
+    return { hostname, options, callback };
+};
+
+/**
+ * Gettinng callback object of dns resolve.
+ * @param {*} arg callback argument
+ * @param {string} rrtype resouece record type
+ * @returns {Object} Returns the callback object with the appropriate key compared to rrtype,
+ * (if doesnt exist - records).
+ */
+const getCallbackResolveArgument = (arg, rrtype) => {
+    if (!arg) {
+        return undefined;
+    }
+    let callbackArg;
+    if (!rrtype || rrtype === rrtypesMethods.resolveTxt) {
+        callbackArg = { records: arg };
+    } else if (rrtype === rrtypesMethods.resolveAny) {
+        callbackArg = { ret: arg };
+    } else if (rrtype === rrtypesMethods.resolveSoa) {
+        callbackArg = { address: arg };
+    } else {
+        callbackArg = { addresses: arg };
+    }
+    return callbackArg;
+};
+
+/**
+ * Calling to the dns function without callback, And record the error if thrown.
+ * @param {Function} original dns function.
+ * @param {number} startTime Event start time.
+ * @param {serverlessEvent.Event} dnsEvent Dns event.
+ * @param {Array} args Array of function arguments.
+ * @returns {Object} original function response.
+ */
+function handleFunctionWithoutCallback(original, startTime, dnsEvent, args) {
+    try {
+        return original.apply(this, args);
+    } catch (err) {
+        dnsEvent.setDuration(utils.createDurationTimestamp(startTime));
+        event.setException(dnsEvent, err);
+        tracer.addEvent(dnsEvent);
+        throw err;
+    }
+}
+
+/**
+ *  Wrap dns resolve requset
+ * @param {Function} original The dns function.
+ * @returns {Function} The wrapped function
+ */
+function wrapDnsResolveFunction(original) {
+    return function internalWrapDnsResolveFunction(arg1, arg2, arg3) {
+        let patchedCallback;
+        let clientRequest;
+        let options;
+        const { hostname, rrtype, callback } = getRrtypeArguments(arg1, arg2, arg3, original.name);
+        if (typeof arg2 === 'object') {
+            options = arg2;
+        }
+        const { slsEvent: dnsEvent, startTime } = event.initializeEvent('dns', original.name, 'dns', 'dns');
+        if (!callback) {
+            return handleFunctionWithoutCallback(
+                original, startTime, dnsEvent, [arg1, arg2, arg3]
+            );
+        }
+        try {
+            const requestData = {};
+            if (options) {
+                requestData.options = options;
+            }
+            if (rrtype) {
+                requestData.rrtype = rrtype;
+            }
+            event.addToMetadata(dnsEvent, { hostname, ...requestData });
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, records) => {
+                    const callbackArgument = getCallbackResolveArgument(records, rrtype);
+                    event.finalizeEvent(dnsEvent, startTime, err, { ...callbackArgument });
+                    resolve();
+                    if (callback) {
+                        callback(err, records);
+                    }
+                };
+            });
+            clientRequest = original.apply(this, [hostname, rrtype, patchedCallback]);
+            tracer.addEvent(dnsEvent, responsePromise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+        if (!clientRequest) {
+            clientRequest = original.apply(this, [arg1, arg2, arg3]);
+        }
+        return clientRequest;
+    };
+}
+/**
+ *  Wrap dns lookup service requset
+ * @param {Function} original The dns function.
+ * @returns {Function} The wrapped function
+ */
+function wrapDnsLookupServiceFunction(original) {
+    return function internalWrapDnsLookupServiceFunction(address, port, callback) {
+        let patchedCallback;
+        let clientRequest;
+        const { slsEvent: dnsEvent, startTime } = event.initializeEvent('dns', original.name, 'dns', 'dns');
+        if (!callback) {
+            return handleFunctionWithoutCallback(
+                original, startTime, dnsEvent, [address, port, callback]
+            );
+        }
+        try {
+            event.addToMetadata(dnsEvent, { address, port });
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, hostname, service) => {
+                    event.finalizeEvent(dnsEvent, startTime, err, { hostname, service });
+                    resolve();
+                    if (callback) {
+                        callback(err, hostname, service);
+                    }
+                };
+            });
+            clientRequest = original.apply(this, [address, port, patchedCallback]);
+            tracer.addEvent(dnsEvent, responsePromise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+        if (!clientRequest) {
+            clientRequest = original.apply(this, [address, port, callback]);
+        }
+        return clientRequest;
+    };
+}
+
+/**
+ *  Wrap dns reverse requset
+ * @param {Function} original The dns function.
+ * @returns {Function} The wrapped function
+ */
+function wrapDnsReverseFunction(original) {
+    return function internalWrapDnsReverseFunction(ip, callback) {
+        let patchedCallback;
+        let clientRequest;
+        const { slsEvent: dnsEvent, startTime } = event.initializeEvent('dns', original.name, 'dns', 'dns');
+
+        if (!callback) {
+            return handleFunctionWithoutCallback(
+                original, startTime, dnsEvent, [ip, callback]
+            );
+        }
+        try {
+            event.addToMetadata(dnsEvent, { ip });
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, hostnames) => {
+                    event.finalizeEvent(dnsEvent, startTime, err, { hostnames });
+                    resolve();
+                    if (callback) {
+                        callback(err, hostnames);
+                    }
+                };
+            });
+            clientRequest = original.apply(this, [ip, patchedCallback]);
+            tracer.addEvent(dnsEvent, responsePromise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+        if (!clientRequest) {
+            clientRequest = original.apply(this, [ip, callback]);
+        }
+        return clientRequest;
+    };
+}
+
+/**
+ *  Wrap dns lookup requset
+ * @param {Function} original The dns function.
+ * @returns {Function} The wrapped function
+ */
+function wrapDnsLookupFunction(original) {
+    return function internalWrapDnsLookupFunction(arg1, arg2, arg3) {
+        let patchedCallback;
+        let clientRequest;
+        const { hostname, options, callback } = getLookupArguments(arg1, arg2, arg3);
+        if (isBlacklistURL$3(hostname, URL_BLACKLIST$3)) {
+            utils.debugLog(`filtered blacklist hostname ${hostname}`);
+            return original.apply(this, [arg1, arg2, arg3]);
+        }
+        const { slsEvent: dnsEvent, startTime } = event.initializeEvent('dns', original.name, 'dns', 'dns');
+        if (!callback) {
+            return handleFunctionWithoutCallback(
+                original, startTime, dnsEvent, [arg1, arg2, arg3]
+            );
+        }
+        try {
+            event.addToMetadata(dnsEvent, { hostname });
+            if (options) {
+                event.addToMetadata(dnsEvent, { options });
+            }
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, address, family) => {
+                    event.finalizeEvent(dnsEvent, startTime, err, { address, family });
+                    resolve();
+                    if (callback) {
+                        callback(err, address, family);
+                    }
+                };
+            });
+            const arrayOfArgs = [hostname, patchedCallback];
+            // adding options if exist to function arguments array.
+            if (options) {
+                arrayOfArgs.splice(1, 0, options);
+            }
+            clientRequest = original.apply(this, arrayOfArgs);
+            tracer.addEvent(dnsEvent, responsePromise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+        if (!clientRequest) {
+            clientRequest = original.apply(this, [arg1, arg2, arg3]);
+        }
+        return clientRequest;
+    };
+}
+
+var dns_1 = {
+    /**
+     * Initializes the dns tracer.
+     * process.env.EPSAGON_DNS_INSTRUMENTATION=true is requird.
+     */
+    init() {
+        if ((process.env.EPSAGON_DNS_INSTRUMENTATION || '').toUpperCase() === 'TRUE') {
+            const dnsExportedFunctions = Object.keys(dns);
+            Object.keys(rrtypesMethods).forEach((functionToTrace) => {
+                if (dnsExportedFunctions.includes(functionToTrace)) {
+                    module_utils.patchSingle(dns, functionToTrace, wrapDnsResolveFunction);
+                }
+            });
+            module_utils.patchSingle(dns, 'resolve', () => wrapDnsResolveFunction(dns.resolve));
+            module_utils.patchSingle(dns, 'reverse', () => wrapDnsReverseFunction(dns.reverse));
+            module_utils.patchSingle(dns, 'lookup', () => wrapDnsLookupFunction(dns.lookup));
+            module_utils.patchSingle(dns, 'lookupService', () => wrapDnsLookupServiceFunction(dns.lookupService));
+        }
+    },
+};
+
+/* eslint-disable camelcase */
+/**
+ * @fileoverview Instrumentation for nats library.
+ */
+
+
+
+
+
+
+const NATS_TYPES = {
+    name: 'nats',
+    mainWrappedFunction: 'Client',
+    serverDefaultHostname: 'unknown',
+    badMessage: 'NATS_BAD_JSON_MSG',
+};
+
+const getServerHostname = currentServer => (
+    (currentServer.url && currentServer.url.hostname) ?
+        currentServer.url.hostname :
+        NATS_TYPES.serverDefaultHostname
+);
+
+/**
+ * Build nats parameters.
+ *
+ * @param {String} subject received subject.
+ * @param {String} msg received message.
+ * @param {String} opt_reply received reply (optional).
+ * @param {Function} opt_callback callback function (optional).
+ * @param {Boolean} jsonConnectProperty true if the user initializes nats with json property.
+ * @returns {object} nats paramaters & the message in string format.
+ */
+const getPublishParams = (subject, msg, opt_reply, opt_callback, jsonConnectProperty) => {
+    let subject_internal = subject;
+    let msg_internal = msg;
+    let opt_reply_internal = opt_reply;
+    let opt_callback_internal = opt_callback;
+    let msgJsonStringify;
+    let epsagon_id;
+    if (typeof subject_internal === 'function') {
+        opt_callback_internal = subject_internal;
+        subject_internal = undefined;
+    }
+    if (!jsonConnectProperty) {
+        msg_internal = msg_internal || '';
+    } else {
+        // undefined is not a valid JSON-serializable value, but null is
+        msg_internal = msg_internal === undefined ? null : msg_internal;
+    }
+    if (typeof msg_internal === 'function') {
+        opt_callback_internal = msg;
+        msg_internal = '';
+        opt_reply_internal = undefined;
+    }
+    if (typeof opt_reply_internal === 'function') {
+        opt_callback_internal = opt_reply;
+        opt_reply_internal = undefined;
+    }
+    if (jsonConnectProperty && msg_internal && typeof msg_internal === 'object' &&
+        (process.env.EPSAGON_PROPAGATE_NATS_ID || '').toUpperCase() === 'TRUE') {
+        epsagon_id = uuid4();
+        msg_internal.epsagon_id = epsagon_id;
+    }
+    if (!Buffer.isBuffer(msg_internal) && jsonConnectProperty) {
+        try {
+            msgJsonStringify = JSON.stringify(msg_internal);
+        } catch (e) {
+            msgJsonStringify = NATS_TYPES.badMessage;
+        }
+    }
+    return {
+        subject_internal,
+        msg_internal,
+        msgJsonStringify,
+        opt_reply_internal,
+        opt_callback_internal,
+        epsagon_id,
+    };
+};
+
+/**
+ * Wrap nats publish function.
+ * @param {Function} original nats publish function.
+ * @param {string} serverHostname nats server host name.
+ * @param {Boolean} jsonConnectProperty json connect property.
+ * @returns {Function} The wrapped function
+ */
+function wrapNatsPublishFunction(original, serverHostname, jsonConnectProperty) {
+    return function internalNatsPublishFunction(subject, msg, opt_reply, opt_callback) {
+        const {
+            subject_internal,
+            msg_internal,
+            msgJsonStringify,
+            opt_reply_internal,
+            opt_callback_internal,
+            epsagon_id,
+        } = getPublishParams(subject, msg, opt_reply, opt_callback, jsonConnectProperty);
+        let patchedCallback = opt_callback_internal;
+        // in case of publish call is a part of request call.
+        if (opt_reply_internal) {
+            return original.apply(this, [subject, msg, opt_reply, opt_callback]);
+        }
+        try {
+            const { slsEvent: natsPublishEvent, startTime } = event.initializeEvent(
+                NATS_TYPES.name,
+                subject,
+                'publish',
+                NATS_TYPES.name
+            );
+            const responseMetadata = {
+                subject: subject_internal,
+            };
+            const payload = {};
+            if (!jsonConnectProperty) {
+                payload.msg = msg_internal;
+            } else if (msgJsonStringify && msgJsonStringify !== NATS_TYPES.badMessage) {
+                payload.msg = msgJsonStringify;
+            }
+            if (serverHostname) {
+                responseMetadata.server_host_name = serverHostname;
+            }
+            if (epsagon_id) {
+                responseMetadata.epsagon_id = epsagon_id;
+            }
+            const promise = new Promise((resolve) => {
+                patchedCallback = () => {
+                    event.finalizeEvent(
+                        natsPublishEvent,
+                        startTime,
+                        null,
+                        responseMetadata,
+                        payload
+                    );
+                    resolve();
+                    if (opt_callback_internal) {
+                        opt_callback_internal();
+                    }
+                };
+            });
+            tracer.addEvent(natsPublishEvent, promise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+        return original.apply(this,
+            [subject_internal, msg_internal, opt_reply_internal, patchedCallback]);
+    };
+}
+
+/**
+ * Wrap nats connect function.
+ * @param {Function} connectFunction nats connect function.
+ * @returns {Function} The wrapped function
+ */
+function wrapNatsConnectFunction(connectFunction) {
+    return function internalNatsConnectFunction(url$$1, opts) {
+        const connectFunctionResponse = connectFunction.apply(this, [url$$1, opts]);
+        try {
+            if (connectFunctionResponse && connectFunctionResponse.constructor) {
+                if (connectFunctionResponse.constructor.name === NATS_TYPES.mainWrappedFunction) {
+                    const serverHostname = getServerHostname(connectFunctionResponse.currentServer);
+                    const jsonConnectProperty = connectFunctionResponse.options ?
+                        connectFunctionResponse.options.json : null;
+                    shimmer.wrap(connectFunctionResponse, 'publish', () => wrapNatsPublishFunction(connectFunctionResponse.publish, serverHostname, jsonConnectProperty));
+                }
+            }
+        } catch (err) {
+            tracer.addException(err);
+        }
+        return connectFunctionResponse;
+    };
+}
+
+var nats = {
+    /**
+     * Initializes the nats tracer.
+     */
+    init() {
+        module_utils.patchModule(
+            'nats',
+            'connect',
+            wrapNatsConnectFunction
+        );
+    },
+};
+
+/**
+ *  Build pub sub parameters.
+ * @param {Object} options options object (optional).
+ * @param {Function} callback callback function (optional).
+ * @returns {Object} Wrapped object.
+ */
+function getPubSubParams(options, callback) {
+    let internalCallback = callback;
+    let internalOptions = options;
+    if (typeof internalOptions === 'function') {
+        internalCallback = options;
+        internalOptions = {};
+    }
+
+    return { internalCallback, internalOptions };
+}
+
+/**
+ * Set hidden epsagon id in user props.
+ * @param {*} epsagonId - epsagon identifier.
+ * @param {*} message - mqtt message property.
+ * @returns {Object} options with epsagon id.
+ */
+function setEpsagonIdToMessage(epsagonId, message) {
+    if (typeof message === 'object') {
+        return { ...message, epsagonId };
+    } if (typeof message === 'string') {
+        try {
+            const resultMsg = JSON.parse(message);
+            if (resultMsg) {
+                resultMsg.epsagonId = epsagonId;
+                return JSON.stringify(resultMsg);
+            }
+        } catch (e) {
+            /* eslint no-empty: "error" */
+        }
+    }
+
+    return message;
+}
+
+/**
+ * Set hidden epsagon id in user props.
+ * @param {*} message - mqtt message property.
+ * @returns {Object} options with epsagon id.
+ */
+function getEpsagonIdFromMessage(message) {
+    let internalMessage = message;
+    if (typeof internalMessage === 'object') {
+        if (Buffer.isBuffer(internalMessage)) {
+            internalMessage = internalMessage.toString();
+        }
+    }
+    if (typeof internalMessage === 'string') {
+        try {
+            internalMessage = JSON.parse(internalMessage);
+        } catch (e) {
+            /* eslint no-empty: "error" */
+        }
+    }
+
+    return internalMessage.epsagonId;
+}
+
+/**
+ * Wraps the publish command function with tracing
+ * @param {Function} originalPublishFunc The wrapped function
+ * from mqtt module
+ * @returns {Function} The wrapped function
+ */
+function publishWrapper(originalPublishFunc) {
+    return function internalPublishWrapper(topic, message, options, callback) {
+        const { internalCallback, internalOptions } = getPubSubParams(options, callback);
+        const epsagonId = uuid4();
+        const internalMessage = setEpsagonIdToMessage(epsagonId, message);
+        let patchedCallback = internalCallback;
+        try {
+            const { slsEvent: mqttEvent, startTime } = event.initializeEvent('mqtt',
+                topic,
+                'publish',
+                'mqtt');
+            const responseMetadata = {
+                region: this.options.region,
+                protocol: this.options.protocol,
+                host: this.options.host,
+                epsagon_id: epsagonId,
+            };
+            const payload = {
+                clientId: this.options.clientId,
+                protocolId: this.options.protocolId,
+                protocolVersion: this.options.protocolVersion,
+                message: internalMessage,
+            };
+            const promise = new Promise((resolve) => {
+                patchedCallback = (err, ...rest) => {
+                    event.finalizeEvent(
+                        mqttEvent,
+                        startTime,
+                        err || null,
+                        responseMetadata,
+                        payload
+                    );
+                    if (internalCallback) {
+                        internalCallback(err, ...rest);
+                    }
+                    resolve();
+                };
+            });
+            tracer.addEvent(mqttEvent, promise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+
+        return originalPublishFunc.apply(this,
+            [topic, internalMessage, internalOptions, patchedCallback]);
+    };
+}
+
+/**
+ * Wraps the subscribe command function with tracing
+ * @param {Function} originalSubscribeFunc The wrapped function
+ * from mqtt module
+ * @returns {Function} The wrapped function
+ */
+function subscribeWrapper(originalSubscribeFunc) {
+    return function internalSubscribeWrapper(topic, options, callback) {
+        const { internalCallback, internalOptions } = getPubSubParams(options, callback);
+        let patchedCallback = internalCallback;
+        try {
+            const { slsEvent: mqttEvent, startTime } = event.initializeEvent('mqtt',
+                topic,
+                'subscribe',
+                'mqtt');
+            const responseMetadata = {
+                region: this.options.region,
+                protocol: this.options.protocol,
+                host: this.options.host,
+            };
+            const payload = {
+                clientId: this.options.clientId,
+                protocolId: this.options.protocolId,
+                protocolVersion: this.options.protocolVersion,
+            };
+            const promise = new Promise((resolve) => {
+                patchedCallback = (err, ...rest) => {
+                    event.finalizeEvent(
+                        mqttEvent,
+                        startTime,
+                        err || null,
+                        responseMetadata,
+                        payload
+                    );
+                    if (internalCallback) {
+                        internalCallback(err, ...rest);
+                    }
+                    resolve();
+                };
+            });
+            tracer.addEvent(mqttEvent, promise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+
+        return originalSubscribeFunc.apply(this, [topic, internalOptions, patchedCallback]);
+    };
+}
+
+/**
+ * Wraps the on command function with tracing
+ * @param {Function} originalOnFunc The wrapped function
+ * from mqtt module
+ * @returns {Function} The wrapped function
+ */
+function onWrapper(originalOnFunc) {
+    return function internalOnWrapper(eventName, callback) {
+        let patchedCallback = callback;
+        try {
+            if (eventName === 'message') {
+                const responseMetadata = {
+                    region: this.options.region,
+                    protocol: this.options.protocol,
+                    host: this.options.host,
+                };
+                const payload = {
+                    clientId: this.options.clientId,
+                    protocolId: this.options.protocolId,
+                    protocolVersion: this.options.protocolVersion,
+                };
+                patchedCallback = (topic, message, ...rest) => {
+                    const { slsEvent: mqttEvent, startTime } = event.initializeEvent('mqtt', topic, 'onMessage', 'mqtt');
+                    payload.message = message ? message.toString() : message;
+                    const epsagonId = getEpsagonIdFromMessage(message);
+                    if (epsagonId) {
+                        responseMetadata.epsagon_id = epsagonId;
+                    }
+                    event.finalizeEvent(
+                        mqttEvent,
+                        startTime,
+                        null,
+                        responseMetadata,
+                        payload
+                    );
+                    if (callback) {
+                        callback(topic, message, ...rest);
+                    }
+                    tracer.addEvent(mqttEvent);
+                };
+            }
+        } catch (err) {
+            tracer.addException(err);
+        }
+
+        return originalOnFunc.apply(this, [eventName, patchedCallback]);
+    };
+}
+
+/**
+ * Wraps the constructor' command function
+ * @param {Function} originalConstructorFunc The wrapped function
+ * from mqtt module
+ * @returns {Function} The wrapped function
+ */
+function mqttClientWrapper(originalConstructorFunc) {
+    return function internalMqttClientWrapper(streamBuilder, options) {
+        const mqttClient = originalConstructorFunc.apply(this, [streamBuilder, options]);
+        try {
+            shimmer.wrap(
+                mqttClient,
+                'publish',
+                func => publishWrapper(func)
+            );
+            shimmer.wrap(
+                mqttClient,
+                'subscribe',
+                func => subscribeWrapper(func)
+            );
+            shimmer.wrap(
+                mqttClient,
+                'on',
+                func => onWrapper(func)
+            );
+        } catch (error) {
+            tracer.addException(error);
+        }
+        return mqttClient;
+    };
+}
+
+var mqtt = {
+    /**
+   * Initializes the MQTT tracer.
+   */
+    init() {
+        module_utils.patchModule(
+            'mqtt',
+            'MqttClient',
+            mqttClientWrapper,
+            mqttModule => mqttModule
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for kafkajs instrumentation
+ */
+
+
+
+
+
+
+const { EPSAGON_HEADER: EPSAGON_HEADER$1 } = consts;
+const { generateEpsagonTraceId: generateEpsagonTraceId$3 } = http$1;
+
+
+/**
+ * Wrap kafka producer send function
+ * @param {Function} sendFunction kafka producer send function.
+ * @returns {Promise} sendFunction response.
+ */
+function wrapKafkaSendFunction(sendFunction) {
+    return function internalKafkaSendFunction(messages) {
+        let kafkaSendEvent;
+        let kafkaSendStartTime;
+        let kafkaSendResponse;
+        let originalHandlerAsyncError;
+        let result;
+        const epsagonId = generateEpsagonTraceId$3();
+        try {
+            const { slsEvent, startTime } = event.initializeEvent(
+                'kafka',
+                messages.topic,
+                'produce',
+                'kafkajs'
+            );
+            kafkaSendEvent = slsEvent;
+            kafkaSendStartTime = startTime;
+            // eslint-disable-next-line no-param-reassign
+            messages.messages = messages.messages.map((message) => {
+                if (!message.headers) {
+                    // eslint-disable-next-line no-param-reassign
+                    message.headers = {};
+                }
+                // eslint-disable-next-line no-param-reassign
+                message.headers[EPSAGON_HEADER$1] = epsagonId;
+                return message;
+            });
+        } catch (err) {
+            tracer.addException(err);
+        }
+        try {
+            kafkaSendResponse = sendFunction.apply(this, [messages]);
+        } catch (err) {
+            if (kafkaSendEvent) {
+                event.setException(kafkaSendEvent, err);
+                tracer.addEvent(kafkaSendEvent);
+            }
+            throw err;
+        }
+
+        kafkaSendResponse = kafkaSendResponse.then((res) => {
+            result = res;
+            return res;
+        }).catch((err) => {
+            originalHandlerAsyncError = err;
+            throw err;
+        }).finally(() => {
+            try {
+                if (!kafkaSendEvent) {
+                    utils.debugLog('Could not initialize kafkajs, skipping response.');
+                    return;
+                }
+                event.finalizeEvent(
+                    kafkaSendEvent,
+                    kafkaSendStartTime,
+                    originalHandlerAsyncError,
+                    {
+                        messages_count: messages.messages.length,
+                        [EPSAGON_HEADER$1]: epsagonId,
+                    },
+                    {
+                        messages,
+                        response: result,
+                    }
+                );
+            } catch (err) {
+                tracer.addException(err);
+            }
+        });
+        if (kafkaSendEvent) {
+            tracer.addEvent(kafkaSendEvent, kafkaSendResponse);
+        }
+        return kafkaSendResponse;
+    };
+}
+
+/**
+ * Wrap kafka cluster connect function
+ * @param {Function} originalConnectFunction connect function
+ * @returns {Promise} The response promise
+ */
+function kafkaConnectWrapper(originalConnectFunction) {
+    return function internalKafkaConnectWrapper(...args) {
+        let originalHandlerAsyncError;
+        let kafkaEvent;
+        let startTime;
+        let response;
+        let port;
+        try {
+            const { host, port: brokerPort } = this.brokerPool.seedBroker.connection;
+            port = brokerPort;
+            const { slsEvent, startTime: eventStartTime } = event.initializeEvent(
+                'kafka_server',
+                host,
+                'connect',
+                'kafkajs'
+            );
+            kafkaEvent = slsEvent;
+            startTime = eventStartTime;
+        } catch (err) {
+            tracer.addException(err);
+        }
+        try {
+            response = originalConnectFunction.apply(this, args);
+        } catch (err) {
+            if (kafkaEvent) {
+                kafkaEvent.setException(kafkaEvent, err);
+                tracer.addEvent(kafkaEvent);
+            }
+            throw err;
+        }
+        response = response.catch((err) => {
+            originalHandlerAsyncError = err;
+            throw err;
+        }).finally(() => {
+            try {
+                if (!kafkaEvent) {
+                    utils.debugLog('Could not initialize kafkajs, skipping response.');
+                    return;
+                }
+                event.finalizeEvent(
+                    kafkaEvent,
+                    startTime,
+                    originalHandlerAsyncError,
+                    { port }
+                );
+            } catch (err) {
+                tracer.addException(err);
+            }
+        });
+
+        if (kafkaEvent) {
+            tracer.addEvent(kafkaEvent, response);
+        }
+
+        return response;
+    };
+}
+
+/**
+ * Wraps the kafkajs producer creation and wrapping send function.
+ * @param {Function} producerFunction The kafkajs producer function
+ * @returns {Function} The wrapped function
+ */
+function kafkaProducerWrapper(producerFunction) {
+    return function internalKafkaProducerWrapper(options) {
+        const producerResponse = producerFunction.apply(this, [options]);
+        // eslint-disable-next-line no-underscore-dangle
+        if (producerResponse && !producerResponse.__epsagonPatched) {
+            try {
+                // eslint-disable-next-line no-underscore-dangle
+                producerResponse.__epsagonPatched = true;
+                shimmer.wrap(producerResponse, 'send', () => wrapKafkaSendFunction(producerResponse.send));
+            } catch (err) {
+                tracer.addException(err);
+            }
+        }
+        return producerResponse;
+    };
+}
+
+var kafkajs = {
+    /**
+     * Initializes the kafkajs tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'kafkajs',
+            'producer',
+            kafkaProducerWrapper,
+            kafka => kafka.Kafka.prototype
+        );
+        module_utils.patchModule(
+            'kafkajs/src/cluster/index.js',
+            'connect',
+            kafkaConnectWrapper,
+            cluster => cluster.prototype
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for kafka-node instrumentation
+ */
+
+
+
+
+
+const { EPSAGON_HEADER: EPSAGON_HEADER$2 } = consts;
+const { generateEpsagonTraceId: generateEpsagonTraceId$4 } = http$1;
+
+
+/**
+ * Wrap kafka-node producer send function
+ * @param {Function} sendFunction kafka producer send function.
+ * @returns {Promise} sendFunction response.
+ */
+function wrapKafkaSendFunction$1(sendFunction) {
+    return function internalKafkaSendFunction(messages, callback) {
+        let kafkaSendEvent;
+        let kafkaSendStartTime;
+        let kafkaSendResponse;
+        let originalHandlerAsyncError;
+        let patchedCallback;
+        const producer = this;
+        const epsagonId = generateEpsagonTraceId$4();
+
+        // Each send operation can contain multiple messages to different topics. At the moment
+        // we support just one.
+        const payload = messages[0];
+
+        try {
+            const { slsEvent, startTime } = event.initializeEvent(
+                'kafka',
+                payload.topic,
+                'produce',
+                'kafka-node'
+            );
+            kafkaSendEvent = slsEvent;
+            kafkaSendStartTime = startTime;
+            // eslint-disable-next-line no-param-reassign
+            messages = messages.map((message) => {
+                // kafka-node doesn't support headers,
+                // so we're checking if Epsagon found in a JSON value
+                try {
+                    if (typeof message.messages === 'string') {
+                        const jsonData = JSON.parse(message.messages);
+                        jsonData[EPSAGON_HEADER$2] = epsagonId;
+                        // eslint-disable-next-line no-param-reassign
+                        message.messages = JSON.stringify(jsonData);
+                    } else {
+                        const jsonData = JSON.parse(message.messages[0]);
+                        jsonData[EPSAGON_HEADER$2] = epsagonId;
+                        // eslint-disable-next-line no-param-reassign
+                        message.messages[0] = JSON.stringify(jsonData);
+                    }
+                } catch (err) {
+                    utils.debugLog('kafka-node - Could not extract epsagon header');
+                }
+                return message;
+            });
+        } catch (err) {
+            tracer.addException(err);
+        }
+
+        const responsePromise = new Promise((resolve) => {
+            patchedCallback = (err, data) => {
+                let callbackResult;
+                try {
+                    if (!kafkaSendEvent) {
+                        utils.debugLog('Could not initialize kafka-node, skipping response.');
+                        return callbackResult;
+                    }
+                    event.finalizeEvent(
+                        kafkaSendEvent,
+                        kafkaSendStartTime,
+                        originalHandlerAsyncError,
+                        {
+                            [EPSAGON_HEADER$2]: epsagonId,
+                            host: producer.client.options.kafkaHost,
+                        },
+                        {
+                            messages: payload.messages,
+                        }
+                    );
+                } catch (callbackErr) {
+                    tracer.addException(callbackErr);
+                } finally {
+                    if (callback && typeof callback === 'function') {
+                        callbackResult = callback(err, data);
+                    }
+                }
+                resolve();
+                return callbackResult;
+            };
+        });
+
+        try {
+            kafkaSendResponse = sendFunction.apply(this, [messages, patchedCallback]);
+        } catch (err) {
+            if (kafkaSendEvent) {
+                event.setException(kafkaSendEvent, err);
+                tracer.addEvent(kafkaSendEvent);
+            }
+            throw err;
+        }
+
+        if (kafkaSendEvent) {
+            tracer.addEvent(kafkaSendEvent, responsePromise);
+        }
+        return kafkaSendResponse;
+    };
+}
+
+var kafkaNode = {
+    /**
+     * Initializes the kafka-node tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'kafka-node',
+            'send',
+            wrapKafkaSendFunction$1,
+            kafka => kafka.Producer.prototype
+        );
+    },
+};
+
+/**
+ * Wrap bunyan logs
+ * @param {Function} wrappedFunction The function to wrap from bunyan
+ * @returns {function} emit wrapper function
+ */
+function emitWrapper(wrappedFunction) {
+    return function internalEmitWrapper(rec, ...args) {
+        if (!tracer.isLoggingTracingEnabled()) {
+            return wrappedFunction.apply(this, [rec].concat(args));
+        }
+        const traceId = tracer.getTraceId();
+        if (!traceId) {
+            return wrappedFunction.apply(this, [rec].concat(args));
+        }
+
+        const newRec = {
+            epsagon: {
+                trace_id: traceId,
+            },
+        };
+
+        if (!rec) {
+            return wrappedFunction.apply(this, [rec].concat(args));
+        }
+        /* eslint-disable guard-for-in, no-restricted-syntax */
+        for (const key in rec) {
+            newRec[key] = rec[key];
+        }
+
+        /* eslint-disable no-restricted-syntax */
+        for (const symbol of Object.getOwnPropertySymbols(rec)) {
+            newRec[symbol] = rec[symbol];
+        }
+
+        tracer.addLoggingTracingEnabledMetadata();
+
+        return wrappedFunction.apply(this, [newRec].concat(args));
+    };
+}
+
+var bunyan = {
+    /**
+     * Initializes the bunyan log tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'bunyan',
+            '_emit',
+            emitWrapper,
+            bunyan => bunyan.prototype
+        );
+    },
+};
+
+/**
+ * Wrap pino logs
+ * @param {Function} wrappedFunction The function to wrap from winston
+ * @returns {function} asJson wrapper function
+ */
+function logWrapper(wrappedFunction) {
+    return function internalLogWrapper(obj, msg, num, time) {
+        if (!tracer.isLoggingTracingEnabled()) {
+            return wrappedFunction.apply(this, [obj, msg, num, time]);
+        }
+        const traceId = tracer.getTraceId();
+        if (!traceId) {
+            return wrappedFunction.apply(this, [obj, msg, num, time]);
+        }
+
+        /* eslint-disable no-param-reassign */
+        obj.epsagon = {
+            trace_id: traceId,
+        };
+
+        tracer.addLoggingTracingEnabledMetadata();
+
+        return wrappedFunction.apply(this, [obj, msg, num, time]);
+    };
+}
+
+var pino = {
+    /**
+     * Initializes the pino log tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'pino/lib/tools',
+            'asJson',
+            logWrapper
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for the azure-sdk js library instrumentation.
+ */
+
+
+
+
+
+/**
+ * Wraps the BlockBlobClient upload method.
+ * @param {Function} wrappedFunction The function to wrap
+ * @returns {Function} The wrapped function
+ */
+function blobUploadWrapper(wrappedFunction) {
+    return function internalUploadWrapper(content, size) {
+        const { accountName, containerName } = this;
+        const { slsEvent: uploadEvent, startTime } = event.initializeEvent(
+            'blob_storage',
+            containerName,
+            'upload',
+            'azure-sdk'
+        );
+        event.addToMetadata(uploadEvent, {
+            'azure.blob.account_name': accountName,
+            'azure.blob.content_size': size,
+        }, { 'azure.blob.content': content });
+        const request = wrappedFunction.apply(this, [content, size]);
+        const requestPromise = request.then((res) => {
+            event.addToMetadata(uploadEvent, { 'azure.blob.error_code': res.errorCode });
+            uploadEvent.setDuration(utils.createDurationTimestamp(startTime));
+            return res;
+        }).catch((err) => {
+            event.setException(uploadEvent, err);
+            throw err;
+        });
+
+        tracer.addEvent(uploadEvent, requestPromise);
+        return requestPromise;
+    };
+}
+
+/**
+ * Wraps the BlockBlobClient download method.
+ * @param {Function} wrappedFunction The function to wrap
+ * @returns {Function} The wrapped function
+ */
+function blobDownloadWrapper(wrappedFunction) {
+    return function internalDownloadWrapper(offset, count, options) {
+        const { accountName, containerName } = this;
+        const { slsEvent: downloadEvent, startTime } = event.initializeEvent(
+            'blob_storage',
+            containerName,
+            'download',
+            'azure-sdk'
+        );
+        event.addToMetadata(downloadEvent, {
+            'azure.blob.account_name': accountName,
+            'azure.blob.container_name': containerName,
+            'azure.blob.offset': offset,
+        });
+        const request = wrappedFunction.apply(this, [offset, count, options]);
+        const requestPromise = request.then((res) => {
+            event.addToMetadata(downloadEvent, { 'azure.blob.content_length': res.contentLength });
+            downloadEvent.setDuration(utils.createDurationTimestamp(startTime));
+            return res;
+        }).catch((err) => {
+            event.setException(downloadEvent, err);
+            throw err;
+        });
+        tracer.addEvent(downloadEvent, requestPromise);
+        return requestPromise;
+    };
+}
+
+
+/**
+ * Wraps the CosmosDB Item create method.
+ * @param {Function} wrappedFunction The function to wrap
+ * @returns {Function} The wrapped function
+ */
+function cosmosCreateItemWrapper(wrappedFunction) {
+    return function internalCreateWrapper(body, options) {
+        const { id: itemId, content } = body;
+        const { container, clientContext } = this;
+        const { database } = container;
+        const name = container.id;
+        const { slsEvent: createEvent, startTime } = event.initializeEvent(
+            'cosmos_db',
+            name,
+            'create',
+            'azure-sdk'
+        );
+        event.addToMetadata(createEvent, {
+            'azure.cosmos.endpoint': clientContext.cosmosClientOptions.endpoint,
+            'azure.cosmos.database_id': database.id,
+            'azure.cosmos.item_id': itemId,
+        },
+        { 'azure.cosmos.item_content': content });
+        const request = wrappedFunction.apply(this, [body, options]);
+        const requestPromise = request.then((res) => {
+            event.addToMetadata(createEvent, { 'azure.cosmos.status_code': res.statusCode });
+            createEvent.setDuration(utils.createDurationTimestamp(startTime));
+            return res;
+        }).catch((err) => {
+            event.setException(createEvent, err);
+            throw err;
+        });
+        tracer.addEvent(createEvent, requestPromise);
+        return requestPromise;
+    };
+}
+
+var azure_sdk = {
+    /**
+     * Patch Azure SDK methods.
+     */
+    init() {
+        module_utils.patchModule(
+            '@azure/storage-blob',
+            'upload',
+            blobUploadWrapper,
+            Clients => Clients.BlockBlobClient.prototype
+        );
+        module_utils.patchModule(
+            '@azure/storage-blob',
+            'download',
+            blobDownloadWrapper,
+            Clients => Clients.BlockBlobClient.prototype
+        );
+        module_utils.patchModule(
+            '@azure/cosmos',
+            'create',
+            cosmosCreateItemWrapper,
+            index => index.Items.prototype
+        );
+    },
+};
+
+/**
+ * returns the trace id if message should be traced, or null if not.
+ * @param {Object} chunk the chunk to add id to
+ * @return {string|null} The trace id, or null if the message shouldn't
+ * be traced
+ */
+function getTraceIdIfShouldTrace(chunk) {
+    if (!chunk || typeof chunk !== 'object' || !tracer.isLoggingTracingEnabled()) {
+        return null;
+    }
+
+    return tracer.getTraceId();
+}
+/**
+ * Wrap bunyan logs
+ * @param {Function} wrappedFunction The function to wrap from bunyan
+ * @returns {function} emit wrapper function
+ */
+function writeWrapper(wrappedFunction) {
+    return function internalWriteWrapper(chunk, encoding, callback) {
+        utils.debugLog('in internal winston write');
+        const traceId = getTraceIdIfShouldTrace(chunk);
+        utils.debugLog(`winston traceId=${traceId}`);
+        if (!traceId) {
+            return wrappedFunction.apply(this, [chunk, encoding, callback]);
+        }
+
+        const newChunk = {
+            epsagon: {
+                trace_id: traceId,
+            },
+        };
+        /* eslint-disable guard-for-in, no-restricted-syntax */
+        for (const key in chunk) {
+            newChunk[key] = chunk[key];
+        }
+
+        /* eslint-disable no-restricted-syntax */
+        for (const symbol of Object.getOwnPropertySymbols(chunk)) {
+            newChunk[symbol] = chunk[symbol];
+        }
+
+        tracer.addLoggingTracingEnabledMetadata();
+        utils.debugLog('finish internal winston write');
+        return wrappedFunction.apply(this, [newChunk, encoding, callback]);
+    };
+}
+
+var winston = {
+    /**
+     * Initializes the bunyan log tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'winston/lib/winston/logger',
+            'write',
+            writeWrapper,
+            Logger => Logger.prototype
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for amqplib instrumentation
+ */
+
+
+
+
+const { EPSAGON_HEADER: EPSAGON_HEADER$3 } = consts;
+const { generateEpsagonTraceId: generateEpsagonTraceId$5 } = http$1;
+
+
+/**
+ * Wraps the amqplib producer creation and wrapping send function.
+ * @param {Function} sendFunction The amqplib producer function
+ * @returns {Function} The wrapped function
+ */
+function amqplibProducerWrapper(sendFunction) {
+    return function internalamqplibProducerWrapper(fields, properties, content) {
+        let sendResponse;
+        let sendEvent;
+        let eventStartTime;
+        const epsagonId = generateEpsagonTraceId$5();
+        try {
+            const { slsEvent, startTime } = event.initializeEvent(
+                'rabbitmq',
+                fields.routingKey,
+                'SendMessage',
+                'amqplib'
+            );
+            sendEvent = slsEvent;
+            eventStartTime = startTime;
+            // eslint-disable-next-line no-param-reassign
+            fields.headers[EPSAGON_HEADER$3] = epsagonId;
+        } catch (err) {
+            tracer.addException(err);
+        }
+        try {
+            sendResponse = sendFunction.apply(this, [fields, properties, content]);
+        } catch (err) {
+            if (sendEvent) {
+                event.setException(sendEvent, err);
+                tracer.addEvent(sendEvent);
+            }
+            throw err;
+        }
+
+        event.finalizeEvent(
+            sendEvent,
+            eventStartTime,
+            undefined,
+            {
+                exchange: fields.exchange,
+                host: this.connection.stream._host, // eslint-disable-line no-underscore-dangle
+                [EPSAGON_HEADER$3]: epsagonId,
+                'messaging.message_payload_size_bytes': content.toString().length,
+            },
+            {
+                headers: fields.headers,
+                message: content.toString(),
+            }
+        );
+        tracer.addEvent(sendEvent);
+        return sendResponse;
+    };
+}
+
+var amqplib = {
+    /**
+     * Initializes the amqplib tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'amqplib/lib/channel.js',
+            'sendMessage',
+            amqplibProducerWrapper,
+            amqplib => amqplib.Channel.prototype
+        );
+    },
+};
+
+/**
+ * @fileoverview Handlers for amqp instrumentation
+ */
+
+
+
+
+const { EPSAGON_HEADER: EPSAGON_HEADER$4 } = consts;
+const { generateEpsagonTraceId: generateEpsagonTraceId$6 } = http$1;
+
+
+/**
+ * Wraps the amqp producer creation and wrapping send function.
+ * @param {Function} sendFunction The amqp producer function
+ * @returns {Function} The wrapped function
+ */
+function amqpProducerWrapper(sendFunction) {
+    return function internalamqpProducerWrapper(routingKey, data, options, callback) {
+        let sendResponse;
+        let sendEvent;
+        let eventStartTime;
+        const epsagonId = generateEpsagonTraceId$6();
+        try {
+            const { slsEvent, startTime } = event.initializeEvent(
+                'rabbitmq',
+                routingKey,
+                'SendMessage',
+                'amqplib'
+            );
+            sendEvent = slsEvent;
+            eventStartTime = startTime;
+            if (!options || !options.headers) {
+                // eslint-disable-next-line no-param-reassign
+                options.headers = {};
+            }
+            // eslint-disable-next-line no-param-reassign
+            options.headers[EPSAGON_HEADER$4] = epsagonId;
+        } catch (err) {
+            tracer.addException(err);
+        }
+        try {
+            sendResponse = sendFunction.apply(this, [routingKey, data, options, callback]);
+        } catch (err) {
+            if (sendEvent) {
+                event.setException(sendEvent, err);
+                tracer.addEvent(sendEvent);
+            }
+            throw err;
+        }
+
+        event.finalizeEvent(
+            sendEvent,
+            eventStartTime,
+            undefined,
+            {
+                exchange: this.name,
+                host: this.connection.options.host,
+                vhost: this.connection.options.vhost,
+                [EPSAGON_HEADER$4]: epsagonId,
+                'messaging.message_payload_size_bytes': data.toString().length,
+            },
+            {
+                headers: options.headers,
+                message: JSON.stringify(data),
+            }
+        );
+        tracer.addEvent(sendEvent);
+        return sendResponse;
+    };
+}
+
+var amqp = {
+    /**
+     * Initializes the amqp tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'amqp/lib/exchange.js',
+            'publish',
+            amqpProducerWrapper,
+            amqp => amqp.prototype
+        );
+    },
+};
+
+/**
+ * Wraps the ldap.js bind command function with tracing
+ * @param {Function} bindFunction The wrapped bind function from ldap.js module
+ * @returns {Function} The wrapped function
+ */
+function bindWrapper(bindFunction) {
+    return function internalBindWrapper(a, b, c, d) {
+        let callback;
+        let controls;
+        let patchedCallback;
+
+        try {
+            const name = a;
+
+            if (typeof (c) === 'function') {
+                callback = c;
+                controls = [];
+            } else if (typeof (d) === 'function') {
+                callback = d;
+                controls = c;
+            }
+            utils.debugLog(`LDAP.js bind() wrapper - name: ${name}`);
+            const resource = new event_pb.Resource([
+                this.url.hostname,
+                'ldap',
+                'bind',
+            ]);
+            const startTime = Date.now();
+            const bindEvent = new event_pb.Event([
+                `ldap-${uuid4()}`,
+                utils.createTimestampFromTime(startTime),
+                null,
+                'ldap',
+                0,
+                error_code_pb.ErrorCode.OK,
+            ]);
+            bindEvent.setResource(resource);
+            const tags = utils.flatten({
+                enduser: { id: name },
+                ldap: { strict_dn: utils.getValueIfExist(this.url, 'strictDN') },
+                net: {
+                    transport: 'IP.TCP',
+                    protocol: utils.getValueIfExist(this.url, 'protocol'),
+                    socket_path: utils.getValueIfExist(this.url, 'socketPath'),
+                    timeout: utils.getValueIfExist(this.url, 'timeout'),
+                    connect_timeout: utils.getValueIfExist(this.url, 'connectTimeout'),
+                    tls_options: utils.getValueIfExist(this.url, 'tlsOptions'),
+                    idle_timeout: utils.getValueIfExist(this.url, 'idleTimeout'),
+                    pathname: utils.getValueIfExist(this.url, 'pathname'),
+                    secure: utils.getValueIfExist(this.url, 'secure'),
+                    peer: {
+                        address: utils.getValueIfExist(this.url, 'href'),
+                        hostname: utils.getValueIfExist(this.url, 'hostname'),
+                        port: utils.getValueIfExist(this.url, 'port'),
+                        service: 'ldap',
+                    },
+                },
+            });
+            event.addToMetadata(bindEvent, tags);
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, res) => { // eslint-disable-line no-param-reassign
+                    // The callback is run when the response for the command is received
+                    bindEvent.setDuration(utils.createDurationTimestamp(startTime));
+
+                    // Note: currently not saving the response
+                    if (err) {
+                        event.setException(bindEvent, err);
+                    }
+
+                    // Resolving to mark this event as complete
+                    resolve();
+                    if (callback) {
+                        callback(err, res);
+                    }
+                };
+            });
+            tracer.addEvent(bindEvent, responsePromise);
+        } catch (error) {
+            tracer.addException(error);
+        }
+        return bindFunction.apply(this, [a, b, controls, patchedCallback]);
+    };
+}
+
+
+var ldap = {
+    /**
+   * Initializes the ldap.js tracer
+   */
+    init() {
+        module_utils.patchModule(
+            'ldapjs',
+            'bind',
+            bindWrapper,
+            ldapjs => ldapjs.Client.prototype
+        );
+    },
+};
+
+const { parse: parse$1 } = sql_utils;
+
+/**
+ * Wraps the cassandra send command function with tracing
+ * @param {Function} wrappedFunction The wrapped function from cassandra module
+ * @returns {Function} The wrapped function
+ */
+function cassandraClientWrapper(wrappedFunction) {
+    return function internalCassandraClientWrapper(query, params, execOptions, cb) {
+        let executeResponse;
+        let cassandraEvent;
+        let eventStartTime;
+        let table;
+        let patchedCallback;
+        let operation = 'execute';
+        try {
+            const parsedQuery = parse$1(query);
+            operation = parsedQuery.type;
+            table = parsedQuery.from.length && parsedQuery.from[0].table;
+        } catch (err) {
+            utils.debugLog(`could not extract cassandra operation ${err}`);
+        }
+        try {
+            const { slsEvent, startTime } = event.initializeEvent(
+                'cassandra',
+                this.options.contactPoints[0],
+                operation,
+                'cassandra-driver'
+            );
+            cassandraEvent = slsEvent;
+            eventStartTime = startTime;
+        } catch (err) {
+            tracer.addException(err);
+        }
+
+        if (this.options.keyspace) {
+            event.addToMetadata(cassandraEvent, {
+                'db.cassandra.keyspace': this.options.keyspace,
+            });
+        }
+        if (this.options.localDataCenter) {
+            event.addToMetadata(cassandraEvent, {
+                'db.cassandra.coordinator.dc': this.options.localDataCenter,
+            });
+        }
+        if (table) {
+            event.addToMetadata(cassandraEvent, { 'db.cassandra.table': table });
+        }
+
+        const responsePromise = new Promise((resolve) => {
+            patchedCallback = (err, data) => {
+                let callbackResult;
+                try {
+                    if (!cassandraEvent) {
+                        utils.debugLog('Could not initialize cassandra, skipping response.');
+                        return callbackResult;
+                    }
+                    event.finalizeEvent(
+                        cassandraEvent,
+                        eventStartTime,
+                        err,
+                        {
+                            'db.name': this.options.contactPoints[0],
+                            'db.operation': operation,
+                        },
+                        {
+                            'db.statement': query,
+                            'db.cassandra.params': params,
+                        }
+                    );
+                } catch (callbackErr) {
+                    tracer.addException(callbackErr);
+                } finally {
+                    if (cb && typeof cb === 'function') {
+                        callbackResult = cb(err, data);
+                    }
+                }
+                resolve();
+                return callbackResult;
+            };
+        });
+
+        try {
+            executeResponse = wrappedFunction.apply(
+                this,
+                [query, params, execOptions, patchedCallback]
+            );
+        } catch (err) {
+            if (cassandraEvent) {
+                event.setException(cassandraEvent, err);
+                tracer.addEvent(cassandraEvent);
+            }
+            throw err;
+        }
+
+        if (cassandraEvent) {
+            tracer.addEvent(cassandraEvent, responsePromise);
+        }
+
+        return executeResponse;
+    };
+}
+
+var cassandraDriver = {
+    /**
+   * Initializes the cassandra tracer
+   */
+    init() {
+        module_utils.patchModule(
+            'cassandra-driver/lib/client',
+            'execute',
+            cassandraClientWrapper,
+            cassandra => cassandra.prototype
+        );
+    },
+};
+
+/**
+ * Wraps the Tencent COS module.
+ * @param {Function} wrappedFunction original functions
+ * @returns {Function} The wrapped function
+ */
+function tencentCOSWrapper(wrappedFunction) {
+    return function internalTencentCOSWrapper(cos) {
+        const result = wrappedFunction.apply(this, [cos]);
+        // eslint-disable-next-line no-underscore-dangle
+        const originalAddTask = cos._addTask;
+        // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+        cos._addTask = (api, params, callback, ignoreAddEvent) => {
+            const { slsEvent, startTime } = event.initializeEvent(
+                'cos',
+                params.Bucket,
+                api,
+                'tencent-cos'
+            );
+            event.addToMetadata(slsEvent, {
+                'tencent.region': params.Region,
+                'tencent.cos.object_key': params.Key,
+                'tencent.cos.object_path': params.FilePath,
+            });
+            let patchedCallback = callback;
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err, data) => {
+                    slsEvent.setDuration(utils.createDurationTimestamp(startTime));
+                    event.addToMetadata(slsEvent, {
+                        'tencent.cos.request_id': data.headers['x-cos-request-id'],
+                        'tencent.status_code': data.statusCode,
+                    });
+                    if (err) {
+                        event.setException(slsEvent, err);
+                    }
+                    resolve();
+                    return callback(err, data);
+                };
+            });
+            tracer.addEvent(slsEvent, responsePromise);
+            return originalAddTask(api, params, patchedCallback, ignoreAddEvent);
+        };
+        return result;
+    };
+}
+
+var tencentCos = {
+    /**
+     * Initializes the Tencent COS tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'cos-nodejs-sdk-v5/sdk/task.js',
+            'init',
+            tencentCOSWrapper
+        );
+    },
+};
+
+// All Session and Transaction properties are private
+/* eslint-disable no-underscore-dangle, prefer-rest-params */
+
+/**
+ * @fileoverview: Handlers for Neo4j driver instrumentation
+ */
+
+
+
+
+
+
+
+
+
+
+const DEFAULT_PORT = '7474';
+const DEFAULT_HOST = 'neo4j';
+
+
+/**
+ * Extracts the relevant arguments from provided arguments
+ * @returns {Object} Object of the extracted arguments
+ */
+function getArgsFromFunction$1(...args) {
+    let relevantArgs = {};
+    switch (args[args.length - 1]) {
+    case 'Session':
+        relevantArgs = {
+            query: args[0],
+            params: args[1],
+            transactionConfig: args[2],
+        };
+        break;
+
+    case 'Transaction':
+        relevantArgs = {
+            query: args[0],
+            params: args[1],
+        };
+        break;
+    default:
+        break;
+    }
+
+    return relevantArgs;
+}
+
+
+/**
+ * Gets session's address info from Transaction/Session instance
+ * @param {neo4j.Session|neo4j.Transaction} session A DB session (could be Session of Transaction)
+ * @returns {Object} json with address info { host, port }
+ */
+function getAddressInfo(session) {
+    let port = DEFAULT_PORT;
+    let host = DEFAULT_HOST;
+    let connectionHolder;
+
+    switch (session.constructor.name) {
+    // By default, Session opens two same connectionProviders - Read and Write, and not default one
+    case 'Session':
+        connectionHolder = session._readConnectionHolder;
+        break;
+
+    case 'Transaction':
+        connectionHolder = session._connectionHolder;
+        break;
+
+    default:
+        return {
+            host, port,
+        };
+    }
+
+    if (connectionHolder && connectionHolder._connectionProvider) {
+        const connectionProvider = connectionHolder._connectionProvider;
+        port = connectionProvider._address.port();
+        host = connectionProvider._address.host();
+    }
+
+    return {
+        port, host,
+    };
+}
+
+
+/**
+ * Parse from DB session with Neo4j server, useful metadata
+ * @param {neo4j.Session|neo4j.Transaction} session A DB session (could be Session of Transaction)
+ * @returns {{metadata: Object, fullMetadata: Object}} JSONs with command's metadata and command's
+ *      full metadata which contains additional data about the event
+ */
+function getNeo4JSessionMetadata(session) {
+    const metadata = {};
+    const fullMetadata = {};
+
+    let connectionHolder;
+    let sessionMode;
+    let operationMode = '';
+
+    switch (session.constructor.name) {
+    // By default, Session opens two same connectionProviders - Read and Write, and not default one
+    case 'Session':
+        connectionHolder = session._readConnectionHolder;
+        sessionMode = 'READ|WRITE';
+        break;
+
+    case 'Transaction':
+        connectionHolder = session._connectionHolder;
+        sessionMode = connectionHolder._mode;
+
+        break;
+
+    default:
+        return;
+    }
+
+    switch (sessionMode) {
+    case 'READ':
+        operationMode = 'Read';
+        break;
+
+    case 'WRITE':
+        operationMode = 'Write';
+        break;
+
+    case 'READ|WRITE':
+        operationMode = 'Read|Write';
+        break;
+
+    default:
+        break;
+    }
+
+    if (connectionHolder) {
+        metadata.dbName = connectionHolder._database ? connectionHolder._database : 'default';
+        metadata.operation = `${session.constructor.name}:${operationMode}`;
+
+        fullMetadata.config = connectionHolder._connectionProvider._config;
+    }
+
+    // eslint-disable-next-line consistent-return
+    return { metadata, fullMetadata };
+}
+
+
+/**
+ * Create new patched methods for all relevant Observable methods and return
+ * @param {neo4j.session.Session | neo4j.transaction.Transaction} session A session
+ *      with Neo4j server
+ * @param {Object} observer An observer instance to patch
+ * @param {IArguments} sessionArguments The arguments of the observer
+ * @param {serverlessEvent.Event} dbApiEvent The event of the current run
+ * @param {number} startTime The Event start time
+ * @returns {Object} All the patched methods
+ */
+function getPatchedSubscribeMethods(
+    session,
+    observer,
+    sessionArguments,
+    dbApiEvent,
+    startTime
+) {
+    const records = [];
+
+    return {
+        ...observer,
+        // eslint-disable-next-line require-jsdoc
+        onNext(record) {
+            records.push(record);
+            return observer.onNext.apply(session, sessionArguments);
+        },
+
+        // eslint-disable-next-line require-jsdoc
+        onCompleted(summary) {
+            switch (summary.queryType) {
+            case 's':
+                event.addToMetadata(
+                    dbApiEvent,
+                    { items_count: records.length, operation_executed: 'Schema, Write' }
+                );
+                break;
+
+            case 'r':
+                event.addToMetadata(
+                    dbApiEvent,
+                    { items_count: records.length, operation_executed: 'Read' }
+                );
+                break;
+
+            case 'w':
+                event.addToMetadata(
+                    dbApiEvent,
+                    { operation_executed: 'Write' },
+                    { write_stats: summary.counters._stats }
+                );
+                break;
+            case 'rw':
+                event.addToMetadata(
+                    dbApiEvent,
+                    { items_count: records.length, operation_executed: 'Read, Write' },
+                    { write_stats: summary.counters._stats }
+                );
+                break;
+
+            default:
+                utils.debugLog(`Unkown query type: ${summary.queryType}`);
+                break;
+            }
+
+            dbApiEvent.setDuration(utils.createDurationTimestamp(startTime));
+            tracer.addEvent(dbApiEvent);
+            return observer.onCompleted.apply(session, sessionArguments);
+        },
+
+        // eslint-disable-next-line require-jsdoc
+        onError(err) {
+            event.setException(dbApiEvent, err);
+            // eslint-disable-next-line prefer-rest-params
+            return observer.onError.apply(session, sessionArguments);
+        },
+    };
+}
+
+
+/**
+ * Create new serverlessEvent for Neo4J run event (any type of run) and
+ *  add relevant metadata
+ * @param {neo4j.Session|neo4j.Transaction} session A DB session (could be Session of Transaction)
+ * @param {number} startTime The Event start time
+ * @returns {serverlessEvent.Event} The new Event
+ */
+function createNewNeo4jEvent(session, startTime) {
+    const { host, port } = getAddressInfo(session);
+
+    const {
+        metadata, fullMetadata,
+    } = getNeo4JSessionMetadata(session);
+
+    metadata.port = port;
+
+    const resource = new event_pb.Resource([
+        host,
+        'neo4j',
+        metadata.operation,
+    ]);
+
+    const dbApiEvent = new event_pb.Event([
+        `neo4j-${uuid4()}`,
+        utils.createTimestampFromTime(startTime),
+        null,
+        'neo4j',
+        0,
+        error_code_pb.ErrorCode.OK,
+    ]);
+
+    dbApiEvent.setResource(resource);
+
+    event.addToMetadata(dbApiEvent, metadata, fullMetadata);
+
+    return dbApiEvent;
+}
+
+
+/**
+ * Wraps neo4j.Session.run functions with tracing
+ * @param {Function} wrappedFunction The function to wrap from Neo4j
+ * @returns {Function} The wrapped function
+ */
+function neo4jSessionRunWrapper(wrappedFunction) {
+    return function internalNeo4jSessionRunWrapper(...args) {
+        const relevantArgs = getArgsFromFunction$1(...args, this.constructor.name);
+        const {
+            query, params, transactionConfig,
+        } = relevantArgs;
+
+        utils.debugLog('User called Neo4j wrapped Session run function');
+        let resultResponse;
+        try {
+            const startTime = Date.now();
+            const dbApiEvent = createNewNeo4jEvent(this, startTime);
+
+            event.addToMetadata(
+                dbApiEvent,
+                {},
+                { query, param: params, transaction_config: transactionConfig }
+            );
+
+            resultResponse = wrappedFunction.apply(
+                this,
+                [query, params, transactionConfig]
+            );
+
+            const originalSubscribe = resultResponse.subscribe;
+
+            // Override the Result subscribe with patched subscriber
+            // eslint-disable-next-line func-names
+            resultResponse.subscribe = function (observer) {
+                originalSubscribe.call(this, getPatchedSubscribeMethods(
+                    this,
+                    observer,
+                    arguments,
+                    dbApiEvent,
+                    startTime
+                ));
+            };
+
+            return resultResponse;
+        } catch (error) {
+            tracer.addException(error);
+            return resultResponse;
+        }
+    };
+}
+
+
+/**
+ * Wraps neo4j.Transaction.run functions with tracing
+ * @param {Function} wrappedFunction The function to wrap from Neo4j
+ * @returns {Function} The wrapped function
+ */
+function neo4jTransactionRunWrapper(wrappedFunction) {
+    return function internalNeo4jTransactionRunWrapper(...args) {
+        const relevantArgs = getArgsFromFunction$1(...args, this.constructor.name);
+        const {
+            query, params,
+        } = relevantArgs;
+
+        utils.debugLog('User called Neo4j wrapped Transaction run function');
+
+
+        let resultResponse;
+        try {
+            const startTime = Date.now();
+            const dbApiEvent = createNewNeo4jEvent(this, startTime);
+
+            event.addToMetadata(
+                dbApiEvent,
+                {},
+                { query, param: params }
+            );
+
+            resultResponse = wrappedFunction.apply(this, [query, params]);
+
+            const originalSubscribe = resultResponse.subscribe;
+
+            // Override the Result subscribe with patched subscriber
+            // eslint-disable-next-line func-names
+            resultResponse.subscribe = function (observer) {
+                originalSubscribe.call(this, getPatchedSubscribeMethods(
+                    this,
+                    observer,
+                    arguments,
+                    dbApiEvent,
+                    startTime
+                ));
+            };
+
+            return resultResponse;
+        } catch (error) {
+            tracer.addException(error);
+            return resultResponse;
+        }
+    };
+}
+
+
+var neo4j = {
+    /**
+     * Initializes the Neo4j tracer
+     */
+    init() {
+        module_utils.patchModule(
+            'neo4j-driver/lib/transaction.js',
+            'run',
+            neo4jTransactionRunWrapper,
+            Transaction => Transaction.default.prototype
+        );
+
+        module_utils.patchModule(
+            'neo4j-driver/lib/session.js',
+            'run',
+            neo4jSessionRunWrapper,
+            Session => Session.default.prototype
+        );
+    },
+};
+
+/**
+ * Calling to the fs writeFileSync function without callback, And record the error if thrown.
+ * @param {Function} original The node fs function.
+ * @param {number} startTime Event start time.
+ * @param {serverlessEvent.Event} fsEvent FS event.
+ * @param {Array} args Array of function arguments.
+ * @returns {Object} original function response.
+ */
+function handleFunctionWithoutCallback$1(original, startTime, fsEvent, args) {
+    try {
+        tracer.addEvent(fsEvent);
+        return original.apply(this, args);
+    } catch (err) {
+        event.finalizeEvent(fsEvent, startTime, err);
+        throw err;
+    }
+}
+
+/**
+ * Wrap node fs requset.
+ * @param {Function} original The node fs function.
+ * @param {Function} originalName The node fs function name.
+ * @returns {Function} The wrapped function
+ */
+function wrapFsWriteFileFunction(original, originalName) {
+    return function internalWrapFsWriteFileFunction(file, data, options, callback) {
+        const fileName = typeof file === 'object' ? file.toString() : file;
+        const fsCallback = typeof (callback || options) === 'function' && (callback || options);
+        const { slsEvent: fsEvent, startTime } = event.initializeEvent('file_system', fileName, originalName, 'file_system');
+
+        event.addToMetadata(fsEvent, { 'fs.file': fileName });
+        if (!!options && typeof options === 'object') {
+            event.addToMetadata(fsEvent, { options });
+        }
+        if (!fsCallback) {
+            return handleFunctionWithoutCallback$1(original, startTime, fsEvent, [
+                fileName,
+                data,
+                options,
+            ]);
+        }
+        let patchedCallback;
+        let clientRequest;
+        let clientRequestHasBeenCalled;
+        try {
+            const responsePromise = new Promise((resolve) => {
+                patchedCallback = (err) => {
+                    event.finalizeEvent(fsEvent, startTime, err);
+                    resolve();
+                    fsCallback(err);
+                };
+            });
+            if (typeof callback === 'function') {
+                clientRequestHasBeenCalled = true;
+                clientRequest = original.apply(this, [file, data, options, patchedCallback]);
+            } else if (typeof options === 'function') {
+                clientRequestHasBeenCalled = true;
+                clientRequest = original.apply(this, [file, data, patchedCallback]);
+            }
+            tracer.addEvent(fsEvent, responsePromise);
+        } catch (err) {
+            tracer.addException(err);
+        }
+
+        return clientRequest || clientRequestHasBeenCalled ?
+            clientRequest :
+            original.apply(this, [file, data, options, callback]);
+    };
+}
+
+
+var fs_1 = {
+    /**
+     * Patch Node fs methods.
+     * process.env.EPSAGON_FS_INSTRUMENTATION=true is requird.
+     */
+    init() {
+        if ((process.env.EPSAGON_FS_INSTRUMENTATION || '').toUpperCase() === 'TRUE') {
+            module_utils.patchSingle(fs, 'writeFile', () => wrapFsWriteFileFunction(fs.writeFile, 'writeFile'));
+            module_utils.patchSingle(fs, 'writeFileSync', () => wrapFsWriteFileFunction(fs.writeFileSync, 'writeFileSync'));
+        }
+    },
+};
+
+/**
+ * @fileoverview Patcher for all the libraries we are instrumenting
+ * IMPORTANT: when requiring this module, all of the libraries will be automatically patched!
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const LIBNAME_TO_PATCHER = {
+    'aws-sdk/global': aws_sdk,
+    'azure-sdk': azure_sdk,
+    'winston-cw': winston_cloudwatch,
+    'cos-nodejs-sdk-v5': tencentCos,
+    http: http_1$2,
+    http2: http2_1,
+    pg: pg,
+    mysql: mysql,
+    redis: redis,
+    ioredis: ioredis,
+    mongo: mongodb,
+    dax: amazon_dax_client,
+    openwhisk: openwhisk$1,
+    google: google_cloud,
+    dns: dns_1,
+    nats: nats,
+    myqq: mqtt,
+    kafkajs: kafkajs,
+    kafkanode: kafkaNode,
+    bunyan: bunyan,
+    pino: pino,
+    winston: winston,
+    amqplib: amqplib,
+    amqp: amqp,
+    ldap: ldap,
+    cassandra: cassandraDriver,
+    neo4j: neo4j,
+    fs: fs_1,
+};
+
+/**
+ * Patches a module
+ * @param {Object} patcher module
+ */
+function patch(patcher) {
+    try {
+        patcher.init();
+    } catch (error) {
+        if ((process.env.EPSAGON_DEBUG || '').toUpperCase() === 'TRUE') {
+            utils.debugLog(error);
+        }
+    }
+}
+
+if (!config_1.getConfig().isEpsagonPatchDisabled) {
+    if (!config_1.getConfig().patchWhitelist) {
+        [
+            aws_sdk,
+            http_1$2,
+            http2_1,
+            pg,
+            mysql,
+            redis,
+            ioredis,
+            mongodb,
+            amazon_dax_client,
+            openwhisk$1,
+            google_cloud,
+            dns_1,
+            nats,
+            mqtt,
+            kafkajs,
+            kafkaNode,
+            bunyan,
+            pino,
+            azure_sdk,
+            winston_cloudwatch,
+            winston,
+            amqplib,
+            amqp,
+            ldap,
+            cassandraDriver,
+            tencentCos,
+            neo4j,
+            fs_1,
+        ].forEach(patch);
+    } else {
+        config_1.getConfig().patchWhitelist.forEach(
+            (lib) => {
+                if (!(LIBNAME_TO_PATCHER[lib])) {
+                    utils.debugLog(`[PATCHER] Unable to find lib to patch: ${lib}`);
+                } else {
+                    utils.debugLog(`[PATCHER] Whitelisting ${lib}`);
+                    patch(LIBNAME_TO_PATCHER[lib]);
+                }
+            }
+        );
+    }
+}
+
+var src = createCommonjsModule(function (module) {
+// Requiring patcher to instrument modules
+ // eslint-disable-line no-unused-vars
+
+module.exports = {
+    lambdaWrapper: f => f,
+    tencentFunctionWrapper: f => f,
+    stepLambdaWrapper: f => f,
+    openWhiskWrapper: f => f,
+    googleCloudFunctionWrapper: f => f,
+    nodeWrapper: f => f,
+    wrapBatchJob: f => f,
+    label: f => f,
+    setError: f => f,
+    setWarning: f => f,
+    getTraceUrl: f => f,
+    tracer,
+    config: config_1,
+    utils,
+    eventInterface: event,
+    event: event_pb,
+    tryRequire: try_require,
+    errorCode: error_code_pb,
+    httpHelpers: http$1,
+    consts,
+    sqsUtils: sqs_utils,
+};
+
+if (!config_1.getConfig().isEpsagonDisabled) {
+    module.exports.lambdaWrapper = lambda.lambdaWrapper;
+    module.exports.tencentFunctionWrapper = tencent.tencentFunctionWrapper;
+    module.exports.stepLambdaWrapper = lambda.stepLambdaWrapper;
+    module.exports.nodeWrapper = node.nodeWrapper;
+    module.exports.googleCloudFunctionWrapper = (
+        google_cloud_function.googleCloudFunctionWrapper
+    );
+    module.exports.openWhiskWrapper = openwhisk.openWhiskWrapper;
+    module.exports.wrapBatchJob = batch.wrapBatchJob;
+    module.exports.label = tracer.label;
+    module.exports.setError = tracer.setError;
+    module.exports.setWarning = tracer.setWarning;
+    module.exports.getTraceUrl = tracer.getTraceUrl;
+}
+
+module.exports.wrapper = lambda_env.wrapper;
+
+module.exports.init = tracer.initTrace;
+
+module.exports.disable = tracer.disable;
+module.exports.unpatch = module_utils.unpatchModules;
+
+module.exports.enable = tracer.enable;
+module.exports.moduleUtils = module_utils;
+});
+var src_1 = src.lambdaWrapper;
+var src_2 = src.tencentFunctionWrapper;
+var src_3 = src.stepLambdaWrapper;
+var src_4 = src.openWhiskWrapper;
+var src_5 = src.googleCloudFunctionWrapper;
+var src_6 = src.nodeWrapper;
+var src_7 = src.wrapBatchJob;
+var src_8 = src.label;
+var src_9 = src.setError;
+var src_10 = src.setWarning;
+var src_11 = src.getTraceUrl;
+var src_12 = src.tracer;
+var src_13 = src.config;
+var src_14 = src.utils;
+var src_15 = src.eventInterface;
+var src_16 = src.event;
+var src_17 = src.tryRequire;
+var src_18 = src.errorCode;
+var src_19 = src.httpHelpers;
+var src_20 = src.consts;
+var src_21 = src.sqsUtils;
+var src_22 = src.wrapper;
+var src_23 = src.init;
+var src_24 = src.disable;
+var src_25 = src.unpatch;
+var src_26 = src.enable;
+var src_27 = src.moduleUtils;
+
+exports.default = src;
+exports.lambdaWrapper = src_1;
+exports.tencentFunctionWrapper = src_2;
+exports.stepLambdaWrapper = src_3;
+exports.openWhiskWrapper = src_4;
+exports.googleCloudFunctionWrapper = src_5;
+exports.nodeWrapper = src_6;
+exports.wrapBatchJob = src_7;
+exports.label = src_8;
+exports.setError = src_9;
+exports.setWarning = src_10;
+exports.getTraceUrl = src_11;
+exports.tracer = src_12;
+exports.config = src_13;
+exports.utils = src_14;
+exports.eventInterface = src_15;
+exports.event = src_16;
+exports.tryRequire = src_17;
+exports.errorCode = src_18;
+exports.httpHelpers = src_19;
+exports.consts = src_20;
+exports.sqsUtils = src_21;
+exports.wrapper = src_22;
+exports.init = src_23;
+exports.disable = src_24;
+exports.unpatch = src_25;
+exports.enable = src_26;
+exports.moduleUtils = src_27;
